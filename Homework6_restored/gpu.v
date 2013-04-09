@@ -21,6 +21,15 @@ output reg  [17:0] O_GPU_ADDR;
 output reg         O_GPU_WRITE;
 output reg         O_GPU_READ;
 
+/////////////////////////////////////////
+// Example code goes here 
+//
+// ## Note
+// It is highly recommended to play with this example code first so that you
+// could get familiarized with a set of output ports. By doing so, you would
+// get the hang of dealing with vector (graphics) objects in pixel frame.
+/////////////////////////////////////////
+//
 reg [24:0] count;
 reg [9:0]  rowInd;
 reg [9:0]  colInd;

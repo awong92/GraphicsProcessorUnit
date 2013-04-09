@@ -242,6 +242,21 @@ Writeback Writeback0 (
 );
 
 /////////////////////////////////////////
+// TODO
+// Rasterisation stage should be implemented here between writeback and gpu stages. 
+// 1. Output interface of writeback stage should be extended.
+// 2. Input interface of gpu stage also should be extended.
+// 
+// ** You don't have to modify VgaController, PixelGen and MultiSram(framebuffer) modules.
+//
+// ## Note
+// 1. As an example code in the gpu module, you should update the output latch
+// (O_GPU_DATA) of gpu module when I_VIDEO_ON is not asserted.
+// 2. When I_VIDEO_ON is asserted, values stored in the framebuffer are
+// displayed on the screen.
+// /////////////////////////////////////////
+
+/////////////////////////////////////////
 // GPU PIPELINE MODULES GO HERE 
 /////////////////////////////////////////
 //
