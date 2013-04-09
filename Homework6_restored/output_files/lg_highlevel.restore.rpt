@@ -1,0 +1,97 @@
+Restore Archived Project report for lg_highlevel
+Tue Apr 09 17:04:28 2013
+Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Restore Archived Project Summary
+  3. Restore Archived Project Messages
+  4. Files Restored
+  5. Files Not Restored
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2012 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Restore Archived Project Summary                                        ;
++---------------------------------+---------------------------------------+
+; Restore Archived Project Status ; Successful - Tue Apr 09 17:04:28 2013 ;
+; Revision Name                   ; lg_highlevel                          ;
+; Top-level Entity Name           ; lg_highlevel                          ;
+; Family                          ; Cyclone II                            ;
++---------------------------------+---------------------------------------+
+
+
++-----------------------------------+
+; Restore Archived Project Messages ;
++-----------------------------------+
+Info: Successfully restored 'C:/Users/Joon/Documents/Georgia_Tech/gpu-cs3220/Homework6.qar' into the 'C:/Users/Joon/Documents/Georgia_Tech/gpu-cs3220/Homework6_restored/' directory
+Info: Generated report 'lg_highlevel.restore.rpt'
+Info (23030): Evaluation of Tcl script c:/altera/12.1/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus II 64-Bit Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 281 megabytes
+    Info: Processing ended: Tue Apr 09 17:04:28 2013
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00
+
+
++---------------------------------------------------------+
+; Files Restored                                          ;
++---------------------------------------------------------+
+; File Name                                               ;
++---------------------------------------------------------+
+; assignment_defaults.qdf                                 ;
+; data.hex                                                ;
+; decode.v                                                ;
+; execute.v                                               ;
+; fetch.v                                                 ;
+; global_def.h                                            ;
+; gpu.v                                                   ;
+; incremental_db/compiled_partitions/lg_highlevel.db_info ;
+; lg_highlevel.qpf                                        ;
+; lg_highlevel.qsf                                        ;
+; lg_highlevel.v                                          ;
+; memory.v                                                ;
+; multi_sram.v                                            ;
+; pixel_gen.v                                             ;
+; pll.ppf                                                 ;
+; pll.qip                                                 ;
+; pll.v                                                   ;
+; pll_bb.v                                                ;
+; seven_segment.v                                         ;
+; sign_extension.v                                        ;
+; simulation/modelsim/my_custom_view.do                   ;
+; test0.hex                                               ;
+; vga_controller.v                                        ;
+; writeback.v                                             ;
++---------------------------------------------------------+
+
+
++--------------------+
+; Files Not Restored ;
++--------------------+
+; File Name          ;
++--------------------+
+
+
