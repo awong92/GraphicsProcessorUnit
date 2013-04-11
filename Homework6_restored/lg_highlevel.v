@@ -130,6 +130,11 @@ wire [3:0] DestRegIdx_MW;
 wire FetchStall_MW;
 wire DepStall_MW;
 
+wire LOCK_WV;
+
+
+wire LOCK_VR;
+
 /////////////////////////////////////////
 // PLL MODULE GOES HERE 
 /////////////////////////////////////////
@@ -236,11 +241,20 @@ Writeback Writeback0 (
   .I_MemOut(MemOut_MW),
   .I_DestRegIdx(DestRegIdx_MW),
   .I_DepStall(DepStall_MW),
+  .O_LOCK(LOCK_WV),
   .O_WriteBackEnable(WritebackEnable_WD),
   .O_WriteBackRegIdx(WriteBackRegIdx_WD),
   .O_WriteBackData(WritebackData_WD)
 );
 
+Vertex Vertex0 (
+	.I_CLOCK(pll_c0),
+	.I_LOCK(LOCK_WV),
+	.O_LOCK(LOCK_VR)
+);
+
+Rasterizer Rasterizer0 (
+);
 /////////////////////////////////////////
 // TODO
 // Rasterisation stage should be implemented here between writeback and gpu stages. 
