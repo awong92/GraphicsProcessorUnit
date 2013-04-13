@@ -4,6 +4,7 @@ module Memory(
   I_CLOCK,
   I_LOCK,
   I_ALUOut,
+  I_VALUOut,
   I_Opcode,
   I_DestRegIdx,
   I_FetchStall,
@@ -11,6 +12,7 @@ module Memory(
   I_DestValue,
   O_LOCK,
   O_ALUOut,
+  O_VALUOut,
   O_Opcode,
   O_MemOut,
   O_DestRegIdx,
@@ -43,6 +45,7 @@ input [`REG_WIDTH-1:0] I_DestValue;
 // Outputs to the writeback stage
 output reg O_LOCK;
 output reg [`REG_WIDTH-1:0] O_ALUOut;
+output reg [`VREG_WIDTH-1:0] O_VALUOut;
 output reg [`OPCODE_WIDTH-1:0] O_Opcode;
 output reg [3:0] O_DestRegIdx;
 output reg [`REG_WIDTH-1:0] O_MemOut;
@@ -90,7 +93,9 @@ begin
   O_DepStall <= I_DepStall;
   O_DestRegIdx <= I_DestRegIdx;
   O_ALUOut <= I_ALUOut;
+  O_VALUOut <= I_VALUOut;
   O_Opcode <= I_Opcode;
+  
   
   if (I_LOCK == 1'b1)
   begin

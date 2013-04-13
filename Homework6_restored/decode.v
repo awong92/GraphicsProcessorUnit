@@ -372,33 +372,35 @@ O_DepStall = __DepStallSignal;
 		//VADD, VMOV, VMOVI, VCOMPMOV, VCOMPMOVI, BeginPrimitive, EndPrimitive, SetVertex, Rotate, Translate, Scale, Draw
 		if(I_IR[31:24] == `OP_VADD)
 		begin
-			O_VDestValue <= VF[I_IR[21:16]];
-			VRF_VALID[I_IR[21:16]];
+			O_DestRegIdx = I_IR[21:16];
+			VRF_VALID[O_DestRegIdx];
 			O_VSrc1Value <= VF[I_IR[13:8]];
 			O_VSrc2Value <= VF[I_IR[5:0]];
 		end
 		if(I_IR[31:24] == `OP_VMOV)
 		begin
-			O_VDestValue <= VF[I_IR[21:16]];
-			VRF_VALID[I_IR[21:16]];
+			O_DestRegIdx = I_IR[21:16];
+			VRF_VALID[O_DestRegIdx];
 			O_VSrc1Value <= VF[I_IR[13:8]];
 		end
 		if(I_IR[31:24] == `OP_VMOVI)
 		begin
-			O_VDestValue <= VF[I_IR[21:16]];
-			VRF_VALID[I_IR[21:16]];
+			O_DestRegIdx = I_IR[21:16];
+			VRF_VALID[O_DestRegIdx];
 			O_Imm <= I_IR[15:0];
 		end
 		if(I_IR[31:24] == `OP_VCOMPMOV)
 		begin
-			O_VDestValue <= VF[I_IR[21:16]];
-			O_DestRegIdx <= I_IR[23:22];
+			O_DestRegIdx = I_IR[21:16];
+			VRF_VALID[O_DestRegIdx];
+			O_DestValue <= I_IR[23:22];
 			O_Src1Value <= I_IR[11:8];
 		end
 		if(I_IR[31:24] == `OP_VCOMPMOVI)
 		begin
-			O_VDestValue <= VF[I_IR[21:16]];
-			O_DestRegIdx <= I_IR[23:22];
+			O_DestRegIdx = I_IR[21:16];
+			VRF_VALID[O_DestRegIdx];
+			O_DestValue <= I_IR[23:22];
 			O_Imm <= I_IR[15:0];
 		end
 		if(I_IR[31:24] == `OP_BEGINPRIMITIVE || I_IR[31:24] == `OP_ENDPRIMITIVE || I_IR[31:24] == `OP_DRAW || I_IR[31:24] == `OP_FLUSH || I_IR[31:24] == `OP_PUSHMATRIX || I_IR[31:24] == `OP_POPMATRIX)

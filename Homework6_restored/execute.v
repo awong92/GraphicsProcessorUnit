@@ -48,6 +48,7 @@ input [`VREG_WIDTH-1:0] I_VDestValue;
 // Outputs to the memory stage
 output reg O_LOCK;
 output reg [`REG_WIDTH-1:0] O_ALUOut;
+output reg [`VREG_WIDTH-1:0] O_VALUOut;
 output reg [`OPCODE_WIDTH-1:0] O_Opcode;
 output reg [`REG_WIDTH-1:0] O_DestValue;
 output reg [3:0] O_DestRegIdx;
@@ -136,6 +137,28 @@ begin
 				`OP_JMP: begin
 						O_ALUOut <= I_Src1Value; 	
 				end
+				`OP_VADD: begin
+						O_VALUOut[15:0] <= I_VSrc1Value[15:0] + I_VSrc2Value[15:0];
+						O_VALUOut[31:16] <= I_VSrc1Value[31:16] + I_VSrc2Value[31:16];
+						O_VALUOut[47:32] <= I_VSrc1Value[47:32] + I_VSrc2Value[47:32];
+						O_VALUOut[63:48] <= I_VSrc1Value[63:48] + I_VSrc2Value[63:48];
+				end
+				`OP_VMOV: begin
+						O_VALUOut <= I_VSrc1Value;
+				end
+				`OP_VMOVI: begin
+						O_VALUOut[15:0] <= I_Imm;
+						O_VALUOut[31:16] <= I_Imm;
+						O_VALUOut[47:32] <= I_Imm;
+						O_VALUOut[63:48] <= I_Imm;
+				end
+				`OP_VCOMPMOV: begin
+						O_VALUOut[(((I_DestValue)*16)-1):(((I_DestValue-1)*16)-1)] <= I_VScr1Value;
+				end
+				`OP_VCOMPMOVI: begin
+						O_VALUOut[(((I_DestValue)*16)-1):(((I_DestValue-1)*16)-1)] <= I_Imm;
+				end
+				//VADD, VMOV, VMOVI, VCOMPMOV, VCOMPMOVI, BeginPrimitive, EndPrimitive, SetVertex, Rotate, Translate, Scale, Draw
 
 		endcase
 	 end
