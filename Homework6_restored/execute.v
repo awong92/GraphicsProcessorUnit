@@ -9,11 +9,15 @@ module Execute(
   I_Src2Value,
   I_DestValue,
   I_DestRegIdx,
+  I_VSrc1Value,
+  I_VSrc2Value,
+  I_VDestValue,
   I_Imm,
   I_FetchStall,
   I_DepStall,
   O_LOCK,
   O_ALUOut,
+  O_VALUOut,
   O_Opcode,
   O_DestRegIdx,
   O_DestValue,
@@ -38,7 +42,9 @@ input I_FetchStall;
 input I_DepStall;
 input [`REG_WIDTH-1:0] I_DestValue;
 
-
+input [`VREG_WIDTH-1:0] I_VSrc1Value;
+input [`VREG_WIDTH-1:0] I_VSrc2Value;
+input [`VREG_WIDTH-1:0] I_VDestValue;
 // Outputs to the memory stage
 output reg O_LOCK;
 output reg [`REG_WIDTH-1:0] O_ALUOut;

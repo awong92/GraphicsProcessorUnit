@@ -16,6 +16,9 @@ module Decode(
   O_Src2Value,
   O_DestValue,
   O_DestRegIdx,
+  O_VSrc1Value,
+  O_VSrc2Value,
+  O_VDestValue,
   O_Imm,
   O_FetchStall,
   O_DepStall,
@@ -46,6 +49,9 @@ output reg [`OPCODE_WIDTH-1:0] O_Opcode;
 output reg [`REG_WIDTH-1:0] O_Src1Value;
 output reg [`REG_WIDTH-1:0] O_Src2Value;
 output reg [`REG_WIDTH-1:0] O_DestValue;
+output reg [`VREG_WIDTH-1:0] O_VSrc1Value;
+output reg [`VREG_WIDTH-1:0] O_VSrc2Value;
+output reg [`VREG_WIDTH-1:0] O_VDestValue;
 output reg [3:0] O_DestRegIdx;
 output reg [`REG_WIDTH-1:0] O_Imm;
 output reg O_FetchStall;
@@ -362,7 +368,45 @@ O_DepStall = __DepStallSignal;
 
 		if (I_IR[31:24] == `OP_ADDI_D || I_IR[31:24] == `OP_ADD_D || I_IR[31:24] == `OP_AND_D || I_IR[31:24] == `OP_ANDI_D || I_IR[31:24] == `OP_MOVI_D || I_IR[31:24] == `OP_MOV || I_IR[31:24] == `OP_LDW)
 			RF_VALID[O_DestRegIdx]<=0;
-	  
+	
+		//VADD, VMOV, VMOVI, VCOMPMOV, VCOMPMOVI, BeginPrimitive, EndPrimitive, SetVertex, Rotate, Translate, Scale, Draw
+		if(I_IR[31:24] == `OP_VADD)
+		begin
+			O_VDestValue <= VF[I_IR[21:16]];
+			VRF_VALID[I_IR[21:16]];
+			O_VSrc1Value <= VF[I_IR[13:8]];
+			O_VSrc2Value <= VF[I_IR[5:0]];
+		end
+		if(I_IR[31:24] == `OP_VMOV)
+		begin
+			O_VDestValue <= VF[I_IR[21:16]];
+			VRF_VALID[I_IR[21:16]];
+			O_VSrc1Value <= VF[I_IR[13:8]];
+		end
+		if(I_IR[31:24] == `OP_VMOVI)
+		begin
+			O_VDestValue <= VF[I_IR[21:16]];
+			VRF_VALID[I_IR[21:16]];
+			O_Imm <= I_IR[15:0];
+		end
+		if(I_IR[31:24] == `OP_VCOMPMOV)
+		begin
+			O_VDestValue <= VF[I_IR[21:16]];
+			O_DestRegIdx <= I_IR[23:22];
+			O_Src1Value <= I_IR[11:8];
+		end
+		if(I_IR[31:24] == `OP_VCOMPMOVI)
+		begin
+			O_VDestValue <= VF[I_IR[21:16]];
+			O_DestRegIdx <= I_IR[23:22];
+			O_Imm <= I_IR[15:0];
+		end
+		if(I_IR[31:24] == `OP_BEGINPRIMITIVE || I_IR[31:24] == `OP_ENDPRIMITIVE || I_IR[31:24] == `OP_DRAW || I_IR[31:24] == `OP_FLUSH || I_IR[31:24] == `OP_PUSHMATRIX || I_IR[31:24] == `OP_POPMATRIX)
+		begin
+		end
+		if(I_IR[31:24] == `OP_SETVERTEX || I_IR[31:24] == `OP_SETCOLOR || I_IR[31:24] == `OP_ROTATE || I_IR[31:24] == `OP_TRANSLATE || I_IR[31:24] == `OP_SCALE)
+			O_VDestValue <= VF[I_IR[21:16]];
+		end
 	  end // if (I_LOCK == 1'b1)
 	end
 	

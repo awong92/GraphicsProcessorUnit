@@ -108,6 +108,7 @@ wire [`PC_WIDTH-1:0] PC_DE;
 wire [`OPCODE_WIDTH-1:0] Opcode_DE;
 wire [`REG_WIDTH-1:0] Src1Value_DE;
 wire [`REG_WIDTH-1:0] Src2Value_DE;
+wire [`VREG_WIDTH-1:0] VRegValue_DE;
 wire [3:0] DestRegIdx_DE;
 wire [`REG_WIDTH-1:0] DestValue_DE;
 wire [`REG_WIDTH-1:0] Imm_DE;
@@ -116,6 +117,7 @@ wire DepStall_DE;
 
 wire LOCK_EM;
 wire [`REG_WIDTH-1:0] ALUOut_EM;
+wire [`VREG_WIDTH-1:0] VALUOut_EM;
 wire [`OPCODE_WIDTH-1:0] Opcode_EM;
 wire [3:0] DestRegIdx_EM;
 wire [`REG_WIDTH-1:0] DestValue_EM;
@@ -124,6 +126,7 @@ wire DepStall_EM;
 
 wire LOCK_MW;
 wire [`REG_WIDTH-1:0] ALUOut_MW;
+wire [`VREG_WIDTH-1:0] VALUOut_MW;
 wire [`OPCODE_WIDTH-1:0] Opcode_MW;
 wire [`REG_WIDTH-1:0] MemOut_MW;
 wire [3:0] DestRegIdx_MW;
@@ -182,6 +185,7 @@ Decode Decode0 (
   .O_Src2Value(Src2Value_DE),
   .O_DestRegIdx(DestRegIdx_DE),
   .O_DestValue(DestValue_DE),
+  .O_VDestValue(VRegValue_DE),
   .O_Imm(Imm_DE)
 );
 
@@ -195,11 +199,13 @@ Execute Execute0 (
   .I_Src2Value(Src2Value_DE),
   .I_DestRegIdx(DestRegIdx_DE),
   .I_DestValue(DestValue_DE),
+  .I_VDestValue(VRegValue_DE),
   .I_Imm(Imm_DE),
   .I_DepStall(DepStall_DE),
   .O_LOCK(LOCK_EM),
   .O_FetchStall(FetchStall_EM),
   .O_ALUOut(ALUOut_EM),
+  .O_VALUOut(VALUOut_EM),
   .O_Opcode(Opcode_EM),
   .O_DestRegIdx(DestRegIdx_EM),
   .O_DestValue(DestValue_EM),
@@ -211,6 +217,7 @@ Memory Memory0 (
   .I_LOCK(LOCK_EM),
   .I_FetchStall(FetchStall_EM),
   .I_ALUOut(ALUOut_EM),
+  .I_VALUOut(VALUOut_EM),
   .I_Opcode(Opcode_EM),
   .I_DestRegIdx(DestRegIdx_EM),
   .I_DestValue(DestValue_EM),
@@ -220,6 +227,7 @@ Memory Memory0 (
   .O_LOCK(LOCK_MW),
   .O_FetchStall(FetchStall_MW),
   .O_ALUOut(ALUOut_MW),
+  .O_VALUOut(VALUOut_MW),
   .O_Opcode(Opcode_MW),
   .O_MemOut(MemOut_MW),
   .O_DestRegIdx(DestRegIdx_MW),

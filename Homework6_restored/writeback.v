@@ -5,6 +5,7 @@ module Writeback(
   I_LOCK,
   I_Opcode,
   I_ALUOut,
+  I_VALUOut,
   I_MemOut,
   I_DestRegIdx,
   I_FetchStall,
