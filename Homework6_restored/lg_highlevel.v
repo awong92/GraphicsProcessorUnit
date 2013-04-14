@@ -100,8 +100,12 @@ wire BranchStallSignal_FD;
 wire FetchStall_FD;
 
 wire WritebackEnable_WD;
-wire [3:0] WriteBackRegIdx_WD;
+wire VWritebackEnable_WD;
+wire [5:0] WriteBackRegIdx_WD;
 wire [`REG_WIDTH-1:0] WritebackData_WD;
+wire [`VREG_WIDTH-1:0] VWritebackData_WD;
+wire [`OPCODE_WIDTH-1:0] Opcode_WV;
+wire [`OPCODE_WIDTH-1:0] Opcode_VR;
 
 wire LOCK_DE;
 wire [`PC_WIDTH-1:0] PC_DE;
@@ -171,6 +175,8 @@ Decode Decode0 (
   .I_FetchStall(FetchStall_FD),
   .I_PC(PC_FD),
   .I_IR(IR_FD),
+  .I_VWriteBackEnable(VWriteBackEnable_WD),
+  .I_VWriteBackData(VWriteBackData_WD),
   .I_WriteBackEnable(WritebackEnable_WD),
   .I_WriteBackRegIdx(WriteBackRegIdx_WD),
   .I_WriteBackData(WritebackData_WD),
@@ -245,6 +251,7 @@ Writeback Writeback0 (
   .I_LOCK(LOCK_MW),
   .I_FetchStall(FetchStall_MW),
   .I_ALUOut(ALUOut_MW),
+  .I_VALUOut(VALUOut_MW),
   .I_Opcode(Opcode_MW),
   .I_MemOut(MemOut_MW),
   .I_DestRegIdx(DestRegIdx_MW),
@@ -252,13 +259,22 @@ Writeback Writeback0 (
   .O_LOCK(LOCK_WV),
   .O_WriteBackEnable(WritebackEnable_WD),
   .O_WriteBackRegIdx(WriteBackRegIdx_WD),
-  .O_WriteBackData(WritebackData_WD)
+  .O_WriteBackData(WritebackData_WD),
+  .O_VWriteBackData(VWriteBackData_WD),
+  .O_VWriteBackEnable(VWriteBackEnable_WD),
+  .O_Opcode(Opcode_WV)
 );
 
 Vertex Vertex0 (
 	.I_CLOCK(pll_c0),
 	.I_LOCK(LOCK_WV),
+	.I_VRegIn(VWriteBackData_WD),
+	.I_Opcode(Opcode_WV),
+	.O_ColoroOut(VColor),
+	.O_VOut(Vertex),
+	.O_Opcode(Opcode_VR),
 	.O_LOCK(LOCK_VR)
+	
 );
 
 Rasterizer Rasterizer0 (

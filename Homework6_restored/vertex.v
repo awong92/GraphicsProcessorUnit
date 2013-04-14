@@ -1,17 +1,14 @@
 `include "global_def.h"
 
 module Vertex(
-	output x;
-	output y;
-	output z;
-	output r;
-	output g;
-	output b;
-	input inV0;
-	input inV1;
-	input inV2;
-	input inV3;
-	input OPCODE;
+	I_CLOCK,
+   I_LOCK,
+	I_VRegIn,
+	I_Opcode,
+	O_VOut,
+	O_ColorOut,
+	O_LOCK
+	
 );
 
 /////////////////////////////////////////
@@ -21,19 +18,24 @@ module Vertex(
 // Inputs from the fetch stage
 input I_CLOCK;
 input I_LOCK;
+input [`OPCODE_WIDTH-1:0] I_Opcode;
+input [`VREG_WIDTH-1:0] I_VRegIn;
+
+output O_LOCK;
+output [`VREG_WIDTH-1:0] O_ColorOut;
+output [`VREG_WIDTH-1:0] O_VOut;
 
 reg is_setvertex; 
 reg is_startprimitive; 
 reg is_endprimitive; 
 reg is_draw; 
+reg is_flush;
 
 reg [`DATA_WIDTH:0] matrixTemp[0:`REG_WIDTH]; 
 reg [`DATA_WIDTH:0] matrixBackup[0:`REG_WIDTH]; 
 
 reg [`DATA_WIDTH:0] matrixCurrent[0:`REG_WIDTH]; 
-reg r;
-reg g;
-reg b;
+
 
 reg [`DATA_WIDTH:0] matrixPast[0:`REG_WIDTH]; 
 reg rPast;

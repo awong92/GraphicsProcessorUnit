@@ -12,8 +12,10 @@ module Writeback(
   I_DepStall,
   O_WriteBackEnable,
   O_WriteBackRegIdx,
-  O_WriteBackData
-);
+  O_WriteBackData,
+  O_VWriteBackData,
+  O_Opcode
+ );
 
 /////////////////////////////////////////
 // IN/OUT DEFINITION GOES HERE
@@ -31,8 +33,11 @@ input I_DepStall;
 
 // Outputs to the decode stage
 output O_WriteBackEnable;
-output [3:0] O_WriteBackRegIdx;
+output [5:0] O_WriteBackRegIdx;
 output [`REG_WIDTH-1:0] O_WriteBackData;
+output [`VREG_WIDTH-1:0] O_VWriteBackData;
+output O_VWriteBackEnable;
+input [`OPCODE_WIDTH-1:0] O_Opcode;
 
 
 //Reg file?
@@ -41,6 +46,8 @@ output [`REG_WIDTH-1:0] O_WriteBackData;
 // - Assign output signals depending on opcode.
 // - A few examples are provided.
 /////////////////////////////////////////
+assign O_Opcode = I_Opcode;
+
 assign O_WriteBackEnable = 
   ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0)) ? 
     ((I_DepStall == 1'b0) ?
@@ -77,6 +84,11 @@ assign O_WriteBackRegIdx =
        (I_Opcode == `OP_MOVI_D) ? (I_DestRegIdx) :
 		 (I_Opcode == `OP_LDW) ? (I_DestRegIdx) :
        (I_Opcode == `OP_LDB   ) ? (I_DestRegIdx) : 
+		 (I_Opcode == `OP_VADD) ? (I_DestRegIdx) :
+       (I_Opcode == `OP_VMOV) ? (I_DestRegIdx) :
+       (I_Opcode == `OP_VMOVI) ? (I_DestRegIdx) :
+		 (I_Opcode == `OP_VCOMPMOV) ? (I_DestRegIdx) :
+       (I_Opcode == `OP_VCOMPMOVI   ) ? (I_DestRegIdx) : 
        (4'h0)
       ) : (1'b0)
     ) : (1'b0);
@@ -93,6 +105,30 @@ assign O_WriteBackData =
 		 (I_Opcode == `OP_LDW) ? (I_MemOut) :
        (I_Opcode == `OP_LDB   ) ? (I_MemOut) : 
        (16'h00000000)
+      ) : (1'b0)
+    ) : (1'b0);
+	 
+assign O_VWriteBackEnable = 
+  ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0)) ? 
+    ((I_DepStall == 1'b0) ?
+      ((I_Opcode == `OP_VADD ) ? (1'b1) :
+       (I_Opcode == `OP_VMOV) ? (1'b1) :
+       (I_Opcode == `OP_VMOVI) ? (1'b1) :
+       (I_Opcode == `OP_VCOMPMOV) ? (1'b1) :
+       (I_Opcode == `OP_VCOMPMOVI) ? (1'b1) :
+       (1'b0)
+      ) : (1'b0)
+    ) : (1'b0);
+	 
+assign O_VWriteBackData = 
+  ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0)) ? 
+    ((I_DepStall == 1'b0) ?
+      ((I_Opcode == `OP_VADD ) ? (I_VALUOut) :
+       (I_Opcode == `OP_VMOV) ? (I_VALUOut) :
+		 (I_Opcode == `OP_VMOVI) ? (I_VALUOut) :
+       (I_Opcode == `OP_VCOMPMOV) ? (I_VALUOut) :
+       (I_Opcode == `OP_VCOMPMOVI) ? (I_VALUOut) :
+       (64'h0000000000000)
       ) : (1'b0)
     ) : (1'b0);
 
