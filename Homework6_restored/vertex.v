@@ -47,7 +47,7 @@ reg [`VREG_WIDTH-1:0] ColorPast;
 
 reg [`DATA_WIDTH:0] vertex [0:2];
 
-reg angle;
+reg [`DATA_WIDTH:0]angle;
 
 reg [`DATA_WIDTH:0] x;
 reg [`DATA_WIDTH:0] y;
@@ -69,7 +69,8 @@ always @(negedge I_CLOCK)
 begin
   if (I_LOCK == 1'b1)
   begin
-
+				O_Opcode<=I_Opcode;
+				
             if (I_Opcode==`OP_BEGINPRIMITIVE) begin
               is_startprimitive = 1; 
             end
@@ -122,9 +123,14 @@ begin
                         end
                     end
                 end
-
+                
+					 angle=I_VRegIn[15:0];
                 if(I_VRegIn[63] == 1) begin
-                    angle = (-1) * angle;
+						  if (angle[15] == 1) begin
+								angle[15] = 0;
+						  end else begin
+								angle[15] = 1;
+						  end
                 end
 
              /**   matrixTemp[4*0 + 0] = cos(angle*3.14159/180);
