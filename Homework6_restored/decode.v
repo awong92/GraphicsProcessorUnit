@@ -7,8 +7,10 @@ module Decode(
   I_IR,
   I_FetchStall,
   I_WriteBackEnable,
+  I_VWriteBackEnable,
   I_WriteBackRegIdx,
   I_WriteBackData,
+  I_VWriteBackData,
   O_LOCK,
   O_PC,
   O_Opcode,
@@ -39,7 +41,7 @@ input I_FetchStall;
 
 // Inputs from the writeback stage
 input I_WriteBackEnable;
-input [3:0] I_WriteBackRegIdx;
+input [5:0] I_WriteBackRegIdx;
 input [`REG_WIDTH-1:0] I_WriteBackData;
 
 // Outputs to the execude stage
@@ -194,6 +196,10 @@ begin
 			ConditionalCode = 2;
 		end
 	end
+
+	if (I_VWriteBackEnable==1) begin					//Write back data if necessary
+		VRF[I_WriteBackRegIdx] <= I_VWriteBackData;   
+	end
 	
 	if (I_IR[31:24] == `OP_JSR || I_IR[31:24] == `OP_JSRR)			//Write return register
 		RF[7] <= I_PC;
@@ -238,6 +244,20 @@ begin
 				end else begin
 					__DepStallSignal = 0;
 				end
+		end else if (I_IR[31:24] == `OP_VADD) begin
+			  if (VRF_VALID[I_IR[13:8]] != 1||VRF_VALID[I_IR[5:0]] != 1) begin
+					if (VRF_VALID[I_IR[13:8]] != 1 && VRF_VALID[I_IR[5:0]] != 1) begin
+							__DepStallSignal = 1;
+					end else if(VRF_VALID[I_IR[13:8]] != 1 && I_WriteBackRegIdx == I_IR[5:0]) begin
+							__DepStallSignal = 0;
+					end else if(VRF_VALID[I_IR[5:0]] != 1 && I_WriteBackRegIdx == I_IR[5:0]) begin
+							__DepStallSignal = 0;
+					end else begin
+							__DepStallSignal = 1;
+					end
+				end else begin
+					__DepStallSignal = 0;
+				end
 		end else if ((I_IR[31:24] == `OP_ADD_D )|| (I_IR[31:24] == `OP_AND_D)) begin
 			  if (RF_VALID[I_IR[19:16]] != 1||RF_VALID[I_IR[11:8]] != 1) begin
 					if (RF_VALID[I_IR[19:16]] != 1 && RF_VALID[I_IR[11:8]] != 1) begin
@@ -271,7 +291,27 @@ begin
 					end
 				end else begin
 					__DepStallSignal = 0;
+				end		
+		end else if (I_IR[31:24] == `OP_VMOV) begin
+			  if (VRF_VALID[I_IR[13:8]] != 1) begin
+					if(VRF_VALID[I_IR[13:8]] != 1 && I_WriteBackRegIdx == I_IR[13:8]) begin
+							__DepStallSignal = 0;
+					end else begin
+							__DepStallSignal = 1;
+					end
+				end else begin
+					__DepStallSignal = 0;
 				end
+		end else if (I_IR[31:24] == `OP_VCOMPMOV) begin
+			  if (RF_VALID[I_IR[11:8]] != 1) begin
+					if(RF_VALID[I_IR[11:8]] != 1 && I_WriteBackRegIdx == I_IR[11:8]) begin
+							__DepStallSignal = 0;
+					end else begin
+							__DepStallSignal = 1;
+					end
+				end else begin
+					__DepStallSignal = 0;
+				end		
 		end else if (I_IR[31:24] == `OP_LDW) begin
 			  if (RF_VALID[I_IR[19:16]] != 1) begin
 					if(RF_VALID[I_IR[19:16]] != 1 && I_WriteBackRegIdx == I_IR[19:16]) begin
@@ -417,6 +457,9 @@ O_DepStall = __DepStallSignal;
 			RF_VALID[I_WriteBackRegIdx]<=1;
 		end
 			
+		if (I_VWriteBackEnable==1) begin					//Write back data if necessary
+			VRF_VALID[I_VWriteBackRegIdx]<=1;
+		end
 	
 end // always @(negedge I_CLOCK)
 
