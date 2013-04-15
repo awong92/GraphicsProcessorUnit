@@ -24,9 +24,9 @@ output O_LOCK;
 output reg [`VREG_WIDTH-1:0] O_ColorOut;
 output  reg [`VREG_WIDTH-1:0] O_VOut;
 
-reg [1:0] i;
-reg [1:0] j;
-reg [1:0] k;
+reg [6:0] i;
+reg [6:0] j;
+reg [6:0] k;
 
 reg is_setvertex; 
 reg is_startprimitive; 
@@ -125,10 +125,10 @@ begin
                     angle = (-1) * angle;
                 end
 
-                matrixTemp[4*0 + 0] = cos(angle*3.14159/180);
+             /**   matrixTemp[4*0 + 0] = cos(angle*3.14159/180);
                 matrixTemp[4*1 + 0] = (-1) * sin(angle*3.14159/180);
                 matrixTemp[4*0 + 1] = sin(angle*3.14159/180);
-                matrixTemp[4*1 + 1] = cos(angle*3.14159/180);
+                matrixTemp[4*1 + 1] = cos(angle*3.14159/180);  **/
 
                 //Matrix Multiply
                 for( i = 0; i < 4; i=i+1)begin
@@ -207,10 +207,10 @@ begin
 
 
             if (I_Opcode==`OP_PUSHMATRIX) begin
-					for (i=0; i< REG_WIDTH; i = i + 1)begin
+					for (i=0; i< `REG_WIDTH; i = i + 1)begin
 						matrixPast[i] = matrixCurrent[i];
 					 end
-                colorPast = colorCurrent;
+                ColorPast <= ColorCurrent;
             end
 
             if (I_Opcode==`OP_LOADIDENTITY) begin
@@ -223,16 +223,16 @@ begin
                     end
                 end
                 
-                colorCurrent = 0;
+                ColorCurrent <= 0;
             end
 
 
             if (I_Opcode==`OP_POPMATRIX) begin
 				
-					for (i=0; i< REG_WIDTH; i = i + 1)begin
+					for (i=0; i< `REG_WIDTH; i = i + 1)begin
 						matrixCurrent[i] = matrixPast[i];
 					 end
-                colorCurret = colorPast;
+                ColorCurrent <= ColorPast;
             end
 
   end // if (I_LOCK == 1'b1)

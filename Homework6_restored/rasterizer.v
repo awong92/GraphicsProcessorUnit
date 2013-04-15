@@ -204,53 +204,41 @@ begin
     end    
         
         //Traverse
-        if(currentState == 8)
-        begin
-    //    for(int i = fragment_start_y; i < fragment_end_y; i++){
-        for(i = fragmentStartY; i < fragmentEndY; i=i+1)
-        begin
-     //       for (int j = fragment_start_x; j < fragment_end_x; j++) {
-           for(j = fragmentStartX; j<fragmentEndX; j=j+1) 
-           begin
-           
-           //       edgeResult[0] <= edge1[0]*(j) + edge1[1]*(i) + edge1[2];
-           //       edgeResult[1] <= edge2[0]*(j) + edge2[1]*(i) + edge2[2];
-           //       edgeResult[2] <= edge3[0]*(j) + edge3[1]*(i) + edge3[2];
-                  
-                  if(((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0 || edge1[0] > 0 || edge1[1] > 0)&&
-                     ((edge2[0]*(j) + edge2[1]*(i) + edge2[2]) > 0 || edge2[0] > 0 || edge2[1] > 0)&&
-                     ((edge3[0]*(j) + edge3[1]*(i) + edge3[2]) > 0 || edge3[0] > 0 || edge3[1] > 0)) 
-                     begin
-                      fragmentBuffer[i*640+j] <= color[currentState];
-							 O_ADDROut <= i*640*j;
-							 O_ColorOut <= color[currentState];
-                     end
-           
-       //         if(inside(edge_0, (j + 0.5), (i + 0.5))
-       //         && inside(edge_1, (j + 0.5), (i + 0.5))
-       //         && inside(edge_2, (j + 0.5), (i + 0.5))){
-                 //TODO: FILL IN WITH STUPID CONDITION AS ABOVE
-                 
-       //             fragmentbuffer[i][j].depth = depth;
-       //             fragmentbuffer[i][j].r = r;
-       //             fragmentbuffer[i][j].r = color[currentState][15:0];
-       //             fragmentbuffer[i][j].g = g;
-       //             fragmentbuffer[i][j].b = b;
-       //             fragmentbuffer[i][j].a = a;
-                      
-       //
-       //             if ((r+g+b)>0) printf("framebufer [%d][%d] r:%d g:%d b:%d a:%d \n",
-       //               i, j, fragmentbuffer[i][j].r,
-       //                 fragmentbuffer[i][j].g,
-       //                    fragmentbuffer[i][j].b,
-       //                           fragmentbuffer[i][j].a); 
-        
-       //         }
-       //     }                
-           end
-       end
-       currentState <= 0;
-     end
+	  if(currentState == 8)
+	  begin
+ //    for(int i = fragment_start_y; i < fragment_end_y; i++){
+		 i = fragmentStartY;
+		 j = fragmentStartX;
+		 currentState = currentState + 1;
+	  end
+	  if(currentState == 9)
+			begin
+			if(((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0 || edge1[0] > 0 || edge1[1] > 0)&&
+						((edge2[0]*(j) + edge2[1]*(i) + edge2[2]) > 0 || edge2[0] > 0 || edge2[1] > 0)&&
+						((edge3[0]*(j) + edge3[1]*(i) + edge3[2]) > 0 || edge3[0] > 0 || edge3[1] > 0)) 
+			begin
+			 fragmentBuffer[i*640+j] <= color[currentState];
+			 O_ADDROut <= i*640*j;
+			 O_ColorOut <= color[currentState];
+			end
+  
+		  j = j+1;
+		  if(j==fragmentEndX)
+		  begin
+		  i = i+1;
+		  end
+		  
+		  if(j==fragmentEndX && i==fragmentEndY)
+		  begin
+		  currentState <= 0;
+		  end;
+		  
+		  if(j==fragmentEndX)
+		  begin  
+		  j = fragmentStartX;
+		  end
+		  
+	  end       
   end
 end
 

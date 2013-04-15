@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lg_highlevel
-Sun Apr 14 22:28:29 2013
+Sun Apr 14 22:56:56 2013
 Quartus II 32-bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +------------------------------------+------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Sun Apr 14 22:28:29 2013        ;
+; Analysis & Synthesis Status        ; Failed - Sun Apr 14 22:56:56 2013        ;
 ; Quartus II 32-bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
 ; Revision Name                      ; lg_highlevel                             ;
 ; Top-level Entity Name              ; lg_highlevel                             ;
@@ -156,7 +156,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
-    Info: Processing started: Sun Apr 14 22:28:27 2013
+    Info: Processing started: Sun Apr 14 22:56:55 2013
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lg_highlevel -c lg_highlevel
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file gpu.v
@@ -187,29 +187,14 @@ Info (12021): Found 1 design units, including 1 entities, in source file pll.v
     Info (12023): Found entity 1: pll
 Info (12021): Found 1 design units, including 1 entities, in source file vertex.v
     Info (12023): Found entity 1: Vertex
-Info (12021): Found 1 design units, including 1 entities, in source file rasterizer.v
-    Info (12023): Found entity 1: Rasterizer
-Warning (10236): Verilog HDL Implicit Net warning at lg_highlevel.v(180): created implicit net for "VWriteBackEnable_WD"
-Warning (10236): Verilog HDL Implicit Net warning at lg_highlevel.v(181): created implicit net for "VWriteBackData_WD"
-Warning (10236): Verilog HDL Implicit Net warning at lg_highlevel.v(276): created implicit net for "Vertex_VR"
-Warning (10236): Verilog HDL Implicit Net warning at lg_highlevel.v(349): created implicit net for "VIDEO_ON"
-Error (10137): Verilog HDL Procedural Assignment error at vertex.v(104): object "O_ColorOut" on left-hand side of assignment must have a variable data type File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/vertex.v Line: 104
-Error (10048): Verilog HDL error at vertex.v(210): values cannot be assigned directly to all or part of array "matrixPast" - assignments must be made to individual elements only File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/vertex.v Line: 210
-Error (10044): Verilog HDL error at vertex.v(210): expression cannot reference entire array "matrixCurrent" File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/vertex.v Line: 210
-Error (10161): Verilog HDL error at vertex.v(211): object "colorPast" is not declared File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/vertex.v Line: 211
-Error (10161): Verilog HDL error at vertex.v(211): object "colorCurrent" is not declared File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/vertex.v Line: 211
-Error (10161): Verilog HDL error at vertex.v(224): object "colorCurrent" is not declared File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/vertex.v Line: 224
-Error (10048): Verilog HDL error at vertex.v(229): values cannot be assigned directly to all or part of array "matrixCurrent" - assignments must be made to individual elements only File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/vertex.v Line: 229
-Error (10044): Verilog HDL error at vertex.v(229): expression cannot reference entire array "matrixPast" File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/vertex.v Line: 229
-Error (10161): Verilog HDL error at vertex.v(230): object "colorCurret" is not declared File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/vertex.v Line: 230
-Error (10161): Verilog HDL error at vertex.v(230): object "colorPast" is not declared File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/vertex.v Line: 230
-Error (10137): Verilog HDL Procedural Assignment error at rasterizer.v(225): object "O_ADDROut" on left-hand side of assignment must have a variable data type File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/rasterizer.v Line: 225
-Error (10137): Verilog HDL Procedural Assignment error at rasterizer.v(226): object "O_ColorOut" on left-hand side of assignment must have a variable data type File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/rasterizer.v Line: 226
+Error (10170): Verilog HDL syntax error at rasterizer.v(235) near text "end"; "end" without "begin"  File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/rasterizer.v Line: 235
+Error (10112): Ignored design unit "Rasterizer" at rasterizer.v(3) due to previous errors File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/rasterizer.v Line: 3
+Info (12021): Found 0 design units, including 0 entities, in source file rasterizer.v
 Info (144001): Generated suppressed messages file F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/output_files/lg_highlevel.map.smsg
-Error: Quartus II 32-bit Analysis & Synthesis was unsuccessful. 12 errors, 5 warnings
+Error: Quartus II 32-bit Analysis & Synthesis was unsuccessful. 2 errors, 1 warning
     Error: Peak virtual memory: 327 megabytes
-    Error: Processing ended: Sun Apr 14 22:28:29 2013
-    Error: Elapsed time: 00:00:02
+    Error: Processing ended: Sun Apr 14 22:56:56 2013
+    Error: Elapsed time: 00:00:01
     Error: Total CPU time (on all processors): 00:00:01
 
 

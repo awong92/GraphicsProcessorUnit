@@ -56,7 +56,7 @@ reg [2:0]counter;
 //
 initial 
 begin
-  $readmemh("grading_asm.hex", InstMem);
+  $readmemh("data.hex", InstMem);
   PC = 16'h0;
 
   O_LOCK = 1'b0;
