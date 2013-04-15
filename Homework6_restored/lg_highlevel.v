@@ -145,6 +145,8 @@ wire [`OPCODE_WIDTH-1:0] Opcode_VR;
 wire [`VREG_WIDTH-1:0] Vertex_VR;
 wire [`VREG_WIDTH-1:0] VColor_VR;
 
+wire LOCK_RG
+
 /////////////////////////////////////////
 // PLL MODULE GOES HERE 
 /////////////////////////////////////////
@@ -286,7 +288,7 @@ Rasterizer Rasterizer0 (
   .I_Opcode(Opcode_VR),
   .I_Vertex(Vertex_VR),
   .I_ColorIn(VColor_VR),
-  .O_LOCK,
+  .O_LOCK(LOCK_RG),
 );
 /////////////////////////////////////////
 // TODO
