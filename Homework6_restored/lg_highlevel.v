@@ -3,11 +3,11 @@
 `timescale 1ns / 1ps
 
 module lg_highlevel(
-  // Clock Input	 
+  // Clock Input     
   CLOCK_27,     // 27 MHz
   CLOCK_50,     // 50 MHz
   // Push Button
-  KEY,          //	Pushbutton[3:0]
+  KEY,          //  Pushbutton[3:0]
   // DPDT Switch
   SW,           // Toggle Switch[9:0]
   // 7-SEG Dispaly
@@ -25,13 +25,13 @@ module lg_highlevel(
   VGA_G,        // VGA Green[3:0]
   VGA_B,        // VGA Blue[3:0]
   // SRAM Interface
-  SRAM_DQ,      //	SRAM Data bus 16 Bits
-  SRAM_ADDR,    //	SRAM Address bus 18 Bits
-  SRAM_UB_N,    //	SRAM High-byte Data Mask 
-  SRAM_LB_N,    //	SRAM Low-byte Data Mask 
-  SRAM_WE_N,    //	SRAM Write Enable
-  SRAM_CE_N,    //	SRAM Chip Enable
-  SRAM_OE_N,    //	SRAM Output Enable
+  SRAM_DQ,      //  SRAM Data bus 16 Bits
+  SRAM_ADDR,    //  SRAM Address bus 18 Bits
+  SRAM_UB_N,    //  SRAM High-byte Data Mask 
+  SRAM_LB_N,    //  SRAM Low-byte Data Mask 
+  SRAM_WE_N,    //  SRAM Write Enable
+  SRAM_CE_N,    //  SRAM Chip Enable
+  SRAM_OE_N,    //  SRAM Output Enable
 );
 
 /////////////////////////////////////////
@@ -39,12 +39,12 @@ module lg_highlevel(
 ////////////////////////////////////
 //
 // Clock Input
-input	[1:0]	CLOCK_27; // 27 MHz
+input   [1:0]   CLOCK_27; // 27 MHz
 input       CLOCK_50; // 50 MHz
 // Push Button
-input	[3:0]	KEY; //	Pushbutton[3:0]
+input   [3:0]   KEY; // Pushbutton[3:0]
 // DPDT Switch
-input	[9:0]	SW;	// Toggle Switch[9:0]
+input   [9:0]   SW; // Toggle Switch[9:0]
 // 7-SEG Dispaly
 output [6:0] HEX0; // Seven Segment Digit 0
 output [6:0] HEX1; // Seven Segment Digit 1
@@ -60,7 +60,7 @@ output [3:0]  VGA_R;  // VGA Red[3:0]
 output [3:0]  VGA_G;  // VGA Green[3:0]
 output [3:0]  VGA_B;  // VGA Blue[3:0]
 // SRAM Interface
-inout	 [15:0] SRAM_DQ; // SRAM Data bus 16 Bits
+inout    [15:0] SRAM_DQ; // SRAM Data bus 16 Bits
 output [17:0] SRAM_ADDR; // SRAM Address bus 18 Bits
 output        SRAM_UB_N; // SRAM High-byte Data Mask 
 output        SRAM_LB_N; // SRAM Low-byte Data Mask 
@@ -138,9 +138,12 @@ wire FetchStall_MW;
 wire DepStall_MW;
 
 wire LOCK_WV;
-
+wire [`OPCODE_WIDTH-1:0] Opcode_WV;
 
 wire LOCK_VR;
+wire [`OPCODE_WIDTH-1:0] Opcode_VR;
+wire [`VREG_WIDTH-1:0] Vertex_VR;
+wire [`VREG_WIDTH-1:0] VColor_VR;
 
 /////////////////////////////////////////
 // PLL MODULE GOES HERE 
@@ -262,22 +265,28 @@ Writeback Writeback0 (
   .O_WriteBackData(WritebackData_WD),
   .O_VWriteBackData(VWriteBackData_WD),
   .O_VWriteBackEnable(VWriteBackEnable_WD),
-  .O_Opcode(Opcode_WV)
+  .O_Opcode(Opcode_WV),
 );
 
 Vertex Vertex0 (
-	.I_CLOCK(pll_c0),
-	.I_LOCK(LOCK_WV),
-	.I_VRegIn(VWriteBackData_WD),
-	.I_Opcode(Opcode_WV),
-	.O_ColoroOut(VColor),
-	.O_VOut(Vertex),
-	.O_Opcode(Opcode_VR),
-	.O_LOCK(LOCK_VR)
-	
+    .I_CLOCK(pll_c0),
+    .I_LOCK(LOCK_WV),
+    .I_VRegIn(VWriteBackData_WD),
+    .I_Opcode(Opcode_WV),
+    .O_ColorOut(VColor_VR),
+    .O_VOut(Vertex_VR),
+    .O_Opcode(Opcode_VR),
+    .O_LOCK(LOCK_VR)
+    
 );
 
 Rasterizer Rasterizer0 (
+  .I_CLOCK(pll_c0),
+  .I_LOCK(LOCK_VR),
+  .I_Opcode(Opcode_VR),
+  .I_Vertex(Vertex_VR),
+  .I_ColorIn(VColor_VR),
+  .O_LOCK,
 );
 /////////////////////////////////////////
 // TODO
@@ -299,8 +308,8 @@ Rasterizer Rasterizer0 (
 /////////////////////////////////////////
 //
 // VGA Connector Wires
-wire [17:0]	mVGA_ADDR;
-wire [15:0]	mVGA_DATA;
+wire [17:0] mVGA_ADDR;
+wire [15:0] mVGA_DATA;
 wire [9:0]  mVGA_X;
 wire [9:0]  mVGA_Y;
 wire [3:0]  mVGA_R;
@@ -310,15 +319,15 @@ wire [3:0]  mVGA_B;
 // GPU Connector Wires
 wire        mGPU_READ;
 wire        mGPU_WRITE;
-wire [17:0]	mGPU_ADDR;
-wire [15:0]	mGPU_WRITE_DATA;
-wire [15:0]	mGPU_READ_DATA;
+wire [17:0] mGPU_ADDR;
+wire [15:0] mGPU_WRITE_DATA;
+wire [15:0] mGPU_READ_DATA;
 
 VgaController VgaController0 (
   // Control Signal
   .I_CLK          (pll_c0),
   .I_RST_N        (KEY[0]),
-  // Host Side				
+  // Host Side              
   .I_RED          (mVGA_R),
   .I_GREEN        (mVGA_G),
   .I_BLUE         (mVGA_B),
@@ -360,7 +369,7 @@ PixelGen PixelGen0 (
   .O_BLUE         (mVGA_B)
 );
 
-MultiSram MultiSram0 (	
+MultiSram MultiSram0 (  
   // VGA Side
   .I_VGA_READ     (VIDEO_ON),
   .I_VGA_ADDR     (mVGA_ADDR),

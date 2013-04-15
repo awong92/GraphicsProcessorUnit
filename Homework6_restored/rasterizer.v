@@ -4,15 +4,15 @@ module Rasterizer(
     I_CLOCK,
     I_LOCK,
     I_Opcode,
-    I_ALUOut,
     I_Vertex,
+	 I_ColorIn,
     O_LOCK
 );
 input I_CLOCK;
 input I_LOCK;
 input [`OPCODE_WIDTH-1:0] I_Opcode;
-input [`REG_WIDTH-1:0] I_ALUOut;
 input [`VREG_WIDTH-1:0] I_Vertex;
+input [`VREG_WIDTH-1:0] I_ColorIn;
 
 output O_LOCK;
 

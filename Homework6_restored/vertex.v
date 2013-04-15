@@ -8,7 +8,6 @@ module Vertex(
 	O_VOut,
 	O_ColorOut,
 	O_LOCK
-	
 );
 
 /////////////////////////////////////////
@@ -23,7 +22,11 @@ input [`VREG_WIDTH-1:0] I_VRegIn;
 
 output O_LOCK;
 output [`VREG_WIDTH-1:0] O_ColorOut;
-output [`VREG_WIDTH-1:0] O_VOut;
+output  reg [`VREG_WIDTH-1:0] O_VOut;
+
+reg [1:0] i;
+reg [1:0] j;
+reg [1:0] k;
 
 reg is_setvertex; 
 reg is_startprimitive; 
@@ -31,24 +34,34 @@ reg is_endprimitive;
 reg is_draw; 
 reg is_flush;
 
+reg result[0:`REG_WIDTH]; 
+
 reg [`DATA_WIDTH:0] matrixTemp[0:`REG_WIDTH]; 
 reg [`DATA_WIDTH:0] matrixBackup[0:`REG_WIDTH]; 
 
 reg [`DATA_WIDTH:0] matrixCurrent[0:`REG_WIDTH]; 
-
+reg [`VREG_WIDTH-1:0] ColorCurrent;
 
 reg [`DATA_WIDTH:0] matrixPast[0:`REG_WIDTH]; 
-reg rPast;
-reg gPast;
-reg bPast;
+reg [`VREG_WIDTH-1:0] ColorPast;
 
 reg [`DATA_WIDTH:0] vertex [0:2];
 
 reg angle;
 
+reg [`DATA_WIDTH:0] x;
+reg [`DATA_WIDTH:0] y;
+reg [`DATA_WIDTH:0] xres;
+reg [`DATA_WIDTH:0] yres;
+
+assign O_LOCK = I_LOCK;
+
 initial
 begin
   is_startprimitive = 0; 
+  xres = 0;
+  yres = 0;
+  zres = 0;
 end 
 
 always @(negedge I_CLOCK)
@@ -66,30 +79,43 @@ begin
 			
 
 			if (OPCODE==`OP_SETVERTEX && is_startprimitive) begin
-				xTemp = inV1;
-				yTemp = inV2;
-				zTemp = inV3;
-				//pop matrix and multipy
-				x =;
-				y =;
-				z =;
+			 x = I_VRegIn[31:16];
+			 y = I_VRegIn[47:32];
+
+			 xres = 0;
+			 yres = 0;
+			 
+			 xres += g_current_matrix.mat[0][0] * x;
+			 xres += g_current_matrix.mat[0][1] * y;
+			 xres += g_current_matrix.mat[0][3] * 1;
+			 O_VOut[31:16] = xres;
+
+			 float y_result = 0;
+			 yres += g_current_matrix.mat[1][0] * x;
+			 yres += g_current_matrix.mat[1][1] * y;
+			 yres += g_current_matrix.mat[1][3] * 1;
+			 O_VOut[47:32] = yres;
+
+			 O_VOut[15:0] = I_VRegIn[15:0];
+			 O_VOut[63:48] = I_VRegIn[63:48];
+
+			
 			end
 
 			if (OPCODE==`OP_COLOR) begin
-				r = inV1;
-				g = inV2;
-				b = inV3;
+				O_ColorOut <= I_VRegIn;
+				ColorCurrent <= I_VRegIn;
 			end
 
 			if (OPCODE==`OP_ROTATE) begin
-				for(int j = 0; j < 4; j=j+1) begin
-					for(int k = 0; k < 4; k=k+1) begin
+				for( j = 0; j < 4; j=j+1) begin
+					for( k = 0; k < 4; k=k+1) begin
 						matrixBackup[4*j + k] = matrixCurrent[4*j+k];
 					end
 				end
 
-				for(int j = 0; j < 4; j=j+1) begin
-					for(int k = 0; k < 4; k=k+1) begin
+				for( j = 0; j < 4; j=j+1) begin
+					for( k = 0; k < 4; k=k+1) begin
 						matrixTemp[4*j+k] = 0;
 						if(j == k)begin
 							matrixTemp[4*j+k] = 1;
@@ -97,7 +123,7 @@ begin
 					end
 				end
 
-				if(inV3 < 0){
+				if(I_VRegIn[63] == 1){
 					angle = (-1) * angle;
 				}
 
@@ -107,10 +133,10 @@ begin
 				matrixTemp[4*1 + 1] = cos(angle*3.14159/180);
 
 				//Matrix Multiply
-				for(int i = 0; i < 4; i=i+1)begin
-					for(int j = 0; j < 4; j=j+1)begin
-						float result = 0;			//WTF
-						for(int k = 0; k < 4; k=k+1) begin
+				for( i = 0; i < 4; i=i+1)begin
+					for( j = 0; j < 4; j=j+1)begin
+						result = 0;			//WTF
+						for( k = 0; k < 4; k=k+1) begin
 							result = result + (matrixBackup[4*i+k] * matrixTemp[4*k+j]);
 						end
 						matrixCurrent[4*i+j] = result;
@@ -120,14 +146,14 @@ begin
 
 
 			if (OPCODE==`OP_TRANSLATE) begin
-				for(int j = 0; j < 4; j=j+1) begin
-					for(int k = 0; k < 4; k=k+1) begin
+				for(j = 0; j < 4; j=j+1) begin
+					for(k = 0; k < 4; k=k+1) begin
 						matrixBackup[4*j + k] = matrixCurrent[4*j+k];
 					end
 				end
 
-				for(int j = 0; j < 4; j=j+1) begin
-					for(int k = 0; k < 4; k=k+1) begin
+				for(j = 0; j < 4; j=j+1) begin
+					for(k = 0; k < 4; k=k+1) begin
 						matrixTemp[4*j+k] = 0;
 						if(j == k)begin
 							matrixTemp[4*j+k] = 1;
@@ -135,14 +161,14 @@ begin
 					end
 				end
 
-				matrixTemp[4*0 + 3] = inV1;
-				matrixTemp[4*1 + 3] = inV2;
+				matrixTemp[4*0 + 3] = I_VRegIn[31:16];
+				matrixTemp[4*1 + 3] = I_VRegIn[47:32];
 
 				//Matrix Multiply
-				for(int i = 0; i < 4; i=i+1)begin
-					for(int j = 0; j < 4; j=j+1)begin
-						float result = 0;			//WTF
-						for(int k = 0; k < 4; k=k+1) begin
+				for(i = 0; i < 4; i=i+1)begin
+					for(j = 0; j < 4; j=j+1)begin
+						result = 0;			//WTF
+						for(k = 0; k < 4; k=k+1) begin
 							result = result + (matrixBackup[4*i+k] * matrixTemp[4*k+j]);
 						end
 						matrixCurrent[4*i+j] = result;
@@ -152,14 +178,14 @@ begin
 
 			
 			if (OPCODE==`OP_SCALE) begin
-				for(int j = 0; j < 4; j=j+1) begin
-					for(int k = 0; k < 4; k=k+1) begin
+				for(j = 0; j < 4; j=j+1) begin
+					for(k = 0; k < 4; k=k+1) begin
 						matrixBackup[4*j + k] = matrixCurrent[4*j+k];
 					end
 				end
 
-				for(int j = 0; j < 4; j=j+1) begin
-					for(int k = 0; k < 4; k=k+1) begin
+				for(j = 0; j < 4; j=j+1) begin
+					for(k = 0; k < 4; k=k+1) begin
 						matrixTemp[4*j+k] = 0;
 						if(j == k)begin
 							matrixTemp[4*j+k] = 1;
@@ -167,14 +193,14 @@ begin
 					end
 				end
 
-				matrixTemp[0] = inV1;
-				matrixTemp[4*1+1] = inV2;
+				matrixTemp[0] = I_VRegIn[31:16];
+				matrixTemp[4*1+1] = I_VRegIn[47:32];
 
 				//Matrix Multiply
-				for(int i = 0; i < 4; i=i+1)begin
-					for(int j = 0; j < 4; j=j+1)begin
-						float result = 0;			//WTF
-						for(int k = 0; k < 4; k=k+1) begin
+				for(i = 0; i < 4; i=i+1)begin
+					for(j = 0; j < 4; j=j+1)begin
+						result = 0;			//WTF
+						for(k = 0; k < 4; k=k+1) begin
 							result = result + (matrixBackup[4*i+k] * matrixTemp[4*k+j]);
 						end
 						matrixCurrent[4*i+j] = result;
@@ -185,14 +211,12 @@ begin
 
 			if (OPCODE==`OP_PUSHMATRIX) begin
 				matrixPast = matrixCurrent;
-				rPast = r;
-				gPast = g;
-				bPast = b;
+				colorPast = colorCurrent;
 			end
 
 			if (OPCODE==`OP_LOADIDENTITY) begin
-				for(int j = 0; j < 4; j = j+1)begin
-					for(int k = 0; k < 4; k=k+1)begin
+				for(j = 0; j < 4; j = j+1)begin
+					for(k = 0; k < 4; k=k+1)begin
 						matrixCurrent[4*j+k] = 0;
 						if(j == k){
 							matrixCurrent[4*j+k] = 1;
@@ -200,17 +224,13 @@ begin
 					end
 				end
 				
-				r = 0;
-				g = 0;
-				b = 0;
+				colorCurrent = 0;
 			end
 
 
 			if (OPCODE==`OP_POPMATRIX) begin
 				matrixCurrent = matrixPast;
-				r = rPast;
-				g = gPast;
-				b = bPast;
+				colorCurret = colorPast;
 				}
 			end
 
