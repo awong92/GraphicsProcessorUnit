@@ -207,7 +207,9 @@ begin
 
 
             if (I_Opcode==`OP_PUSHMATRIX) begin
-                matrixPast = matrixCurrent;
+					for (i=0; i< REG_WIDTH; i = i + 1)begin
+						matrixPast[i] = matrixCurrent[i];
+					 end
                 colorPast = colorCurrent;
             end
 
@@ -226,7 +228,10 @@ begin
 
 
             if (I_Opcode==`OP_POPMATRIX) begin
-                matrixCurrent = matrixPast;
+				
+					for (i=0; i< REG_WIDTH; i = i + 1)begin
+						matrixCurrent[i] = matrixPast[i];
+					 end
                 colorCurret = colorPast;
             end
 
