@@ -39,7 +39,7 @@ output [5:0] O_WriteBackRegIdx;
 output [`REG_WIDTH-1:0] O_WriteBackData;
 output [`VREG_WIDTH-1:0] O_VWriteBackData;
 output O_VWriteBackEnable;
-input [`OPCODE_WIDTH-1:0] O_Opcode;
+output [`OPCODE_WIDTH-1:0] O_Opcode;
 
 
 //Reg file?

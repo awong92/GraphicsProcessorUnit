@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lg_highlevel
-Sun Apr 14 22:03:13 2013
+Sun Apr 14 22:12:57 2013
 Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
@@ -37,7 +37,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +------------------------------------+------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Sun Apr 14 22:03:13 2013        ;
+; Analysis & Synthesis Status        ; Failed - Sun Apr 14 22:12:57 2013        ;
 ; Quartus II 64-Bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
 ; Revision Name                      ; lg_highlevel                             ;
 ; Top-level Entity Name              ; lg_highlevel                             ;
@@ -156,7 +156,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
-    Info: Processing started: Sun Apr 14 22:03:13 2013
+    Info: Processing started: Sun Apr 14 22:12:57 2013
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lg_highlevel -c lg_highlevel
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file gpu.v
@@ -179,14 +179,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file sign_ex
     Info (12023): Found entity 1: SignExtension
 Info (12021): Found 1 design units, including 1 entities, in source file decode.v
     Info (12023): Found entity 1: Decode
-Error (10149): Verilog HDL Declaration error at lg_highlevel.v(141): identifier "Opcode_WV" is already declared in the present scope File: C:/Users/Joon/Documents/Georgia_Tech/gpu-cs3220/Homework6_restored/lg_highlevel.v Line: 141
-Error (10149): Verilog HDL Declaration error at lg_highlevel.v(144): identifier "Opcode_VR" is already declared in the present scope File: C:/Users/Joon/Documents/Georgia_Tech/gpu-cs3220/Homework6_restored/lg_highlevel.v Line: 144
-Error (10170): Verilog HDL syntax error at lg_highlevel.v(154) near text "pll";  expecting ";" File: C:/Users/Joon/Documents/Georgia_Tech/gpu-cs3220/Homework6_restored/lg_highlevel.v Line: 154
-Warning (10275): Verilog HDL Module Instantiation warning at lg_highlevel.v(271): ignored dangling comma in List of Port Connections
-Warning (10275): Verilog HDL Module Instantiation warning at lg_highlevel.v(294): ignored dangling comma in List of Port Connections
-Warning (10238): Verilog Module Declaration warning at lg_highlevel.v(35): ignored anonymous port(s) indicated by duplicate or dangling comma(s) in the port list for module "lg_highlevel"
-Error (10112): Ignored design unit "lg_highlevel" at lg_highlevel.v(5) due to previous errors File: C:/Users/Joon/Documents/Georgia_Tech/gpu-cs3220/Homework6_restored/lg_highlevel.v Line: 5
-Info (12021): Found 0 design units, including 0 entities, in source file lg_highlevel.v
+Info (12021): Found 1 design units, including 1 entities, in source file lg_highlevel.v
+    Info (12023): Found entity 1: lg_highlevel
 Info (12021): Found 1 design units, including 1 entities, in source file fetch.v
     Info (12023): Found entity 1: Fetch
 Info (12021): Found 1 design units, including 1 entities, in source file pll.v
@@ -195,11 +189,19 @@ Info (12021): Found 1 design units, including 1 entities, in source file vertex.
     Info (12023): Found entity 1: Vertex
 Info (12021): Found 1 design units, including 1 entities, in source file rasterizer.v
     Info (12023): Found entity 1: Rasterizer
+Warning (10236): Verilog HDL Implicit Net warning at lg_highlevel.v(180): created implicit net for "VWriteBackEnable_WD"
+Warning (10236): Verilog HDL Implicit Net warning at lg_highlevel.v(181): created implicit net for "VWriteBackData_WD"
+Warning (10236): Verilog HDL Implicit Net warning at lg_highlevel.v(276): created implicit net for "Vertex_VR"
+Warning (10236): Verilog HDL Implicit Net warning at lg_highlevel.v(349): created implicit net for "VIDEO_ON"
+Error (10231): Verilog HDL error at memory.v(65): value cannot be assigned to input "I_VALUOut" File: C:/Users/Joon/Documents/Georgia_Tech/gpu-cs3220/Homework6_restored/memory.v Line: 65
+Error (10734): Verilog HDL error at execute.v(156): I_DestValue is not a constant File: C:/Users/Joon/Documents/Georgia_Tech/gpu-cs3220/Homework6_restored/execute.v Line: 156
+Error (10161): Verilog HDL error at execute.v(156): object "I_VScr1Value" is not declared File: C:/Users/Joon/Documents/Georgia_Tech/gpu-cs3220/Homework6_restored/execute.v Line: 156
+Error (10734): Verilog HDL error at execute.v(159): I_DestValue is not a constant File: C:/Users/Joon/Documents/Georgia_Tech/gpu-cs3220/Homework6_restored/execute.v Line: 159
 Info (144001): Generated suppressed messages file C:/Users/Joon/Documents/Georgia_Tech/gpu-cs3220/Homework6_restored/output_files/lg_highlevel.map.smsg
-Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 4 errors, 4 warnings
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 4 errors, 5 warnings
     Error: Peak virtual memory: 430 megabytes
-    Error: Processing ended: Sun Apr 14 22:03:14 2013
-    Error: Elapsed time: 00:00:01
+    Error: Processing ended: Sun Apr 14 22:12:57 2013
+    Error: Elapsed time: 00:00:00
     Error: Total CPU time (on all processors): 00:00:01
 
 

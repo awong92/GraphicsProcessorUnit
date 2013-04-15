@@ -153,7 +153,7 @@ begin
 						O_VALUOut[63:48] <= I_Imm;
 				end
 				`OP_VCOMPMOV: begin
-						O_VALUOut[(((I_DestValue)*16)-1):(((I_DestValue-1)*16)-1)] <= I_VScr1Value;
+						O_VALUOut[(((I_DestValue)*16)-1):(((I_DestValue-1)*16)-1)] <= I_VSrc1Value;
 				end
 				`OP_VCOMPMOVI: begin
 						O_VALUOut[(((I_DestValue)*16)-1):(((I_DestValue-1)*16)-1)] <= I_Imm;

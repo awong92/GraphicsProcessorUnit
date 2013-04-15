@@ -31,7 +31,7 @@ module lg_highlevel(
   SRAM_LB_N,    //  SRAM Low-byte Data Mask 
   SRAM_WE_N,    //  SRAM Write Enable
   SRAM_CE_N,    //  SRAM Chip Enable
-  SRAM_OE_N,    //  SRAM Output Enable
+  SRAM_OE_N    //  SRAM Output Enable
 );
 
 /////////////////////////////////////////
@@ -138,14 +138,11 @@ wire FetchStall_MW;
 wire DepStall_MW;
 
 wire LOCK_WV;
-wire [`OPCODE_WIDTH-1:0] Opcode_WV;
 
 wire LOCK_VR;
-wire [`OPCODE_WIDTH-1:0] Opcode_VR;
-wire [`VREG_WIDTH-1:0] Vertex_VR;
 wire [`VREG_WIDTH-1:0] VColor_VR;
 
-wire LOCK_RG
+wire LOCK_RG;
 
 /////////////////////////////////////////
 // PLL MODULE GOES HERE 
@@ -267,7 +264,7 @@ Writeback Writeback0 (
   .O_WriteBackData(WritebackData_WD),
   .O_VWriteBackData(VWriteBackData_WD),
   .O_VWriteBackEnable(VWriteBackEnable_WD),
-  .O_Opcode(Opcode_WV),
+  .O_Opcode(Opcode_WV)
 );
 
 Vertex Vertex0 (
@@ -290,7 +287,7 @@ Rasterizer Rasterizer0 (
   .I_ColorIn(VColor_VR),
   .O_ColorOut(mGPU_READ_DATA),
   .O_ADDROut(mGPU_READ_ADDR),
-  .O_LOCK(LOCK_RG),
+  .O_LOCK(LOCK_RG)
 );
 /////////////////////////////////////////
 // TODO
@@ -350,7 +347,7 @@ Gpu Gpu0 (
   .I_CLK          (pll_c0),
   .I_RST_N        (KEY[0]),
   .I_VIDEO_ON     (VIDEO_ON),
-  .I_GPU_ADDR		(mGPU_READ_ADDR),
+  .I_GPU_ADDR       (mGPU_READ_ADDR),
   // GPU-SRAM interface
   .I_GPU_DATA     (mGPU_READ_DATA),
   .O_GPU_DATA     (mGPU_WRITE_DATA),

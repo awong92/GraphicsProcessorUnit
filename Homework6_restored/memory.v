@@ -41,6 +41,7 @@ input [3:0] I_DestRegIdx;
 input I_FetchStall;
 input I_DepStall;
 input [`REG_WIDTH-1:0] I_DestValue;
+input [`VREG_WIDTH-1:0] I_VALUOut;
 
 // Outputs to the writeback stage
 output reg O_LOCK;
@@ -60,6 +61,8 @@ output reg O_BranchAddrSelect;
 output [9:0] O_LEDR;
 output [7:0] O_LEDG;
 output [6:0] O_HEX0, O_HEX1, O_HEX2, O_HEX3;
+
+assign O_VALUOut = I_VALUOut;
 
 /////////////////////////////////////////
 // WIRE/REGISTER DECLARATION GOES HERE

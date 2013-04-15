@@ -16,6 +16,7 @@ input	I_VIDEO_ON;
 
 // GPU-SRAM interface
 input       [15:0] I_GPU_DATA;
+input 		[17:0] I_GPU_ADDR;
 output reg  [15:0] O_GPU_DATA;
 output reg  [17:0] O_GPU_ADDR;
 output reg         O_GPU_WRITE;
