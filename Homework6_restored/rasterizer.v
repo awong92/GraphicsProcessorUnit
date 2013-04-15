@@ -45,7 +45,7 @@ reg [`REG_WIDTH-1:0] fragmentEndX;
 reg [`REG_WIDTH-1:0] fragmentStartY;
 reg [`REG_WIDTH-1:0] fragmentEndY;
 
-reg [`REG_WIDTH-1:0] fragmentBuffer[255999:0]; // 640 x 400
+//reg [`REG_WIDTH-1:0] fragmentBuffer[255999:0]; // 640 x 400
 
 reg [`REG_WIDTH-1:0] min_x;
 reg [`REG_WIDTH-1:0] max_x;
@@ -209,7 +209,7 @@ begin
  //    for(int i = fragment_start_y; i < fragment_end_y; i++){
 		 i = fragmentStartY;
 		 j = fragmentStartX;
-		 currentState = currentState + 1;
+		 currentState = currentState + 1'b1;
 	  end
 	  if(currentState == 9)
 			begin
@@ -217,7 +217,7 @@ begin
 						((edge2[0]*(j) + edge2[1]*(i) + edge2[2]) > 0 || edge2[0] > 0 || edge2[1] > 0)&&
 						((edge3[0]*(j) + edge3[1]*(i) + edge3[2]) > 0 || edge3[0] > 0 || edge3[1] > 0)) 
 			begin
-			 fragmentBuffer[i*640+j] <= color[currentState];
+			 //fragmentBuffer[i*640+j] <= color[currentState];
 			 O_ADDROut <= i*640*j;
 			 O_ColorOut <= color[currentState];
 			end
@@ -241,5 +241,4 @@ begin
 	  end       
   end
 end
-
 endmodule

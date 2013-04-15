@@ -4,6 +4,7 @@ module Gpu (
   I_VIDEO_ON, 
   I_GPU_ADDR,
   I_GPU_DATA, 
+  I_GPU_COLOR,
   O_GPU_DATA,
   O_GPU_ADDR,
   O_GPU_READ,
@@ -17,6 +18,7 @@ input	I_VIDEO_ON;
 // GPU-SRAM interface
 input       [15:0] I_GPU_DATA;
 input 		[17:0] I_GPU_ADDR;
+input 		[17:0] I_GPU_COLOR;
 output reg  [15:0] O_GPU_DATA;
 output reg  [17:0] O_GPU_ADDR;
 output reg         O_GPU_WRITE;
@@ -42,12 +44,10 @@ begin
 		O_GPU_WRITE <= 1'b1;
 		O_GPU_READ <= 1'b0;
 		O_GPU_DATA <= {4'h0, 4'hF, 4'h0, 4'h0};
-		count <= 0;
 	end else begin
 		if (!I_VIDEO_ON) begin
-			count <= count + 1;
 			O_GPU_ADDR <= I_GPU_ADDR;
-			O_GPU_DATA <= I_GPU_DATA;
+			O_GPU_DATA <= I_GPU_COLOR;
 			O_GPU_WRITE <= 1'b1;
 			O_GPU_READ <= 1'b0;
 		end
@@ -61,7 +61,7 @@ begin
   end else begin
     if (!I_VIDEO_ON) begin
       if (colInd < 639)
-        colInd <= colInd + 1;
+        colInd <= colInd + 1'b1;
       else
         colInd <= 0;
     end

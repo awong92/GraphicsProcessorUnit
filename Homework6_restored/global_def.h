@@ -16,8 +16,8 @@
 
 `define INST_WIDTH 32
 `define DATA_WIDTH 16
-`define INST_MEM_SIZE 1024 
-`define DATA_MEM_SIZE 1024
+`define INST_MEM_SIZE 256 
+`define DATA_MEM_SIZE 256
 
 /////////////////////////////////////////
 // OPCODE DEFINITIONS GO HERE 

@@ -57,7 +57,7 @@ output reg [`REG_WIDTH-1:0] O_DestValue;
 output reg [`VREG_WIDTH-1:0] O_VSrc1Value;
 output reg [`VREG_WIDTH-1:0] O_VSrc2Value;
 output reg [`VREG_WIDTH-1:0] O_VDestValue;
-output reg [3:0] O_DestRegIdx;
+output reg [5:0] O_DestRegIdx;
 output reg [`REG_WIDTH-1:0] O_Imm;
 output reg O_FetchStall;
  reg[2:0] conditionDep;

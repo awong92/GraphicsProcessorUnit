@@ -15,7 +15,8 @@ module Writeback(
   O_WriteBackData,
   O_VWriteBackData,
   O_VWriteBackEnable,
-  O_Opcode
+  O_Opcode,
+  O_LOCK
  );
 
 /////////////////////////////////////////
@@ -34,6 +35,7 @@ input I_DepStall;
 input [`VREG_WIDTH-1:0] I_VALUOut;
 
 // Outputs to the decode stage
+input O_LOCK;
 output O_WriteBackEnable;
 output [5:0] O_WriteBackRegIdx;
 output [`REG_WIDTH-1:0] O_WriteBackData;

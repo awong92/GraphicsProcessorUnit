@@ -7,6 +7,7 @@ module Vertex(
     I_Opcode,
     O_VOut,
     O_ColorOut,
+	 O_Opcode,
     O_LOCK
 );
 
@@ -21,12 +22,13 @@ input [`OPCODE_WIDTH-1:0] I_Opcode;
 input [`VREG_WIDTH-1:0] I_VRegIn;
 
 output O_LOCK;
+output reg [`OPCODE_WIDTH-1:0] O_Opcode;
 output reg [`VREG_WIDTH-1:0] O_ColorOut;
 output  reg [`VREG_WIDTH-1:0] O_VOut;
 
-reg [6:0] i;
-reg [6:0] j;
-reg [6:0] k;
+reg [4:0] i;
+reg [3:0] j;
+reg [3:0] k;
 
 reg is_setvertex; 
 reg is_startprimitive; 

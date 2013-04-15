@@ -276,7 +276,6 @@ Vertex Vertex0 (
     .O_VOut(Vertex_VR),
     .O_Opcode(Opcode_VR),
     .O_LOCK(LOCK_VR)
-    
 );
 
 Rasterizer Rasterizer0 (
@@ -321,6 +320,7 @@ wire [3:0]  mVGA_B;
 wire        mGPU_READ;
 wire        mGPU_WRITE;
 wire [17:0] mGPU_ADDR;
+wire [17:0] mGPU_COLOR;
 wire [15:0] mGPU_WRITE_DATA;
 wire [17:0] mGPU_READ_ADDR;
 wire [15:0] mGPU_READ_DATA;
@@ -347,9 +347,10 @@ Gpu Gpu0 (
   .I_CLK          (pll_c0),
   .I_RST_N        (KEY[0]),
   .I_VIDEO_ON     (VIDEO_ON),
-  .I_GPU_ADDR       (mGPU_READ_ADDR),
+  .I_GPU_ADDR      (mGPU_READ_ADDR),
   // GPU-SRAM interface
   .I_GPU_DATA     (mGPU_READ_DATA),
+  .I_GPU_COLOR    (mGPU_COLOR),
   .O_GPU_DATA     (mGPU_WRITE_DATA),
   .O_GPU_ADDR     (mGPU_ADDR),
   .O_GPU_READ     (mGPU_READ),
