@@ -6,6 +6,8 @@ module Rasterizer(
     I_Opcode,
     I_Vertex,
 	 I_ColorIn,
+	 O_ColorOut,
+	 O_ADDROut,
     O_LOCK
 );
 input I_CLOCK;
@@ -15,6 +17,8 @@ input [`VREG_WIDTH-1:0] I_Vertex;
 input [`VREG_WIDTH-1:0] I_ColorIn;
 
 output O_LOCK;
+output [17:0] O_ADDROut;
+output [15:0] O_ColorOut;
 
 /*
 * State machine variables dawg
@@ -215,6 +219,8 @@ begin
                      ((edge3[0]*(j) + edge3[1]*(i) + edge3[2]) > 0 || edge3[0] > 0 || edge3[1] > 0)) 
                      begin
                       fragmentBuffer[i*640+j] <= color[currentState];
+							 O_ADDROut <= i*640*j;
+							 O_ColorOut <= color[currentState];
                      end
            
        //         if(inside(edge_0, (j + 0.5), (i + 0.5))

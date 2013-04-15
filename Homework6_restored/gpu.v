@@ -2,7 +2,7 @@ module Gpu (
   I_CLK, 
   I_RST_N,
   I_VIDEO_ON, 
-  // GPU-SRAM interface
+  I_GPU_ADDR,
   I_GPU_DATA, 
   O_GPU_DATA,
   O_GPU_ADDR,
@@ -45,61 +45,10 @@ begin
 	end else begin
 		if (!I_VIDEO_ON) begin
 			count <= count + 1;
-			O_GPU_ADDR <= rowInd*640 + colInd;
+			O_GPU_ADDR <= I_GPU_ADDR;
+			O_GPU_DATA <= I_GPU_DATA;
 			O_GPU_WRITE <= 1'b1;
 			O_GPU_READ <= 1'b0;
-			
-      if (rowInd < 40) begin
-        if (count[24] == 0) begin
-          O_GPU_DATA <= {4'h0, 4'hf, 4'h0, 4'h0};
-        end else begin
-          O_GPU_DATA <= {4'h0, 4'h0, 4'hf, 4'h0};
-        end
-      end else if (rowInd < 80) begin
-        if (count[24] == 0) begin
-          O_GPU_DATA <= {4'h0, 4'h0, 4'hf, 4'h0};
-        end else begin
-          O_GPU_DATA <= {4'h0, 4'h0, 4'h0, 4'hf};
-        end
-      end else if (rowInd < 120) begin
-        if (count[24] == 0) begin
-          O_GPU_DATA <= {4'h0, 4'h0, 4'h0, 4'hf};
-        end else begin
-          O_GPU_DATA <= {4'h0, 4'hf, 4'h0, 4'h0};
-        end
-      end else if (rowInd < 200) begin
-        if (count[24] == 0) begin
-          O_GPU_DATA <= {4'h0, 4'h0, 4'h0, 4'h0};
-        end else begin
-          O_GPU_DATA <= {4'h0, 4'hf, 4'hf, 4'hf};
-        end
-      end else if (rowInd < 240) begin
-        if (count[24] == 0) begin
-          O_GPU_DATA <= {4'h0, 4'hf, 4'hf, 4'h0};
-        end else begin
-          O_GPU_DATA <= {4'h0, 4'hf, 4'h0, 4'hf};
-        end
-      end else if (rowInd < 280) begin
-        if (count[24] == 0) begin
-          O_GPU_DATA <= {4'h0, 4'hf, 4'h0, 4'hf};
-        end else begin
-          O_GPU_DATA <= {4'h0, 4'h0, 4'hf, 4'hf};
-        end
-      end else if (rowInd < 320) begin
-        if (count[24] == 0) begin
-          O_GPU_DATA <= {4'h0, 4'h0, 4'hf, 4'hf};
-        end else begin
-          O_GPU_DATA <= {4'h0, 4'hf, 4'hf, 4'h0};
-        end
-      end else if (rowInd < 440) begin
-        if (count[24] == 0) begin
-          O_GPU_DATA <= {4'h0, 4'hf, 4'hf, 4'hf};
-        end else begin
-          O_GPU_DATA <= {4'h0, 4'h3, 4'h3, 4'h3};
-        end
-      end else begin
-        O_GPU_DATA <= {4'h0, 4'hf, 4'hf, 4'hf};
-      end
 		end
 	end
 end
