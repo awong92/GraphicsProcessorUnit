@@ -94,17 +94,17 @@ begin
        //edgefunction edge_0 = edgefunctionsetup(fragment_x[2], fragment_y[2], fragment_x[1], fragment_y[1]);
           edge1[0] <= fragmentY[2] - fragmentY[1];
           edge1[1] <= fragmentX[1] - fragmentX[2];
-          edge1[2] <= (((-1<<7) * edge1[0]) * fragmentX[1]) + (((-1<<7) * edge1[1]) * fragmentY[1]);
+          edge1[2] <= (((1<<15|1<<7) * edge1[0]) * fragmentX[1]) + (((1<<15|1<<7) * edge1[1]) * fragmentY[1]);
           
        //edgefunction edge_1 = edgefunctionsetup(fragment_x[0], fragment_y[0], fragment_x[2], fragment_y[2]);
           edge2[0] <= fragmentY[0] - fragmentY[2];
           edge2[1] <= fragmentX[2] - fragmentX[0];
-          edge2[2] <= (((-1<<7) * edge2[0]) * fragmentX[2]) + (((-1<<7) * edge2[1]) * fragmentY[2]);
+          edge2[2] <= (((1<<15|1<<7) * edge2[0]) * fragmentX[2]) + (((1<<15|1<<7) * edge2[1]) * fragmentY[2]);
             
        //edgefunction edge_2 = edgefunctionsetup(fragment_x[1], fragment_y[1], fragment_x[0], fragment_y[0]);
           edge3[0] <= fragmentY[1] - fragmentY[0];
           edge3[1] <= fragmentX[0] - fragmentX[1];
-          edge3[2] <= (((-1<<7) * edge3[0]) * fragmentX[0]) + (((-1<<7) * edge3[1]) * fragmentY[0]);
+          edge3[2] <= (((1<<15|1<<7) * edge3[0]) * fragmentX[0]) + (((1<<15|1<<7) * edge3[1]) * fragmentY[0]);
        
           currentState=currentState+1;
       end
