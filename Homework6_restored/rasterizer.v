@@ -17,8 +17,8 @@ input [`VREG_WIDTH-1:0] I_Vertex;
 input [`VREG_WIDTH-1:0] I_ColorIn;
 
 output O_LOCK;
-output [17:0] O_ADDROut;
-output [15:0] O_ColorOut;
+output reg [17:0] O_ADDROut;
+output reg [15:0] O_ColorOut;
 
 /*
 * State machine variables dawg

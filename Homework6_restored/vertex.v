@@ -21,7 +21,7 @@ input [`OPCODE_WIDTH-1:0] I_Opcode;
 input [`VREG_WIDTH-1:0] I_VRegIn;
 
 output O_LOCK;
-output [`VREG_WIDTH-1:0] O_ColorOut;
+output reg [`VREG_WIDTH-1:0] O_ColorOut;
 output  reg [`VREG_WIDTH-1:0] O_VOut;
 
 reg [1:0] i;
