@@ -44,6 +44,9 @@ input I_WriteBackEnable;
 input [5:0] I_WriteBackRegIdx;
 input [`REG_WIDTH-1:0] I_WriteBackData;
 
+input I_VWriteBackEnable;
+input [`VREG_WIDTH-1:0] I_VWriteBackData;
+
 // Outputs to the execude stage
 output reg O_LOCK;
 output reg [`PC_WIDTH-1:0] O_PC;
@@ -414,14 +417,14 @@ O_DepStall = __DepStallSignal;
         begin
             O_DestRegIdx = I_IR[21:16];
             VRF_VALID[O_DestRegIdx] = 0;
-            O_VSrc1Value <= VF[I_IR[13:8]];
-            O_VSrc2Value <= VF[I_IR[5:0]];
+            O_VSrc1Value <= VRF[I_IR[13:8]];
+            O_VSrc2Value <= VRF[I_IR[5:0]];
         end
         if(I_IR[31:24] == `OP_VMOV)
         begin
             O_DestRegIdx = I_IR[21:16];
             VRF_VALID[O_DestRegIdx] = 0;
-            O_VSrc1Value <= VF[I_IR[13:8]];
+            O_VSrc1Value <= VRF[I_IR[13:8]];
         end
         if(I_IR[31:24] == `OP_VMOVI)
         begin
@@ -447,7 +450,7 @@ O_DepStall = __DepStallSignal;
         begin
         end
         if(I_IR[31:24] == `OP_SETVERTEX || I_IR[31:24] == `OP_SETCOLOR || I_IR[31:24] == `OP_ROTATE || I_IR[31:24] == `OP_TRANSLATE || I_IR[31:24] == `OP_SCALE) begin
-            O_VDestValue <= VF[I_IR[21:16]];
+            O_VDestValue <= VRF[I_IR[21:16]];
         end
       end // if (I_LOCK == 1'b1)
     end
@@ -458,7 +461,7 @@ O_DepStall = __DepStallSignal;
         end
             
         if (I_VWriteBackEnable==1) begin                    //Write back data if necessary
-            VRF_VALID[I_VWriteBackRegIdx]<=1;
+            VRF_VALID[I_WriteBackRegIdx]<=1;
         end
     
 end // always @(negedge I_CLOCK)

@@ -52,6 +52,9 @@ reg [`REG_WIDTH-1:0] max_x;
 reg [`REG_WIDTH-1:0] min_y;
 reg [`REG_WIDTH-1:0] max_y;
 
+reg [8:0] i;
+reg [8:0] j;
+
 initial
 begin
     is_setvertex = 0;
@@ -128,7 +131,7 @@ begin
      //       if(min_x > fragment_x[i]){
      //           min_x = fragment_x[i];
      //       }
-              if(min_x > fragment_x[i])
+              if(min_x > fragmentX[i])
               begin
                    min_x <= fragmentX[i];
               end

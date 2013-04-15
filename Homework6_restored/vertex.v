@@ -34,8 +34,6 @@ reg is_endprimitive;
 reg is_draw; 
 reg is_flush;
 
-reg result[0:`REG_WIDTH]; 
-
 reg [`DATA_WIDTH:0] matrixTemp[0:`REG_WIDTH]; 
 reg [`DATA_WIDTH:0] matrixBackup[0:`REG_WIDTH]; 
 
@@ -53,6 +51,7 @@ reg [`DATA_WIDTH:0] x;
 reg [`DATA_WIDTH:0] y;
 reg [`DATA_WIDTH:0] xres;
 reg [`DATA_WIDTH:0] yres;
+reg [`DATA_WIDTH:0] result;
 
 assign O_LOCK = I_LOCK;
 
@@ -61,7 +60,7 @@ begin
   is_startprimitive = 0; 
   xres = 0;
   yres = 0;
-  zres = 0;
+  result = 0;
 end 
 
 always @(negedge I_CLOCK)
@@ -85,14 +84,13 @@ begin
              xres = 0;
              yres = 0;
              
-             xres = xres + matrixCurrent[4*0+ 0] * x;
-             xres = xres + matrixCurrent[0 + 1] * y;
+             xres = xres + matrixCurrent[4*0+ 0] * I_VRegIn[31:16];
+             xres = xres + matrixCurrent[0 + 1] * I_VRegIn[31:16];
              xres = xres + matrixCurrent[0 + 3] * 1;
              O_VOut[31:16] = xres;
 
-             y_result = 0;
-             yres = yres + matrixCurrent[4*1 + 0] * x;
-             yres = yres + matrixCurrent[4*1 + 1] * y;
+             yres = yres + matrixCurrent[4*1 + 0] * I_VRegIn[47:32];
+             yres = yres + matrixCurrent[4*1 + 1] * I_VRegIn[47:32];
              yres = yres + matrixCurrent[4*1 + 3] * 1;
              O_VOut[47:32] = yres;
 
@@ -135,7 +133,6 @@ begin
                 //Matrix Multiply
                 for( i = 0; i < 4; i=i+1)begin
                     for( j = 0; j < 4; j=j+1)begin
-                        result = 0;         //WTF
                         for( k = 0; k < 4; k=k+1) begin
                             result = result + (matrixBackup[4*i+k] * matrixTemp[4*k+j]);
                         end
