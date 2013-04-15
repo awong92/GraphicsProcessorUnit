@@ -153,10 +153,40 @@ begin
 						O_VALUOut[63:48] <= I_Imm;
 				end
 				`OP_VCOMPMOV: begin
-						O_VALUOut[(((I_DestValue)*16)-1):(((I_DestValue-1)*16)-1)] <= I_VSrc1Value;
+					if(I_DestValue == 0)
+					begin
+						O_VALUOut[15:0] <= I_VSrc1Value;
+					end
+					if(I_DestValue == 1)
+					begin	
+						O_VALUOut[31:15] <= I_VSrc1Value;
+					end
+					if(I_DestValue == 2)
+					begin
+						O_VALUOut[47:31] <= I_VSrc1Value;
+					end
+					if(I_DestValue == 3)
+					begin
+						O_VALUOut[63:48] <= I_VSrc1Value;
+					end
 				end
 				`OP_VCOMPMOVI: begin
-						O_VALUOut[(((I_DestValue)*16)-1):(((I_DestValue-1)*16)-1)] <= I_Imm;
+					if(I_DestValue == 0)
+					begin
+						O_VALUOut[15:0] <= I_Imm;
+					end
+					if(I_DestValue == 1)
+					begin	
+						O_VALUOut[31:15] <= I_Imm;
+					end
+					if(I_DestValue == 2)
+					begin
+						O_VALUOut[47:31] <= I_Imm;
+					end
+					if(I_DestValue == 3)
+					begin
+						O_VALUOut[63:48] <= I_Imm;
+					end
 				end
 				//VADD, VMOV, VMOVI, VCOMPMOV, VCOMPMOVI, BeginPrimitive, EndPrimitive, SetVertex, Rotate, Translate, Scale, Draw
 
