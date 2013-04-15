@@ -1,0 +1,4 @@
+Warning (10268): Verilog HDL information at memory.v(89): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at decode.v(184): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at decode.v(383): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at fetch.v(78): always construct contains both blocking and non-blocking assignments
