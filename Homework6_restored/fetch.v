@@ -7,6 +7,7 @@ module Fetch(
   I_BranchAddrSelect,
   I_BranchStallSignal,
   I_DepStallSignal,
+  I_FRAMESTALL,
   O_LOCK,
   O_PC,
   O_IR,
@@ -144,7 +145,7 @@ end
   if ((stall==0 &&!I_DepStallSignal)||I_BranchAddrSelect) begin
 	  stall = 0;
 	  O_FetchStall = 0;
-	  if (I_LOCK == 0)
+	  if (I_LOCK == 0  && I_FRAMESTALL == 0)
 	  begin
 		 PC <= 0;
 		 O_IR <= InstMem[0];

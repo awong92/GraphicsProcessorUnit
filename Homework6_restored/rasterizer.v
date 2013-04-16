@@ -8,7 +8,8 @@ module Rasterizer(
 	 I_ColorIn,
 	 O_ColorOut,
 	 O_ADDROut,
-    O_LOCK
+    O_LOCK,
+	 O_FRAMESTALL
 );
 input I_CLOCK;
 input I_LOCK;
@@ -19,7 +20,7 @@ input [`VREG_WIDTH-1:0] I_ColorIn;
 output O_LOCK;
 output reg [17:0] O_ADDROut;
 output reg [15:0] O_ColorOut;
-
+output reg O_FRAMESTALL;
 /*
 * State machine variables dawg
 */
@@ -62,6 +63,7 @@ begin
     is_endprimitive = 0;
     is_draw = 0;
     currentState = 0;
+	 O_FRAMESTALL = 0;
 end
 
 always @(posedge I_CLOCK)
@@ -212,6 +214,8 @@ begin
 		 currentState = currentState + 1'b1;
 	  end
 	  if(currentState == 9)
+	  		O_FRAMESTALL <= 1;
+
 			begin
 			if(((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0 || edge1[0] > 0 || edge1[1] > 0)&&
 						((edge2[0]*(j) + edge2[1]*(i) + edge2[2]) > 0 || edge2[0] > 0 || edge2[1] > 0)&&
@@ -230,6 +234,7 @@ begin
 		  
 		  if(j==fragmentEndX && i==fragmentEndY)
 		  begin
+		  O_FRAMESTALL <= 0;
 		  currentState <= 0;
 		  end;
 		  

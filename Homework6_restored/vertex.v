@@ -5,6 +5,7 @@ module Vertex(
     I_LOCK,
     I_VRegIn,
     I_Opcode,
+	 I_FRAMESTALL,
     O_VOut,
     O_ColorOut,
 	 O_Opcode,
@@ -67,7 +68,7 @@ end
 
 always @(negedge I_CLOCK)
 begin
-  if (I_LOCK == 1'b1)
+  if (I_LOCK == 1'b1 && I_FRAMESTALL == 0)
   begin
 				O_Opcode<=I_Opcode;
 				

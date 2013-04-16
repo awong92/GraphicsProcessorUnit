@@ -10,6 +10,7 @@ module Writeback(
   I_DestRegIdx,
   I_FetchStall,
   I_DepStall,
+  I_FRAMESTALL,
   O_WriteBackEnable,
   O_WriteBackRegIdx,
   O_WriteBackData,
@@ -53,7 +54,7 @@ output [`OPCODE_WIDTH-1:0] O_Opcode;
 assign O_Opcode = I_Opcode;
 
 assign O_WriteBackEnable = 
-  ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0)) ? 
+  ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0) && ( && I_FRAMESTALL == 0)) ? 
     ((I_DepStall == 1'b0) ?
       ((I_Opcode == `OP_ADD_D ) ? (1'b1) :
        (I_Opcode == `OP_ADDI_D) ? (1'b1) :
@@ -78,7 +79,7 @@ assign O_WriteBackEnable =
     ) : (1'b0);
 
 assign O_WriteBackRegIdx = 
-  ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0)) ? 
+  ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0) && ( && I_FRAMESTALL == 0)) ? 
     ((I_DepStall == 1'b0) ?
       ((I_Opcode == `OP_ADD_D ) ? (I_DestRegIdx) :
        (I_Opcode == `OP_ADDI_D) ? (I_DestRegIdx) :
@@ -98,7 +99,7 @@ assign O_WriteBackRegIdx =
     ) : (1'b0);
 
 assign O_WriteBackData = 
-  ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0)) ? 
+  ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0) && ( && I_FRAMESTALL == 0)) ? 
     ((I_DepStall == 1'b0) ?
       ((I_Opcode == `OP_ADD_D ) ? (I_ALUOut) :
        (I_Opcode == `OP_ADDI_D) ? (I_ALUOut) :
@@ -113,7 +114,7 @@ assign O_WriteBackData =
     ) : (1'b0);
 	 
 assign O_VWriteBackEnable = 
-  ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0)) ? 
+  ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0) && ( && I_FRAMESTALL == 0)) ? 
     ((I_DepStall == 1'b0) ?
       ((I_Opcode == `OP_VADD ) ? (1'b1) :
        (I_Opcode == `OP_VMOV) ? (1'b1) :
@@ -125,7 +126,7 @@ assign O_VWriteBackEnable =
     ) : (1'b0);
 	 
 assign O_VWriteBackData = 
-  ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0)) ? 
+  ((I_LOCK == 1'b1) && (I_FetchStall == 1'b0) && ( && I_FRAMESTALL == 0)) ? 
     ((I_DepStall == 1'b0) ?
       ((I_Opcode == `OP_VADD ) ? (I_VALUOut) :
        (I_Opcode == `OP_VMOV) ? (I_VALUOut) :

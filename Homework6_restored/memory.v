@@ -10,6 +10,7 @@ module Memory(
   I_FetchStall,
   I_DepStall,
   I_DestValue,
+  I_FRAMESTALL,
   O_LOCK,
   O_ALUOut,
   O_VALUOut,
@@ -98,7 +99,7 @@ begin
   O_Opcode <= I_Opcode;
   
   
-  if (I_LOCK == 1'b1)
+  if (I_LOCK == 1'b1  && I_FRAMESTALL == 0)
   begin
 	if (!I_FetchStall&&!I_DepStall) begin
 		if(I_Opcode==`OP_BRN || I_Opcode==`OP_BRZ ||I_Opcode==`OP_BRP ||I_Opcode==`OP_BRNZ ||I_Opcode==`OP_BRNZP ||I_Opcode==`OP_BRNP ||I_Opcode==`OP_BRZP ||I_Opcode==`OP_JMP ||I_Opcode==`OP_JSRR||I_Opcode==`OP_JSR) begin

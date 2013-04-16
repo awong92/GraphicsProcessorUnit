@@ -11,6 +11,7 @@ module Decode(
   I_WriteBackRegIdx,
   I_WriteBackData,
   I_VWriteBackData,
+  I_FRAMESTALL,
   O_LOCK,
   O_PC,
   O_Opcode,
@@ -187,7 +188,7 @@ assign O_DepStallSignal = (__DepStallSignal & !I_WriteBackEnable);
 always @(posedge I_CLOCK)
 begin
  
-  if (I_LOCK == 1'b1)
+  if (I_LOCK == 1'b1  && I_FRAMESTALL == 0)
   begin 
    if (I_WriteBackEnable==1) begin                  //Write back data if necessary
         RF[I_WriteBackRegIdx] <= I_WriteBackData;   
@@ -232,7 +233,7 @@ begin
      (1'b0)
     ) : (1'b0);
     
-    if (I_LOCK == 1'b1) begin    
+    if (I_LOCK == 1'b1  && I_FRAMESTALL == 0) begin    
         if (I_IR[31:24] == `OP_STW) begin
               if (RF_VALID[I_IR[19:16]] != 1||RF_VALID[I_IR[23:20]] != 1) begin
                     if (RF_VALID[I_IR[19:16]] != 1 && RF_VALID[I_IR[23:20]] != 1) begin
@@ -390,7 +391,7 @@ begin
 O_DepStall = __DepStallSignal;
 
   if (I_FetchStall==0&&O_DepStallSignal==0) begin
-      if (I_LOCK == 1'b1)
+      if (I_LOCK == 1'b1  && I_FRAMESTALL == 0)
       begin
         O_PC <= I_PC;
         O_Src1Value <= RF[I_IR[19:16]];

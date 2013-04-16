@@ -15,6 +15,7 @@ module Execute(
   I_Imm,
   I_FetchStall,
   I_DepStall,
+  I_FRAMESTALL,
   O_LOCK,
   O_ALUOut,
   O_VALUOut,
@@ -78,7 +79,7 @@ begin
   O_DestRegIdx <= I_DestRegIdx;
   O_DestValue <= I_DestValue;
 
-  if (I_LOCK == 1'b1) 
+  if (I_LOCK == 1'b1  && I_FRAMESTALL == 0) 
   begin
 	  if (!I_FetchStall&&!I_DepStall) 
 		begin
