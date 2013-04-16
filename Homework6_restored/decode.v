@@ -202,8 +202,29 @@ begin
         end
     end
 
-    if (I_VWriteBackEnable==1) begin                    //Write back data if necessary
-        VRF[I_WriteBackRegIdx] <= I_VWriteBackData;   
+    if (I_VWriteBackEnable==1) begin     
+		if(I_WriteBackEnable == 1) begin //VCOMPMOV and VCOMPMOVI
+			if(I_VWriteBackData[2:0] == 0)
+			begin
+				VRF[I_WriteBackRegIdx][15:0] <= I_WriteBackData;
+			end
+			if(I_VWriteBackData[2:0] == 1)
+			begin
+				VRF[I_WriteBackRegIdx][31:16] <= I_WriteBackData;
+			end
+			if(I_VWriteBackData[2:0] == 2)
+			begin
+				VRF[I_WriteBackRegIdx][47:32] <= I_WriteBackData;
+			end
+			if(I_VWriteBackData[2:0] == 3)
+			begin
+				VRF[I_WriteBackRegIdx][63:48] <= I_WriteBackData;
+			end
+		end
+		
+		else begin
+        VRF[I_WriteBackRegIdx] <= I_VWriteBackData;  
+		 end 
     end
     
     if (I_IR[31:24] == `OP_JSR || I_IR[31:24] == `OP_JSRR)          //Write return register
@@ -308,15 +329,26 @@ begin
                     __DepStallSignal = 0;
                 end
         end else if (I_IR[31:24] == `OP_VCOMPMOV) begin
-              if (RF_VALID[I_IR[11:8]] != 1) begin
-                    if(RF_VALID[I_IR[11:8]] != 1 && I_WriteBackRegIdx == I_IR[11:8]) begin
+              if (VRF_VALID[I_IR[11:8]] != 1) begin
+                    if(VRF_VALID[I_IR[11:8]] != 1 && I_WriteBackRegIdx == I_IR[11:8]) begin
                             __DepStallSignal = 0;
                     end else begin
                             __DepStallSignal = 1;
                     end
                 end else begin
                     __DepStallSignal = 0;
-                end     
+                end
+		  end else if (I_IR[31:24] == `OP_VCOMPMOVI) begin
+              if (VRF_VALID[I_IR[11:8]] != 1) begin
+                    if(VRF_VALID[I_IR[11:8]] != 1 && I_WriteBackRegIdx == I_IR[11:8]) begin
+                            __DepStallSignal = 0;
+                    end else begin
+                            __DepStallSignal = 1;
+                    end
+                end else begin
+                    __DepStallSignal = 0;
+                end  
+					 
         end else if (I_IR[31:24] == `OP_LDW) begin
               if (RF_VALID[I_IR[19:16]] != 1) begin
                     if(RF_VALID[I_IR[19:16]] != 1 && I_WriteBackRegIdx == I_IR[19:16]) begin

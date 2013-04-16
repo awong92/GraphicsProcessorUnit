@@ -38,24 +38,24 @@ reg is_endprimitive;
 reg is_draw; 
 reg is_flush;
 
-reg [`DATA_WIDTH:0] matrixTemp[0:`REG_WIDTH]; 
-reg [`DATA_WIDTH:0] matrixBackup[0:`REG_WIDTH]; 
+reg [`DATA_WIDTH-1:0] matrixTemp[0:`REG_WIDTH-1]; 
+reg [`DATA_WIDTH-1:0] matrixBackup[0:`REG_WIDTH-1]; 
 
-reg [`DATA_WIDTH:0] matrixCurrent[0:`REG_WIDTH]; 
+reg [`DATA_WIDTH-1:0] matrixCurrent[0:`REG_WIDTH-1]; 
 reg [`VREG_WIDTH-1:0] ColorCurrent;
 
-reg [`DATA_WIDTH:0] matrixPast[0:`REG_WIDTH]; 
+reg [`DATA_WIDTH-1:0] matrixPast[0:`REG_WIDTH-1]; 
 reg [`VREG_WIDTH-1:0] ColorPast;
 
-reg [`DATA_WIDTH:0] vertex [0:2];
+reg [`DATA_WIDTH-1:0] vertex [0:2];
 
-reg [`DATA_WIDTH:0]angle;
+reg [`DATA_WIDTH-1:0]angle;
 
-reg [`DATA_WIDTH:0] x;
-reg [`DATA_WIDTH:0] y;
-reg [`DATA_WIDTH:0] xres;
-reg [`DATA_WIDTH:0] yres;
-reg [`DATA_WIDTH:0] result;
+reg [`DATA_WIDTH-1:0] x;
+reg [`DATA_WIDTH-1:0] y;
+reg [`DATA_WIDTH-1:0] xres;
+reg [`DATA_WIDTH-1:0] yres;
+reg [`DATA_WIDTH-1:0] result;
 
 reg[15:0] cosTable[0:359];
 reg[15:0] sinTable[0:359];
@@ -69,6 +69,44 @@ begin
   xres = 0;
   yres = 0;
   result = 0;
+  for(j = 0; j < 4; j = j+1)begin
+	  for(k = 0; k < 4; k=k+1)begin
+			matrixCurrent[4*j+k] = 0;
+			if(j == k) begin
+				 matrixCurrent[4*j+k] = 1;
+			end
+	  end
+ end
+ 
+ ColorCurrent <= 0;
+ for(j = 0; j < 4; j = j+1)begin
+	  for(k = 0; k < 4; k=k+1)begin
+			matrixPast[4*j+k] = 0;
+			if(j == k) begin
+				 matrixPast[4*j+k] = 1;
+			end
+	  end
+ end
+ 
+  for(j = 0; j < 4; j = j+1)begin
+	  for(k = 0; k < 4; k=k+1)begin
+			matrixBackup[4*j+k] = 0;
+			if(j == k) begin
+				 matrixBackup[4*j+k] = 1;
+			end
+	  end
+ end
+ 
+  for(j = 0; j < 4; j = j+1)begin
+	  for(k = 0; k < 4; k=k+1)begin
+			matrixTemp[4*j+k] = 0;
+			if(j == k) begin
+				 matrixTemp[4*j+k] = 1;
+			end
+	  end
+ end
+ 
+ ColorPast <= 0;
   $readmemh("cosine.hex", cosTable);
   $readmemh("sine.hex", sinTable);
 end 

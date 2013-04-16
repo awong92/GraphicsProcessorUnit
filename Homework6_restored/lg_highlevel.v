@@ -103,7 +103,7 @@ wire WritebackEnable_WD;
 wire VWritebackEnable_WD;
 wire [5:0] WriteBackRegIdx_WD;
 wire [`REG_WIDTH-1:0] WritebackData_WD;
-wire [`VREG_WIDTH-1:0] VWritebackData_WD;
+
 wire [`OPCODE_WIDTH-1:0] Opcode_WV;
 wire [`OPCODE_WIDTH-1:0] Opcode_VR;
 
@@ -113,7 +113,7 @@ wire [`OPCODE_WIDTH-1:0] Opcode_DE;
 wire [`REG_WIDTH-1:0] Src1Value_DE;
 wire [`REG_WIDTH-1:0] Src2Value_DE;
 wire [`VREG_WIDTH-1:0] VRegValue_DE;
-wire [3:0] DestRegIdx_DE;
+wire [5:0] DestRegIdx_DE;
 wire [`REG_WIDTH-1:0] DestValue_DE;
 wire [`REG_WIDTH-1:0] Imm_DE;
 wire FetchStall_DE;
@@ -121,26 +121,30 @@ wire DepStall_DE;
 
 wire LOCK_EM;
 wire [`REG_WIDTH-1:0] ALUOut_EM;
-wire [`VREG_WIDTH-1:0] VALUOut_EM;
+wire [63:0] VALUOut_EM;
 wire [`OPCODE_WIDTH-1:0] Opcode_EM;
-wire [3:0] DestRegIdx_EM;
+wire [5:0] DestRegIdx_EM;
 wire [`REG_WIDTH-1:0] DestValue_EM;
 wire FetchStall_EM;
 wire DepStall_EM;
 
 wire LOCK_MW;
+wire [`REG_WIDTH-1:0] DestValue_MW;
 wire [`REG_WIDTH-1:0] ALUOut_MW;
-wire [`VREG_WIDTH-1:0] VALUOut_MW;
+wire [63:0] VALUOut_MW;
 wire [`OPCODE_WIDTH-1:0] Opcode_MW;
 wire [`REG_WIDTH-1:0] MemOut_MW;
-wire [3:0] DestRegIdx_MW;
+wire [5:0] DestRegIdx_MW;
 wire FetchStall_MW;
 wire DepStall_MW;
 
 wire LOCK_WV;
 
 wire LOCK_VR;
-wire [`VREG_WIDTH-1:0] VColor_VR;
+wire [63:0] VColor_VR;
+wire [63:0] Vertex_VR;
+wire [63:0] VWriteBackData_VR;
+wire [63:0] Vect_WD;
 
 wire LOCK_RG;
 wire FRAMESTALL;
@@ -180,7 +184,7 @@ Decode Decode0 (
   .I_PC(PC_FD),
   .I_IR(IR_FD),
   .I_VWriteBackEnable(VWriteBackEnable_WD),
-  .I_VWriteBackData(VWriteBackData_WD),
+  .I_VWriteBackData(Vect_WD),
   .I_WriteBackEnable(WritebackEnable_WD),
   .I_WriteBackRegIdx(WriteBackRegIdx_WD),
   .I_WriteBackData(WritebackData_WD),
@@ -244,6 +248,7 @@ Memory Memory0 (
   .O_Opcode(Opcode_MW),
   .O_MemOut(MemOut_MW),
   .O_DestRegIdx(DestRegIdx_MW),
+  .O_DestValue(DestValue_MW),
   .O_DepStall(DepStall_MW),
   .O_LEDR(LEDR),
   .O_LEDG(LEDG),
@@ -256,27 +261,29 @@ Memory Memory0 (
 Writeback Writeback0 (
   .I_CLOCK(pll_c0),
   .I_LOCK(LOCK_MW),
-  .I_FetchStall(FetchStall_MW),
   .I_ALUOut(ALUOut_MW),
   .I_VALUOut(VALUOut_MW),
   .I_Opcode(Opcode_MW),
   .I_MemOut(MemOut_MW),
   .I_DestRegIdx(DestRegIdx_MW),
+  .I_DestValue(DestValue_MW),
+  .I_FetchStall(FetchStall_MW),
   .I_DepStall(DepStall_MW),
   .I_FRAMESTALL(FRAMESTALL),
   .O_LOCK(LOCK_WV),
   .O_WriteBackEnable(WritebackEnable_WD),
   .O_WriteBackRegIdx(WriteBackRegIdx_WD),
   .O_WriteBackData(WritebackData_WD),
-  .O_VWriteBackData(VWriteBackData_WD),
+  .O_VWriteBackData(Vect_WD),
   .O_VWriteBackEnable(VWriteBackEnable_WD),
+  .O_Vertex(VWriteBackData_VR),
   .O_Opcode(Opcode_WV)
 );
 
 Vertex Vertex0 (
     .I_CLOCK(pll_c0),
     .I_LOCK(LOCK_WV),
-    .I_VRegIn(VWriteBackData_WD),
+    .I_VRegIn(VWriteBackData_VR),
     .I_Opcode(Opcode_WV),
 	 .I_FRAMESTALL(FRAMESTALL),
     .O_ColorOut(VColor_VR),

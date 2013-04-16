@@ -35,7 +35,7 @@ input I_CLOCK;
 input I_LOCK;
 input [`PC_WIDTH-1:0] I_PC;
 input [`OPCODE_WIDTH-1:0] I_Opcode;
-input [3:0] I_DestRegIdx;
+input [5:0] I_DestRegIdx;
 input [`REG_WIDTH-1:0] I_Src1Value;
 input [`REG_WIDTH-1:0] I_Src2Value;
 input [`REG_WIDTH-1:0] I_Imm;
@@ -53,7 +53,7 @@ output reg [`REG_WIDTH-1:0] O_ALUOut;
 output reg [`VREG_WIDTH-1:0] O_VALUOut;
 output reg [`OPCODE_WIDTH-1:0] O_Opcode;
 output reg [`REG_WIDTH-1:0] O_DestValue;
-output reg [3:0] O_DestRegIdx;
+output reg [5:0] O_DestRegIdx;
 output reg O_FetchStall;
 output reg O_DepStall;
 
@@ -162,40 +162,25 @@ begin
 						O_VALUOut[63:48] <= I_Imm;
 				end
 				`OP_VCOMPMOV: begin
-					if(I_DestValue == 0)
-					begin
-						O_VALUOut[15:0] <= I_VSrc1Value;
-					end
-					if(I_DestValue == 1)
-					begin	
-						O_VALUOut[31:15] <= I_VSrc1Value;
-					end
-					if(I_DestValue == 2)
-					begin
-						O_VALUOut[47:31] <= I_VSrc1Value;
-					end
-					if(I_DestValue == 3)
-					begin
-						O_VALUOut[63:48] <= I_VSrc1Value;
-					end
+					O_ALUOut <= I_Src1Value;
 				end
 				`OP_VCOMPMOVI: begin
-					if(I_DestValue == 0)
-					begin
-						O_VALUOut[15:0] <= I_Imm;
-					end
-					if(I_DestValue == 1)
-					begin	
-						O_VALUOut[31:15] <= I_Imm;
-					end
-					if(I_DestValue == 2)
-					begin
-						O_VALUOut[47:31] <= I_Imm;
-					end
-					if(I_DestValue == 3)
-					begin
-						O_VALUOut[63:48] <= I_Imm;
-					end
+					O_ALUOut <= I_Imm;
+				end
+				`OP_SETCOLOR: begin
+					O_VALUOut <= I_VDestValue;
+				end
+				`OP_SETVERTEX: begin
+					O_VALUOut <= I_VDestValue;
+				end
+				`OP_SCALE: begin
+					O_VALUOut <= I_VDestValue;
+				end
+				`OP_TRANSLATE: begin
+					O_VALUOut <= I_VDestValue;
+				end
+				`OP_ROTATE: begin
+					O_VALUOut <= I_VDestValue;
 				end
 				//VADD, VMOV, VMOVI, VCOMPMOV, VCOMPMOVI, BeginPrimitive, EndPrimitive, SetVertex, Rotate, Translate, Scale, Draw
 

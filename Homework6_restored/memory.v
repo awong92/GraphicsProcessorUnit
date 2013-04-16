@@ -17,6 +17,7 @@ module Memory(
   O_Opcode,
   O_MemOut,
   O_DestRegIdx,
+  O_DestValue,
   O_BranchPC,
   O_BranchAddrSelect,
   O_FetchStall,
@@ -38,7 +39,7 @@ input I_CLOCK;
 input I_LOCK;
 input [`REG_WIDTH-1:0] I_ALUOut;
 input [`OPCODE_WIDTH-1:0] I_Opcode;
-input [3:0] I_DestRegIdx;
+input [5:0] I_DestRegIdx;
 input I_FetchStall;
 input I_DepStall;
 input [`REG_WIDTH-1:0] I_DestValue;
@@ -48,9 +49,10 @@ input I_FRAMESTALL;
 // Outputs to the writeback stage
 output reg O_LOCK;
 output reg [`REG_WIDTH-1:0] O_ALUOut;
+output reg [`REG_WIDTH-1:0] O_DestValue;
 output reg [`VREG_WIDTH-1:0] O_VALUOut;
 output reg [`OPCODE_WIDTH-1:0] O_Opcode;
-output reg [3:0] O_DestRegIdx;
+output reg [5:0] O_DestRegIdx;
 output reg [`REG_WIDTH-1:0] O_MemOut;
 output reg O_FetchStall;
 output reg O_DepStall;
@@ -98,6 +100,7 @@ begin
   O_ALUOut <= I_ALUOut;
   O_VALUOut <= I_VALUOut;
   O_Opcode <= I_Opcode;
+  O_DestValue <= I_DestValue;
   
   
   if (I_LOCK == 1'b1  && I_FRAMESTALL == 0)
