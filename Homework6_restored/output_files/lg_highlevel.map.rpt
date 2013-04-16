@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lg_highlevel
-Mon Apr 15 21:48:03 2013
+Mon Apr 15 22:07:14 2013
 Quartus II 32-bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
@@ -63,7 +63,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +------------------------------------+------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Apr 15 21:48:02 2013    ;
+; Analysis & Synthesis Status        ; Successful - Mon Apr 15 22:07:14 2013    ;
 ; Quartus II 32-bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
 ; Revision Name                      ; lg_highlevel                             ;
 ; Top-level Entity Name              ; lg_highlevel                             ;
@@ -206,6 +206,7 @@ applicable agreement for further details.
 ; data.hex                                   ; yes             ; Auto-Found Hexadecimal (Intel-Format) File            ; C:/Files/Work Files/School Files/College/Fourth Year/Spring Semester/CS 3220/Homework/Git/gpu-cs3220/Homework6_restored/data.hex                                   ;         ;
 ; sine.hex                                   ; yes             ; Auto-Found Hexadecimal (Intel-Format) File            ; C:/Files/Work Files/School Files/College/Fourth Year/Spring Semester/CS 3220/Homework/Git/gpu-cs3220/Homework6_restored/sine.hex                                   ;         ;
 ; cosine.hex                                 ; yes             ; Auto-Found Hexadecimal (Intel-Format) File            ; C:/Files/Work Files/School Files/College/Fourth Year/Spring Semester/CS 3220/Homework/Git/gpu-cs3220/Homework6_restored/cosine.hex                                 ;         ;
+; output.hex                                 ; yes             ; Auto-Found Hexadecimal (Intel-Format) File            ; C:/Files/Work Files/School Files/College/Fourth Year/Spring Semester/CS 3220/Homework/Git/gpu-cs3220/Homework6_restored/output.hex                                 ;         ;
 ; altpll.tdf                                 ; yes             ; Megafunction                                          ; e:/programs/altera/quartus/libraries/megafunctions/altpll.tdf                                                                                                      ;         ;
 ; aglobal121.inc                             ; yes             ; Megafunction                                          ; e:/programs/altera/quartus/libraries/megafunctions/aglobal121.inc                                                                                                  ;         ;
 ; stratix_pll.inc                            ; yes             ; Megafunction                                          ; e:/programs/altera/quartus/libraries/megafunctions/stratix_pll.inc                                                                                                 ;         ;
@@ -220,7 +221,7 @@ applicable agreement for further details.
 ; altram.inc                                 ; yes             ; Megafunction                                          ; e:/programs/altera/quartus/libraries/megafunctions/altram.inc                                                                                                      ;         ;
 ; altdpram.inc                               ; yes             ; Megafunction                                          ; e:/programs/altera/quartus/libraries/megafunctions/altdpram.inc                                                                                                    ;         ;
 ; db/altsyncram_6s71.tdf                     ; yes             ; Auto-Generated Megafunction                           ; C:/Files/Work Files/School Files/College/Fourth Year/Spring Semester/CS 3220/Homework/Git/gpu-cs3220/Homework6_restored/db/altsyncram_6s71.tdf                     ;         ;
-; db/lg_highlevel.ram0_fetch_4c7a7c9.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Files/Work Files/School Files/College/Fourth Year/Spring Semester/CS 3220/Homework/Git/gpu-cs3220/Homework6_restored/db/lg_highlevel.ram0_fetch_4c7a7c9.hdl.mif ;         ;
+; db/lg_highlevel.ram0_Fetch_4c7a7c9.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Files/Work Files/School Files/College/Fourth Year/Spring Semester/CS 3220/Homework/Git/gpu-cs3220/Homework6_restored/db/lg_highlevel.ram0_Fetch_4c7a7c9.hdl.mif ;         ;
 +--------------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
 
 
@@ -1367,7 +1368,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:16     ;
+; Top            ; 00:00:17     ;
 +----------------+--------------+
 
 
@@ -1377,7 +1378,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
-    Info: Processing started: Mon Apr 15 21:47:41 2013
+    Info: Processing started: Mon Apr 15 22:06:49 2013
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lg_highlevel -c lg_highlevel
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
 Info (12021): Found 1 design units, including 1 entities, in source file gpu.v
@@ -1477,7 +1478,8 @@ Info (12133): Instantiated megafunction "pll:pll0|altpll:altpll_component" with 
     Info (12134): Parameter "port_extclk3" = "PORT_UNUSED"
     Info (12134): Parameter "valid_lock_multiplier" = "1"
 Info (12128): Elaborating entity "Fetch" for hierarchy "Fetch:Fetch0"
-Warning (10850): Verilog HDL warning at fetch.v(61): number of words (38) in memory file does not match the number of elements in the address range [0:255]
+Warning (10850): Verilog HDL warning at fetch.v(61): number of words (1) in memory file does not match the number of elements in the address range [0:255]
+Warning (10230): Verilog HDL assignment warning at output.hex(1): truncated value with size 8832 to match size of target (32)
 Warning (10230): Verilog HDL assignment warning at fetch.v(159): truncated value with size 32 to match size of target (16)
 Warning (10230): Verilog HDL assignment warning at fetch.v(163): truncated value with size 32 to match size of target (16)
 Warning (10030): Net "InstMem.data_a" at fetch.v(50) has no driver or initial value, using a default initial value '0'
@@ -1623,6 +1625,8 @@ Info (12133): Instantiated megafunction "Fetch:Fetch0|altsyncram:InstMem_rtl_0" 
     Info (12134): Parameter "INIT_FILE" = "db/lg_highlevel.ram0_Fetch_4c7a7c9.hdl.mif"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_6s71.tdf
     Info (12023): Found entity 1: altsyncram_6s71
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Files/Work Files/School Files/College/Fourth Year/Spring Semester/CS 3220/Homework/Git/gpu-cs3220/Homework6_restored/db/lg_highlevel.ram0_Fetch_4c7a7c9.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Files/Work Files/School Files/College/Fourth Year/Spring Semester/CS 3220/Homework/Git/gpu-cs3220/Homework6_restored/db/lg_highlevel.ram0_Fetch_4c7a7c9.hdl.mif" contains "don't care" values -- overwriting them with 0s
 Warning (12241): 7 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
@@ -1658,11 +1662,11 @@ Info (21057): Implemented 9084 device resources after synthesis - the final reso
     Info (21061): Implemented 8935 logic cells
     Info (21064): Implemented 32 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 135 warnings
-    Info: Peak virtual memory: 374 megabytes
-    Info: Processing ended: Mon Apr 15 21:48:03 2013
-    Info: Elapsed time: 00:00:22
-    Info: Total CPU time (on all processors): 00:00:22
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 138 warnings
+    Info: Peak virtual memory: 379 megabytes
+    Info: Processing ended: Mon Apr 15 22:07:14 2013
+    Info: Elapsed time: 00:00:25
+    Info: Total CPU time (on all processors): 00:00:25
 
 
 +------------------------------------------+

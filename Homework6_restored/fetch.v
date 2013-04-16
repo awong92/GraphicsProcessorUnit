@@ -58,7 +58,7 @@ reg [2:0]counter;
 //
 initial 
 begin
-  $readmemh("data.hex", InstMem);
+  $readmemh("output.hex", InstMem);
   PC = 16'h0;
 
   O_LOCK = 1'b0;
