@@ -143,7 +143,7 @@ begin
 
 					 if (angle[15] == 1) begin
 						angle = 360-angle[14:7];
-					 end else
+					 end else begin
 						angle = angle[14:7];							
 					 end
 					 angle = angle * 2;
