@@ -329,8 +329,8 @@ begin
                     __DepStallSignal = 0;
                 end
         end else if (I_IR[31:24] == `OP_VCOMPMOV) begin
-              if (VRF_VALID[I_IR[11:8]] != 1) begin
-                    if(VRF_VALID[I_IR[11:8]] != 1 && I_WriteBackRegIdx == I_IR[11:8]) begin
+              if (RF_VALID[I_IR[11:8]] != 1) begin
+                    if(RF_VALID[I_IR[11:8]] != 1 && I_WriteBackRegIdx == I_IR[11:8]) begin
                             __DepStallSignal = 0;
                     end else begin
                             __DepStallSignal = 1;
@@ -338,17 +338,12 @@ begin
                 end else begin
                     __DepStallSignal = 0;
                 end
-		  end else if (I_IR[31:24] == `OP_VCOMPMOVI) begin
-              if (VRF_VALID[I_IR[11:8]] != 1) begin
-                    if(VRF_VALID[I_IR[11:8]] != 1 && I_WriteBackRegIdx == I_IR[11:8]) begin
-                            __DepStallSignal = 0;
-                    end else begin
-                            __DepStallSignal = 1;
-                    end
+		  end else if(I_IR[31:24] == `OP_SETVERTEX || I_IR[31:24] == `OP_SETCOLOR || I_IR[31:24] == `OP_ROTATE || I_IR[31:24] == `OP_TRANSLATE || I_IR[31:24] == `OP_SCALE) begin
+				  if (VRF_VALID[I_IR[21:16]] != 1) begin
+                    __DepStallSignal = 1;
                 end else begin
                     __DepStallSignal = 0;
-                end  
-					 
+                end
         end else if (I_IR[31:24] == `OP_LDW) begin
               if (RF_VALID[I_IR[19:16]] != 1) begin
                     if(RF_VALID[I_IR[19:16]] != 1 && I_WriteBackRegIdx == I_IR[19:16]) begin
@@ -494,8 +489,15 @@ O_DepStall = __DepStallSignal;
             RF_VALID[I_WriteBackRegIdx]<=1;
         end
             
-        if (I_VWriteBackEnable==1) begin                    //Write back data if necessary
+        if (I_VWriteBackEnable==1) begin 		  //Write back data if necessary
+				if((I_IR[31:24] == `OP_VCOMPMOVI && I_WriteBackRegIdx == I_IR[21:16]) || (I_IR[31:24] == `OP_VCOMPMOV && I_WriteBackRegIdx == I_IR[21:16]))
+				begin
+            VRF_VALID[I_WriteBackRegIdx]<=0;
+				end
+				else
+				begin
             VRF_VALID[I_WriteBackRegIdx]<=1;
+				end
         end
     
 end // always @(negedge I_CLOCK)

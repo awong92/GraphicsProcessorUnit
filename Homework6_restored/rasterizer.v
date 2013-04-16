@@ -64,6 +64,7 @@ begin
     is_draw = 0;
     currentState = 0;
 	 O_FRAMESTALL = 0;
+	 currentVertex = 0;
 end
 
 /** always @(posedge I_CLOCK)
@@ -79,39 +80,49 @@ always @(negedge I_CLOCK)
 begin
   if (I_LOCK == 1'b1)
   begin 
+		if(I_Opcode == `OP_SETVERTEX)
+		begin
+			vertices[currentVertex] <= I_Vertex;
+			color[currentVertex] <= I_ColorIn;
+			currentVertex = currentVertex + 1;
+		end
       if(currentState == 0 && I_Opcode == `OP_DRAW)
       begin
 			 O_FRAMESTALL <= 1;	
           for(i = 0; i < 3; i=i+1)
           begin
               //fragment_x[i] = (current_triangle.v[i].x + 5) * 64.0f;
-              fragmentX[i] <= (vertices[currentVertex][15:0] + 3'b101 <<8) * 7'b1000000<<8;
+              fragmentX[i] <= (vertices[i][31:16]);
+				  // + 3'b101 <<7) * 4'b1000<<7;
+				  //fragmentX[i] <= (vertices[i][31:16] + 3'b101 <<8) * 7'b1000000<<8;
               //fragment_y[i] = (current_triangle.v[i].y + 16'b5<<8) * 40.0f;
-              fragmentY[i] <= (vertices[currentVertex][31:16] + 3'b101 <<8) * 6'b101000<<8;
+              fragmentY[i] <= (vertices[i][47:32]);
+				  // + 3'b101 <<7) * 3'b101<<7;
+				  // fragmentY[i] <= (vertices[i][47:32] + 3'b101 <<8) * 6'b101000<<8;
           end
           currentState=currentState+1;
       end
-      if(currentState == 1)
+      else if(currentState == 1)
       begin
        //edgefunction edge_0 = edgefunctionsetup(fragment_x[2], fragment_y[2], fragment_x[1], fragment_y[1]);
           edge1[0] <= fragmentY[2] - fragmentY[1];
           edge1[1] <= fragmentX[1] - fragmentX[2];
-          edge1[2] <= ((1<<15|edge1[0]) * fragmentX[1]) + ((1<<15|edge1[1]) * fragmentY[1]);
+          edge1[2] <= ((9'b111111111<<7 * edge1[0]) * fragmentX[1]) + ((9'b111111111<<7 * edge1[1]) * fragmentY[1]);
           
        //edgefunction edge_1 = edgefunctionsetup(fragment_x[0], fragment_y[0], fragment_x[2], fragment_y[2]);
           edge2[0] <= fragmentY[0] - fragmentY[2];
           edge2[1] <= fragmentX[2] - fragmentX[0];
-          edge2[2] <= ((1<<15|edge2[0]) * fragmentX[2]) + ((1<<15|edge2[1]) * fragmentY[2]);
+          edge2[2] <= ((9'b111111111<<7 * edge2[0]) * fragmentX[2]) + ((9'b111111111<<7 * edge2[1]) * fragmentY[2]);
             
        //edgefunction edge_2 = edgefunctionsetup(fragment_x[1], fragment_y[1], fragment_x[0], fragment_y[0]);
           edge3[0] <= fragmentY[1] - fragmentY[0];
           edge3[1] <= fragmentX[0] - fragmentX[1];
-          edge3[2] <= ((1<<15|edge3[0]) * fragmentX[0]) + ((1<<15|edge3[1]) * fragmentY[0]);
+          edge3[2] <= ((9'b111111111<<7 * edge3[0]) * fragmentX[0]) + ((9'b111111111<<7 * edge3[1]) * fragmentY[0]);
        
           currentState=currentState+1;
       end
       
-      if(currentState == 2)
+      else if(currentState == 2)
       begin
        // float min_x = fragment_x[0];
           min_x <= fragmentX[0];
@@ -124,7 +135,7 @@ begin
         currentState=currentState+1;
       end
       
-       if(currentState >= 3 && currentState <= 5)
+       else if(currentState >= 3 && currentState <= 5)
        begin
      //   for(int i = 1; i < 3; i++){
      //    for(i=1; i < 3; i++)
@@ -164,56 +175,57 @@ begin
         end
 
     
-    if(currentState == 6)
-    begin
-    //    if(min_x < 0){ min_x = 0; }
-    //    if(max_x >= 639){ max_x = 639;}
-    //    if(min_y < 0){ min_y = 0;}
-    //    if(max_y >= 399){ max_y = 399;}
+		 else if(currentState == 6)
+		 begin
+		 //    if(min_x < 0){ min_x = 0; }
+		 //    if(max_x >= 639){ max_x = 639;}
+		 //    if(min_y < 0){ min_y = 0;}
+		 //    if(max_y >= 399){ max_y = 399;}
+		 
+				 if(min_x < 0) begin
+					  min_x <= 0;
+				 end
+				 if(max_x >= 639) begin
+					  max_x <= 639;
+				 end
+				 if(min_y < 0) begin
+					  min_y <= 0;
+				 end
+				 if(max_y >= 399) begin
+					  max_y <= 399;
+				 end
+			  currentState=currentState+1;
+		 end
     
-          if(min_x < 0) begin
-              min_x <= 0;
-          end
-          if(max_x >= 639) begin
-              max_x <= 639;
-          end
-          if(min_y < 0) begin
-              min_y <= 0;
-          end
-          if(max_y >= 399) begin
-              max_y <= 399;
-          end
-        currentState=currentState+1;
-    end
-    
-    if(currentState == 7)
-    begin
-    //    fragment_start_x = min_x;
-    //    fragment_end_x = max_x;
-     //   fragment_start_y = min_y;
-     //   fragment_end_y = max_y;
-         fragmentStartX <= min_x;
-         fragmentEndX   <= max_x;
-         fragmentStartY <= min_y;
-         fragmentEndY   <= max_y;
-    
-    //    float depth = current_triangle.v[0].z;
-   //     float r = current_triangle.v[0].r;
-    //    float g = current_triangle.v[0].g;
-   //     float b = current_triangle.v[0].b;
-    //    float a = current_triangle.v[0].a;
-         
-    end    
+		 else if(currentState == 7)
+		 begin
+		 //    fragment_start_x = min_x;
+		 //    fragment_end_x = max_x;
+		  //   fragment_start_y = min_y;
+		  //   fragment_end_y = max_y;
+				fragmentStartX <= min_x;
+				fragmentEndX   <= max_x;
+				fragmentStartY <= min_y;
+				fragmentEndY   <= max_y;
+		 
+		 //    float depth = current_triangle.v[0].z;
+		//     float r = current_triangle.v[0].r;
+		 //    float g = current_triangle.v[0].g;
+		//     float b = current_triangle.v[0].b;
+		 //    float a = current_triangle.v[0].a;
+				
+		 end    
         
         //Traverse
-	  if(currentState == 8)
+	  else if(currentState == 8)
 	  begin
  //    for(int i = fragment_start_y; i < fragment_end_y; i++){
 		 i = fragmentStartY;
 		 j = fragmentStartX;
 		 currentState = currentState + 1'b1;
 	  end
-	  if(currentState == 9)
+	  
+	  else if(currentState == 9)
 	  begin		
 			if(((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0 || edge1[0] > 0 || edge1[1] > 0)&&
 						((edge2[0]*(j) + edge2[1]*(i) + edge2[2]) > 0 || edge2[0] > 0 || edge2[1] > 0)&&

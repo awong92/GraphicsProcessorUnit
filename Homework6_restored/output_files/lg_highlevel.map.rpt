@@ -1,5 +1,5 @@
 Analysis & Elaboration report for lg_highlevel
-Tue Apr 16 02:04:01 2013
+Tue Apr 16 03:48:32 2013
 Quartus II 32-bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
@@ -47,7 +47,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                                ;
 +------------------------------------+------------------------------------------+
-; Analysis & Elaboration Status      ; Successful - Tue Apr 16 02:04:01 2013    ;
+; Analysis & Elaboration Status      ; Successful - Tue Apr 16 03:48:32 2013    ;
 ; Quartus II 32-bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
 ; Revision Name                      ; lg_highlevel                             ;
 ; Top-level Entity Name              ; lg_highlevel                             ;
@@ -638,7 +638,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Elaboration
     Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
-    Info: Processing started: Tue Apr 16 02:03:57 2013
+    Info: Processing started: Tue Apr 16 03:48:26 2013
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lg_highlevel -c lg_highlevel --analysis_and_elaboration
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file gpu.v
@@ -746,10 +746,6 @@ Warning (10030): Net "InstMem.we_a" at fetch.v(50) has no driver or initial valu
 Info (12128): Elaborating entity "Decode" for hierarchy "Decode:Decode0"
 Warning (10036): Verilog HDL or VHDL warning at decode.v(65): object "conditionDep" assigned a value but never read
 Warning (10230): Verilog HDL assignment warning at decode.v(240): truncated value with size 32 to match size of target (3)
-Warning (10027): Verilog HDL or VHDL warning at the decode.v(332): index expression is not wide enough to address all of the elements in the array
-Warning (10027): Verilog HDL or VHDL warning at the decode.v(333): index expression is not wide enough to address all of the elements in the array
-Warning (10027): Verilog HDL or VHDL warning at the decode.v(342): index expression is not wide enough to address all of the elements in the array
-Warning (10027): Verilog HDL or VHDL warning at the decode.v(343): index expression is not wide enough to address all of the elements in the array
 Info (12128): Elaborating entity "SignExtension" for hierarchy "Decode:Decode0|SignExtension:SE0"
 Info (12128): Elaborating entity "Execute" for hierarchy "Execute:Execute0"
 Info (12128): Elaborating entity "Memory" for hierarchy "Memory:Memory0"
@@ -810,26 +806,21 @@ Warning (10036): Verilog HDL or VHDL warning at rasterizer.v(27): object "is_set
 Warning (10036): Verilog HDL or VHDL warning at rasterizer.v(28): object "is_startprimitive" assigned a value but never read
 Warning (10036): Verilog HDL or VHDL warning at rasterizer.v(29): object "is_endprimitive" assigned a value but never read
 Warning (10036): Verilog HDL or VHDL warning at rasterizer.v(30): object "is_draw" assigned a value but never read
-Warning (10858): Verilog HDL warning at rasterizer.v(32): object vertices used but never assigned
-Warning (10858): Verilog HDL warning at rasterizer.v(33): object currentVertex used but never assigned
-Warning (10858): Verilog HDL warning at rasterizer.v(35): object color used but never assigned
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(85): truncated value with size 32 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(87): truncated value with size 32 to match size of target (4)
 Warning (10230): Verilog HDL assignment warning at rasterizer.v(92): truncated value with size 32 to match size of target (9)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(99): truncated value with size 32 to match size of target (16)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(104): truncated value with size 32 to match size of target (16)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(109): truncated value with size 32 to match size of target (16)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(111): truncated value with size 32 to match size of target (9)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(124): truncated value with size 32 to match size of target (9)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(131): truncated value with size 32 to match size of target (9)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(163): truncated value with size 32 to match size of target (9)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(186): truncated value with size 32 to match size of target (9)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(212): truncated value with size 16 to match size of target (9)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(213): truncated value with size 16 to match size of target (9)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(223): truncated value with size 32 to match size of target (18)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(224): truncated value with size 64 to match size of target (16)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(227): truncated value with size 32 to match size of target (9)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(230): truncated value with size 32 to match size of target (9)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(241): truncated value with size 16 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(103): truncated value with size 32 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(122): truncated value with size 32 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(135): truncated value with size 32 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(142): truncated value with size 32 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(174): truncated value with size 32 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(197): truncated value with size 32 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(223): truncated value with size 16 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(224): truncated value with size 16 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(235): truncated value with size 32 to match size of target (18)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(236): truncated value with size 64 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(239): truncated value with size 32 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(242): truncated value with size 32 to match size of target (9)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(253): truncated value with size 16 to match size of target (9)
 Warning (10034): Output port "O_LOCK" at rasterizer.v(20) has no driver
 Info (12128): Elaborating entity "VgaController" for hierarchy "VgaController:VgaController0"
 Warning (10230): Verilog HDL assignment warning at vga_controller.v(58): truncated value with size 32 to match size of target (4)
@@ -850,11 +841,11 @@ Info (12128): Elaborating entity "MultiSram" for hierarchy "MultiSram:MultiSram0
 Warning (10230): Verilog HDL assignment warning at multi_sram.v(44): truncated value with size 32 to match size of target (18)
 Warning (12241): 7 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (144001): Generated suppressed messages file F:/dropbox/college/spring 2013/git/gpu/Homework6_restored/output_files/lg_highlevel.map.smsg
-Info: Quartus II 32-bit Analysis & Elaboration was successful. 0 errors, 107 warnings
-    Info: Peak virtual memory: 367 megabytes
-    Info: Processing ended: Tue Apr 16 02:04:01 2013
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:04
+Info: Quartus II 32-bit Analysis & Elaboration was successful. 0 errors, 98 warnings
+    Info: Peak virtual memory: 383 megabytes
+    Info: Processing ended: Tue Apr 16 03:48:32 2013
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:06
 
 
 +--------------------------------------------+
