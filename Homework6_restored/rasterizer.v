@@ -66,22 +66,22 @@ begin
 	 O_FRAMESTALL = 0;
 end
 
-always @(posedge I_CLOCK)
+/** always @(posedge I_CLOCK)
 begin
  
   if (I_LOCK == 1'b1)
   begin 
           
   end
-end
+end  **/
 
 always @(negedge I_CLOCK)
 begin
- 
   if (I_LOCK == 1'b1)
   begin 
-      if(currentState == 0)
+      if(currentState == 0 && I_Opcode == `OP_DRAW)
       begin
+			 O_FRAMESTALL <= 1;	
           for(i = 0; i < 3; i=i+1)
           begin
               //fragment_x[i] = (current_triangle.v[i].x + 5) * 64.0f;
@@ -214,9 +214,7 @@ begin
 		 currentState = currentState + 1'b1;
 	  end
 	  if(currentState == 9)
-	  		O_FRAMESTALL <= 1;
-
-			begin
+	  begin		
 			if(((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0 || edge1[0] > 0 || edge1[1] > 0)&&
 						((edge2[0]*(j) + edge2[1]*(i) + edge2[2]) > 0 || edge2[0] > 0 || edge2[1] > 0)&&
 						((edge3[0]*(j) + edge3[1]*(i) + edge3[2]) > 0 || edge3[0] > 0 || edge3[1] > 0)) 
@@ -236,13 +234,12 @@ begin
 		  begin
 		  O_FRAMESTALL <= 0;
 		  currentState <= 0;
-		  end;
+		  end
 		  
 		  if(j==fragmentEndX)
 		  begin  
 		  j = fragmentStartX;
-		  end
-		  
+		  end		  
 	  end       
   end
 end

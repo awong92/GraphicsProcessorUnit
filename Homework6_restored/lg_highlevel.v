@@ -150,7 +150,7 @@ wire FRAMESTALL;
 /////////////////////////////////////////
 //
 pll pll0 (
-  .inclk0 (CLOCK_27[0]),
+  .inclk0 (CLOCK_50),
   .c0     (pll_c0),
   .locked (pll_locked)
 );
@@ -282,7 +282,7 @@ Vertex Vertex0 (
     .O_ColorOut(VColor_VR),
     .O_VOut(Vertex_VR),
     .O_Opcode(Opcode_VR),
-    .O_LOCK(LOCK_VR),
+    .O_LOCK(LOCK_VR)
 );
 
 Rasterizer Rasterizer0 (
@@ -330,8 +330,8 @@ wire        mGPU_WRITE;
 wire [17:0] mGPU_ADDR;
 wire [17:0] mGPU_COLOR;
 wire [15:0] mGPU_WRITE_DATA;
-wire [17:0] mGPU_READ_ADDR;
-wire [15:0] mGPU_READ_DATA;
+//wire [17:0] mGPU_READ_ADDR;
+//wire [15:0] mGPU_READ_DATA;
 
 VgaController VgaController0 (
   // Control Signal
