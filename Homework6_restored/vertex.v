@@ -141,10 +141,23 @@ begin
 						  end
                 end
 
-             /**   matrixTemp[4*0 + 0] = cos(angle*3.14159/180);
-                matrixTemp[4*1 + 0] = (-1) * sin(angle*3.14159/180);
-                matrixTemp[4*0 + 1] = sin(angle*3.14159/180);
-                matrixTemp[4*1 + 1] = cos(angle*3.14159/180);  **/
+					 if (angle[15] == 1) begin
+						angle = 360-angle[14:7];
+					 end else
+						angle = angle[14:7];							
+					 end
+					 angle = angle * 2;
+					 angle = angle % 360; 
+					 
+					 matrixTemp[4*0 + 0] = cosTable[angle];
+					 matrixTemp[4*0 + 1] = sinTable[angle];
+					 matrixTemp[4*1 + 1] = cosTable[angle]; 
+					 matrixTemp[4*1 + 0] = sinTable[angle];
+					 if (I_VRegIn[15] == 1) begin
+						matrixTemp[4*1 + 0][15] = 0;
+					 end else begin
+						matrixTemp[4*1 + 0][15] = 1;
+					 end
 
                 //Matrix Multiply
                 for( i = 0; i < 4; i=i+1)begin
