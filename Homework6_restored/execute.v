@@ -42,6 +42,7 @@ input [`REG_WIDTH-1:0] I_Imm;
 input I_FetchStall;
 input I_DepStall;
 input [`REG_WIDTH-1:0] I_DestValue;
+input I_FRAMESTALL;
 
 input [`VREG_WIDTH-1:0] I_VSrc1Value;
 input [`VREG_WIDTH-1:0] I_VSrc2Value;

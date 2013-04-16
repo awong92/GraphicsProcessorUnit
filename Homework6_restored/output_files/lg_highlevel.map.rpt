@@ -1,6 +1,6 @@
 Analysis & Synthesis report for lg_highlevel
-Sun Apr 14 22:56:56 2013
-Quartus II 32-bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
+Mon Apr 15 20:13:33 2013
+Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
 ---------------------
@@ -37,8 +37,8 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +------------------------------------+------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Sun Apr 14 22:56:56 2013        ;
-; Quartus II 32-bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
+; Analysis & Synthesis Status        ; Failed - Mon Apr 15 20:13:33 2013        ;
+; Quartus II 64-Bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
 ; Revision Name                      ; lg_highlevel                             ;
 ; Top-level Entity Name              ; lg_highlevel                             ;
 ; Family                             ; Cyclone II                               ;
@@ -154,9 +154,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus II 32-bit Analysis & Synthesis
+Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
-    Info: Processing started: Sun Apr 14 22:56:55 2013
+    Info: Processing started: Mon Apr 15 20:13:32 2013
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lg_highlevel -c lg_highlevel
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file gpu.v
@@ -179,6 +179,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file sign_ex
     Info (12023): Found entity 1: SignExtension
 Info (12021): Found 1 design units, including 1 entities, in source file decode.v
     Info (12023): Found entity 1: Decode
+Warning (10275): Verilog HDL Module Instantiation warning at lg_highlevel.v(286): ignored dangling comma in List of Port Connections
 Info (12021): Found 1 design units, including 1 entities, in source file lg_highlevel.v
     Info (12023): Found entity 1: lg_highlevel
 Info (12021): Found 1 design units, including 1 entities, in source file fetch.v
@@ -187,13 +188,18 @@ Info (12021): Found 1 design units, including 1 entities, in source file pll.v
     Info (12023): Found entity 1: pll
 Info (12021): Found 1 design units, including 1 entities, in source file vertex.v
     Info (12023): Found entity 1: Vertex
-Error (10170): Verilog HDL syntax error at rasterizer.v(235) near text "end"; "end" without "begin"  File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/rasterizer.v Line: 235
-Error (10112): Ignored design unit "Rasterizer" at rasterizer.v(3) due to previous errors File: F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/rasterizer.v Line: 3
-Info (12021): Found 0 design units, including 0 entities, in source file rasterizer.v
-Info (144001): Generated suppressed messages file F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/output_files/lg_highlevel.map.smsg
-Error: Quartus II 32-bit Analysis & Synthesis was unsuccessful. 2 errors, 1 warning
-    Error: Peak virtual memory: 327 megabytes
-    Error: Processing ended: Sun Apr 14 22:56:56 2013
+Info (12021): Found 1 design units, including 1 entities, in source file rasterizer.v
+    Info (12023): Found entity 1: Rasterizer
+Warning (10236): Verilog HDL Implicit Net warning at lg_highlevel.v(182): created implicit net for "VWriteBackEnable_WD"
+Warning (10236): Verilog HDL Implicit Net warning at lg_highlevel.v(183): created implicit net for "VWriteBackData_WD"
+Warning (10236): Verilog HDL Implicit Net warning at lg_highlevel.v(283): created implicit net for "Vertex_VR"
+Warning (10236): Verilog HDL Implicit Net warning at lg_highlevel.v(357): created implicit net for "VIDEO_ON"
+Error (10161): Verilog HDL error at vertex.v(8): object "I_FRAMESTALL" is not declared File: C:/Users/Joon/Documents/Georgia_Tech/gpu-cs3220/Homework6_restored/vertex.v Line: 8
+Error (10161): Verilog HDL error at vertex.v(71): object "I_FRAMESTALL" is not declared File: C:/Users/Joon/Documents/Georgia_Tech/gpu-cs3220/Homework6_restored/vertex.v Line: 71
+Info (144001): Generated suppressed messages file C:/Users/Joon/Documents/Georgia_Tech/gpu-cs3220/Homework6_restored/output_files/lg_highlevel.map.smsg
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 6 warnings
+    Error: Peak virtual memory: 430 megabytes
+    Error: Processing ended: Mon Apr 15 20:13:33 2013
     Error: Elapsed time: 00:00:01
     Error: Total CPU time (on all processors): 00:00:01
 
@@ -201,6 +207,6 @@ Error: Quartus II 32-bit Analysis & Synthesis was unsuccessful. 2 errors, 1 warn
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/output_files/lg_highlevel.map.smsg.
+The suppressed messages can be found in C:/Users/Joon/Documents/Georgia_Tech/gpu-cs3220/Homework6_restored/output_files/lg_highlevel.map.smsg.
 
 

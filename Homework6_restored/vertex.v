@@ -21,6 +21,7 @@ input I_CLOCK;
 input I_LOCK;
 input [`OPCODE_WIDTH-1:0] I_Opcode;
 input [`VREG_WIDTH-1:0] I_VRegIn;
+input I_FRAMESTALL;
 
 output O_LOCK;
 output reg [`OPCODE_WIDTH-1:0] O_Opcode;

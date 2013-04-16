@@ -29,6 +29,7 @@ input I_BranchAddrSelect; // Asserted only when Branch Target Address resolves
 // Inputs from the decode stage
 input I_BranchStallSignal; // Asserted from when branch instruction is decode to when Branch Target Address resolves 
 input I_DepStallSignal; // Asserted when register dependency is detected
+input I_FRAMESTALL;
 
 // Outputs to the decode stage
 output reg O_LOCK;

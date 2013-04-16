@@ -47,6 +47,7 @@ input [`REG_WIDTH-1:0] I_WriteBackData;
 
 input I_VWriteBackEnable;
 input [`VREG_WIDTH-1:0] I_VWriteBackData;
+input I_FRAMESTALL;
 
 // Outputs to the execude stage
 output reg O_LOCK;

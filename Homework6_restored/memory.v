@@ -43,6 +43,7 @@ input I_FetchStall;
 input I_DepStall;
 input [`REG_WIDTH-1:0] I_DestValue;
 input [`VREG_WIDTH-1:0] I_VALUOut;
+input I_FRAMESTALL;
 
 // Outputs to the writeback stage
 output reg O_LOCK;

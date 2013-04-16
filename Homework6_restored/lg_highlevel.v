@@ -143,6 +143,7 @@ wire LOCK_VR;
 wire [`VREG_WIDTH-1:0] VColor_VR;
 
 wire LOCK_RG;
+wire FRAMESTALL;
 
 /////////////////////////////////////////
 // PLL MODULE GOES HERE 
@@ -165,6 +166,7 @@ Fetch Fetch0 (
   .I_BranchAddrSelect(BranchAddrSelect_FM),
   .I_BranchStallSignal(BranchStallSignal_FD),
   .I_DepStallSignal(DepStallSignal_FD),
+  .I_FRAMESTALL(FRAMESTALL),
   .O_LOCK(LOCK_FD),
   .O_FetchStall(FetchStall_FD),
   .O_PC(PC_FD),
@@ -182,6 +184,7 @@ Decode Decode0 (
   .I_WriteBackEnable(WritebackEnable_WD),
   .I_WriteBackRegIdx(WriteBackRegIdx_WD),
   .I_WriteBackData(WritebackData_WD),
+  .I_FRAMESTALL(FRAMESTALL),
   .O_DepStallSignal(DepStallSignal_FD),
   .O_BranchStallSignal(BranchStallSignal_FD),
   .O_LOCK(LOCK_DE),
@@ -210,6 +213,7 @@ Execute Execute0 (
   .I_VDestValue(VRegValue_DE),
   .I_Imm(Imm_DE),
   .I_DepStall(DepStall_DE),
+  .I_FRAMESTALL(FRAMESTALL),
   .O_LOCK(LOCK_EM),
   .O_FetchStall(FetchStall_EM),
   .O_ALUOut(ALUOut_EM),
@@ -230,6 +234,7 @@ Memory Memory0 (
   .I_DestRegIdx(DestRegIdx_EM),
   .I_DestValue(DestValue_EM),
   .I_DepStall(DepStall_EM),
+  .I_FRAMESTALL(FRAMESTALL),
   .O_BranchPC(BranchPC_FM),
   .O_BranchAddrSelect(BranchAddrSelect_FM),
   .O_LOCK(LOCK_MW),
@@ -258,6 +263,7 @@ Writeback Writeback0 (
   .I_MemOut(MemOut_MW),
   .I_DestRegIdx(DestRegIdx_MW),
   .I_DepStall(DepStall_MW),
+  .I_FRAMESTALL(FRAMESTALL),
   .O_LOCK(LOCK_WV),
   .O_WriteBackEnable(WritebackEnable_WD),
   .O_WriteBackRegIdx(WriteBackRegIdx_WD),
@@ -272,10 +278,11 @@ Vertex Vertex0 (
     .I_LOCK(LOCK_WV),
     .I_VRegIn(VWriteBackData_WD),
     .I_Opcode(Opcode_WV),
+	 .I_FRAMESTALL(FRAMESTALL),
     .O_ColorOut(VColor_VR),
     .O_VOut(Vertex_VR),
     .O_Opcode(Opcode_VR),
-    .O_LOCK(LOCK_VR)
+    .O_LOCK(LOCK_VR),
 );
 
 Rasterizer Rasterizer0 (
@@ -286,7 +293,8 @@ Rasterizer Rasterizer0 (
   .I_ColorIn(VColor_VR),
   .O_ColorOut(mGPU_READ_DATA),
   .O_ADDROut(mGPU_READ_ADDR),
-  .O_LOCK(LOCK_RG)
+  .O_LOCK(LOCK_RG),
+  .O_FRAMESTALL(FRAMESTALL)
 );
 /////////////////////////////////////////
 // TODO
