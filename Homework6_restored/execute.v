@@ -91,6 +91,10 @@ begin
 				`OP_ADDI_D: begin
 						O_ALUOut <= I_Src1Value + I_Imm; 
 				end
+				`OP_ADDI_F: begin
+						O_ALUOut <= I_Src1Value + I_Imm; 
+				end
+
 				`OP_AND_D: begin
 						O_ALUOut <= I_Src1Value & I_Src2Value; 
 				end
@@ -101,6 +105,9 @@ begin
 						O_ALUOut <= I_Src2Value; 
 				end
 				`OP_MOVI_D: begin
+						O_ALUOut <= I_Imm; 
+				end
+				`OP_MOVI_F: begin
 						O_ALUOut <= I_Imm; 
 				end
 				`OP_LDW:  begin

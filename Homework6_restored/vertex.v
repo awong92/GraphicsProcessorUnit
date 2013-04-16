@@ -57,6 +57,10 @@ reg [`DATA_WIDTH:0] xres;
 reg [`DATA_WIDTH:0] yres;
 reg [`DATA_WIDTH:0] result;
 
+reg[15:0] cosTable[0:359];
+reg[15:0] sinTable[0:359];
+
+
 assign O_LOCK = I_LOCK;
 
 initial
@@ -65,6 +69,8 @@ begin
   xres = 0;
   yres = 0;
   result = 0;
+  $readmemh("cosine.hex", cosTable);
+  $readmemh("sine.hex", sinTable);
 end 
 
 always @(negedge I_CLOCK)

@@ -61,8 +61,10 @@ assign O_WriteBackEnable =
        (I_Opcode == `OP_ADDI_D) ? (1'b1) :
        (I_Opcode == `OP_AND_D) ? (1'b1) :
        (I_Opcode == `OP_ANDI_D) ? (1'b1) :
+       (I_Opcode == `OP_ADDI_F) ? (1'b1) :
        (I_Opcode == `OP_MOV) ? (1'b1) :
        (I_Opcode == `OP_MOVI_D) ? (1'b1) :
+       (I_Opcode == `OP_MOVI_F) ? (1'b1) :
 		 (I_Opcode == `OP_LDW) ? (1'b1) :
        (I_Opcode == `OP_STW) ? (1'b0) :
        (I_Opcode == `OP_JMP) ? (1'b0) :
@@ -84,10 +86,12 @@ assign O_WriteBackRegIdx =
     ((I_DepStall == 1'b0) ?
       ((I_Opcode == `OP_ADD_D ) ? (I_DestRegIdx) :
        (I_Opcode == `OP_ADDI_D) ? (I_DestRegIdx) :
+       (I_Opcode == `OP_ADDI_F) ? (I_DestRegIdx) :
 		 (I_Opcode == `OP_AND_D) ? (I_DestRegIdx) :
        (I_Opcode == `OP_ANDI_D) ? (I_DestRegIdx) :
        (I_Opcode == `OP_MOV) ? (I_DestRegIdx) :
        (I_Opcode == `OP_MOVI_D) ? (I_DestRegIdx) :
+       (I_Opcode == `OP_MOVI_F) ? (I_DestRegIdx) :
 		 (I_Opcode == `OP_LDW) ? (I_DestRegIdx) :
        (I_Opcode == `OP_LDB   ) ? (I_DestRegIdx) : 
 		 (I_Opcode == `OP_VADD) ? (I_DestRegIdx) :
@@ -104,10 +108,12 @@ assign O_WriteBackData =
     ((I_DepStall == 1'b0) ?
       ((I_Opcode == `OP_ADD_D ) ? (I_ALUOut) :
        (I_Opcode == `OP_ADDI_D) ? (I_ALUOut) :
+       (I_Opcode == `OP_ADDI_F) ? (I_ALUOut) :
 		 (I_Opcode == `OP_AND_D) ? (I_ALUOut) :
        (I_Opcode == `OP_ANDI_D) ? (I_ALUOut) :
        (I_Opcode == `OP_MOV) ? (I_ALUOut) :
        (I_Opcode == `OP_MOVI_D) ? (I_ALUOut) :
+       (I_Opcode == `OP_MOVI_F) ? (I_ALUOut) :
 		 (I_Opcode == `OP_LDW) ? (I_MemOut) :
        (I_Opcode == `OP_LDB   ) ? (I_MemOut) : 
        (16'h00000000)

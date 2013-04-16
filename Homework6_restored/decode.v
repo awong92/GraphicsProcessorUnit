@@ -277,7 +277,7 @@ begin
                 end else begin
                     __DepStallSignal = 0;
                 end
-        end else if (I_IR[31:24] == `OP_ADDI_D||I_IR[31:24] == `OP_ANDI_D) begin
+        end else if (I_IR[31:24] == `OP_ADDI_F||I_IR[31:24] == `OP_ADDI_D||I_IR[31:24] == `OP_ANDI_D) begin
               if (RF_VALID[I_IR[19:16]] != 1) begin
                     if(RF_VALID[I_IR[19:16]] != 1 && I_WriteBackRegIdx == I_IR[19:16]) begin
                             __DepStallSignal = 0;
@@ -400,7 +400,7 @@ O_DepStall = __DepStallSignal;
         O_DestValue <= RF[I_IR[11:8]];
         O_Opcode <= I_IR[31:24];
         
-        if (I_IR[31:24] == `OP_MOV || I_IR[31:24] == `OP_MOVI_D)begin
+        if (I_IR[31:24] == `OP_MOV || I_IR[31:24] == `OP_MOVI_D|| I_IR[31:24] == `OP_MOVI_F)begin
             O_DestRegIdx = I_IR[19:16];
         end else begin
             O_DestRegIdx = I_IR[23:20];
@@ -411,7 +411,7 @@ O_DepStall = __DepStallSignal;
         if (I_IR[31:24] == `OP_STW)
             O_DestValue <= RF[I_IR[23:20]];
 
-        if (I_IR[31:24] == `OP_ADDI_D || I_IR[31:24] == `OP_ADD_D || I_IR[31:24] == `OP_AND_D || I_IR[31:24] == `OP_ANDI_D || I_IR[31:24] == `OP_MOVI_D || I_IR[31:24] == `OP_MOV || I_IR[31:24] == `OP_LDW)
+        if (I_IR[31:24] == `OP_ADDI_F||I_IR[31:24] == `OP_ADDI_D || I_IR[31:24] == `OP_ADD_D || I_IR[31:24] == `OP_AND_D || I_IR[31:24] == `OP_ANDI_D || I_IR[31:24] == `OP_MOVI_F ||I_IR[31:24] == `OP_MOVI_D || I_IR[31:24] == `OP_MOV || I_IR[31:24] == `OP_LDW)
             RF_VALID[O_DestRegIdx]<=0;
     
         //VADD, VMOV, VMOVI, VCOMPMOV, VCOMPMOVI, BeginPrimitive, EndPrimitive, SetVertex, Rotate, Translate, Scale, Draw
