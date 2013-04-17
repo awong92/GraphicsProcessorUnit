@@ -38,6 +38,14 @@ reg signed[`REG_WIDTH-1:0] edge1[0:2];
 reg signed[`REG_WIDTH-1:0] edge2[0:2];
 reg signed[`REG_WIDTH-1:0] edge3[0:2];
 
+reg signed[`REG_WIDTH-1:0] tempEdge1[0:1];
+reg signed[`REG_WIDTH-1:0] tempEdge2[0:1];
+reg signed[`REG_WIDTH-1:0] tempEdge3[0:1];
+
+reg signed[`REG_WIDTH-1:0] temptempEdge1[0:1];
+reg signed[`REG_WIDTH-1:0] temptempEdge2[0:1];
+reg signed[`REG_WIDTH-1:0] temptempEdge3[0:1];
+
 reg signed[`REG_WIDTH-1:0] fragmentX[0:2];
 reg signed[`REG_WIDTH-1:0] fragmentY[0:2];
 
@@ -53,11 +61,14 @@ reg signed[`REG_WIDTH-1:0] max_x;
 reg signed[`REG_WIDTH-1:0] min_y;
 reg signed[`REG_WIDTH-1:0] max_y;
 
+reg signed [`REG_WIDTH-1:0] negOne;
+
 reg [8:0] i;
 reg [8:0] j;
 
 initial
 begin
+	 negOne = -128;
     is_setvertex = 0;
     is_startprimitive = 0;
     is_endprimitive = 0;
@@ -121,12 +132,127 @@ begin
        
           currentState=currentState+1;
       end
-      else if(currentState == 2)
+		else if(currentState == 2)
+		begin
+			if(edge1[0][15] == 1'b0)
+			begin
+				temptempEdge1[0] <= ((negOne * edge1[0])>>>7);
+			end
+			else
+			begin
+				temptempEdge1[0] <= ((negOne * edge1[0])>>7);
+			end
+			
+			if(edge1[1][15] == 1'b0)
+			begin
+				temptempEdge1[1] <= ((negOne * edge1[1])>>>7);
+			end
+			else
+			begin
+				temptempEdge1[1] <= ((negOne * edge1[1])>>7);
+			end
+			
+			if(edge2[0][15] == 1'b0)
+			begin
+					temptempEdge2[0] <= ((negOne * edge2[0])>>>7);
+			end
+			else
+			begin
+					temptempEdge2[0] <= ((negOne * edge2[0])>>7);
+			end
+			
+			if(edge2[1][15] == 1'b0)
+			begin
+				temptempEdge2[1] <= ((negOne * edge2[1])>>>7);
+			end
+			else
+			begin
+				temptempEdge2[1] <= ((negOne * edge2[1])>>7);
+			end
+			
+			if(edge3[0][15] == 1'b0)
+			begin
+				temptempEdge3[0] <= ((negOne * edge3[0])>>>7);
+			end
+			else
+			begin
+				temptempEdge3[0] <= ((negOne * edge3[0])>>7);
+			end
+			
+			if(edge3[1][15] == 1'b0)
+			begin
+				temptempEdge3[1] <= ((negOne * edge3[1])>>>7);
+			end
+			else
+			begin
+				temptempEdge3[1] <= ((negOne * edge3[1])>>7);
+			end
+			
+			
+			currentState=currentState+1;
+		end
+		else if(currentState == 3)
+		begin 
+			if((temptempEdge1[0][15] == 1'b1 && fragmentX[1][15]==1'b1) || (temptempEdge1[0][15] == 1'b0 && fragmentX[1][15]==1'b0))
+			begin
+				tempEdge1[0] <= ((temptempEdge1[0]* fragmentX[1])>>7);
+			end
+			else
+			begin
+				tempEdge1[0] <= ((temptempEdge1[0]* fragmentX[1])>>>7);
+			end
+			
+			if((temptempEdge1[1][15] == 1'b1 && fragmentY[1][15] ==1'b1) || (temptempEdge1[1][15] == 1'b0 && fragmentY[1][15] ==1'b0))
+			begin
+				tempEdge1[1] <= ((temptempEdge1[1]* fragmentY[1])>>7);
+			end
+			else
+			begin
+				tempEdge1[1] <= ((temptempEdge1[1]* fragmentY[1])>>>7);
+			end
+			
+			if((temptempEdge2[0][15] == 1'b1 && fragmentX[2][15]==1'b1) || (temptempEdge2[0][15] == 1'b0 && fragmentX[2][15]==1'b0))
+			begin
+				tempEdge2[0] <= ((temptempEdge2[0]* fragmentX[2])>>7);
+			end
+			else
+			begin
+				tempEdge2[0] <= ((temptempEdge2[0]* fragmentX[2])>>>7);
+			end
+			
+			if((temptempEdge2[1][15] == 1'b1 && fragmentY[2][15]==1'b1) || (temptempEdge2[1][15] == 1'b0 && fragmentY[2][15]==1'b0))
+			begin
+				tempEdge2[1] <= ((temptempEdge2[1]* fragmentY[2])>>7);
+			end
+			else
+			begin
+				tempEdge2[1] <= ((temptempEdge2[1]* fragmentY[2])>>>7);
+			end
+			
+			if((temptempEdge3[0][15] == 1'b1 && fragmentX[0][15]==1'b1) || (temptempEdge3[0][15] == 1'b0 && fragmentX[0][15]==1'b0))
+			begin
+				tempEdge3[0] <= ((temptempEdge3[0]* fragmentX[0])>>7);
+			end
+			else
+			begin
+				tempEdge3[0] <= ((temptempEdge3[0]* fragmentX[0])>>>7);
+			end
+			
+			if((temptempEdge3[1][15] == 1'b1 && fragmentY[0][15]==1'b1) || (temptempEdge3[1][15] == 1'b0 && fragmentY[0][15]==1'b0))
+			begin
+				tempEdge3[1] <= ((temptempEdge3[1]* fragmentY[0])>>7);
+			end
+			else
+			begin
+				tempEdge3[1] <= ((temptempEdge3[1]* fragmentY[0])>>>7);
+			end	
+			currentState=currentState+1;
+		end
+      else if(currentState == 4)
       begin
-		
-			edge1[2] <= ((9'b111111111<<7 * edge1[0]) * fragmentX[1]) + ((9'b111111111<<7 * edge1[1]) * fragmentY[1]);
-			edge2[2] <= ((9'b111111111<<7 * edge2[0]) * fragmentX[2]) + ((9'b111111111<<7 * edge2[1]) * fragmentY[2]);
-			edge3[2] <= ((9'b111111111<<7 * edge3[0]) * fragmentX[0]) + ((9'b111111111<<7 * edge3[1]) * fragmentY[0]);
+			edge1[2] <= tempEdge1[0] + tempEdge1[1];
+			edge2[2] <= tempEdge2[0] + tempEdge2[1];
+			edge3[2] <= tempEdge3[0] + tempEdge3[1];
        // float min_x = fragment_x[0];
           min_x <= fragmentX[0];
       //  float max_x = fragment_x[0];
@@ -138,7 +264,7 @@ begin
         currentState=currentState+1;
       end
       
-       else if(currentState >= 3 && currentState <= 5)
+       else if(currentState >= 5 && currentState <= 7)
        begin
      //   for(int i = 1; i < 3; i++){
      //    for(i=1; i < 3; i++)
@@ -154,7 +280,7 @@ begin
      //       if(max_x < fragment_x[i]){
      //           max_x = fragment_x[i];
      //       }
-              if(max_x > fragmentX[i])
+              if(max_x < fragmentX[i])
               begin
                    max_x <= fragmentX[i];
               end
@@ -168,7 +294,7 @@ begin
       //      if(max_y < fragment_y[i]){
       //          max_y = fragment_y[i];
       //      }
-              if(max_y > fragmentY[i])
+              if(max_y < fragmentY[i])
               begin
                    max_y <= fragmentY[i];
               end
@@ -178,7 +304,7 @@ begin
         end
 
     
-		 else if(currentState == 6)
+		 else if(currentState == 8)
 		 begin
 		 //    if(min_x < 0){ min_x = 0; }
 		 //    if(max_x >= 639){ max_x = 639;}
@@ -200,7 +326,7 @@ begin
 			  currentState=currentState+1;
 		 end
     
-		 else if(currentState == 7)
+		 else if(currentState == 9)
 		 begin
 		 //    fragment_start_x = min_x;
 		 //    fragment_end_x = max_x;
@@ -220,7 +346,7 @@ begin
 		 end    
         
         //Traverse
-	  else if(currentState == 8)
+	  else if(currentState == 10)
 	  begin
  //    for(int i = fragment_start_y; i < fragment_end_y; i++){
 		 i = fragmentStartY;
@@ -228,7 +354,7 @@ begin
 		 currentState = currentState + 1'b1;
 	  end
 	  
-	  else if(currentState == 9)
+	  else if(currentState == 11)
 	  begin		
 			if(((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0 || edge1[0] > 0 || edge1[1] > 0)&&
 						((edge2[0]*(j) + edge2[1]*(i) + edge2[2]) > 0 || edge2[0] > 0 || edge2[1] > 0)&&
