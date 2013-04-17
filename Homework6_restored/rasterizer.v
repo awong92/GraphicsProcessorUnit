@@ -38,13 +38,13 @@ reg signed[`REG_WIDTH-1:0] edge1[0:2];
 reg signed[`REG_WIDTH-1:0] edge2[0:2];
 reg signed[`REG_WIDTH-1:0] edge3[0:2];
 
-reg signed[`REG_WIDTH-1:0] tempEdge1[0:1];
-reg signed[`REG_WIDTH-1:0] tempEdge2[0:1];
-reg signed[`REG_WIDTH-1:0] tempEdge3[0:1];
-
 reg signed[`REG_WIDTH-1:0] temptempEdge1[0:1];
 reg signed[`REG_WIDTH-1:0] temptempEdge2[0:1];
 reg signed[`REG_WIDTH-1:0] temptempEdge3[0:1];
+
+reg signed[`REG_WIDTH-1:0] tempEdge1[0:1];
+reg signed[`REG_WIDTH-1:0] tempEdge2[0:1];
+reg signed[`REG_WIDTH-1:0] tempEdge3[0:1];
 
 reg signed[`REG_WIDTH-1:0] fragmentX[0:2];
 reg signed[`REG_WIDTH-1:0] fragmentY[0:2];
@@ -63,8 +63,8 @@ reg signed[`REG_WIDTH-1:0] max_y;
 
 reg signed [`REG_WIDTH-1:0] negOne;
 
-reg [8:0] i;
-reg [8:0] j;
+reg [10:0] i;
+reg [10:0] j;
 
 initial
 begin
@@ -103,11 +103,11 @@ begin
           for(i = 0; i < 3; i=i+1)
           begin
               //fragment_x[i] = (current_triangle.v[i].x + 5) * 64.0f;
-              fragmentX[i] <= (((((vertices[i][31:16])+640))*2048)>>7);
+              fragmentX[i] <= (((vertices[i][31:16])+640))*32;
 				  // + 3'b101 <<7) * 4'b1000<<7;
 				  //fragmentX[i] <= (vertices[i][31:16] + 3'b101 <<8) * 7'b1000000<<8;
               //fragment_y[i] = (current_triangle.v[i].y + 16'b5<<8) * 40.0f;
-              fragmentY[i] <= (((((vertices[i][47:32])+640))*1024)>>7);
+              fragmentY[i] <= (((vertices[i][47:32])+640))*16;
 				  // fragmentY[i] <= (vertices[i][47:32] + 3'b101 <<8) * 6'b101000<<8;
           end
           currentState=currentState+1;
@@ -117,11 +117,11 @@ begin
 			 for(i = 0; i < 3; i=i+1)
           begin
               //fragment_x[i] = (current_triangle.v[i].x + 5) * 64.0f;
-              fragmentX[i] <= fragmentX[i]>>7;
+              fragmentX[i] <= (fragmentX[i]>>7)*2;
 				  // + 3'b101 <<7) * 4'b1000<<7;
 				  //fragmentX[i] <= (vertices[i][31:16] + 3'b101 <<8) * 7'b1000000<<8;
               //fragment_y[i] = (current_triangle.v[i].y + 16'b5<<8) * 40.0f;
-              fragmentY[i] <= fragmentY[i]>>7;
+              fragmentY[i] <= (fragmentY[i]>>7)*2;
 				  // fragmentY[i] <= (vertices[i][47:32] + 3'b101 <<8) * 6'b101000<<8;
           end 
           currentState=currentState+1;
