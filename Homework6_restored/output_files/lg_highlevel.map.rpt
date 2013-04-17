@@ -1,5 +1,5 @@
 Analysis & Elaboration report for lg_highlevel
-Tue Apr 16 03:48:32 2013
+Tue Apr 16 20:59:49 2013
 Quartus II 32-bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
@@ -47,7 +47,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                                ;
 +------------------------------------+------------------------------------------+
-; Analysis & Elaboration Status      ; Successful - Tue Apr 16 03:48:32 2013    ;
+; Analysis & Elaboration Status      ; Successful - Tue Apr 16 20:59:49 2013    ;
 ; Quartus II 32-bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
 ; Revision Name                      ; lg_highlevel                             ;
 ; Top-level Entity Name              ; lg_highlevel                             ;
@@ -64,24 +64,30 @@ applicable agreement for further details.
 +------------------------------------+------------------------------------------+
 
 
-Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
-+-------------------------------------+
-; Parallel Compilation                ;
-+----------------------------+--------+
-; Processors                 ; Number ;
-+----------------------------+--------+
-; Number detected on machine ; 8      ;
-; Maximum allowed            ; 1      ;
-+----------------------------+--------+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     1 processor            ; 100.0%      ;
+;     2-8 processors         ;   0.0%      ;
++----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Elaboration IP Cores Summary                                                                                                                  ;
-+--------+--------------+---------+--------------+--------------+------------------------+-----------------------------------------------------------------+
-; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance        ; IP Include File                                                 ;
-+--------+--------------+---------+--------------+--------------+------------------------+-----------------------------------------------------------------+
-; Altera ; ALTPLL       ; 12.1    ; N/A          ; N/A          ; |lg_highlevel|pll:pll0 ; F:/dropbox/college/spring 2013/git/gpu/Homework6_restored/pll.v ;
-+--------+--------------+---------+--------------+--------------+------------------------+-----------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Elaboration IP Cores Summary                                                                                                                                                                                ;
++--------+--------------+---------+--------------+--------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance        ; IP Include File                                                                                                               ;
++--------+--------------+---------+--------------+--------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------+
+; Altera ; ALTPLL       ; 12.1    ; N/A          ; N/A          ; |lg_highlevel|pll:pll0 ; C:/Files/Work Files/School Files/College/Fourth Year/Spring Semester/CS 3220/Homework/Git/gpu-cs3220/Homework6_restored/pll.v ;
++--------+--------------+---------+--------------+--------------+------------------------+-------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-------------------------------------------------------------------------------+
@@ -638,9 +644,9 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Elaboration
     Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
-    Info: Processing started: Tue Apr 16 03:48:26 2013
+    Info: Processing started: Tue Apr 16 20:59:45 2013
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lg_highlevel -c lg_highlevel --analysis_and_elaboration
-Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
 Info (12021): Found 1 design units, including 1 entities, in source file gpu.v
     Info (12023): Found entity 1: Gpu
 Info (12021): Found 1 design units, including 1 entities, in source file vga_controller.v
@@ -737,7 +743,7 @@ Info (12133): Instantiated megafunction "pll:pll0|altpll:altpll_component" with 
     Info (12134): Parameter "port_extclk3" = "PORT_UNUSED"
     Info (12134): Parameter "valid_lock_multiplier" = "1"
 Info (12128): Elaborating entity "Fetch" for hierarchy "Fetch:Fetch0"
-Warning (10850): Verilog HDL warning at fetch.v(61): number of words (69) in memory file does not match the number of elements in the address range [0:255]
+Warning (10850): Verilog HDL warning at fetch.v(61): number of words (31) in memory file does not match the number of elements in the address range [0:255]
 Warning (10230): Verilog HDL assignment warning at fetch.v(159): truncated value with size 32 to match size of target (16)
 Warning (10230): Verilog HDL assignment warning at fetch.v(163): truncated value with size 32 to match size of target (16)
 Warning (10030): Net "InstMem.data_a" at fetch.v(50) has no driver or initial value, using a default initial value '0'
@@ -774,27 +780,27 @@ Warning (10230): Verilog HDL assignment warning at vertex.v(164): truncated valu
 Warning (10230): Verilog HDL assignment warning at vertex.v(183): truncated value with size 32 to match size of target (16)
 Warning (10230): Verilog HDL assignment warning at vertex.v(187): truncated value with size 32 to match size of target (16)
 Warning (10230): Verilog HDL assignment warning at vertex.v(188): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at vertex.v(204): truncated value with size 32 to match size of target (4)
 Warning (10230): Verilog HDL assignment warning at vertex.v(203): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at vertex.v(202): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at vertex.v(201): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at vertex.v(202): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at vertex.v(215): truncated value with size 32 to match size of target (4)
 Warning (10230): Verilog HDL assignment warning at vertex.v(214): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at vertex.v(213): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at vertex.v(221): truncated value with size 32 to match size of target (4)
 Warning (10230): Verilog HDL assignment warning at vertex.v(220): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at vertex.v(219): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at vertex.v(235): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at vertex.v(233): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at vertex.v(232): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at vertex.v(236): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at vertex.v(234): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at vertex.v(233): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at vertex.v(247): truncated value with size 32 to match size of target (4)
 Warning (10230): Verilog HDL assignment warning at vertex.v(246): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at vertex.v(245): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at vertex.v(253): truncated value with size 32 to match size of target (4)
 Warning (10230): Verilog HDL assignment warning at vertex.v(252): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at vertex.v(251): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at vertex.v(267): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at vertex.v(265): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at vertex.v(264): truncated value with size 32 to match size of target (5)
-Warning (10230): Verilog HDL assignment warning at vertex.v(277): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at vertex.v(268): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at vertex.v(266): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at vertex.v(265): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at vertex.v(278): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at vertex.v(286): truncated value with size 32 to match size of target (4)
 Warning (10230): Verilog HDL assignment warning at vertex.v(285): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at vertex.v(284): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at vertex.v(299): truncated value with size 32 to match size of target (5)
+Warning (10230): Verilog HDL assignment warning at vertex.v(300): truncated value with size 32 to match size of target (5)
 Warning (10030): Net "cosTable.data_a" at vertex.v(60) has no driver or initial value, using a default initial value '0'
 Warning (10030): Net "cosTable.waddr_a" at vertex.v(60) has no driver or initial value, using a default initial value '0'
 Warning (10030): Net "sinTable.data_a" at vertex.v(61) has no driver or initial value, using a default initial value '0'
@@ -840,17 +846,17 @@ Warning (10230): Verilog HDL assignment warning at pixel_gen.v(52): truncated va
 Info (12128): Elaborating entity "MultiSram" for hierarchy "MultiSram:MultiSram0"
 Warning (10230): Verilog HDL assignment warning at multi_sram.v(44): truncated value with size 32 to match size of target (18)
 Warning (12241): 7 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Info (144001): Generated suppressed messages file F:/dropbox/college/spring 2013/git/gpu/Homework6_restored/output_files/lg_highlevel.map.smsg
-Info: Quartus II 32-bit Analysis & Elaboration was successful. 0 errors, 98 warnings
-    Info: Peak virtual memory: 383 megabytes
-    Info: Processing ended: Tue Apr 16 03:48:32 2013
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:06
+Info (144001): Generated suppressed messages file C:/Files/Work Files/School Files/College/Fourth Year/Spring Semester/CS 3220/Homework/Git/gpu-cs3220/Homework6_restored/output_files/lg_highlevel.map.smsg
+Info: Quartus II 32-bit Analysis & Elaboration was successful. 0 errors, 97 warnings
+    Info: Peak virtual memory: 365 megabytes
+    Info: Processing ended: Tue Apr 16 20:59:49 2013
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
 
 
 +--------------------------------------------+
 ; Analysis & Elaboration Suppressed Messages ;
 +--------------------------------------------+
-The suppressed messages can be found in F:/dropbox/college/spring 2013/git/gpu/Homework6_restored/output_files/lg_highlevel.map.smsg.
+The suppressed messages can be found in C:/Files/Work Files/School Files/College/Fourth Year/Spring Semester/CS 3220/Homework/Git/gpu-cs3220/Homework6_restored/output_files/lg_highlevel.map.smsg.
 
 

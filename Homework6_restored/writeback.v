@@ -159,8 +159,8 @@ assign O_Vertex =
       ((I_Opcode == `OP_SETVERTEX ) ? (I_VALUOut) :
        (I_Opcode == `OP_SETCOLOR) ? (I_VALUOut) :
 		 (I_Opcode == `OP_ROTATE) ? (I_VALUOut) :
-       (I_Opcode == `OP_TRANSLATE) ? (I_DestValue) :
-       (I_Opcode == `OP_SCALE) ? (I_DestValue) :
+       (I_Opcode == `OP_TRANSLATE) ? (I_VALUOut) :
+       (I_Opcode == `OP_SCALE) ? (I_VALUOut) :
        (64'h0)
       ) : (1'b0)
     ) : (1'b0);
