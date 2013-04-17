@@ -34,24 +34,24 @@ reg [3:0] currentVertex;
 reg [8:0] currentState;
 reg [`VREG_WIDTH-1:0] color [0:8];
 
-reg [`REG_WIDTH-1:0] edge1[0:2];
-reg [`REG_WIDTH-1:0] edge2[0:2];
-reg [`REG_WIDTH-1:0] edge3[0:2];
+reg signed[`REG_WIDTH-1:0] edge1[0:2];
+reg signed[`REG_WIDTH-1:0] edge2[0:2];
+reg signed[`REG_WIDTH-1:0] edge3[0:2];
 
-reg [`REG_WIDTH-1:0] fragmentX[0:2];
-reg [`REG_WIDTH-1:0] fragmentY[0:2];
+reg signed[`REG_WIDTH-1:0] fragmentX[0:2];
+reg signed[`REG_WIDTH-1:0] fragmentY[0:2];
 
-reg [`REG_WIDTH-1:0] fragmentStartX;
-reg [`REG_WIDTH-1:0] fragmentEndX;
-reg [`REG_WIDTH-1:0] fragmentStartY;
-reg [`REG_WIDTH-1:0] fragmentEndY;
+reg signed[`REG_WIDTH-1:0] fragmentStartX;
+reg signed[`REG_WIDTH-1:0] fragmentEndX;
+reg signed[`REG_WIDTH-1:0] fragmentStartY;
+reg signed[`REG_WIDTH-1:0] fragmentEndY;
 
 //reg [`REG_WIDTH-1:0] fragmentBuffer[255999:0]; // 640 x 400
 
-reg [`REG_WIDTH-1:0] min_x;
-reg [`REG_WIDTH-1:0] max_x;
-reg [`REG_WIDTH-1:0] min_y;
-reg [`REG_WIDTH-1:0] max_y;
+reg signed[`REG_WIDTH-1:0] min_x;
+reg signed[`REG_WIDTH-1:0] max_x;
+reg signed[`REG_WIDTH-1:0] min_y;
+reg signed[`REG_WIDTH-1:0] max_y;
 
 reg [8:0] i;
 reg [8:0] j;
@@ -107,23 +107,26 @@ begin
        //edgefunction edge_0 = edgefunctionsetup(fragment_x[2], fragment_y[2], fragment_x[1], fragment_y[1]);
           edge1[0] <= fragmentY[2] - fragmentY[1];
           edge1[1] <= fragmentX[1] - fragmentX[2];
-          edge1[2] <= ((9'b111111111<<7 * edge1[0]) * fragmentX[1]) + ((9'b111111111<<7 * edge1[1]) * fragmentY[1]);
+          
           
        //edgefunction edge_1 = edgefunctionsetup(fragment_x[0], fragment_y[0], fragment_x[2], fragment_y[2]);
           edge2[0] <= fragmentY[0] - fragmentY[2];
           edge2[1] <= fragmentX[2] - fragmentX[0];
-          edge2[2] <= ((9'b111111111<<7 * edge2[0]) * fragmentX[2]) + ((9'b111111111<<7 * edge2[1]) * fragmentY[2]);
+          
             
        //edgefunction edge_2 = edgefunctionsetup(fragment_x[1], fragment_y[1], fragment_x[0], fragment_y[0]);
           edge3[0] <= fragmentY[1] - fragmentY[0];
           edge3[1] <= fragmentX[0] - fragmentX[1];
-          edge3[2] <= ((9'b111111111<<7 * edge3[0]) * fragmentX[0]) + ((9'b111111111<<7 * edge3[1]) * fragmentY[0]);
+          
        
           currentState=currentState+1;
       end
-      
       else if(currentState == 2)
       begin
+		
+			edge1[2] <= ((9'b111111111<<7 * edge1[0]) * fragmentX[1]) + ((9'b111111111<<7 * edge1[1]) * fragmentY[1]);
+			edge2[2] <= ((9'b111111111<<7 * edge2[0]) * fragmentX[2]) + ((9'b111111111<<7 * edge2[1]) * fragmentY[2]);
+			edge3[2] <= ((9'b111111111<<7 * edge3[0]) * fragmentX[0]) + ((9'b111111111<<7 * edge3[1]) * fragmentY[0]);
        // float min_x = fragment_x[0];
           min_x <= fragmentX[0];
       //  float max_x = fragment_x[0];
@@ -213,7 +216,7 @@ begin
 		 //    float g = current_triangle.v[0].g;
 		//     float b = current_triangle.v[0].b;
 		 //    float a = current_triangle.v[0].a;
-				
+			currentState = currentState + 1'b1;	
 		 end    
         
         //Traverse
