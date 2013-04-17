@@ -68,7 +68,7 @@ reg [8:0] j;
 
 initial
 begin
-	 negOne = -128;
+	 negOne = -1;
     is_setvertex = 0;
     is_startprimitive = 0;
     is_endprimitive = 0;
@@ -103,17 +103,30 @@ begin
           for(i = 0; i < 3; i=i+1)
           begin
               //fragment_x[i] = (current_triangle.v[i].x + 5) * 64.0f;
-              fragmentX[i] <= (vertices[i][31:16]);
+              fragmentX[i] <= (((((vertices[i][31:16])+640))*2048)>>7);
 				  // + 3'b101 <<7) * 4'b1000<<7;
 				  //fragmentX[i] <= (vertices[i][31:16] + 3'b101 <<8) * 7'b1000000<<8;
               //fragment_y[i] = (current_triangle.v[i].y + 16'b5<<8) * 40.0f;
-              fragmentY[i] <= (vertices[i][47:32]);
-				  // + 3'b101 <<7) * 3'b101<<7;
+              fragmentY[i] <= (((((vertices[i][47:32])+640))*1024)>>7);
 				  // fragmentY[i] <= (vertices[i][47:32] + 3'b101 <<8) * 6'b101000<<8;
           end
           currentState=currentState+1;
       end
-      else if(currentState == 1)
+		else if(currentState == 1)
+		begin
+			 for(i = 0; i < 3; i=i+1)
+          begin
+              //fragment_x[i] = (current_triangle.v[i].x + 5) * 64.0f;
+              fragmentX[i] <= fragmentX[i]>>7;
+				  // + 3'b101 <<7) * 4'b1000<<7;
+				  //fragmentX[i] <= (vertices[i][31:16] + 3'b101 <<8) * 7'b1000000<<8;
+              //fragment_y[i] = (current_triangle.v[i].y + 16'b5<<8) * 40.0f;
+              fragmentY[i] <= fragmentY[i]>>7;
+				  // fragmentY[i] <= (vertices[i][47:32] + 3'b101 <<8) * 6'b101000<<8;
+          end 
+          currentState=currentState+1;
+		end
+      else if(currentState == 2)
       begin
        //edgefunction edge_0 = edgefunctionsetup(fragment_x[2], fragment_y[2], fragment_x[1], fragment_y[1]);
           edge1[0] <= fragmentY[2] - fragmentY[1];
@@ -132,9 +145,9 @@ begin
        
           currentState=currentState+1;
       end
-		else if(currentState == 2)
+		else if(currentState == 3)
 		begin
-			if(edge1[0][15] == 1'b0)
+		/**	if(edge1[0][15] == 1'b0)
 			begin
 				temptempEdge1[0] <= ((negOne * edge1[0])>>>7);
 			end
@@ -186,14 +199,18 @@ begin
 			else
 			begin
 				temptempEdge3[1] <= ((negOne * edge3[1])>>7);
-			end
-			
-			
+			end **/
+			temptempEdge1[0] <= ((negOne * edge1[0]));
+			temptempEdge1[1] <= ((negOne * edge1[1]));
+			temptempEdge2[0] <= ((negOne * edge2[0]));
+			temptempEdge2[1] <= ((negOne * edge2[1]));
+			temptempEdge3[0] <= ((negOne * edge3[0]));
+			temptempEdge3[1] <= ((negOne * edge3[1]));
 			currentState=currentState+1;
 		end
-		else if(currentState == 3)
-		begin 
-			if((temptempEdge1[0][15] == 1'b1 && fragmentX[1][15]==1'b1) || (temptempEdge1[0][15] == 1'b0 && fragmentX[1][15]==1'b0))
+		else if(currentState == 4)
+		 begin 
+		/**	if((temptempEdge1[0][15] == 1'b1 && fragmentX[1][15]==1'b1) || (temptempEdge1[0][15] == 1'b0 && fragmentX[1][15]==1'b0))
 			begin
 				tempEdge1[0] <= ((temptempEdge1[0]* fragmentX[1])>>7);
 			end
@@ -245,10 +262,16 @@ begin
 			else
 			begin
 				tempEdge3[1] <= ((temptempEdge3[1]* fragmentY[0])>>>7);
-			end	
+			end	 **/
+			tempEdge1[0] <= ((temptempEdge1[0]* fragmentX[1]));
+			tempEdge1[1] <= ((temptempEdge1[1]* fragmentY[1]));
+			tempEdge2[0] <= ((temptempEdge2[0]* fragmentX[2]));
+			tempEdge2[1] <= ((temptempEdge2[1]* fragmentY[2]));
+			tempEdge3[0] <= ((temptempEdge3[0]* fragmentX[0]));
+			tempEdge3[1] <= ((temptempEdge3[1]* fragmentY[0]));
 			currentState=currentState+1;
 		end
-      else if(currentState == 4)
+      else if(currentState == 5)
       begin
 			edge1[2] <= tempEdge1[0] + tempEdge1[1];
 			edge2[2] <= tempEdge2[0] + tempEdge2[1];
@@ -264,7 +287,7 @@ begin
         currentState=currentState+1;
       end
       
-       else if(currentState >= 5 && currentState <= 7)
+       else if(currentState >= 6 && currentState <= 8)
        begin
      //   for(int i = 1; i < 3; i++){
      //    for(i=1; i < 3; i++)
@@ -304,7 +327,7 @@ begin
         end
 
     
-		 else if(currentState == 8)
+		 else if(currentState == 9)
 		 begin
 		 //    if(min_x < 0){ min_x = 0; }
 		 //    if(max_x >= 639){ max_x = 639;}
@@ -314,7 +337,7 @@ begin
 				 if(min_x < 0) begin
 					  min_x <= 0;
 				 end
-				 if(max_x >= 639) begin
+			 if(max_x >= 639) begin
 					  max_x <= 639;
 				 end
 				 if(min_y < 0) begin
@@ -326,7 +349,7 @@ begin
 			  currentState=currentState+1;
 		 end
     
-		 else if(currentState == 9)
+		 else if(currentState == 10)
 		 begin
 		 //    fragment_start_x = min_x;
 		 //    fragment_end_x = max_x;
@@ -346,7 +369,7 @@ begin
 		 end    
         
         //Traverse
-	  else if(currentState == 10)
+	  else if(currentState == 11)
 	  begin
  //    for(int i = fragment_start_y; i < fragment_end_y; i++){
 		 i = fragmentStartY;
@@ -354,7 +377,7 @@ begin
 		 currentState = currentState + 1'b1;
 	  end
 	  
-	  else if(currentState == 11)
+	  else if(currentState == 12)
 	  begin		
 			if(((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0 || edge1[0] > 0 || edge1[1] > 0)&&
 						((edge2[0]*(j) + edge2[1]*(i) + edge2[2]) > 0 || edge2[0] > 0 || edge2[1] > 0)&&

@@ -162,9 +162,9 @@ begin
         if (I_ALUOut[9:0] == `ADDRHEX)
           HexOut <= I_DestValue;
         else if (I_ALUOut[9:0] == `ADDRLEDR)
-          LedROut <= I_DestValue;
+          LedROut <= I_DestValue[9:0];
         else if (I_ALUOut[9:0] == `ADDRLEDG)
-          LedGOut <= I_DestValue;
+          LedGOut <= I_DestValue[7:0];
       end // if (I_Opcode == `OP_STW) begin
     end // if ((I_FetchStall == 1'b0) && (I_DepStall == 1'b0)) begin
   end // if (I_LOCK == 0) begin
