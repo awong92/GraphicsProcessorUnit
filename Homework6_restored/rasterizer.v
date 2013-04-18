@@ -9,7 +9,13 @@ module Rasterizer(
 	 O_ColorOut,
 	 O_ADDROut,
     O_LOCK,
-	 O_FRAMESTALL
+	 O_FRAMESTALL,
+	 O_LEDR,
+    O_LEDG,
+    O_HEX0,
+    O_HEX1,
+    O_HEX2,
+    O_HEX3
 );
 input I_CLOCK;
 input I_LOCK;
@@ -28,6 +34,12 @@ reg is_setvertex;
 reg is_startprimitive;
 reg is_endprimitive;
 reg is_draw;
+
+// Outputs for debugging
+output [9:0] O_LEDR;
+output [7:0] O_LEDG;
+output [6:0] O_HEX0, O_HEX1, O_HEX2, O_HEX3;
+
 
 reg [`VREG_WIDTH-1:0] vertices [0:8];
 reg [3:0] currentVertex;
@@ -104,13 +116,8 @@ begin
 			 O_FRAMESTALL <= 1;	
           for(i = 0; i < 3; i=i+1)
           begin
-              //fragment_x[i] = (current_triangle.v[i].x + 5) * 64.0f;
               fragmentX[i] <= (((vertices[i][31:16])+640))<<5;
-				  // + 3'b101 <<7) * 4'b1000<<7;
-				  //fragmentX[i] <= (vertices[i][31:16] + 3'b101 <<8) * 7'b1000000<<8;
-              //fragment_y[i] = (current_triangle.v[i].y + 16'b5<<8) * 40.0f;
               fragmentY[i] <= (((vertices[i][47:32])+640))<<4;
-				  // fragmentY[i] <= (vertices[i][47:32] + 3'b101 <<8) * 6'b101000<<8;
           end
           currentState=currentState+1;
       end
@@ -118,13 +125,8 @@ begin
 		begin
 			 for(i = 0; i < 3; i=i+1)
           begin
-              //fragment_x[i] = (current_triangle.v[i].x + 5) * 64.0f;
               fragmentX[i] <= (fragmentX[i]>>7)<<1;
-				  // + 3'b101 <<7) * 4'b1000<<7;
-				  //fragmentX[i] <= (vertices[i][31:16] + 3'b101 <<8) * 7'b1000000<<8;
-              //fragment_y[i] = (current_triangle.v[i].y + 16'b5<<8) * 40.0f;
               fragmentY[i] <= (fragmentY[i]>>7)<<1;
-				  // fragmentY[i] <= (vertices[i][47:32] + 3'b101 <<8) * 6'b101000<<8;
           end 
           currentState=currentState+1;
 		end
@@ -149,59 +151,6 @@ begin
       end
 		else if(currentState == 3)
 		begin
-		/**	if(edge1[0][15] == 1'b0)
-			begin
-				temptempEdge1[0] <= ((negOne * edge1[0])>>>7);
-			end
-			else
-			begin
-				temptempEdge1[0] <= ((negOne * edge1[0])>>7);
-			end
-			
-			if(edge1[1][15] == 1'b0)
-			begin
-				temptempEdge1[1] <= ((negOne * edge1[1])>>>7);
-			end
-			else
-			begin
-				temptempEdge1[1] <= ((negOne * edge1[1])>>7);
-			end
-			
-			if(edge2[0][15] == 1'b0)
-			begin
-					temptempEdge2[0] <= ((negOne * edge2[0])>>>7);
-			end
-			else
-			begin
-					temptempEdge2[0] <= ((negOne * edge2[0])>>7);
-			end
-			
-			if(edge2[1][15] == 1'b0)
-			begin
-				temptempEdge2[1] <= ((negOne * edge2[1])>>>7);
-			end
-			else
-			begin
-				temptempEdge2[1] <= ((negOne * edge2[1])>>7);
-			end
-			
-			if(edge3[0][15] == 1'b0)
-			begin
-				temptempEdge3[0] <= ((negOne * edge3[0])>>>7);
-			end
-			else
-			begin
-				temptempEdge3[0] <= ((negOne * edge3[0])>>7);
-			end
-			
-			if(edge3[1][15] == 1'b0)
-			begin
-				temptempEdge3[1] <= ((negOne * edge3[1])>>>7);
-			end
-			else
-			begin
-				temptempEdge3[1] <= ((negOne * edge3[1])>>7);
-			end **/
 			temptempEdge1[0] <= ((negOne * edge1[0]));
 			temptempEdge1[1] <= ((negOne * edge1[1]));
 			temptempEdge2[0] <= ((negOne * edge2[0]));
@@ -212,59 +161,6 @@ begin
 		end
 		else if(currentState == 4)
 		 begin 
-		/**	if((temptempEdge1[0][15] == 1'b1 && fragmentX[1][15]==1'b1) || (temptempEdge1[0][15] == 1'b0 && fragmentX[1][15]==1'b0))
-			begin
-				tempEdge1[0] <= ((temptempEdge1[0]* fragmentX[1])>>7);
-			end
-			else
-			begin
-				tempEdge1[0] <= ((temptempEdge1[0]* fragmentX[1])>>>7);
-			end
-			
-			if((temptempEdge1[1][15] == 1'b1 && fragmentY[1][15] ==1'b1) || (temptempEdge1[1][15] == 1'b0 && fragmentY[1][15] ==1'b0))
-			begin
-				tempEdge1[1] <= ((temptempEdge1[1]* fragmentY[1])>>7);
-			end
-			else
-			begin
-				tempEdge1[1] <= ((temptempEdge1[1]* fragmentY[1])>>>7);
-			end
-			
-			if((temptempEdge2[0][15] == 1'b1 && fragmentX[2][15]==1'b1) || (temptempEdge2[0][15] == 1'b0 && fragmentX[2][15]==1'b0))
-			begin
-				tempEdge2[0] <= ((temptempEdge2[0]* fragmentX[2])>>7);
-			end
-			else
-			begin
-				tempEdge2[0] <= ((temptempEdge2[0]* fragmentX[2])>>>7);
-			end
-			
-			if((temptempEdge2[1][15] == 1'b1 && fragmentY[2][15]==1'b1) || (temptempEdge2[1][15] == 1'b0 && fragmentY[2][15]==1'b0))
-			begin
-				tempEdge2[1] <= ((temptempEdge2[1]* fragmentY[2])>>7);
-			end
-			else
-			begin
-				tempEdge2[1] <= ((temptempEdge2[1]* fragmentY[2])>>>7);
-			end
-			
-			if((temptempEdge3[0][15] == 1'b1 && fragmentX[0][15]==1'b1) || (temptempEdge3[0][15] == 1'b0 && fragmentX[0][15]==1'b0))
-			begin
-				tempEdge3[0] <= ((temptempEdge3[0]* fragmentX[0])>>7);
-			end
-			else
-			begin
-				tempEdge3[0] <= ((temptempEdge3[0]* fragmentX[0])>>>7);
-			end
-			
-			if((temptempEdge3[1][15] == 1'b1 && fragmentY[0][15]==1'b1) || (temptempEdge3[1][15] == 1'b0 && fragmentY[0][15]==1'b0))
-			begin
-				tempEdge3[1] <= ((temptempEdge3[1]* fragmentY[0])>>7);
-			end
-			else
-			begin
-				tempEdge3[1] <= ((temptempEdge3[1]* fragmentY[0])>>>7);
-			end	 **/
 			tempEdge1[0] <= ((temptempEdge1[0]* fragmentX[1]));
 			tempEdge1[1] <= ((temptempEdge1[1]* fragmentY[1]));
 			tempEdge2[0] <= ((temptempEdge2[0]* fragmentX[2]));
@@ -291,39 +187,24 @@ begin
       
        else if(currentState >= 6 && currentState <= 8)
        begin
-     //   for(int i = 1; i < 3; i++){
-     //    for(i=1; i < 3; i++)
            for(i=1; i<3; i=i+1)
             begin
-     //       if(min_x > fragment_x[i]){
-     //           min_x = fragment_x[i];
-     //       }
               if(min_x > fragmentX[i])
               begin
                    min_x <= fragmentX[i];
               end
-     //       if(max_x < fragment_x[i]){
-     //           max_x = fragment_x[i];
-     //       }
               if(max_x < fragmentX[i])
               begin
                    max_x <= fragmentX[i];
               end
-     //       if(min_y > fragment_y[i]){
-     //           min_y = fragment_y[i];
-     //       }
               if(min_y > fragmentY[i])
               begin
                    min_y <= fragmentY[i];
               end
-      //      if(max_y < fragment_y[i]){
-      //          max_y = fragment_y[i];
-      //      }
               if(max_y < fragmentY[i])
               begin
                    max_y <= fragmentY[i];
               end
-     //   }
             end
             currentState=currentState+1;
         end
@@ -331,49 +212,33 @@ begin
     
 		 else if(currentState == 9)
 		 begin
-		 //    if(min_x < 0){ min_x = 0; }
-		 //    if(max_x >= 639){ max_x = 639;}
-		 //    if(min_y < 0){ min_y = 0;}
-		 //    if(max_y >= 399){ max_y = 399;}
-		 
-				 if(min_x < 0) begin
-					  min_x <= 0;
-				 end
-			 if(max_x >= 639) begin
-					  max_x <= 639;
-				 end
-				 if(min_y < 0) begin
-					  min_y <= 0;
-				 end
-				 if(max_y >= 399) begin
-					  max_y <= 399;
-				 end
+			 if(min_x < 0) begin
+				  min_x <= 0;
+			 end
+			if(max_x >= 639) begin
+				  max_x <= 639;
+			 end
+			 if(min_y < 0) begin
+				  min_y <= 0;
+			 end
+			 if(max_y >= 399) begin
+				  max_y <= 399;
+			 end
 			  currentState=currentState+1;
 		 end
     
 		 else if(currentState == 10)
 		 begin
-		 //    fragment_start_x = min_x;
-		 //    fragment_end_x = max_x;
-		  //   fragment_start_y = min_y;
-		  //   fragment_end_y = max_y;
 				fragmentStartX <= min_x;
 				fragmentEndX   <= max_x;
 				fragmentStartY <= min_y;
 				fragmentEndY   <= max_y;
-		 
-		 //    float depth = current_triangle.v[0].z;
-		//     float r = current_triangle.v[0].r;
-		 //    float g = current_triangle.v[0].g;
-		//     float b = current_triangle.v[0].b;
-		 //    float a = current_triangle.v[0].a;
 			currentState = currentState + 1'b1;	
 		 end    
         
         //Traverse
 	  else if(currentState == 11)
 	  begin
- //    for(int i = fragment_start_y; i < fragment_end_y; i++){
 		 i = fragmentStartY;
 		 j = fragmentStartX;
 		 currentState = currentState + 1'b1;
@@ -385,7 +250,6 @@ begin
 						((edge2[0]*(j) + edge2[1]*(i) + edge2[2]) > 0 || edge2[0] > 0 || edge2[1] > 0)&&
 						((edge3[0]*(j) + edge3[1]*(i) + edge3[2]) > 0 || edge3[0] > 0 || edge3[1] > 0)) 
 			begin
-			 //fragmentBuffer[i*640+j] <= color[currentState];
 			 O_ADDROut <= i*640*j;
 			 O_ColorOut <= color[currentTriangle];
 			end
@@ -409,4 +273,44 @@ begin
 	  end       
   end
 end
+
+
+/////////////////////////////////////////
+// ## Note ##
+// Simple implementation of Memory-mapped I/O
+// - The value stored at dedicated location will be expressed 
+//   by the corresponding H/W.
+//   - LEDR: Address 1020 (0x3FC)
+//   - LEDG: Address 1021 (0x3FD)
+//   - HEX : Address 1022 (0x3FE)
+/////////////////////////////////////////
+// Create and connect HEX register 
+reg [15:0] HexOut;
+SevenSeg sseg0(.OUT(O_HEX3), .IN(HexOut[15:12]));
+SevenSeg sseg1(.OUT(O_HEX2), .IN(HexOut[11:8]));
+SevenSeg sseg2(.OUT(O_HEX1), .IN(HexOut[7:4]));
+SevenSeg sseg3(.OUT(O_HEX0), .IN(HexOut[3:0]));
+
+// Create and connect LEDR, LEDG registers 
+reg [9:0] LedROut;
+reg [7:0] LedGOut;
+
+always @(negedge I_CLOCK)
+begin
+  if (I_LOCK == 0) begin
+    HexOut <= 16'hDEAD;
+    LedGOut <= 8'b11111111;
+    LedROut <= 10'b1111111111;
+  end else begin // if (I_LOCK == 0) begin
+
+	  HexOut <= I_Opcode;
+	  LedGOut <= i;
+	  LedROut <= currentState;
+  end // if (I_LOCK == 0) begin
+end // always @(negedge I_CLOCK)
+
+assign O_LEDR = LedROut;
+assign O_LEDG = LedGOut;
+
+
 endmodule

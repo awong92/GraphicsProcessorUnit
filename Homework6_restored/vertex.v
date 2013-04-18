@@ -38,6 +38,7 @@ reg is_endprimitive;
 reg is_draw; 
 reg is_flush;
 
+
 reg [`DATA_WIDTH-1:0] matrixTemp[0:`REG_WIDTH-1]; 
 reg [`DATA_WIDTH-1:0] matrixBackup[0:`REG_WIDTH-1]; 
 
@@ -69,42 +70,73 @@ begin
   xres = 0;
   yres = 0;
   result = 0;
-  for(j = 0; j < 4; j = j+1)begin
-	  for(k = 0; k < 4; k=k+1)begin
-			matrixCurrent[4*j+k] = 0;
-			if(j == k) begin
-				 matrixCurrent[4*j+k] = 1;
-			end
-	  end
- end
+ matrixCurrent[0] = 1;
+ matrixCurrent[1] = 0;
+ matrixCurrent[2] = 0;
+ matrixCurrent[3] = 0;
+ matrixCurrent[4] = 0;
+ matrixCurrent[5] = 1;
+ matrixCurrent[6] = 0;
+ matrixCurrent[7] = 0;
+ matrixCurrent[8] = 0;
+ matrixCurrent[9] = 0;
+ matrixCurrent[10] = 1;
+ matrixCurrent[11] = 0;
+ matrixCurrent[12] = 0;
+ matrixCurrent[13] = 0;
+ matrixCurrent[14] = 0;
+ matrixCurrent[15] = 1;
  
- ColorCurrent <= 0;
- for(j = 0; j < 4; j = j+1)begin
-	  for(k = 0; k < 4; k=k+1)begin
-			matrixPast[4*j+k] = 0;
-			if(j == k) begin
-				 matrixPast[4*j+k] = 1;
-			end
-	  end
- end
+ matrixPast[0] = 1;
+ matrixPast[1] = 0;
+ matrixPast[2] = 0;
+ matrixPast[3] = 0;
+ matrixPast[4] = 0;
+ matrixPast[5] = 1;
+ matrixPast[6] = 0;
+ matrixPast[7] = 0;
+ matrixPast[8] = 0;
+ matrixPast[9] = 0;
+ matrixPast[10] = 1;
+ matrixPast[11] = 0;
+ matrixPast[12] = 0;
+ matrixPast[13] = 0;
+ matrixPast[14] = 0;
+ matrixPast[15] = 1;
  
-  for(j = 0; j < 4; j = j+1)begin
-	  for(k = 0; k < 4; k=k+1)begin
-			matrixBackup[4*j+k] = 0;
-			if(j == k) begin
-				 matrixBackup[4*j+k] = 1;
-			end
-	  end
- end
+ matrixTemp[0] = 1;
+ matrixTemp[1] = 0;
+ matrixTemp[2] = 0;
+ matrixTemp[3] = 0;
+ matrixTemp[4] = 0;
+ matrixTemp[5] = 1;
+ matrixTemp[6] = 0;
+ matrixTemp[7] = 0;
+ matrixTemp[8] = 0;
+ matrixTemp[9] = 0;
+ matrixTemp[10] = 1;
+ matrixTemp[11] = 0;
+ matrixTemp[12] = 0;
+ matrixTemp[13] = 0;
+ matrixTemp[14] = 0;
+ matrixTemp[15] = 1;
  
-  for(j = 0; j < 4; j = j+1)begin
-	  for(k = 0; k < 4; k=k+1)begin
-			matrixTemp[4*j+k] = 0;
-			if(j == k) begin
-				 matrixTemp[4*j+k] = 1;
-			end
-	  end
- end
+  matrixPast[0] = 1;
+ matrixBackup[1] = 0;
+ matrixBackup[2] = 0;
+ matrixBackup[3] = 0;
+ matrixBackup[4] = 0;
+ matrixBackup[5] = 1;
+ matrixBackup[6] = 0;
+ matrixBackup[7] = 0;
+ matrixBackup[8] = 0;
+ matrixBackup[9] = 0;
+ matrixBackup[10] = 1;
+ matrixBackup[11] = 0;
+ matrixBackup[12] = 0;
+ matrixBackup[13] = 0;
+ matrixBackup[14] = 0;
+ matrixBackup[15] = 1;
  
  ColorPast <= 0;
   $readmemh("cosine.hex", cosTable);
@@ -133,14 +165,14 @@ begin
              xres = 0;
              yres = 0;
              
-             xres = xres + matrixCurrent[4*0+ 0] * I_VRegIn[31:16];
-             xres = xres + matrixCurrent[0 + 1] * I_VRegIn[31:16];
-             xres = xres + matrixCurrent[0 + 3] * 1;
+             xres = xres + matrixCurrent[0] * I_VRegIn[31:16];
+             xres = xres + matrixCurrent[1] * I_VRegIn[31:16];
+             xres = xres + matrixCurrent[3];
              O_VOut[31:16] = xres;
 
-             yres = yres + matrixCurrent[4*1 + 0] * I_VRegIn[47:32];
-             yres = yres + matrixCurrent[4*1 + 1] * I_VRegIn[47:32];
-             yres = yres + matrixCurrent[4*1 + 3] * 1;
+             yres = yres + matrixCurrent[4] * I_VRegIn[47:32];
+             yres = yres + matrixCurrent[4 + 1] * I_VRegIn[47:32];
+             yres = yres + matrixCurrent[4 + 3];
              O_VOut[47:32] = yres;
 
              O_VOut[15:0] = I_VRegIn[15:0];
@@ -190,7 +222,7 @@ begin
 					 matrixTemp[4*0 + 0] = cosTable[angle];
 					 matrixTemp[4*0 + 1] = sinTable[angle];
 					 matrixTemp[4*1 + 1] = cosTable[angle]; 
-					 matrixTemp[4*1 + 0] = (9'b111111111<<7)* sinTable[angle];
+					 matrixTemp[4*1 + 0] = -1* sinTable[angle];
 					 
 					 /*if (I_VRegIn[15] == 1) begin
 						matrixTemp[4*1 + 0][15] = 0;
@@ -259,7 +291,7 @@ begin
                 end
 
                 matrixTemp[0] = I_VRegIn[31:16];
-                matrixTemp[4*1+1] = I_VRegIn[47:32];
+                matrixTemp[5] = I_VRegIn[47:32];
 
                 //Matrix Multiply
                 for(i = 0; i < 4; i=i+1)begin
@@ -282,15 +314,22 @@ begin
             end
 
             if (I_Opcode==`OP_LOADIDENTITY) begin
-                for(j = 0; j < 4; j = j+1)begin
-                    for(k = 0; k < 4; k=k+1)begin
-                        matrixCurrent[4*j+k] = 0;
-                        if(j == k) begin
-                            matrixCurrent[4*j+k] = 1;
-                        end
-                    end
-                end
-                
+                matrixCurrent[0] = 1;
+					 matrixCurrent[1] = 0;
+					 matrixCurrent[2] = 0;
+					 matrixCurrent[3] = 0;
+					 matrixCurrent[4] = 0;
+					 matrixCurrent[5] = 1;
+					 matrixCurrent[6] = 0;
+					 matrixCurrent[7] = 0;
+					 matrixCurrent[8] = 0;
+					 matrixCurrent[9] = 0;
+					 matrixCurrent[10] = 1;
+					 matrixCurrent[11] = 0;
+					 matrixCurrent[12] = 0;
+					 matrixCurrent[13] = 0;
+					 matrixCurrent[14] = 0;
+					 matrixCurrent[15] = 1;
                 ColorCurrent <= 0;
             end
 
@@ -305,6 +344,5 @@ begin
 
   end // if (I_LOCK == 1'b1)
 end // always @(negedge I_CLOCK)
-
 
 endmodule // module Decode

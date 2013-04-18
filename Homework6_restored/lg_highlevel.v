@@ -68,6 +68,7 @@ output        SRAM_WE_N; // SRAM Write Enable
 output        SRAM_CE_N; // SRAM Chip Enable
 output        SRAM_OE_N; // SRAM Output Enable
 
+/**
 /////////////////////////////////////////
 // TESTBENCH SIGNAL DECLARATION GOES HERE
 /////////////////////////////////////////
@@ -80,7 +81,7 @@ end
 
 always begin 
   #20 test_clock = ~test_clock;
-end
+end **/
 
 /////////////////////////////////////////
 // WIRE/REGISTER DECLARATION GOES HERE
@@ -152,15 +153,17 @@ wire [18:0] ADDR_RAST;
 wire LOCK_RG;
 wire FRAMESTALL;
 
+
 /////////////////////////////////////////
 // PLL MODULE GOES HERE 
 /////////////////////////////////////////
 //
 pll pll0 (
-  .inclk0 (CLOCK_50),
+  .inclk0 (CLOCK_27[0]),
   .c0     (pll_c0),
   .locked (pll_locked)
 );
+
 
 /////////////////////////////////////////
 // CPU PIPELINE MODULES GO HERE 
@@ -252,13 +255,7 @@ Memory Memory0 (
   .O_MemOut(MemOut_MW),
   .O_DestRegIdx(DestRegIdx_MW),
   .O_DestValue(DestValue_MW),
-  .O_DepStall(DepStall_MW),
-  .O_LEDR(LEDR),
-  .O_LEDG(LEDG),
-  .O_HEX0(HEX0),
-  .O_HEX1(HEX1),
-  .O_HEX2(HEX2),
-  .O_HEX3(HEX3)
+  .O_DepStall(DepStall_MW)
 );
 
 Writeback Writeback0 (
@@ -304,7 +301,13 @@ Rasterizer Rasterizer0 (
   .O_ColorOut(COLOR),
   .O_ADDROut(ADDR_RAST),
   .O_LOCK(LOCK_RG),
-  .O_FRAMESTALL(FRAMESTALL)
+  .O_FRAMESTALL(FRAMESTALL),
+  .O_LEDR(LEDR),
+  .O_LEDG(LEDG),
+  .O_HEX0(HEX0),
+  .O_HEX1(HEX1),
+  .O_HEX2(HEX2),
+  .O_HEX3(HEX3)
 );
 /////////////////////////////////////////
 // TODO
@@ -326,8 +329,8 @@ Rasterizer Rasterizer0 (
 /////////////////////////////////////////
 //
 // VGA Connector Wires
-wire [17:0] mVGA_ADDR;
-wire [15:0] mVGA_DATA;
+wire [17:0]     mVGA_ADDR;
+wire [15:0]     mVGA_DATA;
 wire [9:0]  mVGA_X;
 wire [9:0]  mVGA_Y;
 wire [3:0]  mVGA_R;
@@ -337,29 +340,15 @@ wire [3:0]  mVGA_B;
 // GPU Connector Wires
 wire        mGPU_READ;
 wire        mGPU_WRITE;
-wire [17:0] mGPU_ADDR;
-wire [15:0] mGPU_WRITE_DATA;
-//wire [17:0] mGPU_READ_ADDR;
-//wire [15:0] mGPU_READ_DATA;
-Gpu Gpu0 (
-  .I_CLK          (pll_c0),
-  .I_RST_N        (KEY[0]),
-  .I_VIDEO_ON     (VIDEO_ON),
-  .I_GPU_ADDR      (ADDR_RAST),
-  // GPU-SRAM interface
-  .I_GPU_DATA     (mGPU_READ_DATA),
-  .I_GPU_COLOR    (COLOR),
-  .O_GPU_DATA     (mGPU_WRITE_DATA),
-  .O_GPU_ADDR     (mGPU_ADDR),
-  .O_GPU_READ     (mGPU_READ),
-  .O_GPU_WRITE    (mGPU_WRITE)  
-);
+wire [17:0]     mGPU_ADDR;
+wire [15:0]     mGPU_WRITE_DATA;
+wire [15:0]     mGPU_READ_DATA;
 
 VgaController VgaController0 (
   // Control Signal
-  .I_CLK          (pll_c0),
+  .I_CLK          (CLOCK_27[0]),
   .I_RST_N        (KEY[0]),
-  // Host Side              
+  // Host Side                          
   .I_RED          (mVGA_R),
   .I_GREEN        (mVGA_G),
   .I_BLUE         (mVGA_B),
@@ -373,11 +362,23 @@ VgaController VgaController0 (
   .O_VGA_V_SYNC   (VGA_VS)
 );
 
-
+Gpu Gpu0 (
+  .I_CLK          (CLOCK_27[0]),
+  .I_RST_N        (KEY[0]),
+  .I_VIDEO_ON     (VIDEO_ON),
+  .I_GPU_COLOR		(COLOR),
+  .I_GPU_ADDR		(ADDR_RAST),
+  // GPU-SRAM interface
+  .I_GPU_DATA     (mGPU_READ_DATA),
+  .O_GPU_DATA     (mGPU_WRITE_DATA),
+  .O_GPU_ADDR     (mGPU_ADDR),
+  .O_GPU_READ     (mGPU_READ),
+  .O_GPU_WRITE    (mGPU_WRITE)  
+);
 
 PixelGen PixelGen0 (
   // Control Signal
-  .I_CLK          (pll_c0),
+  .I_CLK          (CLOCK_27[0]),
   .I_RST_N        (KEY[0]),
   // 
   .I_DATA         (mVGA_DATA),
