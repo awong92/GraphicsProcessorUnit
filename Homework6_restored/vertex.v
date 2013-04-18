@@ -171,8 +171,8 @@ begin
              O_VOut[31:16] = xres;
 
              yres = yres + matrixCurrent[4] * I_VRegIn[47:32];
-             yres = yres + matrixCurrent[4 + 1] * I_VRegIn[47:32];
-             yres = yres + matrixCurrent[4 + 3];
+             yres = yres + matrixCurrent[5] * I_VRegIn[47:32];
+             yres = yres + matrixCurrent[7];
              O_VOut[47:32] = yres;
 
              O_VOut[15:0] = I_VRegIn[15:0];
@@ -186,7 +186,7 @@ begin
                 ColorCurrent <= I_VRegIn;
             end
 
-            if (I_Opcode==`OP_ROTATE) begin
+  /**          if (I_Opcode==`OP_ROTATE) begin
                 for( j = 0; j < 4; j=j+1) begin
                     for( k = 0; k < 4; k=k+1) begin
                         matrixBackup[4*j + k] = matrixCurrent[4*j+k];
@@ -219,10 +219,10 @@ begin
 					 angle = angle * 2;
 					 angle = angle % 360; 
 					 
-					 matrixTemp[4*0 + 0] = cosTable[angle];
-					 matrixTemp[4*0 + 1] = sinTable[angle];
-					 matrixTemp[4*1 + 1] = cosTable[angle]; 
-					 matrixTemp[4*1 + 0] = -1* sinTable[angle];
+					 matrixTemp[0] = cosTable[angle];
+					 matrixTemp[1] = sinTable[angle];
+					 matrixTemp[5] = cosTable[angle]; 
+					 matrixTemp[4] = -1* sinTable[angle];
 					 
 					 /*if (I_VRegIn[15] == 1) begin
 						matrixTemp[4*1 + 0][15] = 0;
@@ -231,8 +231,8 @@ begin
 					 end*/
 
                 //Matrix Multiply
-                for( i = 0; i < 4; i=i+1)begin
-                    for( j = 0; j < 4; j=j+1)begin
+           /**     for( i = 0; i < 4; i=i+1)begin **/
+     /**               for( j = 0; j < 4; j=j+1)begin
                         for( k = 0; k < 4; k=k+1) begin
                             result = result + (matrixBackup[4*i+k] * matrixTemp[4*k+j]);
                         end
@@ -303,7 +303,7 @@ begin
                         matrixCurrent[4*i+j] = result;
                     end
                 end
-            end
+            end **/
 
 
             if (I_Opcode==`OP_PUSHMATRIX) begin

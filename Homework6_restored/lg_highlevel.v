@@ -346,7 +346,7 @@ wire [15:0]     mGPU_READ_DATA;
 
 VgaController VgaController0 (
   // Control Signal
-  .I_CLK          (CLOCK_27[0]),
+  .I_CLK          (pll_c0),
   .I_RST_N        (KEY[0]),
   // Host Side                          
   .I_RED          (mVGA_R),
@@ -363,7 +363,7 @@ VgaController VgaController0 (
 );
 
 Gpu Gpu0 (
-  .I_CLK          (CLOCK_27[0]),
+  .I_CLK          (pll_c0),
   .I_RST_N        (KEY[0]),
   .I_VIDEO_ON     (VIDEO_ON),
   .I_GPU_COLOR		(COLOR),
@@ -378,7 +378,7 @@ Gpu Gpu0 (
 
 PixelGen PixelGen0 (
   // Control Signal
-  .I_CLK          (CLOCK_27[0]),
+  .I_CLK          (pll_c0),
   .I_RST_N        (KEY[0]),
   // 
   .I_DATA         (mVGA_DATA),

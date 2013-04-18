@@ -245,12 +245,15 @@ begin
 	  end
 	  
 	  else if(currentState == 12)
-	  begin		
-			if(((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0 || edge1[0] > 0 || edge1[1] > 0)&&
-						((edge2[0]*(j) + edge2[1]*(i) + edge2[2]) > 0 || edge2[0] > 0 || edge2[1] > 0)&&
-						((edge3[0]*(j) + edge3[1]*(i) + edge3[2]) > 0 || edge3[0] > 0 || edge3[1] > 0)) 
+	  begin
+			/**if(inside(edge_0, (j + 0.5), (i + 0.5))
+				&& inside(edge_1, (j + 0.5), (i + 0.5))
+				&& inside(edge_2, (j + 0.5), (i + 0.5))) **/
+			if((((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0) && !((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) < 0)  || (edge1[0] > 0) && !(edge1[0] < 0) || (edge1[1] > 0) && !(edge1[1] < 0))&&
+						(((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0) && !((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) < 0)  || (edge1[0] > 0) && !(edge1[0] < 0) || (edge1[1] > 0) && !(edge1[1] < 0))&&
+						(((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0) && !((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) < 0)  || (edge1[0] > 0) && !(edge1[0] < 0) || (edge1[1] > 0) && !(edge1[1] < 0))) 
 			begin
-			 O_ADDROut <= i*640*j;
+			 O_ADDROut <= i*640+j;
 			 O_ColorOut <= color[currentTriangle];
 			end
   
