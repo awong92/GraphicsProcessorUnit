@@ -19,7 +19,7 @@ input [`VREG_WIDTH-1:0] I_ColorIn;
 
 output O_LOCK;
 output reg [17:0] O_ADDROut;
-output reg [15:0] O_ColorOut;
+output reg [63:0] O_ColorOut;
 output reg O_FRAMESTALL;
 /*
 * State machine variables dawg
@@ -32,6 +32,7 @@ reg is_draw;
 reg [`VREG_WIDTH-1:0] vertices [0:8];
 reg [3:0] currentVertex;
 reg [8:0] currentState;
+reg [3:0] currentTriangle;
 reg [`VREG_WIDTH-1:0] color [0:8];
 
 reg signed[`REG_WIDTH-1:0] edge1[0:2];
@@ -76,6 +77,7 @@ begin
     currentState = 0;
 	 O_FRAMESTALL = 0;
 	 currentVertex = 0;
+	 currentTriangle = 0;
 end
 
 /** always @(posedge I_CLOCK)
@@ -103,11 +105,11 @@ begin
           for(i = 0; i < 3; i=i+1)
           begin
               //fragment_x[i] = (current_triangle.v[i].x + 5) * 64.0f;
-              fragmentX[i] <= (((vertices[i][31:16])+640))*32;
+              fragmentX[i] <= (((vertices[i][31:16])+640))<<5;
 				  // + 3'b101 <<7) * 4'b1000<<7;
 				  //fragmentX[i] <= (vertices[i][31:16] + 3'b101 <<8) * 7'b1000000<<8;
               //fragment_y[i] = (current_triangle.v[i].y + 16'b5<<8) * 40.0f;
-              fragmentY[i] <= (((vertices[i][47:32])+640))*16;
+              fragmentY[i] <= (((vertices[i][47:32])+640))<<4;
 				  // fragmentY[i] <= (vertices[i][47:32] + 3'b101 <<8) * 6'b101000<<8;
           end
           currentState=currentState+1;
@@ -117,11 +119,11 @@ begin
 			 for(i = 0; i < 3; i=i+1)
           begin
               //fragment_x[i] = (current_triangle.v[i].x + 5) * 64.0f;
-              fragmentX[i] <= (fragmentX[i]>>7)*2;
+              fragmentX[i] <= (fragmentX[i]>>7)<<1;
 				  // + 3'b101 <<7) * 4'b1000<<7;
 				  //fragmentX[i] <= (vertices[i][31:16] + 3'b101 <<8) * 7'b1000000<<8;
               //fragment_y[i] = (current_triangle.v[i].y + 16'b5<<8) * 40.0f;
-              fragmentY[i] <= (fragmentY[i]>>7)*2;
+              fragmentY[i] <= (fragmentY[i]>>7)<<1;
 				  // fragmentY[i] <= (vertices[i][47:32] + 3'b101 <<8) * 6'b101000<<8;
           end 
           currentState=currentState+1;
@@ -385,7 +387,7 @@ begin
 			begin
 			 //fragmentBuffer[i*640+j] <= color[currentState];
 			 O_ADDROut <= i*640*j;
-			 O_ColorOut <= color[currentState];
+			 O_ColorOut <= color[currentTriangle];
 			end
   
 		  j = j+1;

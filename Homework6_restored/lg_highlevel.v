@@ -146,6 +146,9 @@ wire [63:0] Vertex_VR;
 wire [63:0] VWriteBackData_VR;
 wire [63:0] Vect_WD;
 
+wire [63:0] COLOR;
+wire [18:0] ADDR_RAST;
+
 wire LOCK_RG;
 wire FRAMESTALL;
 
@@ -298,8 +301,8 @@ Rasterizer Rasterizer0 (
   .I_Opcode(Opcode_VR),
   .I_Vertex(Vertex_VR),
   .I_ColorIn(VColor_VR),
-  .O_ColorOut(mGPU_READ_DATA),
-  .O_ADDROut(mGPU_READ_ADDR),
+  .O_ColorOut(COLOR),
+  .O_ADDROut(ADDR_RAST),
   .O_LOCK(LOCK_RG),
   .O_FRAMESTALL(FRAMESTALL)
 );
@@ -335,10 +338,22 @@ wire [3:0]  mVGA_B;
 wire        mGPU_READ;
 wire        mGPU_WRITE;
 wire [17:0] mGPU_ADDR;
-wire [17:0] mGPU_COLOR;
 wire [15:0] mGPU_WRITE_DATA;
 //wire [17:0] mGPU_READ_ADDR;
 //wire [15:0] mGPU_READ_DATA;
+Gpu Gpu0 (
+  .I_CLK          (pll_c0),
+  .I_RST_N        (KEY[0]),
+  .I_VIDEO_ON     (VIDEO_ON),
+  .I_GPU_ADDR      (ADDR_RAST),
+  // GPU-SRAM interface
+  .I_GPU_DATA     (mGPU_READ_DATA),
+  .I_GPU_COLOR    (COLOR),
+  .O_GPU_DATA     (mGPU_WRITE_DATA),
+  .O_GPU_ADDR     (mGPU_ADDR),
+  .O_GPU_READ     (mGPU_READ),
+  .O_GPU_WRITE    (mGPU_WRITE)  
+);
 
 VgaController VgaController0 (
   // Control Signal
@@ -358,19 +373,7 @@ VgaController VgaController0 (
   .O_VGA_V_SYNC   (VGA_VS)
 );
 
-Gpu Gpu0 (
-  .I_CLK          (pll_c0),
-  .I_RST_N        (KEY[0]),
-  .I_VIDEO_ON     (VIDEO_ON),
-  .I_GPU_ADDR      (mGPU_READ_ADDR),
-  // GPU-SRAM interface
-  .I_GPU_DATA     (mGPU_READ_DATA),
-  .I_GPU_COLOR    (mGPU_COLOR),
-  .O_GPU_DATA     (mGPU_WRITE_DATA),
-  .O_GPU_ADDR     (mGPU_ADDR),
-  .O_GPU_READ     (mGPU_READ),
-  .O_GPU_WRITE    (mGPU_WRITE)  
-);
+
 
 PixelGen PixelGen0 (
   // Control Signal
