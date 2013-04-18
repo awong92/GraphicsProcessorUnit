@@ -75,6 +75,8 @@ reg signed[`REG_WIDTH-1:0] min_y;
 reg signed[`REG_WIDTH-1:0] max_y;
 
 reg signed [`REG_WIDTH-1:0] negOne;
+reg flag[0:2];
+reg [`REG_WIDTH-1:0]edge_result[0:2];
 
 reg [10:0] i;
 reg [10:0] j;
@@ -249,9 +251,50 @@ begin
 			/**if(inside(edge_0, (j + 0.5), (i + 0.5))
 				&& inside(edge_1, (j + 0.5), (i + 0.5))
 				&& inside(edge_2, (j + 0.5), (i + 0.5))) **/
-			if((((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0) && !((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) < 0)  || (edge1[0] > 0) && !(edge1[0] < 0) || (edge1[1] > 0) && !(edge1[1] < 0))&&
+
+   edge_result[0] = (((edge1[0] * i) + (edge1[1] * j)) + edge1[2]);
+
+	if (edge_result[0][15] == 0)
+		flag[0] = 1;
+	else if (edge_result[0][15] == 1)
+		flag[0] = 0;
+	else if (edge1[0] > 0)
+		flag[0] = 1;
+	else if (edge1[0] < 0)
+		flag[0] = 0;
+	else if (edge1[1] > 0)
+		flag[0] = 0;
+		
+	edge_result[1] = (((edge2[0] * i) + (edge2[1] * j)) + edge2[2]);
+
+	if (edge_result[1][15] == 0)
+		flag[1] = 1;
+	else if (edge_result[1][15] == 1)
+		flag[1] = 0;
+	else if (edge2[0] > 0)
+		flag[1] = 1;
+	else if (edge2[0] < 0)
+		flag[1] = 0;
+	else if (edge2[1] > 0)
+		flag[1] = 0;
+		
+	edge_result[2] = (((edge3[0] * i) + (edge3[1] * j)) + edge3[2]);
+
+	if (edge_result[2][15] == 0)
+		flag[2] = 1;
+	else if (edge_result[2][15] == 1)
+		flag[2] = 0;
+	else if (edge3[0] > 0)
+		flag[2] = 1;
+	else if (edge3[0] < 0)
+		flag[2] = 0;
+	else if (edge3[1] > 0)
+		flag[2] = 0;
+		
+		if(flag[0] == 1 && flag[1] == 1 && flag[2] == 1)	
+		/**	if((((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0) && !((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) < 0)  || (edge1[0] > 0) && !(edge1[0] < 0) || (edge1[1] > 0) && !(edge1[1] < 0))&&
 						(((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0) && !((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) < 0)  || (edge1[0] > 0) && !(edge1[0] < 0) || (edge1[1] > 0) && !(edge1[1] < 0))&&
-						(((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0) && !((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) < 0)  || (edge1[0] > 0) && !(edge1[0] < 0) || (edge1[1] > 0) && !(edge1[1] < 0))) 
+						(((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) > 0) && !((edge1[0]*(j) + edge1[1]*(i) + edge1[2]) < 0)  || (edge1[0] > 0) && !(edge1[0] < 0) || (edge1[1] > 0) && !(edge1[1] < 0))) **/
 			begin
 			 O_ADDROut <= i*640+j;
 			 O_ColorOut <= color[currentTriangle];
