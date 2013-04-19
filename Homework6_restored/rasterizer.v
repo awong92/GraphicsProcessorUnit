@@ -76,7 +76,7 @@ reg signed[`REG_WIDTH-1:0] max_y;
 
 reg signed [`REG_WIDTH-1:0] negOne;
 reg flag[0:2];
-reg [`REG_WIDTH-1:0]edge_result[0:2];
+reg [23:0]edge_result[0:2];
 
 reg [10:0] i;
 reg [10:0] j;
@@ -254,45 +254,45 @@ begin
 
    edge_result[0] = (((edge1[0] * j) + (edge1[1] * i)) + edge1[2]);
 
-	if (edge_result[0][15] == 0)
+	if (edge_result[0][23] == 0)
 		flag[0] = 1;
-	else if (edge_result[0][15] == 1)
+	else if (edge_result[0][23] == 1)
 		flag[0] = 0;
-	else if (edge1[0][15] == 1)
+	else if (edge1[0][23] == 0)
 		flag[0] = 1;
-	else if (edge1[0][15] == 0)
+	else if (edge1[0][23] == 1)
 		flag[0] = 0;
-	else if (edge1[1][15] == 1)
+	else if (edge1[1][23] == 0)
 		flag[0] = 1;
 	else 
 		flag[0] = 0;
 		
 	edge_result[1] = (((edge2[0] * j) + (edge2[1] * i)) + edge2[2]);
 
-	if (edge_result[1][15] == 0)
+	if (edge_result[1][23] == 0)
 		flag[1] = 1;
-	else if (edge_result[1][15] == 1)
+	else if (edge_result[1][23] == 1)
 		flag[1] = 0;
-	else if (edge2[0][15] == 1)
+	else if (edge2[0][23] == 0)
 		flag[1] = 1;
-	else if (edge2[0][15] == 0)
+	else if (edge2[0][23] == 1)
 		flag[1] = 0;
-	else if (edge2[1][15] == 1)
+	else if (edge2[1][23] == 0)
 		flag[1] = 1;
 	else 
 		flag[1] = 0;
 		
 	edge_result[2] = (((edge3[0] * j) + (edge3[1] * i)) + edge3[2]);
 
-	if (edge_result[2][15] == 0)
+	if (edge_result[2][23] == 0)
 		flag[2] = 1;
-	else if (edge_result[2][15] == 1)
+	else if (edge_result[2][23] == 1)
 		flag[2] = 0;
-	else if (edge3[0][15] == 1)
+	else if (edge3[0][23] == 0)
 		flag[2] = 1;
-	else if (edge3[0][15] == 0)
+	else if (edge3[0][23] == 1)
 		flag[2] = 0;
-	else if (edge3[1][15] == 1)
+	else if (edge3[1][23] == 0)
 		flag[2] = 1;
 	else 
 		flag[2] = 0;
