@@ -50,7 +50,7 @@ begin
 		if (!I_VIDEO_ON) begin
 			//count <= count + 1;
 			O_GPU_ADDR <= I_GPU_ADDR;
-			O_GPU_DATA <= {I_GPU_COLOR[11:8],I_GPU_COLOR[27:24],I_GPU_COLOR[43:40],4'h0};
+			O_GPU_DATA <= {4'h0, I_GPU_COLOR[11:8],I_GPU_COLOR[27:24],I_GPU_COLOR[43:40]};
 			O_GPU_WRITE <= 1'b1;
 			O_GPU_READ <= 1'b0;
 			
