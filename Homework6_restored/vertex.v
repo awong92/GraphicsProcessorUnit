@@ -70,73 +70,73 @@ begin
   xres = 0;
   yres = 0;
   result = 0;
- matrixCurrent[0] = 1;
+ matrixCurrent[0] = 1<<7;
  matrixCurrent[1] = 0;
  matrixCurrent[2] = 0;
  matrixCurrent[3] = 0;
  matrixCurrent[4] = 0;
- matrixCurrent[5] = 1;
+ matrixCurrent[5] = 1<<7;
  matrixCurrent[6] = 0;
  matrixCurrent[7] = 0;
  matrixCurrent[8] = 0;
  matrixCurrent[9] = 0;
- matrixCurrent[10] = 1;
+ matrixCurrent[10] = 1<<7;
  matrixCurrent[11] = 0;
  matrixCurrent[12] = 0;
  matrixCurrent[13] = 0;
  matrixCurrent[14] = 0;
- matrixCurrent[15] = 1;
+ matrixCurrent[15] = 1<<7;
  
- matrixPast[0] = 1;
+ matrixPast[0] = 1<<7;
  matrixPast[1] = 0;
  matrixPast[2] = 0;
  matrixPast[3] = 0;
  matrixPast[4] = 0;
- matrixPast[5] = 1;
+ matrixPast[5] = 1<<7;
  matrixPast[6] = 0;
  matrixPast[7] = 0;
  matrixPast[8] = 0;
  matrixPast[9] = 0;
- matrixPast[10] = 1;
+ matrixPast[10] = 1<<7;
  matrixPast[11] = 0;
  matrixPast[12] = 0;
  matrixPast[13] = 0;
  matrixPast[14] = 0;
- matrixPast[15] = 1;
+ matrixPast[15] = 1<<7;
  
- matrixTemp[0] = 1;
+ matrixTemp[0] = 1<<7;
  matrixTemp[1] = 0;
  matrixTemp[2] = 0;
  matrixTemp[3] = 0;
  matrixTemp[4] = 0;
- matrixTemp[5] = 1;
+ matrixTemp[5] = 1<<7;
  matrixTemp[6] = 0;
  matrixTemp[7] = 0;
  matrixTemp[8] = 0;
  matrixTemp[9] = 0;
- matrixTemp[10] = 1;
+ matrixTemp[10] = 1<<7;
  matrixTemp[11] = 0;
  matrixTemp[12] = 0;
  matrixTemp[13] = 0;
  matrixTemp[14] = 0;
- matrixTemp[15] = 1;
+ matrixTemp[15] = 1<<7;
  
-  matrixPast[0] = 1;
+  matrixPast[0] = 1<<7;
  matrixBackup[1] = 0;
  matrixBackup[2] = 0;
  matrixBackup[3] = 0;
  matrixBackup[4] = 0;
- matrixBackup[5] = 1;
+ matrixBackup[5] = 1<<7;
  matrixBackup[6] = 0;
  matrixBackup[7] = 0;
  matrixBackup[8] = 0;
  matrixBackup[9] = 0;
- matrixBackup[10] = 1;
+ matrixBackup[10] = 1<<7;
  matrixBackup[11] = 0;
  matrixBackup[12] = 0;
  matrixBackup[13] = 0;
  matrixBackup[14] = 0;
- matrixBackup[15] = 1;
+ matrixBackup[15] = 1<<7;
  
  ColorPast <= 0;
   $readmemh("cosine.hex", cosTable);
@@ -165,13 +165,17 @@ begin
              xres = 0;
              yres = 0;
              
-             xres = xres + matrixCurrent[0] * I_VRegIn[31:16];
-             xres = xres + matrixCurrent[1] * I_VRegIn[31:16];
+             xres[15:7] = xres[15:7] + matrixCurrent[0][15:7] * I_VRegIn[31:23];
+             xres[6:0] = xres[6:0] + matrixCurrent[0][6:0] * I_VRegIn[22:16];
+             xres[15:7] = xres[15:7] + matrixCurrent[1][15:7] * I_VRegIn[31:23];
+             xres[6:0] = xres[6:0] + matrixCurrent[1][6:0] * I_VRegIn[22:16];
              xres = xres + matrixCurrent[3];
              O_VOut[31:16] = xres;
 
-             yres = yres + matrixCurrent[4] * I_VRegIn[47:32];
-             yres = yres + matrixCurrent[5] * I_VRegIn[47:32];
+             yres[15:7] = yres[15:7] + matrixCurrent[4][15:7] * I_VRegIn[47:39];
+             yres[6:0] = yres[6:0] + matrixCurrent[4][6:0] * I_VRegIn[38:32];
+             yres[15:7] = yres[15:7] + matrixCurrent[5][15:7] * I_VRegIn[47:39];
+				 yres[6:0] = yres[6:0] + matrixCurrent[5][6:0] * I_VRegIn[38:32];
              yres = yres + matrixCurrent[7];
              O_VOut[47:32] = yres;
 
@@ -241,7 +245,7 @@ begin
                 end
             end
 
-
+*/
             if (I_Opcode==`OP_TRANSLATE) begin
                 for(j = 0; j < 4; j=j+1) begin
                     for(k = 0; k < 4; k=k+1) begin
@@ -253,7 +257,7 @@ begin
                     for(k = 0; k < 4; k=k+1) begin
                         matrixTemp[4*j+k] = 0;
                         if(j == k)begin
-                            matrixTemp[4*j+k] = 1;
+                            matrixTemp[4*j+k] = 1<<7;
                         end
                     end
                 end
@@ -266,14 +270,15 @@ begin
                     for(j = 0; j < 4; j=j+1)begin
                         result = 0;         //WTF
                         for(k = 0; k < 4; k=k+1) begin
-                            result = result + (matrixBackup[4*i+k] * matrixTemp[4*k+j]);
+                            result[6:0] = result[6:0] + (matrixBackup[4*i+k][6:0] * matrixTemp[4*k+j][6:0]);
+                            result[15:7] = result[15:7] + (matrixBackup[4*i+k][15:7] * matrixTemp[4*k+j][15:7]);
                         end
                         matrixCurrent[4*i+j] = result;
                     end
                 end
             end
 
-            
+           
             if (I_Opcode==`OP_SCALE) begin
                 for(j = 0; j < 4; j=j+1) begin
                     for(k = 0; k < 4; k=k+1) begin
@@ -285,7 +290,7 @@ begin
                     for(k = 0; k < 4; k=k+1) begin
                         matrixTemp[4*j+k] = 0;
                         if(j == k)begin
-                            matrixTemp[4*j+k] = 1;
+                            matrixTemp[4*j+k] = 1<<7;
                         end
                     end
                 end
@@ -298,12 +303,13 @@ begin
                     for(j = 0; j < 4; j=j+1)begin
                         result = 0;         //WTF
                         for(k = 0; k < 4; k=k+1) begin
-                            result = result + (matrixBackup[4*i+k] * matrixTemp[4*k+j]);
+                            result[6:0] = result[6:0] + (matrixBackup[4*i+k][6:0] * matrixTemp[4*k+j][6:0]);
+									 result[15:7]  = result[15:7]  + (matrixBackup[4*i+k][15:7]  * matrixTemp[4*k+j][15:7] );
                         end
                         matrixCurrent[4*i+j] = result;
                     end
                 end
-            end **/
+            end 
 
 
             if (I_Opcode==`OP_PUSHMATRIX) begin
