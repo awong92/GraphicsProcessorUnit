@@ -466,7 +466,7 @@ O_DepStall = __DepStallSignal;
             O_DestRegIdx = I_IR[21:16];
             VRF_VALID[O_DestRegIdx] = 0;
             O_DestValue <= I_IR[23:22];
-            O_Src1Value <= I_IR[11:8];
+            O_Src1Value <= RF[I_IR[11:8]];
         end
         if(I_IR[31:24] == `OP_VCOMPMOVI)
         begin

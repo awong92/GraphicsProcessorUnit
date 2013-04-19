@@ -263,7 +263,7 @@ begin
 	else if (edge1[0][15] == 0)
 		flag[0] = 0;
 	else if (edge1[1][15] == 1)
-		flag[0] = 0;
+		flag[0] = 1;
 	else 
 		flag[0] = 0;
 		
@@ -293,7 +293,7 @@ begin
 	else if (edge3[0][15] == 0)
 		flag[2] = 0;
 	else if (edge3[1][15] == 1)
-		flag[2] = 0;
+		flag[2] = 1;
 	else 
 		flag[2] = 0;
 		

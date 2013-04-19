@@ -284,7 +284,7 @@ begin
                     for(k = 0; k < 4; k=k+1) begin
                         matrixBackup[4*j + k] = matrixCurrent[4*j+k];
                     end
-                end
+                end	
 
                 for(j = 0; j < 4; j=j+1) begin
                     for(k = 0; k < 4; k=k+1) begin
@@ -304,7 +304,7 @@ begin
                         result = 0;         //WTF
                         for(k = 0; k < 4; k=k+1) begin
                             result[6:0] = result[6:0] + (matrixBackup[4*i+k][6:0] * matrixTemp[4*k+j][6:0]);
-									 result[15:7]  = result[15:7]  + (matrixBackup[4*i+k][15:7]  * matrixTemp[4*k+j][15:7] );
+                            result[15:7] = result[15:7] + (matrixBackup[4*i+k][15:7] * matrixTemp[4*k+j][15:7]);
                         end
                         matrixCurrent[4*i+j] = result;
                     end
