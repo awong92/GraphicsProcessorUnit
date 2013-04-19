@@ -54,9 +54,9 @@ reg [`DATA_WIDTH-1:0]angle;
 
 reg [`DATA_WIDTH-1:0] x;
 reg [`DATA_WIDTH-1:0] y;
-reg [`DATA_WIDTH-1:0] xres;
-reg [`DATA_WIDTH-1:0] yres;
-reg [`DATA_WIDTH-1:0] result;
+reg [`DATA_WIDTH+6:0] xres;
+reg [`DATA_WIDTH+6:0] yres;
+reg [`DATA_WIDTH+6:0] result;
 
 reg[15:0] cosTable[0:359];
 reg[15:0] sinTable[0:359];
@@ -165,17 +165,13 @@ begin
              xres = 0;
              yres = 0;
              
-             xres[15:7] = xres[15:7] + matrixCurrent[0][15:7] * I_VRegIn[31:23];
-             xres[6:0] = xres[6:0] + matrixCurrent[0][6:0] * I_VRegIn[22:16];
-             xres[15:7] = xres[15:7] + matrixCurrent[1][15:7] * I_VRegIn[31:23];
-             xres[6:0] = xres[6:0] + matrixCurrent[1][6:0] * I_VRegIn[22:16];
+             xres = xres + ((matrixCurrent[0] * I_VRegIn[31:16])>>7);
+             xres = xres + ((matrixCurrent[1] * I_VRegIn[31:16])>>7);
              xres = xres + matrixCurrent[3];
              O_VOut[31:16] = xres;
 
-             yres[15:7] = yres[15:7] + matrixCurrent[4][15:7] * I_VRegIn[47:39];
-             yres[6:0] = yres[6:0] + matrixCurrent[4][6:0] * I_VRegIn[38:32];
-             yres[15:7] = yres[15:7] + matrixCurrent[5][15:7] * I_VRegIn[47:39];
-				 yres[6:0] = yres[6:0] + matrixCurrent[5][6:0] * I_VRegIn[38:32];
+             yres = yres + ((matrixCurrent[4] * I_VRegIn[47:32])>>7);
+             yres = yres + ((matrixCurrent[5] * I_VRegIn[47:32])>>7);
              yres = yres + matrixCurrent[7];
              O_VOut[47:32] = yres;
 
@@ -190,7 +186,7 @@ begin
                 ColorCurrent <= I_VRegIn;
             end
 
-  /**          if (I_Opcode==`OP_ROTATE) begin
+            if (I_Opcode==`OP_ROTATE) begin
                 for( j = 0; j < 4; j=j+1) begin
                     for( k = 0; k < 4; k=k+1) begin
                         matrixBackup[4*j + k] = matrixCurrent[4*j+k];
@@ -206,46 +202,35 @@ begin
                     end
                 end
                 
-					 angle=I_VRegIn[15:0];
-                if(I_VRegIn[63] == 1) begin
-						  if (angle[15] == 1) begin
-								angle[15] = 0;
-						  end else begin
-								angle[15] = 1;
-						  end
-                end
-
-					 if (angle[15] == 1) begin
-						angle = 360-angle[14:7];
-					 end else begin
-						angle = angle[14:7];							
+                angle = I_VRegIn[15:0]>>7;
+                if(I_VRegIn[63:48] > 0)
+					 begin
+						angle = angle * (-1);
 					 end
-					 angle = angle * 2;
-					 angle = angle % 360; 
-					 
-					 matrixTemp[0] = cosTable[angle];
-					 matrixTemp[1] = sinTable[angle];
-					 matrixTemp[5] = cosTable[angle]; 
-					 matrixTemp[4] = -1* sinTable[angle];
-					 
-					 /*if (I_VRegIn[15] == 1) begin
-						matrixTemp[4*1 + 0][15] = 0;
-					 end else begin
-						matrixTemp[4*1 + 0][15] = 1;
-					 end*/
-
+                if (angle[15] == 1) begin
+                        angle = (-1) * angle;
+                        angle = 360-angle;
+                 end
+                 angle = angle * 2;
+                 angle = angle % 360; 
+                     
+                 matrixTemp[0] = cosTable[angle];
+                 matrixTemp[1] = sinTable[angle];
+                 matrixTemp[5] = cosTable[angle]; 
+                 matrixTemp[4] = -1 * sinTable[angle];
+					
                 //Matrix Multiply
-           /**     for( i = 0; i < 4; i=i+1)begin **/
-     /**               for( j = 0; j < 4; j=j+1)begin
+                for( i = 0; i < 4; i=i+1)begin
+							for( j = 0; j < 4; j=j+1)begin
                         for( k = 0; k < 4; k=k+1) begin
-                            result = result + (matrixBackup[4*i+k] * matrixTemp[4*k+j]);
+                            result = result + ((matrixBackup[4*i+k] * matrixTemp[4*k+j])>>7);
                         end
                         matrixCurrent[4*i+j] = result;
                     end
                 end
             end
 
-*/
+
             if (I_Opcode==`OP_TRANSLATE) begin
                 for(j = 0; j < 4; j=j+1) begin
                     for(k = 0; k < 4; k=k+1) begin
@@ -270,10 +255,9 @@ begin
                     for(j = 0; j < 4; j=j+1)begin
                         result = 0;         //WTF
                         for(k = 0; k < 4; k=k+1) begin
-                            result[6:0] = result[6:0] + (matrixBackup[4*i+k][6:0] * matrixTemp[4*k+j][6:0]);
-                            result[15:7] = result[15:7] + (matrixBackup[4*i+k][15:7] * matrixTemp[4*k+j][15:7]);
+                            result = result + ((matrixBackup[4*i+k] * matrixTemp[4*k+j])>>7);
                         end
-                        matrixCurrent[4*i+j] = result;
+                        matrixCurrent[4*i+j] = result[15:0];
                     end
                 end
             end
@@ -303,10 +287,9 @@ begin
                     for(j = 0; j < 4; j=j+1)begin
                         result = 0;         //WTF
                         for(k = 0; k < 4; k=k+1) begin
-                            result[6:0] = result[6:0] + (matrixBackup[4*i+k][6:0] * matrixTemp[4*k+j][6:0]);
-                            result[15:7] = result[15:7] + (matrixBackup[4*i+k][15:7] * matrixTemp[4*k+j][15:7]);
+                            result = result + ((matrixBackup[4*i+k] * matrixTemp[4*k+j])>>7);
                         end
-                        matrixCurrent[4*i+j] = result;
+                        matrixCurrent[4*i+j] = result[15:0];
                     end
                 end
             end 

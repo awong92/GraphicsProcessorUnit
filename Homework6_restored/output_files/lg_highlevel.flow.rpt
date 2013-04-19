@@ -1,5 +1,5 @@
 Flow report for lg_highlevel
-Fri Apr 19 01:41:59 2013
+Fri Apr 19 03:02:32 2013
 Quartus II 32-bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
@@ -38,21 +38,21 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +------------------------------------+------------------------------------------+
-; Flow Status                        ; Successful - Fri Apr 19 01:41:59 2013    ;
+; Flow Status                        ; Successful - Fri Apr 19 03:02:32 2013    ;
 ; Quartus II 32-bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
 ; Revision Name                      ; lg_highlevel                             ;
 ; Top-level Entity Name              ; lg_highlevel                             ;
 ; Family                             ; Cyclone II                               ;
 ; Device                             ; EP2C20F484C7                             ;
 ; Timing Models                      ; Final                                    ;
-; Total logic elements               ; 11,440 / 18,752 ( 61 % )                 ;
-;     Total combinational functions  ; 8,079 / 18,752 ( 43 % )                  ;
-;     Dedicated logic registers      ; 8,270 / 18,752 ( 44 % )                  ;
-; Total registers                    ; 8270                                     ;
+; Total logic elements               ; 17,959 / 18,752 ( 96 % )                 ;
+;     Total combinational functions  ; 13,837 / 18,752 ( 74 % )                 ;
+;     Dedicated logic registers      ; 9,980 / 18,752 ( 53 % )                  ;
+; Total registers                    ; 9980                                     ;
 ; Total pins                         ; 116 / 315 ( 37 % )                       ;
 ; Total virtual pins                 ; 0                                        ;
 ; Total memory bits                  ; 8,192 / 239,616 ( 3 % )                  ;
-; Embedded Multiplier 9-bit elements ; 51 / 52 ( 98 % )                         ;
+; Embedded Multiplier 9-bit elements ; 52 / 52 ( 100 % )                        ;
 ; Total PLLs                         ; 1 / 4 ( 25 % )                           ;
 +------------------------------------+------------------------------------------+
 
@@ -62,7 +62,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/19/2013 01:39:02 ;
+; Start date & time ; 04/19/2013 02:56:03 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; lg_highlevel        ;
 +-------------------+---------------------+
@@ -73,7 +73,7 @@ applicable agreement for further details.
 +----------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                        ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +----------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                  ; 94624286658462.136634994100948        ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                  ; 94624286658462.136635455803828        ; --            ; --          ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME               ; NA                                    ; --            ; --          ; my_testbench   ;
 ; EDA_NATIVELINK_SIMULATION_SETUP_SCRIPT ; simulation/modelsim/my_custom_view.do ; --            ; --          ; eda_simulation ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH   ; my_testbench                          ; --            ; --          ; eda_simulation ;
@@ -106,12 +106,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:01:00     ; 1.0                     ; 400 MB              ; 00:00:59                           ;
-; Fitter                    ; 00:01:16     ; 2.4                     ; 599 MB              ; 00:01:52                           ;
-; Assembler                 ; 00:00:05     ; 1.0                     ; 378 MB              ; 00:00:05                           ;
-; TimeQuest Timing Analyzer ; 00:00:10     ; 2.1                     ; 474 MB              ; 00:00:10                           ;
-; EDA Netlist Writer        ; 00:00:13     ; 1.0                     ; 415 MB              ; 00:00:13                           ;
-; Total                     ; 00:02:44     ; --                      ; --                  ; 00:03:19                           ;
+; Analysis & Synthesis      ; 00:01:58     ; 1.0                     ; 449 MB              ; 00:01:57                           ;
+; Fitter                    ; 00:03:32     ; 2.9                     ; 649 MB              ; 00:06:22                           ;
+; Assembler                 ; 00:00:06     ; 1.0                     ; 391 MB              ; 00:00:06                           ;
+; TimeQuest Timing Analyzer ; 00:00:15     ; 1.4                     ; 532 MB              ; 00:00:15                           ;
+; EDA Netlist Writer        ; 00:00:21     ; 1.0                     ; 466 MB              ; 00:00:21                           ;
+; Total                     ; 00:06:12     ; --                      ; --                  ; 00:09:01                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
