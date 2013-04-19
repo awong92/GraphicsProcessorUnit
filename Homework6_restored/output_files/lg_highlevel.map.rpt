@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lg_highlevel
-Thu Apr 18 18:55:27 2013
+Thu Apr 18 21:56:46 2013
 Quartus II 32-bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
@@ -27,12 +27,12 @@ Quartus II 32-bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
  19. Source assignments for Fetch:Fetch0|altsyncram:InstMem_rtl_0|altsyncram_6s71:auto_generated
  20. Parameter Settings for User Entity Instance: pll:pll0|altpll:altpll_component
  21. Parameter Settings for Inferred Entity Instance: Fetch:Fetch0|altsyncram:InstMem_rtl_0
- 22. Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult13
- 23. Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult12
- 24. Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult15
- 25. Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult14
- 26. Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult17
- 27. Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult16
+ 22. Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult12
+ 23. Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult13
+ 24. Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult14
+ 25. Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult15
+ 26. Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult16
+ 27. Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult17
  28. Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult6
  29. Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult7
  30. Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult8
@@ -86,7 +86,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +------------------------------------+------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Apr 18 18:55:27 2013    ;
+; Analysis & Synthesis Status        ; Successful - Thu Apr 18 21:56:45 2013    ;
 ; Quartus II 32-bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
 ; Revision Name                      ; lg_highlevel                             ;
 ; Top-level Entity Name              ; lg_highlevel                             ;
@@ -2052,7 +2052,30 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[0][61]                            ; Lost fanout                                        ;
 ; Decode:Decode0|VRF[0][62]                            ; Lost fanout                                        ;
 ; Decode:Decode0|VRF[0][63]                            ; Lost fanout                                        ;
-; Rasterizer:Rasterizer0|flag[0..2]                    ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge3[2][16]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge3[2][17]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge3[2][18]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge3[2][19]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge3[2][20]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge3[2][21]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge3[2][22]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge3[2][23]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge2[2][16]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge2[2][17]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge2[2][18]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge2[2][19]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge2[2][20]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge2[2][21]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge2[2][22]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge2[2][23]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge1[2][16]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge1[2][17]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge1[2][18]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge1[2][19]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge1[2][20]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge1[2][21]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge1[2][22]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge1[2][23]                  ; Lost fanout                                        ;
 ; Rasterizer:Rasterizer0|vertices[2][27]               ; Lost fanout                                        ;
 ; Rasterizer:Rasterizer0|vertices[2][28]               ; Lost fanout                                        ;
 ; Rasterizer:Rasterizer0|vertices[2][29]               ; Lost fanout                                        ;
@@ -2089,6 +2112,54 @@ Encoding Type:  One-Hot
 ; Vertex:Vertex0|O_VOut[46]                            ; Lost fanout                                        ;
 ; Rasterizer:Rasterizer0|vertices[0][47]               ; Lost fanout                                        ;
 ; Vertex:Vertex0|O_VOut[47]                            ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[1][16]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[1][17]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[1][18]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[1][19]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[1][20]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[1][21]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[1][22]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[1][23]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[0][16]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[0][17]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[0][18]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[0][19]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[0][20]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[0][21]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[0][22]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge3[0][23]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[1][16]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[1][17]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[1][18]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[1][19]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[1][20]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[1][21]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[1][22]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[1][23]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[0][16]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[0][17]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[0][18]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[0][19]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[0][20]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[0][21]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[0][22]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge2[0][23]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[1][16]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[1][17]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[1][18]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[1][19]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[1][20]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[1][21]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[1][22]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[1][23]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[0][16]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[0][17]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[0][18]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[0][19]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[0][20]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[0][21]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[0][22]              ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|tempEdge1[0][23]              ; Lost fanout                                        ;
 ; Vertex:Vertex0|matrixCurrent[7][15]                  ; Lost fanout                                        ;
 ; Vertex:Vertex0|matrixCurrent[7][14]                  ; Lost fanout                                        ;
 ; Vertex:Vertex0|matrixCurrent[7][13]                  ; Lost fanout                                        ;
@@ -2107,12 +2178,54 @@ Encoding Type:  One-Hot
 ; Vertex:Vertex0|matrixCurrent[3][13]                  ; Lost fanout                                        ;
 ; Vertex:Vertex0|matrixCurrent[3][12]                  ; Lost fanout                                        ;
 ; Vertex:Vertex0|matrixCurrent[3][11]                  ; Lost fanout                                        ;
-; Rasterizer:Rasterizer0|HexOut[9..12,14]              ; Merged with Rasterizer:Rasterizer0|HexOut[15]      ;
+; Rasterizer:Rasterizer0|HexOut[9..12,15]              ; Merged with Rasterizer:Rasterizer0|HexOut[14]      ;
 ; Rasterizer:Rasterizer0|fragmentX[2][0]               ; Merged with Rasterizer:Rasterizer0|fragmentY[2][0] ;
 ; Rasterizer:Rasterizer0|fragmentX[1][0]               ; Merged with Rasterizer:Rasterizer0|fragmentY[2][0] ;
 ; Rasterizer:Rasterizer0|fragmentX[0][0]               ; Merged with Rasterizer:Rasterizer0|fragmentY[2][0] ;
 ; Rasterizer:Rasterizer0|fragmentY[1][0]               ; Merged with Rasterizer:Rasterizer0|fragmentY[2][0] ;
 ; Rasterizer:Rasterizer0|fragmentY[0][0]               ; Merged with Rasterizer:Rasterizer0|fragmentY[2][0] ;
+; Rasterizer:Rasterizer0|edge3[1][17]                  ; Merged with Rasterizer:Rasterizer0|edge3[1][16]    ;
+; Rasterizer:Rasterizer0|edge3[1][18]                  ; Merged with Rasterizer:Rasterizer0|edge3[1][16]    ;
+; Rasterizer:Rasterizer0|edge3[1][19]                  ; Merged with Rasterizer:Rasterizer0|edge3[1][16]    ;
+; Rasterizer:Rasterizer0|edge3[1][20]                  ; Merged with Rasterizer:Rasterizer0|edge3[1][16]    ;
+; Rasterizer:Rasterizer0|edge3[1][21]                  ; Merged with Rasterizer:Rasterizer0|edge3[1][16]    ;
+; Rasterizer:Rasterizer0|edge3[1][22]                  ; Merged with Rasterizer:Rasterizer0|edge3[1][16]    ;
+; Rasterizer:Rasterizer0|edge3[1][23]                  ; Merged with Rasterizer:Rasterizer0|edge3[1][16]    ;
+; Rasterizer:Rasterizer0|edge3[0][17]                  ; Merged with Rasterizer:Rasterizer0|edge3[0][16]    ;
+; Rasterizer:Rasterizer0|edge3[0][18]                  ; Merged with Rasterizer:Rasterizer0|edge3[0][16]    ;
+; Rasterizer:Rasterizer0|edge3[0][19]                  ; Merged with Rasterizer:Rasterizer0|edge3[0][16]    ;
+; Rasterizer:Rasterizer0|edge3[0][20]                  ; Merged with Rasterizer:Rasterizer0|edge3[0][16]    ;
+; Rasterizer:Rasterizer0|edge3[0][21]                  ; Merged with Rasterizer:Rasterizer0|edge3[0][16]    ;
+; Rasterizer:Rasterizer0|edge3[0][22]                  ; Merged with Rasterizer:Rasterizer0|edge3[0][16]    ;
+; Rasterizer:Rasterizer0|edge3[0][23]                  ; Merged with Rasterizer:Rasterizer0|edge3[0][16]    ;
+; Rasterizer:Rasterizer0|edge2[1][17]                  ; Merged with Rasterizer:Rasterizer0|edge2[1][16]    ;
+; Rasterizer:Rasterizer0|edge2[1][18]                  ; Merged with Rasterizer:Rasterizer0|edge2[1][16]    ;
+; Rasterizer:Rasterizer0|edge2[1][19]                  ; Merged with Rasterizer:Rasterizer0|edge2[1][16]    ;
+; Rasterizer:Rasterizer0|edge2[1][20]                  ; Merged with Rasterizer:Rasterizer0|edge2[1][16]    ;
+; Rasterizer:Rasterizer0|edge2[1][21]                  ; Merged with Rasterizer:Rasterizer0|edge2[1][16]    ;
+; Rasterizer:Rasterizer0|edge2[1][22]                  ; Merged with Rasterizer:Rasterizer0|edge2[1][16]    ;
+; Rasterizer:Rasterizer0|edge2[1][23]                  ; Merged with Rasterizer:Rasterizer0|edge2[1][16]    ;
+; Rasterizer:Rasterizer0|edge2[0][17]                  ; Merged with Rasterizer:Rasterizer0|edge2[0][16]    ;
+; Rasterizer:Rasterizer0|edge2[0][18]                  ; Merged with Rasterizer:Rasterizer0|edge2[0][16]    ;
+; Rasterizer:Rasterizer0|edge2[0][19]                  ; Merged with Rasterizer:Rasterizer0|edge2[0][16]    ;
+; Rasterizer:Rasterizer0|edge2[0][20]                  ; Merged with Rasterizer:Rasterizer0|edge2[0][16]    ;
+; Rasterizer:Rasterizer0|edge2[0][21]                  ; Merged with Rasterizer:Rasterizer0|edge2[0][16]    ;
+; Rasterizer:Rasterizer0|edge2[0][22]                  ; Merged with Rasterizer:Rasterizer0|edge2[0][16]    ;
+; Rasterizer:Rasterizer0|edge2[0][23]                  ; Merged with Rasterizer:Rasterizer0|edge2[0][16]    ;
+; Rasterizer:Rasterizer0|edge1[1][17]                  ; Merged with Rasterizer:Rasterizer0|edge1[1][16]    ;
+; Rasterizer:Rasterizer0|edge1[1][18]                  ; Merged with Rasterizer:Rasterizer0|edge1[1][16]    ;
+; Rasterizer:Rasterizer0|edge1[1][19]                  ; Merged with Rasterizer:Rasterizer0|edge1[1][16]    ;
+; Rasterizer:Rasterizer0|edge1[1][20]                  ; Merged with Rasterizer:Rasterizer0|edge1[1][16]    ;
+; Rasterizer:Rasterizer0|edge1[1][21]                  ; Merged with Rasterizer:Rasterizer0|edge1[1][16]    ;
+; Rasterizer:Rasterizer0|edge1[1][22]                  ; Merged with Rasterizer:Rasterizer0|edge1[1][16]    ;
+; Rasterizer:Rasterizer0|edge1[1][23]                  ; Merged with Rasterizer:Rasterizer0|edge1[1][16]    ;
+; Rasterizer:Rasterizer0|edge1[0][17]                  ; Merged with Rasterizer:Rasterizer0|edge1[0][16]    ;
+; Rasterizer:Rasterizer0|edge1[0][18]                  ; Merged with Rasterizer:Rasterizer0|edge1[0][16]    ;
+; Rasterizer:Rasterizer0|edge1[0][19]                  ; Merged with Rasterizer:Rasterizer0|edge1[0][16]    ;
+; Rasterizer:Rasterizer0|edge1[0][20]                  ; Merged with Rasterizer:Rasterizer0|edge1[0][16]    ;
+; Rasterizer:Rasterizer0|edge1[0][21]                  ; Merged with Rasterizer:Rasterizer0|edge1[0][16]    ;
+; Rasterizer:Rasterizer0|edge1[0][22]                  ; Merged with Rasterizer:Rasterizer0|edge1[0][16]    ;
+; Rasterizer:Rasterizer0|edge1[0][23]                  ; Merged with Rasterizer:Rasterizer0|edge1[0][16]    ;
 ; Vertex:Vertex0|matrixCurrent[0][11]                  ; Merged with Vertex:Vertex0|matrixCurrent[0][10]    ;
 ; Vertex:Vertex0|matrixCurrent[0][12]                  ; Merged with Vertex:Vertex0|matrixCurrent[0][10]    ;
 ; Vertex:Vertex0|matrixCurrent[0][13]                  ; Merged with Vertex:Vertex0|matrixCurrent[0][10]    ;
@@ -2329,6 +2442,54 @@ Encoding Type:  One-Hot
 ; Rasterizer:Rasterizer0|edge3[2][1]                   ; Stuck at GND due to stuck port data_in             ;
 ; Rasterizer:Rasterizer0|edge2[2][1]                   ; Stuck at GND due to stuck port data_in             ;
 ; Rasterizer:Rasterizer0|edge1[2][1]                   ; Stuck at GND due to stuck port data_in             ;
+; Rasterizer:Rasterizer0|temptempEdge1[0][23]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge1[0][22]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge1[0][21]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge1[0][20]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge1[0][19]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge1[0][18]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge1[0][17]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge1[0][16]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge1[1][23]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge1[1][22]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge1[1][21]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge1[1][20]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge1[1][19]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge1[1][18]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge1[1][17]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge1[1][16]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[0][23]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[0][22]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[0][21]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[0][20]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[0][19]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[0][18]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[0][17]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[0][16]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[1][23]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[1][22]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[1][21]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[1][20]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[1][19]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[1][18]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[1][17]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge2[1][16]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[0][23]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[0][22]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[0][21]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[0][20]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[0][19]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[0][18]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[0][17]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[0][16]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[1][23]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[1][22]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[1][21]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[1][20]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[1][19]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[1][18]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[1][17]          ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|temptempEdge3[1][16]          ; Lost fanout                                        ;
 ; Memory:Memory0|O_VALUOut[28..31,44..47]              ; Lost fanout                                        ;
 ; Execute:Execute0|O_VALUOut[28..31,44..47]            ; Lost fanout                                        ;
 ; Decode:Decode0|O_VDestValue[28..31,44..47]           ; Lost fanout                                        ;
@@ -2844,6 +3005,12 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[61][44]                           ; Lost fanout                                        ;
 ; Decode:Decode0|VRF[62][44]                           ; Lost fanout                                        ;
 ; Decode:Decode0|VRF[63][44]                           ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge1[0][16]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge1[1][16]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge2[0][16]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge2[1][16]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge3[0][16]                  ; Lost fanout                                        ;
+; Rasterizer:Rasterizer0|edge3[1][16]                  ; Lost fanout                                        ;
 ; Rasterizer:Rasterizer0|min_y[0]                      ; Stuck at GND due to stuck port data_in             ;
 ; Rasterizer:Rasterizer0|min_x[0]                      ; Stuck at GND due to stuck port data_in             ;
 ; Rasterizer:Rasterizer0|fragmentStartY[0]             ; Stuck at GND due to stuck port data_in             ;
@@ -2945,84 +3112,150 @@ Encoding Type:  One-Hot
 ; Rasterizer:Rasterizer0|color~105                     ; Lost fanout                                        ;
 ; Rasterizer:Rasterizer0|color~106                     ; Lost fanout                                        ;
 ; Rasterizer:Rasterizer0|color~107                     ; Lost fanout                                        ;
-; Total Number of Removed Registers = 2663             ;                                                    ;
+; Total Number of Removed Registers = 2828             ;                                                    ;
 +------------------------------------------------------+----------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                              ;
-+----------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
-; Register name                          ; Reason for Removal        ; Registers Removed due to This Register                                              ;
-+----------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
-; Rasterizer:Rasterizer0|vertices[2][27] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[27], Vertex:Vertex0|matrixCurrent[3][15],                     ;
-;                                        ;                           ; Vertex:Vertex0|matrixCurrent[3][14], Vertex:Vertex0|matrixCurrent[3][13],           ;
-;                                        ;                           ; Vertex:Vertex0|matrixCurrent[3][12], Vertex:Vertex0|matrixCurrent[3][11]            ;
-; Rasterizer:Rasterizer0|vertices[2][44] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[44], Vertex:Vertex0|matrixCurrent[7][15],                     ;
-;                                        ;                           ; Vertex:Vertex0|matrixCurrent[7][14], Vertex:Vertex0|matrixCurrent[7][13],           ;
-;                                        ;                           ; Vertex:Vertex0|matrixCurrent[7][12]                                                 ;
-; Rasterizer:Rasterizer0|fragmentY[2][0] ; Stuck at GND              ; Rasterizer:Rasterizer0|min_y[0], Rasterizer:Rasterizer0|min_x[0],                   ;
-;                                        ; due to stuck port data_in ; Rasterizer:Rasterizer0|fragmentStartY[0], Rasterizer:Rasterizer0|fragmentStartX[0]  ;
-; Rasterizer:Rasterizer0|edge3[1][0]     ; Stuck at GND              ; Rasterizer:Rasterizer0|temptempEdge3[1][0], Rasterizer:Rasterizer0|tempEdge3[1][1], ;
-;                                        ; due to stuck port data_in ; Rasterizer:Rasterizer0|edge3[2][1]                                                  ;
-; Decode:Decode0|O_VDestValue[44]        ; Lost Fanouts              ; Decode:Decode0|VRF[0][44], Decode:Decode0|VRF[1][44], Decode:Decode0|VRF[2][44]     ;
-; Rasterizer:Rasterizer0|edge2[1][0]     ; Stuck at GND              ; Rasterizer:Rasterizer0|temptempEdge2[1][0], Rasterizer:Rasterizer0|tempEdge2[1][1], ;
-;                                        ; due to stuck port data_in ; Rasterizer:Rasterizer0|edge2[2][1]                                                  ;
-; Rasterizer:Rasterizer0|edge1[1][0]     ; Stuck at GND              ; Rasterizer:Rasterizer0|temptempEdge1[1][0], Rasterizer:Rasterizer0|tempEdge1[1][1], ;
-;                                        ; due to stuck port data_in ; Rasterizer:Rasterizer0|edge1[2][1]                                                  ;
-; Decode:Decode0|O_VDestValue[31]        ; Lost Fanouts              ; Decode:Decode0|VRF[0][31], Decode:Decode0|VRF[1][31], Decode:Decode0|VRF[2][31]     ;
-; Decode:Decode0|O_VDestValue[30]        ; Lost Fanouts              ; Decode:Decode0|VRF[0][30], Decode:Decode0|VRF[1][30], Decode:Decode0|VRF[2][30]     ;
-; Decode:Decode0|O_VDestValue[29]        ; Lost Fanouts              ; Decode:Decode0|VRF[0][29], Decode:Decode0|VRF[1][29], Decode:Decode0|VRF[2][29]     ;
-; Decode:Decode0|O_VDestValue[28]        ; Lost Fanouts              ; Decode:Decode0|VRF[0][28], Decode:Decode0|VRF[1][28], Decode:Decode0|VRF[2][28]     ;
-; Decode:Decode0|O_VDestValue[47]        ; Lost Fanouts              ; Decode:Decode0|VRF[0][47], Decode:Decode0|VRF[1][47], Decode:Decode0|VRF[2][47]     ;
-; Decode:Decode0|O_VDestValue[46]        ; Lost Fanouts              ; Decode:Decode0|VRF[0][46], Decode:Decode0|VRF[1][46], Decode:Decode0|VRF[2][46]     ;
-; Decode:Decode0|O_VDestValue[45]        ; Lost Fanouts              ; Decode:Decode0|VRF[0][45], Decode:Decode0|VRF[1][45], Decode:Decode0|VRF[2][45]     ;
-; Rasterizer:Rasterizer0|edge3[0][0]     ; Stuck at GND              ; Rasterizer:Rasterizer0|temptempEdge3[0][0], Rasterizer:Rasterizer0|tempEdge3[0][1]  ;
-;                                        ; due to stuck port data_in ;                                                                                     ;
-; Rasterizer:Rasterizer0|edge2[0][0]     ; Stuck at GND              ; Rasterizer:Rasterizer0|temptempEdge2[0][0], Rasterizer:Rasterizer0|tempEdge2[0][1]  ;
-;                                        ; due to stuck port data_in ;                                                                                     ;
-; Rasterizer:Rasterizer0|edge1[0][0]     ; Stuck at GND              ; Rasterizer:Rasterizer0|temptempEdge1[0][0], Rasterizer:Rasterizer0|tempEdge1[0][1]  ;
-;                                        ; due to stuck port data_in ;                                                                                     ;
-; Memory:Memory0|O_VALUOut[54]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[54]                                                      ;
-; Memory:Memory0|O_VALUOut[55]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[55]                                                      ;
-; Memory:Memory0|O_VALUOut[56]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[56]                                                      ;
-; Memory:Memory0|O_VALUOut[57]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[57]                                                      ;
-; Memory:Memory0|O_VALUOut[58]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[58]                                                      ;
-; Memory:Memory0|O_VALUOut[59]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[59]                                                      ;
-; Memory:Memory0|O_VALUOut[61]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[61]                                                      ;
-; Memory:Memory0|O_VALUOut[62]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[62]                                                      ;
-; Memory:Memory0|O_VALUOut[63]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[63]                                                      ;
-; Rasterizer:Rasterizer0|vertices[2][28] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[28]                                                           ;
-; Rasterizer:Rasterizer0|vertices[2][29] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[29]                                                           ;
-; Memory:Memory0|O_VALUOut[14]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[14]                                                      ;
-; Rasterizer:Rasterizer0|vertices[2][31] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[31]                                                           ;
-; Memory:Memory0|O_VALUOut[3]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[3]                                                       ;
-; Rasterizer:Rasterizer0|vertices[2][45] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[45]                                                           ;
-; Rasterizer:Rasterizer0|vertices[2][46] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[46]                                                           ;
-; Rasterizer:Rasterizer0|vertices[2][47] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[47]                                                           ;
-; Memory:Memory0|O_VALUOut[4]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[4]                                                       ;
-; Rasterizer:Rasterizer0|vertices[2][30] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[30]                                                           ;
-; Memory:Memory0|O_VALUOut[5]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[5]                                                       ;
-; Memory:Memory0|O_VALUOut[6]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[6]                                                       ;
-; Memory:Memory0|O_VALUOut[7]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[7]                                                       ;
-; Memory:Memory0|O_VALUOut[12]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[12]                                                      ;
-; Memory:Memory0|O_VALUOut[13]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[13]                                                      ;
-; Memory:Memory0|O_VALUOut[31]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[31]                                                      ;
-; Memory:Memory0|O_VALUOut[15]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[15]                                                      ;
-; Memory:Memory0|O_VALUOut[29]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[29]                                                      ;
-; Memory:Memory0|O_VALUOut[28]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[28]                                                      ;
-; Memory:Memory0|O_VALUOut[47]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[47]                                                      ;
-; Memory:Memory0|O_VALUOut[46]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[46]                                                      ;
-; Memory:Memory0|O_VALUOut[45]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[45]                                                      ;
-; Memory:Memory0|O_VALUOut[44]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[44]                                                      ;
-; Memory:Memory0|O_VALUOut[60]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[60]                                                      ;
-; Memory:Memory0|O_VALUOut[48]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[48]                                                      ;
-; Memory:Memory0|O_VALUOut[49]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[49]                                                      ;
-; Memory:Memory0|O_VALUOut[50]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[50]                                                      ;
-; Memory:Memory0|O_VALUOut[51]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[51]                                                      ;
-; Memory:Memory0|O_VALUOut[52]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[52]                                                      ;
-; Memory:Memory0|O_VALUOut[53]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[53]                                                      ;
-; Memory:Memory0|O_VALUOut[30]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[30]                                                      ;
-+----------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                               ;
++-----------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+; Register name                           ; Reason for Removal        ; Registers Removed due to This Register                                              ;
++-----------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+; Rasterizer:Rasterizer0|fragmentY[2][0]  ; Stuck at GND              ; Rasterizer:Rasterizer0|edge3[1][0], Rasterizer:Rasterizer0|edge3[0][0],             ;
+;                                         ; due to stuck port data_in ; Rasterizer:Rasterizer0|edge2[1][0], Rasterizer:Rasterizer0|edge2[0][0],             ;
+;                                         ;                           ; Rasterizer:Rasterizer0|edge1[1][0], Rasterizer:Rasterizer0|edge1[0][0],             ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[1][0],                                         ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[0][0],                                         ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[1][0],                                         ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[0][0],                                         ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[1][0],                                         ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[0][0], Rasterizer:Rasterizer0|tempEdge3[1][1], ;
+;                                         ;                           ; Rasterizer:Rasterizer0|tempEdge3[0][1], Rasterizer:Rasterizer0|tempEdge2[1][1],     ;
+;                                         ;                           ; Rasterizer:Rasterizer0|tempEdge2[0][1], Rasterizer:Rasterizer0|tempEdge1[1][1],     ;
+;                                         ;                           ; Rasterizer:Rasterizer0|tempEdge1[0][1], Rasterizer:Rasterizer0|min_y[0],            ;
+;                                         ;                           ; Rasterizer:Rasterizer0|min_x[0], Rasterizer:Rasterizer0|fragmentStartY[0],          ;
+;                                         ;                           ; Rasterizer:Rasterizer0|fragmentStartX[0]                                            ;
+; Rasterizer:Rasterizer0|edge1[2][16]     ; Lost Fanouts              ; Rasterizer:Rasterizer0|tempEdge1[0][16], Rasterizer:Rasterizer0|tempEdge1[0][17],   ;
+;                                         ;                           ; Rasterizer:Rasterizer0|tempEdge1[0][18], Rasterizer:Rasterizer0|tempEdge1[0][19],   ;
+;                                         ;                           ; Rasterizer:Rasterizer0|tempEdge1[0][20], Rasterizer:Rasterizer0|tempEdge1[0][21],   ;
+;                                         ;                           ; Rasterizer:Rasterizer0|tempEdge1[0][22], Rasterizer:Rasterizer0|tempEdge1[0][23],   ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[0][23],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[0][22],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[0][21],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[0][20],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[0][19],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[0][18],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[0][17],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[0][16]                                         ;
+; Rasterizer:Rasterizer0|edge3[2][16]     ; Lost Fanouts              ; Rasterizer:Rasterizer0|tempEdge3[0][16], Rasterizer:Rasterizer0|tempEdge3[0][17],   ;
+;                                         ;                           ; Rasterizer:Rasterizer0|tempEdge3[0][18], Rasterizer:Rasterizer0|tempEdge3[0][19],   ;
+;                                         ;                           ; Rasterizer:Rasterizer0|tempEdge3[0][20], Rasterizer:Rasterizer0|tempEdge3[0][21],   ;
+;                                         ;                           ; Rasterizer:Rasterizer0|tempEdge3[0][22], Rasterizer:Rasterizer0|tempEdge3[0][23],   ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[0][23],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[0][22],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[0][21],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[0][20],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[0][19],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[0][18],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[0][17],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[0][16]                                         ;
+; Rasterizer:Rasterizer0|edge2[2][16]     ; Lost Fanouts              ; Rasterizer:Rasterizer0|tempEdge2[0][16], Rasterizer:Rasterizer0|tempEdge2[0][17],   ;
+;                                         ;                           ; Rasterizer:Rasterizer0|tempEdge2[0][18], Rasterizer:Rasterizer0|tempEdge2[0][19],   ;
+;                                         ;                           ; Rasterizer:Rasterizer0|tempEdge2[0][20], Rasterizer:Rasterizer0|tempEdge2[0][21],   ;
+;                                         ;                           ; Rasterizer:Rasterizer0|tempEdge2[0][22], Rasterizer:Rasterizer0|tempEdge2[0][23],   ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[0][23],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[0][22],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[0][21],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[0][20],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[0][19],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[0][18],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[0][17],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[0][16]                                         ;
+; Rasterizer:Rasterizer0|tempEdge3[1][16] ; Lost Fanouts              ; Rasterizer:Rasterizer0|temptempEdge3[1][23],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[1][22],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[1][21],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[1][20],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[1][19],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[1][18],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[1][17],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge3[1][16]                                         ;
+; Rasterizer:Rasterizer0|tempEdge2[1][16] ; Lost Fanouts              ; Rasterizer:Rasterizer0|temptempEdge2[1][23],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[1][22],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[1][21],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[1][20],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[1][19],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[1][18],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[1][17],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge2[1][16]                                         ;
+; Rasterizer:Rasterizer0|tempEdge1[1][16] ; Lost Fanouts              ; Rasterizer:Rasterizer0|temptempEdge1[1][23],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[1][22],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[1][21],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[1][20],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[1][19],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[1][18],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[1][17],                                        ;
+;                                         ;                           ; Rasterizer:Rasterizer0|temptempEdge1[1][16]                                         ;
+; Rasterizer:Rasterizer0|vertices[2][27]  ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[27], Vertex:Vertex0|matrixCurrent[3][15],                     ;
+;                                         ;                           ; Vertex:Vertex0|matrixCurrent[3][14], Vertex:Vertex0|matrixCurrent[3][13],           ;
+;                                         ;                           ; Vertex:Vertex0|matrixCurrent[3][12], Vertex:Vertex0|matrixCurrent[3][11]            ;
+; Rasterizer:Rasterizer0|vertices[2][44]  ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[44], Vertex:Vertex0|matrixCurrent[7][15],                     ;
+;                                         ;                           ; Vertex:Vertex0|matrixCurrent[7][14], Vertex:Vertex0|matrixCurrent[7][13],           ;
+;                                         ;                           ; Vertex:Vertex0|matrixCurrent[7][12]                                                 ;
+; Decode:Decode0|O_VDestValue[44]         ; Lost Fanouts              ; Decode:Decode0|VRF[0][44], Decode:Decode0|VRF[1][44], Decode:Decode0|VRF[2][44]     ;
+; Decode:Decode0|O_VDestValue[31]         ; Lost Fanouts              ; Decode:Decode0|VRF[0][31], Decode:Decode0|VRF[1][31], Decode:Decode0|VRF[2][31]     ;
+; Decode:Decode0|O_VDestValue[30]         ; Lost Fanouts              ; Decode:Decode0|VRF[0][30], Decode:Decode0|VRF[1][30], Decode:Decode0|VRF[2][30]     ;
+; Decode:Decode0|O_VDestValue[29]         ; Lost Fanouts              ; Decode:Decode0|VRF[0][29], Decode:Decode0|VRF[1][29], Decode:Decode0|VRF[2][29]     ;
+; Decode:Decode0|O_VDestValue[28]         ; Lost Fanouts              ; Decode:Decode0|VRF[0][28], Decode:Decode0|VRF[1][28], Decode:Decode0|VRF[2][28]     ;
+; Decode:Decode0|O_VDestValue[47]         ; Lost Fanouts              ; Decode:Decode0|VRF[0][47], Decode:Decode0|VRF[1][47], Decode:Decode0|VRF[2][47]     ;
+; Decode:Decode0|O_VDestValue[46]         ; Lost Fanouts              ; Decode:Decode0|VRF[0][46], Decode:Decode0|VRF[1][46], Decode:Decode0|VRF[2][46]     ;
+; Decode:Decode0|O_VDestValue[45]         ; Lost Fanouts              ; Decode:Decode0|VRF[0][45], Decode:Decode0|VRF[1][45], Decode:Decode0|VRF[2][45]     ;
+; Rasterizer:Rasterizer0|tempEdge3[1][0]  ; Stuck at GND              ; Rasterizer:Rasterizer0|edge3[2][0], Rasterizer:Rasterizer0|edge3[2][1]              ;
+;                                         ; due to stuck port data_in ;                                                                                     ;
+; Rasterizer:Rasterizer0|tempEdge2[1][0]  ; Stuck at GND              ; Rasterizer:Rasterizer0|edge2[2][0], Rasterizer:Rasterizer0|edge2[2][1]              ;
+;                                         ; due to stuck port data_in ;                                                                                     ;
+; Rasterizer:Rasterizer0|tempEdge1[1][0]  ; Stuck at GND              ; Rasterizer:Rasterizer0|edge1[2][0], Rasterizer:Rasterizer0|edge1[2][1]              ;
+;                                         ; due to stuck port data_in ;                                                                                     ;
+; Memory:Memory0|O_VALUOut[54]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[54]                                                      ;
+; Memory:Memory0|O_VALUOut[55]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[55]                                                      ;
+; Memory:Memory0|O_VALUOut[56]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[56]                                                      ;
+; Memory:Memory0|O_VALUOut[57]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[57]                                                      ;
+; Memory:Memory0|O_VALUOut[58]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[58]                                                      ;
+; Memory:Memory0|O_VALUOut[59]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[59]                                                      ;
+; Memory:Memory0|O_VALUOut[60]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[60]                                                      ;
+; Memory:Memory0|O_VALUOut[61]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[61]                                                      ;
+; Memory:Memory0|O_VALUOut[63]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[63]                                                      ;
+; Rasterizer:Rasterizer0|vertices[2][28]  ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[28]                                                           ;
+; Memory:Memory0|O_VALUOut[14]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[14]                                                      ;
+; Rasterizer:Rasterizer0|vertices[2][30]  ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[30]                                                           ;
+; Rasterizer:Rasterizer0|vertices[2][31]  ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[31]                                                           ;
+; Memory:Memory0|O_VALUOut[3]             ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[3]                                                       ;
+; Rasterizer:Rasterizer0|vertices[2][45]  ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[45]                                                           ;
+; Rasterizer:Rasterizer0|vertices[2][46]  ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[46]                                                           ;
+; Rasterizer:Rasterizer0|vertices[2][47]  ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[47]                                                           ;
+; Rasterizer:Rasterizer0|vertices[2][29]  ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[29]                                                           ;
+; Memory:Memory0|O_VALUOut[4]             ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[4]                                                       ;
+; Memory:Memory0|O_VALUOut[5]             ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[5]                                                       ;
+; Memory:Memory0|O_VALUOut[6]             ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[6]                                                       ;
+; Memory:Memory0|O_VALUOut[7]             ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[7]                                                       ;
+; Memory:Memory0|O_VALUOut[12]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[12]                                                      ;
+; Memory:Memory0|O_VALUOut[13]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[13]                                                      ;
+; Memory:Memory0|O_VALUOut[31]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[31]                                                      ;
+; Memory:Memory0|O_VALUOut[15]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[15]                                                      ;
+; Memory:Memory0|O_VALUOut[29]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[29]                                                      ;
+; Memory:Memory0|O_VALUOut[28]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[28]                                                      ;
+; Memory:Memory0|O_VALUOut[47]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[47]                                                      ;
+; Memory:Memory0|O_VALUOut[46]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[46]                                                      ;
+; Memory:Memory0|O_VALUOut[45]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[45]                                                      ;
+; Memory:Memory0|O_VALUOut[44]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[44]                                                      ;
+; Memory:Memory0|O_VALUOut[62]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[62]                                                      ;
+; Memory:Memory0|O_VALUOut[48]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[48]                                                      ;
+; Memory:Memory0|O_VALUOut[49]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[49]                                                      ;
+; Memory:Memory0|O_VALUOut[50]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[50]                                                      ;
+; Memory:Memory0|O_VALUOut[51]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[51]                                                      ;
+; Memory:Memory0|O_VALUOut[52]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[52]                                                      ;
+; Memory:Memory0|O_VALUOut[53]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[53]                                                      ;
+; Memory:Memory0|O_VALUOut[30]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[30]                                                      ;
++-----------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -3821,41 +4054,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +-----------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult13 ;
-+------------------------------------------------+------------+---------------------------+
-; Parameter Name                                 ; Value      ; Type                      ;
-+------------------------------------------------+------------+---------------------------+
-; AUTO_CARRY_CHAINS                              ; ON         ; AUTO_CARRY                ;
-; IGNORE_CARRY_BUFFERS                           ; OFF        ; IGNORE_CARRY              ;
-; AUTO_CASCADE_CHAINS                            ; ON         ; AUTO_CASCADE              ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF        ; IGNORE_CASCADE            ;
-; LPM_WIDTHA                                     ; 16         ; Untyped                   ;
-; LPM_WIDTHB                                     ; 11         ; Untyped                   ;
-; LPM_WIDTHP                                     ; 27         ; Untyped                   ;
-; LPM_WIDTHR                                     ; 27         ; Untyped                   ;
-; LPM_WIDTHS                                     ; 1          ; Untyped                   ;
-; LPM_REPRESENTATION                             ; UNSIGNED   ; Untyped                   ;
-; LPM_PIPELINE                                   ; 0          ; Untyped                   ;
-; LATENCY                                        ; 0          ; Untyped                   ;
-; INPUT_A_IS_CONSTANT                            ; NO         ; Untyped                   ;
-; INPUT_B_IS_CONSTANT                            ; NO         ; Untyped                   ;
-; USE_EAB                                        ; OFF        ; Untyped                   ;
-; MAXIMIZE_SPEED                                 ; 6          ; Untyped                   ;
-; DEVICE_FAMILY                                  ; Cyclone II ; Untyped                   ;
-; CARRY_CHAIN                                    ; MANUAL     ; Untyped                   ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT        ; TECH_MAPPER_APEX20K       ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO       ; Untyped                   ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0          ; Untyped                   ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0          ; Untyped                   ;
-; CBXI_PARAMETER                                 ; mult_k8t   ; Untyped                   ;
-; INPUT_A_FIXED_VALUE                            ; Bx         ; Untyped                   ;
-; INPUT_B_FIXED_VALUE                            ; Bx         ; Untyped                   ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF        ; Untyped                   ;
-+------------------------------------------------+------------+---------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-----------------------------------------------------------------------------------------+
 ; Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult12 ;
 +------------------------------------------------+------------+---------------------------+
 ; Parameter Name                                 ; Value      ; Type                      ;
@@ -3891,7 +4089,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +-----------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult15 ;
+; Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult13 ;
 +------------------------------------------------+------------+---------------------------+
 ; Parameter Name                                 ; Value      ; Type                      ;
 +------------------------------------------------+------------+---------------------------+
@@ -3961,7 +4159,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +-----------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult17 ;
+; Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult15 ;
 +------------------------------------------------+------------+---------------------------+
 ; Parameter Name                                 ; Value      ; Type                      ;
 +------------------------------------------------+------------+---------------------------+
@@ -3997,6 +4195,41 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 +-----------------------------------------------------------------------------------------+
 ; Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult16 ;
++------------------------------------------------+------------+---------------------------+
+; Parameter Name                                 ; Value      ; Type                      ;
++------------------------------------------------+------------+---------------------------+
+; AUTO_CARRY_CHAINS                              ; ON         ; AUTO_CARRY                ;
+; IGNORE_CARRY_BUFFERS                           ; OFF        ; IGNORE_CARRY              ;
+; AUTO_CASCADE_CHAINS                            ; ON         ; AUTO_CASCADE              ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF        ; IGNORE_CASCADE            ;
+; LPM_WIDTHA                                     ; 16         ; Untyped                   ;
+; LPM_WIDTHB                                     ; 11         ; Untyped                   ;
+; LPM_WIDTHP                                     ; 27         ; Untyped                   ;
+; LPM_WIDTHR                                     ; 27         ; Untyped                   ;
+; LPM_WIDTHS                                     ; 1          ; Untyped                   ;
+; LPM_REPRESENTATION                             ; UNSIGNED   ; Untyped                   ;
+; LPM_PIPELINE                                   ; 0          ; Untyped                   ;
+; LATENCY                                        ; 0          ; Untyped                   ;
+; INPUT_A_IS_CONSTANT                            ; NO         ; Untyped                   ;
+; INPUT_B_IS_CONSTANT                            ; NO         ; Untyped                   ;
+; USE_EAB                                        ; OFF        ; Untyped                   ;
+; MAXIMIZE_SPEED                                 ; 6          ; Untyped                   ;
+; DEVICE_FAMILY                                  ; Cyclone II ; Untyped                   ;
+; CARRY_CHAIN                                    ; MANUAL     ; Untyped                   ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT        ; TECH_MAPPER_APEX20K       ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO       ; Untyped                   ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0          ; Untyped                   ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0          ; Untyped                   ;
+; CBXI_PARAMETER                                 ; mult_k8t   ; Untyped                   ;
+; INPUT_A_FIXED_VALUE                            ; Bx         ; Untyped                   ;
+; INPUT_B_FIXED_VALUE                            ; Bx         ; Untyped                   ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF        ; Untyped                   ;
++------------------------------------------------+------------+---------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Rasterizer:Rasterizer0|lpm_mult:Mult17 ;
 +------------------------------------------------+------------+---------------------------+
 ; Parameter Name                                 ; Value      ; Type                      ;
 +------------------------------------------------+------------+---------------------------+
@@ -4633,17 +4866,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Name                                  ; Value                                  ;
 +---------------------------------------+----------------------------------------+
 ; Number of entity instances            ; 22                                     ;
-; Entity Instance                       ; Rasterizer:Rasterizer0|lpm_mult:Mult13 ;
-;     -- LPM_WIDTHA                     ; 16                                     ;
-;     -- LPM_WIDTHB                     ; 11                                     ;
-;     -- LPM_WIDTHP                     ; 27                                     ;
-;     -- LPM_REPRESENTATION             ; UNSIGNED                               ;
-;     -- INPUT_A_IS_CONSTANT            ; NO                                     ;
-;     -- INPUT_B_IS_CONSTANT            ; NO                                     ;
-;     -- USE_EAB                        ; OFF                                    ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                   ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx                                     ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx                                     ;
 ; Entity Instance                       ; Rasterizer:Rasterizer0|lpm_mult:Mult12 ;
 ;     -- LPM_WIDTHA                     ; 16                                     ;
 ;     -- LPM_WIDTHB                     ; 11                                     ;
@@ -4655,7 +4877,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                   ;
 ;     -- INPUT_A_FIXED_VALUE            ; Bx                                     ;
 ;     -- INPUT_B_FIXED_VALUE            ; Bx                                     ;
-; Entity Instance                       ; Rasterizer:Rasterizer0|lpm_mult:Mult15 ;
+; Entity Instance                       ; Rasterizer:Rasterizer0|lpm_mult:Mult13 ;
 ;     -- LPM_WIDTHA                     ; 16                                     ;
 ;     -- LPM_WIDTHB                     ; 11                                     ;
 ;     -- LPM_WIDTHP                     ; 27                                     ;
@@ -4677,7 +4899,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                   ;
 ;     -- INPUT_A_FIXED_VALUE            ; Bx                                     ;
 ;     -- INPUT_B_FIXED_VALUE            ; Bx                                     ;
-; Entity Instance                       ; Rasterizer:Rasterizer0|lpm_mult:Mult17 ;
+; Entity Instance                       ; Rasterizer:Rasterizer0|lpm_mult:Mult15 ;
 ;     -- LPM_WIDTHA                     ; 16                                     ;
 ;     -- LPM_WIDTHB                     ; 11                                     ;
 ;     -- LPM_WIDTHP                     ; 27                                     ;
@@ -4689,6 +4911,17 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     -- INPUT_A_FIXED_VALUE            ; Bx                                     ;
 ;     -- INPUT_B_FIXED_VALUE            ; Bx                                     ;
 ; Entity Instance                       ; Rasterizer:Rasterizer0|lpm_mult:Mult16 ;
+;     -- LPM_WIDTHA                     ; 16                                     ;
+;     -- LPM_WIDTHB                     ; 11                                     ;
+;     -- LPM_WIDTHP                     ; 27                                     ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                               ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                     ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                     ;
+;     -- USE_EAB                        ; OFF                                    ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                   ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                     ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                     ;
+; Entity Instance                       ; Rasterizer:Rasterizer0|lpm_mult:Mult17 ;
 ;     -- LPM_WIDTHA                     ; 16                                     ;
 ;     -- LPM_WIDTHB                     ; 11                                     ;
 ;     -- LPM_WIDTHP                     ; 27                                     ;
@@ -4944,7 +5177,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:01:02     ;
+; Top            ; 00:01:03     ;
 +----------------+--------------+
 
 
@@ -4954,7 +5187,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
-    Info: Processing started: Thu Apr 18 18:54:11 2013
+    Info: Processing started: Thu Apr 18 21:55:29 2013
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lg_highlevel -c lg_highlevel
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file gpu.v
@@ -5097,11 +5330,14 @@ Warning (10230): Verilog HDL assignment warning at rasterizer.v(211): truncated 
 Warning (10230): Verilog HDL assignment warning at rasterizer.v(229): truncated value with size 32 to match size of target (9)
 Warning (10230): Verilog HDL assignment warning at rasterizer.v(244): truncated value with size 16 to match size of target (11)
 Warning (10230): Verilog HDL assignment warning at rasterizer.v(245): truncated value with size 16 to match size of target (11)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(299): truncated value with size 32 to match size of target (18)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(303): truncated value with size 32 to match size of target (11)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(255): truncated value with size 24 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(270): truncated value with size 24 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(285): truncated value with size 24 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(302): truncated value with size 32 to match size of target (18)
 Warning (10230): Verilog HDL assignment warning at rasterizer.v(306): truncated value with size 32 to match size of target (11)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(317): truncated value with size 16 to match size of target (11)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(353): truncated value with size 11 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(309): truncated value with size 32 to match size of target (11)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(320): truncated value with size 16 to match size of target (11)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(356): truncated value with size 11 to match size of target (8)
 Warning (10034): Output port "O_LOCK" at rasterizer.v(26) has no driver
 Info (12128): Elaborating entity "SevenSeg" for hierarchy "Rasterizer:Rasterizer0|SevenSeg:sseg0"
 Info (12128): Elaborating entity "VgaController" for hierarchy "VgaController:VgaController0"
@@ -5156,12 +5392,12 @@ Info (19000): Inferred 1 megafunctions from design logic
         Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
         Info (286033): Parameter INIT_FILE set to db/lg_highlevel.ram0_Fetch_4c7a7c9.hdl.mif
 Info (278001): Inferred 22 megafunctions from design logic
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Rasterizer:Rasterizer0|Mult13"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Rasterizer:Rasterizer0|Mult12"
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Rasterizer:Rasterizer0|Mult15"
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Rasterizer:Rasterizer0|Mult13"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Rasterizer:Rasterizer0|Mult14"
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Rasterizer:Rasterizer0|Mult17"
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Rasterizer:Rasterizer0|Mult15"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Rasterizer:Rasterizer0|Mult16"
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Rasterizer:Rasterizer0|Mult17"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Rasterizer:Rasterizer0|Mult6"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Rasterizer:Rasterizer0|Mult7"
     Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Rasterizer:Rasterizer0|Mult8"
@@ -5192,8 +5428,8 @@ Info (12133): Instantiated megafunction "Fetch:Fetch0|altsyncram:InstMem_rtl_0" 
     Info (12134): Parameter "INIT_FILE" = "db/lg_highlevel.ram0_Fetch_4c7a7c9.hdl.mif"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_6s71.tdf
     Info (12023): Found entity 1: altsyncram_6s71
-Info (12130): Elaborated megafunction instantiation "Rasterizer:Rasterizer0|lpm_mult:Mult13"
-Info (12133): Instantiated megafunction "Rasterizer:Rasterizer0|lpm_mult:Mult13" with the following parameter:
+Info (12130): Elaborated megafunction instantiation "Rasterizer:Rasterizer0|lpm_mult:Mult12"
+Info (12133): Instantiated megafunction "Rasterizer:Rasterizer0|lpm_mult:Mult12" with the following parameter:
     Info (12134): Parameter "LPM_WIDTHA" = "16"
     Info (12134): Parameter "LPM_WIDTHB" = "11"
     Info (12134): Parameter "LPM_WIDTHP" = "27"
@@ -5319,13 +5555,13 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "SRAM_LB_N" is stuck at GND
     Warning (13410): Pin "SRAM_CE_N" is stuck at GND
     Warning (13410): Pin "SRAM_OE_N" is stuck at GND
-Info (17049): 2426 registers lost all their fanouts during netlist optimizations.
+Info (17049): 2549 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file F:/Dropbox/College/Spring 2013/Git/GPU/Homework6_restored/output_files/lg_highlevel.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 15 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "CLOCK_27[0]"
     Warning (15610): No output dependent on input pin "CLOCK_27[1]"
-    Warning (15610): No output dependent on input pin "CLOCK_50"
     Warning (15610): No output dependent on input pin "KEY[1]"
     Warning (15610): No output dependent on input pin "KEY[2]"
     Warning (15610): No output dependent on input pin "KEY[3]"
@@ -5347,11 +5583,11 @@ Info (21057): Implemented 14204 device resources after synthesis - the final res
     Info (21064): Implemented 32 RAM segments
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 24 DSP elements
-Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 112 warnings
-    Info: Peak virtual memory: 401 megabytes
-    Info: Processing ended: Thu Apr 18 18:55:27 2013
-    Info: Elapsed time: 00:01:16
-    Info: Total CPU time (on all processors): 00:01:15
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 115 warnings
+    Info: Peak virtual memory: 402 megabytes
+    Info: Processing ended: Thu Apr 18 21:56:46 2013
+    Info: Elapsed time: 00:01:17
+    Info: Total CPU time (on all processors): 00:01:16
 
 
 +------------------------------------------+
