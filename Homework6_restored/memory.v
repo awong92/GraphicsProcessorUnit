@@ -87,15 +87,16 @@ begin
   O_LOCK <= I_LOCK;
   O_FetchStall <= I_FetchStall;
   O_DepStall <= I_DepStall;
-  O_DestRegIdx <= I_DestRegIdx;
-  O_ALUOut <= I_ALUOut;
-  O_VALUOut <= I_VALUOut;
-  O_Opcode <= I_Opcode;
-  O_DestValue <= I_DestValue;
+
   
   
   if (I_LOCK == 1'b1  && I_FRAMESTALL == 0)
   begin
+    O_DestRegIdx <= I_DestRegIdx;
+  O_ALUOut <= I_ALUOut;
+  O_VALUOut <= I_VALUOut;
+  O_Opcode <= I_Opcode;
+  O_DestValue <= I_DestValue;
 	if (!I_FetchStall&&!I_DepStall) begin
 		if(I_Opcode==`OP_BRN || I_Opcode==`OP_BRZ ||I_Opcode==`OP_BRP ||I_Opcode==`OP_BRNZ ||I_Opcode==`OP_BRNZP ||I_Opcode==`OP_BRNP ||I_Opcode==`OP_BRZP ||I_Opcode==`OP_JMP ||I_Opcode==`OP_JSRR||I_Opcode==`OP_JSR) begin
 			 O_BranchAddrSelect <= 1'b1;

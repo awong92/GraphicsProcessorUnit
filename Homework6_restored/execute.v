@@ -74,14 +74,13 @@ output reg O_DepStall;
 always @(negedge I_CLOCK)
 begin
   O_LOCK <= I_LOCK;
-  O_Opcode <=  I_Opcode;
+  if (I_LOCK == 1'b1  && I_FRAMESTALL == 0) 
+  begin
+    O_Opcode <=  I_Opcode;
   O_FetchStall <= I_FetchStall;
   O_DepStall <= I_DepStall;
   O_DestRegIdx <= I_DestRegIdx;
   O_DestValue <= I_DestValue;
-
-  if (I_LOCK == 1'b1  && I_FRAMESTALL == 0) 
-  begin
 	  if (!I_FetchStall&&!I_DepStall) 
 		begin
 			case(I_Opcode) 
