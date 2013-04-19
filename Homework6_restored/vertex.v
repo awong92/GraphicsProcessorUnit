@@ -138,6 +138,8 @@ begin
  matrixBackup[14] = 0;
  matrixBackup[15] = 1<<7;
  
+ angle = 0;
+ 
  ColorPast <= 0;
   $readmemh("cosine.hex", cosTable);
   $readmemh("sine.hex", sinTable);
@@ -187,23 +189,23 @@ begin
             end
 
             if (I_Opcode==`OP_ROTATE) begin
-                for( j = 0; j < 4; j=j+1) begin
-                    for( k = 0; k < 4; k=k+1) begin
+                for(j = 0; j < 4; j=j+1) begin
+                    for(k = 0; k < 4; k=k+1) begin
                         matrixBackup[4*j + k] = matrixCurrent[4*j+k];
                     end
                 end
 
-                for( j = 0; j < 4; j=j+1) begin
-                    for( k = 0; k < 4; k=k+1) begin
+                for(j = 0; j < 4; j=j+1) begin
+                    for(k = 0; k < 4; k=k+1) begin
                         matrixTemp[4*j+k] = 0;
                         if(j == k)begin
-                            matrixTemp[4*j+k] = 1;
+                            matrixTemp[4*j+k] = 1<<7;
                         end
                     end
                 end
                 
                 angle = I_VRegIn[15:0]>>7;
-                if(I_VRegIn[63:48] > 0)
+                if(I_VRegIn[63] == 1)
 					 begin
 						angle = angle * (-1);
 					 end

@@ -13,7 +13,7 @@ module lg_highlevel(
   // 7-SEG Dispaly
   HEX0,         // Seven Segment Digit 0
   HEX1,         // Seven Segment Digit 1
-  HEX2,         // Seven Segment Digit 2
+  HEX2,         // Seven Segment Digit 2ya
   HEX3,         // Seven Segment Digit 3
   // LED
   LEDG,         // LED Green[7:0]

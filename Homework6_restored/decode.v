@@ -83,6 +83,9 @@ output reg O_BranchStallSignal;
 reg [`REG_WIDTH-1:0] RF[0:`NUM_RF-1]; // Scalar Register File (R0-R7: Integer, R8-R15: Floating-point)
 reg [`VREG_WIDTH-1:0] VRF[0:`NUM_VRF-1]; // Vector Register File
 
+
+reg [2:0] VRFC[0:`NUM_VRF-1]; // Vector Register File
+
 // Valid bits for tracking the register dependence information
 reg RF_VALID[0:`NUM_RF-1]; // Valid bits for Scalar Register File
 reg VRF_VALID[0:`NUM_VRF-1]; // Valid bits for Vector Register File
@@ -112,6 +115,10 @@ begin
     VRF_VALID[trav] = 1;  
   end 
 
+ for (trav=0; trav<64; trav = trav + 1) begin
+	VRFC[trav] = 0;
+  end
+  
   ConditionalCode = 0;
   branchCounter = 0;
   O_PC = 0;
@@ -467,6 +474,7 @@ O_DepStall = __DepStallSignal;
             VRF_VALID[O_DestRegIdx] = 0;
             O_DestValue <= I_IR[23:22];
             O_Src1Value <= RF[I_IR[11:8]];
+				VRFC[O_DestRegIdx] = VRFC[O_DestRegIdx] + 1;
         end
         if(I_IR[31:24] == `OP_VCOMPMOVI)
         begin
@@ -474,6 +482,7 @@ O_DepStall = __DepStallSignal;
             VRF_VALID[O_DestRegIdx] = 0;
             O_DestValue <= I_IR[23:22];
             O_Imm <= I_IR[15:0];
+				VRFC[O_DestRegIdx] = VRFC[O_DestRegIdx] + 1;
         end
         if(I_IR[31:24] == `OP_BEGINPRIMITIVE || I_IR[31:24] == `OP_ENDPRIMITIVE || I_IR[31:24] == `OP_DRAW || I_IR[31:24] == `OP_FLUSH || I_IR[31:24] == `OP_PUSHMATRIX || I_IR[31:24] == `OP_POPMATRIX)
         begin
@@ -488,13 +497,14 @@ O_DepStall = __DepStallSignal;
        
             
         if (I_VWriteBackEnable==1) begin 		  //Write back data if necessary
-				if((I_IR[31:24] == `OP_VCOMPMOVI && I_WriteBackRegIdx == I_IR[21:16]) || (I_IR[31:24] == `OP_VCOMPMOV && I_WriteBackRegIdx == I_IR[21:16]))
+				if(VRFC[I_WriteBackRegIdx] > 1)
 				begin
-            VRF_VALID[I_WriteBackRegIdx]<=0;
+					VRFC[I_WriteBackRegIdx] = VRFC[I_WriteBackRegIdx] - 1;
 				end
 				else
 				begin
-            VRF_VALID[I_WriteBackRegIdx]<=1;
+					VRFC[I_WriteBackRegIdx] = 0;
+					VRF_VALID[I_WriteBackRegIdx]<=1;
 				end
         end
 		  if (I_WriteBackEnable==1) begin                 //Write back data if necessary

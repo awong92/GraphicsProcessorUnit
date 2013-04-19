@@ -58,7 +58,7 @@ reg [2:0]counter;
 //
 initial 
 begin
-  $readmemh("translate_deep.hex", InstMem);
+  $readmemh("scale.hex", InstMem);
   PC = 16'h0;
 
   O_LOCK = 1'b0;
@@ -151,7 +151,7 @@ end
 		 PC <= 0;
 		 O_IR <= InstMem[0];
 		 O_PC <= 0;
-	  end else // if (I_LOCK == 0)
+	  end else if (I_FRAMESTALL == 0) // if (I_LOCK == 0)
 	  begin
 		if (I_BranchAddrSelect==1) begin
 			O_IR = InstMem[I_BranchPC[`PC_WIDTH-1:2]];

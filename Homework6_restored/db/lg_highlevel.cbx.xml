@@ -4,7 +4,6 @@
 		<CBX_INST_ENTRY INSTANCE_NAME="|lg_highlevel|Rasterizer:Rasterizer0|lpm_mult:Mult1|multcore:mult_core|lpm_add_sub:adder" CBX_FILE_NAME="add_sub_i1h.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|lg_highlevel|Vertex:Vertex0|lpm_mult:Mult24" CBX_FILE_NAME="mult_l8t.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|lg_highlevel|Vertex:Vertex0|lpm_mult:Mult5|mult_l8t:auto_generated|alt_mac_mult:mac_mult1" CBX_FILE_NAME="mac_mult_fqg1.tdf"/>
-		<CBX_INST_ENTRY INSTANCE_NAME="|lg_highlevel|Fetch:Fetch0|altsyncram:InstMem_rtl_0" CBX_FILE_NAME="altsyncram_6s71.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|lg_highlevel|Vertex:Vertex0|lpm_mult:Mult25" CBX_FILE_NAME="mult_l8t.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|lg_highlevel|Rasterizer:Rasterizer0|lpm_mult:Mult13|mult_h8t:auto_generated|alt_mac_out:mac_out2" CBX_FILE_NAME="mac_out_kn82.tdf"/>
 		<CBX_INST_ENTRY INSTANCE_NAME="|lg_highlevel|Rasterizer:Rasterizer0|lpm_mult:Mult3|multcore:mult_core|lpm_add_sub:adder" CBX_FILE_NAME="add_sub_i1h.tdf"/>
