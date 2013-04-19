@@ -122,25 +122,26 @@ begin
 
 */
 
-
-if (I_BranchStallSignal==1&&I_DepStallSignal==1)begin
-	stall = 1;
-end
-
-if (I_BranchStallSignal==1&&I_DepStallSignal==0) begin
-	stall = 2;
-	O_FetchStall = 1;
-end else if (stall==1&&I_BranchStallSignal==0&&I_DepStallSignal==0) begin
-	stall = 0;
-end
- 
-if (stall == 2) begin
-	O_FetchStall = 1;
-	if (I_BranchAddrSelect==1) begin
-			O_FetchStall = 0;
+if (I_FRAMESTALL == 0) begin
+	if (I_BranchStallSignal==1&&I_DepStallSignal==1)begin
+		stall = 1;
 	end
-	
-	
+
+	if (I_BranchStallSignal==1&&I_DepStallSignal==0) begin
+		stall = 2;
+		O_FetchStall = 1;
+	end else if (stall==1&&I_BranchStallSignal==0&&I_DepStallSignal==0) begin
+		stall = 0;
+	end
+	 
+	if (stall == 2) begin
+		O_FetchStall = 1;
+		if (I_BranchAddrSelect==1) begin
+				O_FetchStall = 0;
+		end
+		
+		
+	end
 end
   
   if ((stall==0 &&!I_DepStallSignal)||I_BranchAddrSelect) begin

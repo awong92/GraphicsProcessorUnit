@@ -159,7 +159,7 @@ wire FRAMESTALL;
 /////////////////////////////////////////
 //
 pll pll0 (
-  .inclk0 (CLOCK_27[0]),
+  .inclk0 (CLOCK_50),
   .c0     (pll_c0),
   .locked (pll_locked)
 );

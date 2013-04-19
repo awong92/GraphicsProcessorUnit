@@ -195,7 +195,8 @@ assign O_DepStallSignal = (__DepStallSignal & !I_WriteBackEnable);
 /////////////////////////////////////////
 always @(posedge I_CLOCK)
 begin
- 
+if (I_FRAMESTALL == 0) begin
+
   if (I_LOCK == 1'b1  && I_FRAMESTALL == 0)
   begin 
    if (I_WriteBackEnable==1) begin                  //Write back data if necessary
@@ -410,7 +411,8 @@ begin
             branchCounter = 0;
     end
 
-    
+   end
+	
 end // always @(posedge I_CLOCK)
 
 /////////////////////////////////////////
@@ -423,7 +425,7 @@ always @(negedge I_CLOCK)
 begin
   O_LOCK <= I_LOCK;
   O_FetchStall <= I_FetchStall;
-O_DepStall = __DepStallSignal;
+  O_DepStall = __DepStallSignal;
 
   if (I_FetchStall==0&&O_DepStallSignal==0) begin
       if (I_LOCK == 1'b1  && I_FRAMESTALL == 0)
@@ -495,7 +497,7 @@ O_DepStall = __DepStallSignal;
     
     
        
-            
+   if (I_FRAMESTALL == 0) begin         
         if (I_VWriteBackEnable==1) begin 		  //Write back data if necessary
 				if(VRFC[I_WriteBackRegIdx] > 1)
 				begin
@@ -510,6 +512,8 @@ O_DepStall = __DepStallSignal;
 		  if (I_WriteBackEnable==1) begin                 //Write back data if necessary
             RF_VALID[I_WriteBackRegIdx]<=1;
         end
+	end
+
     
 end // always @(negedge I_CLOCK)
 
