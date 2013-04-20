@@ -80,6 +80,7 @@ reg [23:0]edge_result[0:2];
 
 reg [10:0] i;
 reg [10:0] j;
+reg [19:0] k;
 
 initial
 begin
@@ -88,6 +89,7 @@ begin
     is_startprimitive = 0;
     is_endprimitive = 0;
     is_draw = 0;
+	 k = 0;
     currentState = 0;
 	 O_FRAMESTALL = 0;
 	 currentVertex = 0;
@@ -113,6 +115,27 @@ begin
 			color[currentVertex] <= I_ColorIn;
 			currentVertex = currentVertex + 1;
 		end
+		
+	 if(currentState == 0 && I_Opcode == `OP_FLUSH || is_flush == 1)	  
+	  begin
+		 if(currentState == 0 && is_flush == 0)
+		 begin
+		  O_FRAMESTALL <= 1;
+		  is_flush <= 1; 
+		 end 
+			O_ADDROut <= k;
+			O_ColorOut <= 0;
+			k <= k+1;
+			if(k == 256000)
+			begin
+				is_flush <= 0;
+				O_FRAMESTALL <= 0;
+				k<=0;	
+			end	  
+	  end
+		  
+		
+		  
       if(currentState == 0 && I_Opcode == `OP_DRAW)
       begin
 			 O_FRAMESTALL <= 1;	
@@ -241,83 +264,104 @@ begin
         //Traverse
 	  else if(currentState == 11)
 	  begin
-		 i = fragmentStartY;
-		 j = fragmentStartX;
+		 i = 0; //fragmentStartY;
+		 j = 0; //fragmentStartX;
 		 currentState = currentState + 1'b1;
 	  end
 	  
+	/**  if(currentState == 12)	  
+	  begin
+			O_ADDROut <= k;
+			O_ColorOut <= 0;
+			k <= k+1;
+			if(k == 256000)
+			begin
+				currentState = currentState + 1'b1;
+				k<=0;	
+			end	  
+	  end **/
+		  
 	  else if(currentState == 12)
 	  begin
+			O_ADDROut <= i*640+j;
 			/**if(inside(edge_0, (j + 0.5), (i + 0.5))
 				&& inside(edge_1, (j + 0.5), (i + 0.5))
 				&& inside(edge_2, (j + 0.5), (i + 0.5))) **/
-
-   edge_result[0] = (((edge1[0] * j) + (edge1[1] * i)) + edge1[2]);
-
-	if (edge_result[0][23] == 0)
-		flag[0] = 1;
-	else if (edge_result[0][23] == 1)
-		flag[0] = 0;
-	else if (edge1[0][23] == 0)
-		flag[0] = 1;
-	else if (edge1[0][23] == 1)
-		flag[0] = 0;
-	else if (edge1[1][23] == 0)
-		flag[0] = 1;
-	else 
-		flag[0] = 0;
-		
-	edge_result[1] = (((edge2[0] * j) + (edge2[1] * i)) + edge2[2]);
-
-	if (edge_result[1][23] == 0)
-		flag[1] = 1;
-	else if (edge_result[1][23] == 1)
-		flag[1] = 0;
-	else if (edge2[0][23] == 0)
-		flag[1] = 1;
-	else if (edge2[0][23] == 1)
-		flag[1] = 0;
-	else if (edge2[1][23] == 0)
-		flag[1] = 1;
-	else 
-		flag[1] = 0;
-		
-	edge_result[2] = (((edge3[0] * j) + (edge3[1] * i)) + edge3[2]);
-
-	if (edge_result[2][23] == 0)
-		flag[2] = 1;
-	else if (edge_result[2][23] == 1)
-		flag[2] = 0;
-	else if (edge3[0][23] == 0)
-		flag[2] = 1;
-	else if (edge3[0][23] == 1)
-		flag[2] = 0;
-	else if (edge3[1][23] == 0)
-		flag[2] = 1;
-	else 
-		flag[2] = 0;
-		
-		if(flag[0] == 1 && flag[1] == 1 && flag[2] == 1)	
+			if(i>= fragmentStartY && i <= fragmentEndY && j>= fragmentStartX && j<=fragmentEndX)
 			begin
-			 O_ADDROut <= i*640+j;
-			 O_ColorOut <= color[currentTriangle];
+			edge_result[0] = (((edge1[0] * j) + (edge1[1] * i)) + edge1[2]);
+
+			if (edge_result[0][23] == 0)
+				flag[0] = 1;
+			else if (edge_result[0][23] == 1)
+				flag[0] = 0;
+			else if (edge1[0][23] == 0)
+				flag[0] = 1;
+			else if (edge1[0][23] == 1)
+				flag[0] = 0;
+			else if (edge1[1][23] == 0)
+				flag[0] = 1;
+			else 
+				flag[0] = 0;
+				
+			edge_result[1] = (((edge2[0] * j) + (edge2[1] * i)) + edge2[2]);
+
+			if (edge_result[1][23] == 0)
+				flag[1] = 1;
+			else if (edge_result[1][23] == 1)
+				flag[1] = 0;
+			else if (edge2[0][23] == 0)
+				flag[1] = 1;
+			else if (edge2[0][23] == 1)
+				flag[1] = 0;
+			else if (edge2[1][23] == 0)
+				flag[1] = 1;
+			else 
+				flag[1] = 0;
+				
+			edge_result[2] = (((edge3[0] * j) + (edge3[1] * i)) + edge3[2]);
+
+			if (edge_result[2][23] == 0)
+				flag[2] = 1;
+			else if (edge_result[2][23] == 1)
+				flag[2] = 0;
+			else if (edge3[0][23] == 0)
+				flag[2] = 1;
+			else if (edge3[0][23] == 1)
+				flag[2] = 0;
+			else if (edge3[1][23] == 0)
+				flag[2] = 1;
+			else 
+				flag[2] = 0;
+				
+				if(flag[0] == 1 && flag[1] == 1 && flag[2] == 1)	
+					begin
+					 O_ColorOut <= color[currentTriangle];
+					end
+				else
+				begin
+					O_ColorOut <= 0;
+				end
 			end
-  
+			else
+				begin
+					O_ColorOut <= 0;
+				end
 		  j = j+1;
-		  if(j==fragmentEndX)
+		  if(j==640)
 		  begin
 		  i = i+1;
 		  end
 		  
-		  if(j==fragmentEndX && i==fragmentEndY)
+		  if(j==640 && i==400)
 		  begin
 		  O_FRAMESTALL <= 0;
 		  currentState <= 0;
 		  end
 		  
-		  if(j==fragmentEndX)
+		  if(j==640)
 		  begin  
-		  j = fragmentStartX;
+		  j = 0;
 		  end		  
 	  end       
   end
