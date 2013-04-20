@@ -195,11 +195,11 @@ assign O_DepStallSignal = (__DepStallSignal & !I_WriteBackEnable);
 /////////////////////////////////////////
 always @(posedge I_CLOCK)
 begin
-if (I_FRAMESTALL == 0) begin
 
-  if (I_LOCK == 1'b1  && I_FRAMESTALL == 0)
+
+  if (I_LOCK == 1'b1)
   begin 
-   if (I_WriteBackEnable==1) begin                  //Write back data if necessary
+   if (I_WriteBackEnable==1 && I_VWriteBackEnable == 0) begin                  //Write back data if necessary
         RF[I_WriteBackRegIdx] <= I_WriteBackData;   
         if (I_WriteBackData[15]==1)begin        //Find conditional code
             ConditionalCode = 4;
@@ -237,11 +237,11 @@ if (I_FRAMESTALL == 0) begin
     
     if (I_IR[31:24] == `OP_JSR || I_IR[31:24] == `OP_JSRR)          //Write return register
         RF[7] <= I_PC;
-    else
-    ;
+    
     end // if (I_LOCK == 1'b1)  
     
-    if (I_IR[31:24] == `OP_BRN||I_IR[31:24] == `OP_BRZ||I_IR[31:24] == `OP_BRP||I_IR[31:24] == `OP_BRNZ||I_IR[31:24] == `OP_BRNP||I_IR[31:24] == `OP_BRZP)begin
+  if (I_FRAMESTALL == 0) begin
+	 if (I_IR[31:24] == `OP_BRN||I_IR[31:24] == `OP_BRZ||I_IR[31:24] == `OP_BRP||I_IR[31:24] == `OP_BRNZ||I_IR[31:24] == `OP_BRNP||I_IR[31:24] == `OP_BRZP)begin
         if (!O_BranchStallSignal) begin
             branchCounter=0;
         end
@@ -263,7 +263,7 @@ if (I_FRAMESTALL == 0) begin
      (1'b0)
     ) : (1'b0);
     
-    if (I_LOCK == 1'b1  && I_FRAMESTALL == 0) begin    
+    if (I_LOCK == 1'b1) begin    
         if (I_IR[31:24] == `OP_STW) begin
               if (RF_VALID[I_IR[19:16]] != 1||RF_VALID[I_IR[23:20]] != 1) begin
                     if (RF_VALID[I_IR[19:16]] != 1 && RF_VALID[I_IR[23:20]] != 1) begin
@@ -497,7 +497,7 @@ begin
     
     
        
-   if (I_FRAMESTALL == 0) begin         
+  /** if (I_FRAMESTALL == 0) begin         
         if (I_VWriteBackEnable==1) begin 		  //Write back data if necessary
 				if(VRFC[I_WriteBackRegIdx] > 1)
 				begin
@@ -512,7 +512,20 @@ begin
 		  if (I_WriteBackEnable==1) begin                 //Write back data if necessary
             RF_VALID[I_WriteBackRegIdx]<=1;
         end
-	end
+	end **/
+	if (I_WriteBackEnable==1 && I_VWriteBackEnable == 0) begin                 //Write back data if necessary
+            RF_VALID[I_WriteBackRegIdx]<=1;
+        end
+            
+   if (I_VWriteBackEnable==1) begin                  //Write back data if necessary
+      if((I_IR[31:24] == `OP_VCOMPMOVI && I_WriteBackRegIdx == I_IR[21:16]) || (I_IR[31:24] == `OP_VCOMPMOV && I_WriteBackRegIdx == I_IR[21:16]))
+         begin
+            VRF_VALID[I_WriteBackRegIdx]<=0;
+		  end
+		  else  begin
+			VRF_VALID[I_WriteBackRegIdx]<=1;
+          end
+   end
 
     
 end // always @(negedge I_CLOCK)

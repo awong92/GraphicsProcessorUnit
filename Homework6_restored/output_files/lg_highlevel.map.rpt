@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lg_highlevel
-Fri Apr 19 21:11:23 2013
+Sat Apr 20 19:45:19 2013
 Quartus II 32-bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
@@ -83,15 +83,15 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +------------------------------------+------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Apr 19 21:11:22 2013    ;
+; Analysis & Synthesis Status        ; Successful - Sat Apr 20 19:45:18 2013    ;
 ; Quartus II 32-bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
 ; Revision Name                      ; lg_highlevel                             ;
 ; Top-level Entity Name              ; lg_highlevel                             ;
 ; Family                             ; Cyclone II                               ;
-; Total logic elements               ; 11,165                                   ;
-;     Total combinational functions  ; 6,216                                    ;
-;     Dedicated logic registers      ; 6,211                                    ;
-; Total registers                    ; 6211                                     ;
+; Total logic elements               ; 11,541                                   ;
+;     Total combinational functions  ; 6,280                                    ;
+;     Dedicated logic registers      ; 6,524                                    ;
+; Total registers                    ; 6524                                     ;
 ; Total pins                         ; 116                                      ;
 ; Total virtual pins                 ; 0                                        ;
 ; Total memory bits                  ; 0                                        ;
@@ -257,20 +257,20 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+--------+
 ; Resource                                    ; Usage  ;
 +---------------------------------------------+--------+
-; Estimated Total logic elements              ; 11,165 ;
+; Estimated Total logic elements              ; 11,541 ;
 ;                                             ;        ;
-; Total combinational functions               ; 6216   ;
+; Total combinational functions               ; 6280   ;
 ; Logic element usage by number of LUT inputs ;        ;
-;     -- 4 input functions                    ; 4144   ;
-;     -- 3 input functions                    ; 1487   ;
-;     -- <=2 input functions                  ; 585    ;
+;     -- 4 input functions                    ; 4291   ;
+;     -- 3 input functions                    ; 1357   ;
+;     -- <=2 input functions                  ; 632    ;
 ;                                             ;        ;
 ; Logic elements by mode                      ;        ;
-;     -- normal mode                          ; 5372   ;
+;     -- normal mode                          ; 5436   ;
 ;     -- arithmetic mode                      ; 844    ;
 ;                                             ;        ;
-; Total registers                             ; 6211   ;
-;     -- Dedicated logic registers            ; 6211   ;
+; Total registers                             ; 6524   ;
+;     -- Dedicated logic registers            ; 6524   ;
 ;     -- I/O registers                        ; 0      ;
 ;                                             ;        ;
 ; I/O pins                                    ; 116    ;
@@ -278,8 +278,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Total PLLs                                  ; 1      ;
 ;     -- PLLs                                 ; 1      ;
 ;                                             ;        ;
-; Maximum fan-out                             ; 6233   ;
-; Total fan-out                               ; 41599  ;
+; Maximum fan-out                             ; 6545   ;
+; Total fan-out                               ; 42851  ;
 ; Average fan-out                             ; 3.30   ;
 +---------------------------------------------+--------+
 
@@ -289,15 +289,15 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node         ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                          ; Library Name ;
 +------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+--------------+
-; |lg_highlevel                      ; 6216 (1)          ; 6211 (0)     ; 0           ; 48           ; 0       ; 24        ; 116  ; 0            ; |lg_highlevel                                                                ;              ;
-;    |Decode:Decode0|                ; 979 (979)         ; 740 (740)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|Decode:Decode0                                                 ;              ;
-;    |Execute:Execute0|              ; 208 (208)         ; 86 (86)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|Execute:Execute0                                               ;              ;
-;    |Fetch:Fetch0|                  ; 111 (111)         ; 41 (41)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|Fetch:Fetch0                                                   ;              ;
+; |lg_highlevel                      ; 6280 (1)          ; 6524 (0)     ; 0           ; 48           ; 0       ; 24        ; 116  ; 0            ; |lg_highlevel                                                                ;              ;
+;    |Decode:Decode0|                ; 1067 (1067)       ; 1048 (1048)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|Decode:Decode0                                                 ;              ;
+;    |Execute:Execute0|              ; 197 (197)         ; 87 (87)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|Execute:Execute0                                               ;              ;
+;    |Fetch:Fetch0|                  ; 119 (119)         ; 44 (44)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|Fetch:Fetch0                                                   ;              ;
 ;    |Gpu:Gpu0|                      ; 1 (1)             ; 30 (30)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|Gpu:Gpu0                                                       ;              ;
-;    |Memory:Memory0|                ; 3164 (3164)       ; 4206 (4206)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|Memory:Memory0                                                 ;              ;
+;    |Memory:Memory0|                ; 3162 (3162)       ; 4207 (4207)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|Memory:Memory0                                                 ;              ;
 ;    |MultiSram:MultiSram0|          ; 18 (18)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|MultiSram:MultiSram0                                           ;              ;
 ;    |PixelGen:PixelGen0|            ; 83 (83)           ; 31 (31)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|PixelGen:PixelGen0                                             ;              ;
-;    |Rasterizer:Rasterizer0|        ; 1077 (1027)       ; 805 (805)    ; 0           ; 36           ; 0       ; 18        ; 0    ; 0            ; |lg_highlevel|Rasterizer:Rasterizer0                                         ;              ;
+;    |Rasterizer:Rasterizer0|        ; 1081 (1031)       ; 805 (805)    ; 0           ; 36           ; 0       ; 18        ; 0    ; 0            ; |lg_highlevel|Rasterizer:Rasterizer0                                         ;              ;
 ;       |SevenSeg:sseg2|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|Rasterizer:Rasterizer0|SevenSeg:sseg2                          ;              ;
 ;       |SevenSeg:sseg3|             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|Rasterizer:Rasterizer0|SevenSeg:sseg3                          ;              ;
 ;       |lpm_mult:Mult10|            ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |lg_highlevel|Rasterizer:Rasterizer0|lpm_mult:Mult10                         ;              ;
@@ -324,7 +324,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;          |mult_m1t:auto_generated| ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |lg_highlevel|Rasterizer:Rasterizer0|lpm_mult:Mult8|mult_m1t:auto_generated  ;              ;
 ;       |lpm_mult:Mult9|             ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |lg_highlevel|Rasterizer:Rasterizer0|lpm_mult:Mult9                          ;              ;
 ;          |mult_m1t:auto_generated| ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |lg_highlevel|Rasterizer:Rasterizer0|lpm_mult:Mult9|mult_m1t:auto_generated  ;              ;
-;    |Vertex:Vertex0|                ; 369 (369)         ; 218 (218)    ; 0           ; 12           ; 0       ; 6         ; 0    ; 0            ; |lg_highlevel|Vertex:Vertex0                                                 ;              ;
+;    |Vertex:Vertex0|                ; 368 (368)         ; 218 (218)    ; 0           ; 12           ; 0       ; 6         ; 0    ; 0            ; |lg_highlevel|Vertex:Vertex0                                                 ;              ;
 ;       |lpm_mult:Mult0|             ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |lg_highlevel|Vertex:Vertex0|lpm_mult:Mult0                                  ;              ;
 ;          |mult_l8t:auto_generated| ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |lg_highlevel|Vertex:Vertex0|lpm_mult:Mult0|mult_l8t:auto_generated          ;              ;
 ;       |lpm_mult:Mult1|             ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |lg_highlevel|Vertex:Vertex0|lpm_mult:Mult1                                  ;              ;
@@ -338,7 +338,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;       |lpm_mult:Mult5|             ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |lg_highlevel|Vertex:Vertex0|lpm_mult:Mult5                                  ;              ;
 ;          |mult_l8t:auto_generated| ; 0 (0)             ; 0 (0)        ; 0           ; 2            ; 0       ; 1         ; 0    ; 0            ; |lg_highlevel|Vertex:Vertex0|lpm_mult:Mult5|mult_l8t:auto_generated          ;              ;
 ;    |VgaController:VgaController0|  ; 72 (72)           ; 54 (54)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|VgaController:VgaController0                                   ;              ;
-;    |Writeback:Writeback0|          ; 133 (133)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|Writeback:Writeback0                                           ;              ;
+;    |Writeback:Writeback0|          ; 111 (111)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|Writeback:Writeback0                                           ;              ;
 ;    |pll:pll0|                      ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|pll:pll0                                                       ;              ;
 ;       |altpll:altpll_component|    ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lg_highlevel|pll:pll0|altpll:altpll_component                               ;              ;
 +------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------+--------------+
@@ -410,7 +410,6 @@ Encoding Type:  One-Hot
 ; Memory:Memory0|O_DestValue[3..7,12..15]              ; Lost fanout                                             ;
 ; Memory:Memory0|O_VALUOut[3..7,12..15,48..63]         ; Lost fanout                                             ;
 ; Execute:Execute0|O_VALUOut[3..7,12..15,48..63]       ; Lost fanout                                             ;
-; Decode:Decode0|O_VDestValue[48..63]                  ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[63][3]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[63][4]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[63][5]                            ; Lost fanout                                             ;
@@ -420,6 +419,7 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[63][13]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[63][14]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[63][15]                           ; Lost fanout                                             ;
+; Decode:Decode0|O_VDestValue[3..7,12..15,48..63]      ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[63][48]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[63][49]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[63][50]                           ; Lost fanout                                             ;
@@ -446,7 +446,6 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[62][14]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[62][15]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[62][48]                           ; Lost fanout                                             ;
-; Decode:Decode0|O_VDestValue[3..7,12..15]             ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[62][49]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[62][50]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[62][51]                           ; Lost fanout                                             ;
@@ -2012,6 +2011,7 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[0][61]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[0][62]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[0][63]                            ; Lost fanout                                             ;
+; Rasterizer:Rasterizer0|currentTriangle[0..3]         ; Stuck at GND due to stuck port data_in                  ;
 ; Rasterizer:Rasterizer0|vertices[2][27]               ; Lost fanout                                             ;
 ; Rasterizer:Rasterizer0|vertices[2][28]               ; Lost fanout                                             ;
 ; Rasterizer:Rasterizer0|vertices[2][29]               ; Lost fanout                                             ;
@@ -2142,155 +2142,10 @@ Encoding Type:  One-Hot
 ; Rasterizer:Rasterizer0|edge3[2][1]                   ; Stuck at GND due to stuck port data_in                  ;
 ; Rasterizer:Rasterizer0|edge2[2][1]                   ; Stuck at GND due to stuck port data_in                  ;
 ; Rasterizer:Rasterizer0|edge1[2][1]                   ; Stuck at GND due to stuck port data_in                  ;
-; Fetch:Fetch0|O_IR[2..5,18,20,21]                     ; Stuck at GND due to stuck port data_in                  ;
-; Decode:Decode0|O_Imm[2..5]                           ; Stuck at GND due to stuck port data_in                  ;
-; Decode:Decode0|O_DestRegIdx[4,5]                     ; Stuck at GND due to stuck port data_in                  ;
-; Execute:Execute0|O_DestRegIdx[4,5]                   ; Stuck at GND due to stuck port data_in                  ;
-; Memory:Memory0|O_DestRegIdx[4,5]                     ; Stuck at GND due to stuck port data_in                  ;
-; Decode:Decode0|VRFC[16][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[17][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[18][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[19][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[20][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[21][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[22][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[23][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[24][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[25][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[26][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[27][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[28][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[29][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[30][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[31][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[32][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[33][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[34][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[35][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[36][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[37][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[38][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[39][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[40][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[41][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[42][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[43][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[44][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[45][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[46][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[47][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[48][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[49][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[50][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[51][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[52][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[53][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[54][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[55][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[56][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[57][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[58][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[59][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[60][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[61][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[62][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[63][2]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[16][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[17][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[18][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[19][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[20][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[21][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[22][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[23][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[24][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[25][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[26][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[27][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[28][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[29][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[30][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[31][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[32][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[33][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[34][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[35][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[36][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[37][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[38][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[39][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[40][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[41][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[42][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[43][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[44][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[45][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[46][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[47][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[48][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[49][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[50][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[51][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[52][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[53][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[54][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[55][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[56][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[57][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[58][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[59][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[60][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[61][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[62][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[63][1]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[16][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[17][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[18][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[19][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[20][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[21][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[22][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[23][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[24][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[25][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[26][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[27][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[28][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[29][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[30][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[31][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[32][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[33][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[34][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[35][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[36][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[37][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[38][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[39][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[40][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[41][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[42][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[43][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[44][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[45][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[46][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[47][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[48][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[49][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[50][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[51][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[52][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[53][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[54][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[55][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[56][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[57][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[58][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[59][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[60][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[61][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[62][0]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRFC[63][0]                           ; Lost fanout                                             ;
+; Fetch:Fetch0|O_IR[18,21]                             ; Stuck at GND due to stuck port data_in                  ;
+; Decode:Decode0|O_DestRegIdx[5]                       ; Stuck at GND due to stuck port data_in                  ;
+; Execute:Execute0|O_DestRegIdx[5]                     ; Stuck at GND due to stuck port data_in                  ;
+; Memory:Memory0|O_DestRegIdx[5]                       ; Stuck at GND due to stuck port data_in                  ;
 ; Decode:Decode0|VRF[4][8]                             ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[5][8]                             ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[6][8]                             ; Lost fanout                                             ;
@@ -2299,18 +2154,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][8]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][8]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][8]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][8]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][8]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][8]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][8]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][8]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][8]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][8]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][8]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][8]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][8]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][8]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][8]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][8]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][8]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][8]                            ; Lost fanout                                             ;
@@ -2355,18 +2202,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][9]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][9]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][9]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][9]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][9]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][9]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][9]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][9]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][9]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][9]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][9]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][9]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][9]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][9]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][9]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][9]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][9]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][9]                            ; Lost fanout                                             ;
@@ -2411,18 +2250,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][10]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][10]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][10]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][10]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][10]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][10]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][10]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][10]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][10]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][10]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][10]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][10]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][10]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][10]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][10]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][10]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][10]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][10]                           ; Lost fanout                                             ;
@@ -2467,18 +2298,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][11]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][11]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][11]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][11]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][11]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][11]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][11]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][11]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][11]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][11]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][11]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][11]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][11]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][11]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][11]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][11]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][11]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][11]                           ; Lost fanout                                             ;
@@ -2523,18 +2346,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][24]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][24]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][24]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][24]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][24]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][24]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][24]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][24]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][24]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][24]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][24]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][24]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][24]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][24]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][24]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][24]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][24]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][24]                           ; Lost fanout                                             ;
@@ -2579,18 +2394,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][25]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][25]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][25]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][25]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][25]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][25]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][25]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][25]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][25]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][25]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][25]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][25]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][25]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][25]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][25]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][25]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][25]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][25]                           ; Lost fanout                                             ;
@@ -2635,18 +2442,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][26]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][26]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][26]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][26]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][26]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][26]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][26]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][26]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][26]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][26]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][26]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][26]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][26]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][26]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][26]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][26]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][26]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][26]                           ; Lost fanout                                             ;
@@ -2691,18 +2490,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][27]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][27]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][27]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][27]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][27]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][27]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][27]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][27]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][27]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][27]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][27]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][27]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][27]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][27]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][27]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][27]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][27]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][27]                           ; Lost fanout                                             ;
@@ -2747,18 +2538,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][40]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][40]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][40]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][40]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][40]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][40]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][40]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][40]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][40]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][40]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][40]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][40]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][40]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][40]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][40]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][40]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][40]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][40]                           ; Lost fanout                                             ;
@@ -2803,18 +2586,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][41]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][41]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][41]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][41]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][41]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][41]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][41]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][41]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][41]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][41]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][41]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][41]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][41]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][41]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][41]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][41]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][41]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][41]                           ; Lost fanout                                             ;
@@ -2859,18 +2634,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][42]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][42]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][42]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][42]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][42]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][42]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][42]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][42]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][42]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][42]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][42]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][42]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][42]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][42]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][42]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][42]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][42]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][42]                           ; Lost fanout                                             ;
@@ -2915,18 +2682,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][43]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][43]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][43]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][43]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][43]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][43]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][43]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][43]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][43]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][43]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][43]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][43]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][43]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][43]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][43]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][43]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][43]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][43]                           ; Lost fanout                                             ;
@@ -2971,18 +2730,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][31]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][31]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][31]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][31]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][31]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][31]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][31]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][31]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][31]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][31]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][31]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][31]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][31]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][31]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][31]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][31]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][31]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][31]                           ; Lost fanout                                             ;
@@ -3027,18 +2778,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][30]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][30]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][30]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][30]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][30]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][30]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][30]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][30]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][30]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][30]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][30]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][30]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][30]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][30]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][30]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][30]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][30]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][30]                           ; Lost fanout                                             ;
@@ -3083,18 +2826,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][29]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][29]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][29]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][29]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][29]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][29]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][29]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][29]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][29]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][29]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][29]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][29]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][29]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][29]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][29]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][29]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][29]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][29]                           ; Lost fanout                                             ;
@@ -3139,18 +2874,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][28]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][28]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][28]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][28]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][28]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][28]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][28]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][28]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][28]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][28]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][28]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][28]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][28]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][28]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][28]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][28]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][28]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][28]                           ; Lost fanout                                             ;
@@ -3195,18 +2922,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][23]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][23]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][23]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][23]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][23]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][23]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][23]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][23]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][23]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][23]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][23]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][23]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][23]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][23]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][23]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][23]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][23]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][23]                           ; Lost fanout                                             ;
@@ -3251,18 +2970,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][22]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][22]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][22]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][22]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][22]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][22]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][22]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][22]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][22]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][22]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][22]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][22]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][22]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][22]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][22]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][22]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][22]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][22]                           ; Lost fanout                                             ;
@@ -3307,18 +3018,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][21]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][21]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][21]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][21]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][21]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][21]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][21]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][21]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][21]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][21]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][21]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][21]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][21]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][21]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][21]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][21]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][21]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][21]                           ; Lost fanout                                             ;
@@ -3363,18 +3066,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][20]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][20]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][20]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][20]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][20]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][20]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][20]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][20]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][20]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][20]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][20]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][20]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][20]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][20]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][20]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][20]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][20]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][20]                           ; Lost fanout                                             ;
@@ -3419,18 +3114,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][19]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][19]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][19]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][19]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][19]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][19]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][19]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][19]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][19]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][19]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][19]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][19]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][19]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][19]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][19]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][19]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][19]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][19]                           ; Lost fanout                                             ;
@@ -3475,18 +3162,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][18]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][18]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][18]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][18]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][18]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][18]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][18]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][18]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][18]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][18]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][18]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][18]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][18]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][18]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][18]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][18]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][18]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][18]                           ; Lost fanout                                             ;
@@ -3531,18 +3210,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][17]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][17]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][17]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][17]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][17]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][17]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][17]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][17]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][17]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][17]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][17]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][17]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][17]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][17]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][17]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][17]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][17]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][17]                           ; Lost fanout                                             ;
@@ -3587,18 +3258,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][16]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][16]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][16]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][16]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][16]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][16]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][16]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][16]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][16]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][16]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][16]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][16]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][16]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][16]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][16]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][16]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][16]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][16]                           ; Lost fanout                                             ;
@@ -3643,18 +3306,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][47]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][47]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][47]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][47]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][47]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][47]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][47]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][47]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][47]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][47]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][47]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][47]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][47]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][47]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][47]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][47]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][47]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][47]                           ; Lost fanout                                             ;
@@ -3699,18 +3354,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][46]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][46]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][46]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][46]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][46]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][46]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][46]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][46]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][46]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][46]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][46]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][46]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][46]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][46]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][46]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][46]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][46]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][46]                           ; Lost fanout                                             ;
@@ -3755,18 +3402,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][45]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][45]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][45]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][45]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][45]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][45]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][45]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][45]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][45]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][45]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][45]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][45]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][45]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][45]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][45]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][45]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][45]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][45]                           ; Lost fanout                                             ;
@@ -3811,18 +3450,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][44]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][44]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][44]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][44]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][44]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][44]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][44]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][44]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][44]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][44]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][44]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][44]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][44]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][44]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][44]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][44]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][44]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][44]                           ; Lost fanout                                             ;
@@ -3867,18 +3498,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][39]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][39]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][39]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][39]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][39]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][39]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][39]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][39]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][39]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][39]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][39]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][39]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][39]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][39]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][39]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][39]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][39]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][39]                           ; Lost fanout                                             ;
@@ -3923,18 +3546,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][38]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][38]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][38]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][38]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][38]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][38]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][38]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][38]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][38]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][38]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][38]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][38]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][38]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][38]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][38]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][38]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][38]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][38]                           ; Lost fanout                                             ;
@@ -3979,18 +3594,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][37]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][37]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][37]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][37]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][37]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][37]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][37]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][37]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][37]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][37]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][37]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][37]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][37]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][37]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][37]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][37]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][37]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][37]                           ; Lost fanout                                             ;
@@ -4035,18 +3642,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][36]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][36]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][36]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][36]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][36]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][36]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][36]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][36]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][36]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][36]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][36]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][36]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][36]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][36]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][36]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][36]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][36]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][36]                           ; Lost fanout                                             ;
@@ -4091,18 +3690,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][35]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][35]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][35]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][35]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][35]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][35]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][35]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][35]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][35]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][35]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][35]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][35]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][35]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][35]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][35]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][35]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][35]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][35]                           ; Lost fanout                                             ;
@@ -4147,18 +3738,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][34]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][34]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][34]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][34]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][34]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][34]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][34]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][34]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][34]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][34]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][34]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][34]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][34]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][34]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][34]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][34]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][34]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][34]                           ; Lost fanout                                             ;
@@ -4203,18 +3786,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][33]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][33]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][33]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][33]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][33]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][33]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][33]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][33]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][33]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][33]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][33]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][33]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][33]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][33]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][33]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][33]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][33]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][33]                           ; Lost fanout                                             ;
@@ -4259,18 +3834,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][32]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][32]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][32]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][32]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][32]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][32]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][32]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][32]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][32]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][32]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][32]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][32]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][32]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][32]                           ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][32]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][32]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][32]                           ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][32]                           ; Lost fanout                                             ;
@@ -4315,18 +3882,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][2]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][2]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][2]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][2]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][2]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][2]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][2]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][2]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][2]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][2]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][2]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][2]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][2]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][2]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][2]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][2]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][2]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][2]                            ; Lost fanout                                             ;
@@ -4371,18 +3930,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][1]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][1]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][1]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][1]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][1]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][1]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][1]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][1]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][1]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][1]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][1]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][1]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][1]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][1]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][1]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][1]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][1]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][1]                            ; Lost fanout                                             ;
@@ -4427,18 +3978,10 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[13][0]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[14][0]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[15][0]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[16][0]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[17][0]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[18][0]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[19][0]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[20][0]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[21][0]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[22][0]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[23][0]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[24][0]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[25][0]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[26][0]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF[27][0]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[28][0]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[29][0]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[30][0]                            ; Lost fanout                                             ;
@@ -4475,15 +4018,18 @@ Encoding Type:  One-Hot
 ; Decode:Decode0|VRF[61][0]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[62][0]                            ; Lost fanout                                             ;
 ; Decode:Decode0|VRF[63][0]                            ; Lost fanout                                             ;
-; Decode:Decode0|VRF_VALID[4..7,12..63]                ; Stuck at VCC due to stuck port data_in                  ;
+; Decode:Decode0|VRF_VALID[32..63]                     ; Stuck at VCC due to stuck port data_in                  ;
 ; Rasterizer:Rasterizer0|min_y[0]                      ; Stuck at GND due to stuck port data_in                  ;
 ; Rasterizer:Rasterizer0|min_x[0]                      ; Stuck at GND due to stuck port data_in                  ;
 ; Rasterizer:Rasterizer0|fragmentStartY[0]             ; Stuck at GND due to stuck port data_in                  ;
 ; Rasterizer:Rasterizer0|fragmentStartX[0]             ; Stuck at GND due to stuck port data_in                  ;
-; Fetch:Fetch0|O_IR[6]                                 ; Merged with Fetch:Fetch0|O_IR[19]                       ;
-; Fetch:Fetch0|O_IR[1]                                 ; Merged with Fetch:Fetch0|O_IR[0]                        ;
+; Fetch:Fetch0|O_IR[2,6]                               ; Merged with Fetch:Fetch0|O_IR[5]                        ;
+; Fetch:Fetch0|O_IR[3]                                 ; Merged with Fetch:Fetch0|O_IR[4]                        ;
+; Fetch:Fetch0|O_IR[0]                                 ; Merged with Fetch:Fetch0|O_IR[1]                        ;
 ; Fetch:Fetch0|O_IR[9,10,12,14]                        ; Merged with Fetch:Fetch0|O_IR[13]                       ;
 ; Decode:Decode0|O_Imm[9,10,12,13]                     ; Merged with Decode:Decode0|O_Imm[14]                    ;
+; Decode:Decode0|O_Imm[2,5]                            ; Merged with Decode:Decode0|O_Imm[6]                     ;
+; Decode:Decode0|O_Imm[3]                              ; Merged with Decode:Decode0|O_Imm[4]                     ;
 ; Decode:Decode0|O_Imm[0]                              ; Merged with Decode:Decode0|O_Imm[1]                     ;
 ; Rasterizer:Rasterizer0|temptempEdge1[0][17]          ; Merged with Rasterizer:Rasterizer0|temptempEdge1[0][23] ;
 ; Rasterizer:Rasterizer0|temptempEdge1[0][18]          ; Merged with Rasterizer:Rasterizer0|temptempEdge1[0][23] ;
@@ -4521,39 +4067,7 @@ Encoding Type:  One-Hot
 ; Rasterizer:Rasterizer0|temptempEdge3[1][20]          ; Merged with Rasterizer:Rasterizer0|temptempEdge3[1][23] ;
 ; Rasterizer:Rasterizer0|temptempEdge3[1][21]          ; Merged with Rasterizer:Rasterizer0|temptempEdge3[1][23] ;
 ; Rasterizer:Rasterizer0|temptempEdge3[1][22]          ; Merged with Rasterizer:Rasterizer0|temptempEdge3[1][23] ;
-; Decode:Decode0|RF[5][15]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][15]                            ; Lost fanout                                             ;
-; Decode:Decode0|RF[5][14]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][14]                            ; Lost fanout                                             ;
-; Decode:Decode0|RF[5][13]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][13]                            ; Lost fanout                                             ;
-; Decode:Decode0|RF[5][12]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][12]                            ; Lost fanout                                             ;
-; Decode:Decode0|RF[5][11]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][11]                            ; Lost fanout                                             ;
-; Decode:Decode0|RF[5][10]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][10]                            ; Lost fanout                                             ;
-; Decode:Decode0|RF[5][9]                              ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][9]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF[5][8]                              ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][8]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF[5][7]                              ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][7]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF[5][6]                              ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][6]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF[5][5]                              ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][5]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF[5][4]                              ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][4]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF[5][3]                              ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][3]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF[5][2]                              ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][2]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF[5][1]                              ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][1]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF[5][0]                              ; Lost fanout                                             ;
-; Decode:Decode0|RF[13][0]                             ; Lost fanout                                             ;
-; Decode:Decode0|RF_VALID[5,13]                        ; Lost fanout                                             ;
+; Decode:Decode0|VRF_VALID[4..7,12..15,20..23,28..31]  ; Lost fanout                                             ;
 ; Decode:Decode0|ConditionalCode.000                   ; Lost fanout                                             ;
 ; Rasterizer:Rasterizer0|color~12                      ; Lost fanout                                             ;
 ; Rasterizer:Rasterizer0|color~13                      ; Lost fanout                                             ;
@@ -4669,102 +4183,103 @@ Encoding Type:  One-Hot
 ; Vertex:Vertex0|matrixPast[7][13]                     ; Lost fanout                                             ;
 ; Vertex:Vertex0|matrixPast[7][14]                     ; Lost fanout                                             ;
 ; Vertex:Vertex0|matrixPast[7][15]                     ; Lost fanout                                             ;
-; Total Number of Removed Registers = 4479             ;                                                         ;
+; Total Number of Removed Registers = 3978             ;                                                         ;
 +------------------------------------------------------+---------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                              ;
-+----------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
-; Register name                          ; Reason for Removal        ; Registers Removed due to This Register                                              ;
-+----------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
-; Fetch:Fetch0|O_IR[21]                  ; Stuck at GND              ; Decode:Decode0|O_DestRegIdx[5], Execute:Execute0|O_DestRegIdx[5],                   ;
-;                                        ; due to stuck port data_in ; Memory:Memory0|O_DestRegIdx[5], Decode:Decode0|VRFC[16][2],                         ;
-;                                        ;                           ; Decode:Decode0|VRFC[17][2], Decode:Decode0|VRFC[18][2], Decode:Decode0|VRFC[19][2], ;
-;                                        ;                           ; Decode:Decode0|VRFC[20][2], Decode:Decode0|VRFC[21][2], Decode:Decode0|VRFC[22][2], ;
-;                                        ;                           ; Decode:Decode0|VRFC[23][2], Decode:Decode0|VRFC[24][2], Decode:Decode0|VRFC[25][2], ;
-;                                        ;                           ; Decode:Decode0|VRFC[26][2], Decode:Decode0|VRFC[27][2], Decode:Decode0|VRFC[28][2], ;
-;                                        ;                           ; Decode:Decode0|VRFC[29][2], Decode:Decode0|VRFC[30][2], Decode:Decode0|VRFC[31][2], ;
-;                                        ;                           ; Decode:Decode0|VRFC[32][2], Decode:Decode0|VRFC[33][2], Decode:Decode0|VRFC[34][2], ;
-;                                        ;                           ; Decode:Decode0|VRFC[35][2], Decode:Decode0|VRFC[36][2], Decode:Decode0|VRFC[37][2], ;
-;                                        ;                           ; Decode:Decode0|VRFC[38][2], Decode:Decode0|VRFC[39][2], Decode:Decode0|VRFC[40][2], ;
-;                                        ;                           ; Decode:Decode0|VRFC[41][2], Decode:Decode0|VRFC[42][2], Decode:Decode0|VRFC[43][2], ;
-;                                        ;                           ; Decode:Decode0|VRFC[44][2], Decode:Decode0|VRFC[45][2], Decode:Decode0|VRFC[46][2], ;
-;                                        ;                           ; Decode:Decode0|VRFC[47][2], Decode:Decode0|VRFC[48][2], Decode:Decode0|VRFC[49][2], ;
-;                                        ;                           ; Decode:Decode0|VRFC[50][2], Decode:Decode0|VRFC[51][2], Decode:Decode0|VRFC[52][2], ;
-;                                        ;                           ; Decode:Decode0|VRFC[53][2], Decode:Decode0|VRFC[54][2], Decode:Decode0|VRFC[55][2], ;
-;                                        ;                           ; Decode:Decode0|VRFC[56][2], Decode:Decode0|VRFC[57][2], Decode:Decode0|VRFC[58][2], ;
-;                                        ;                           ; Decode:Decode0|VRFC[59][2], Decode:Decode0|VRFC[60][2], Decode:Decode0|VRFC[61][2], ;
-;                                        ;                           ; Decode:Decode0|VRFC[62][2], Decode:Decode0|VRFC[63][2]                              ;
-; Rasterizer:Rasterizer0|fragmentY[2][0] ; Stuck at GND              ; Rasterizer:Rasterizer0|edge3[1][0], Rasterizer:Rasterizer0|edge3[0][0],             ;
-;                                        ; due to stuck port data_in ; Rasterizer:Rasterizer0|edge2[1][0], Rasterizer:Rasterizer0|edge2[0][0],             ;
-;                                        ;                           ; Rasterizer:Rasterizer0|edge1[1][0], Rasterizer:Rasterizer0|edge1[0][0],             ;
-;                                        ;                           ; Rasterizer:Rasterizer0|temptempEdge3[1][0],                                         ;
-;                                        ;                           ; Rasterizer:Rasterizer0|temptempEdge3[0][0],                                         ;
-;                                        ;                           ; Rasterizer:Rasterizer0|temptempEdge2[1][0],                                         ;
-;                                        ;                           ; Rasterizer:Rasterizer0|temptempEdge2[0][0],                                         ;
-;                                        ;                           ; Rasterizer:Rasterizer0|temptempEdge1[1][0],                                         ;
-;                                        ;                           ; Rasterizer:Rasterizer0|temptempEdge1[0][0], Rasterizer:Rasterizer0|tempEdge3[1][1], ;
-;                                        ;                           ; Rasterizer:Rasterizer0|tempEdge3[0][1], Rasterizer:Rasterizer0|tempEdge2[1][1],     ;
-;                                        ;                           ; Rasterizer:Rasterizer0|tempEdge2[0][1], Rasterizer:Rasterizer0|tempEdge1[1][1],     ;
-;                                        ;                           ; Rasterizer:Rasterizer0|tempEdge1[0][1], Rasterizer:Rasterizer0|edge3[2][1],         ;
-;                                        ;                           ; Rasterizer:Rasterizer0|edge2[2][1], Rasterizer:Rasterizer0|edge1[2][1],             ;
-;                                        ;                           ; Rasterizer:Rasterizer0|min_y[0], Rasterizer:Rasterizer0|min_x[0],                   ;
-;                                        ;                           ; Rasterizer:Rasterizer0|fragmentStartY[0], Rasterizer:Rasterizer0|fragmentStartX[0]  ;
-; Fetch:Fetch0|O_IR[20]                  ; Stuck at GND              ; Decode:Decode0|O_DestRegIdx[4], Execute:Execute0|O_DestRegIdx[4],                   ;
-;                                        ; due to stuck port data_in ; Memory:Memory0|O_DestRegIdx[4]                                                      ;
-; Memory:Memory0|O_VALUOut[6]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[6]                                                       ;
-; Memory:Memory0|O_VALUOut[7]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[7]                                                       ;
-; Memory:Memory0|O_VALUOut[12]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[12]                                                      ;
-; Memory:Memory0|O_VALUOut[13]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[13]                                                      ;
-; Memory:Memory0|O_VALUOut[14]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[14]                                                      ;
-; Memory:Memory0|O_VALUOut[15]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[15]                                                      ;
-; Memory:Memory0|O_VALUOut[48]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[48]                                                      ;
-; Memory:Memory0|O_VALUOut[49]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[49]                                                      ;
-; Memory:Memory0|O_VALUOut[50]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[50]                                                      ;
-; Memory:Memory0|O_VALUOut[51]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[51]                                                      ;
-; Memory:Memory0|O_VALUOut[52]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[52]                                                      ;
-; Memory:Memory0|O_VALUOut[53]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[53]                                                      ;
-; Memory:Memory0|O_VALUOut[54]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[54]                                                      ;
-; Memory:Memory0|O_VALUOut[55]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[55]                                                      ;
-; Memory:Memory0|O_VALUOut[56]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[56]                                                      ;
-; Memory:Memory0|O_VALUOut[57]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[57]                                                      ;
-; Memory:Memory0|O_VALUOut[58]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[58]                                                      ;
-; Memory:Memory0|O_VALUOut[59]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[59]                                                      ;
-; Memory:Memory0|O_VALUOut[60]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[60]                                                      ;
-; Memory:Memory0|O_VALUOut[61]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[61]                                                      ;
-; Memory:Memory0|O_VALUOut[62]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[62]                                                      ;
-; Memory:Memory0|O_VALUOut[63]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[63]                                                      ;
-; Rasterizer:Rasterizer0|vertices[2][27] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[27]                                                           ;
-; Rasterizer:Rasterizer0|vertices[2][28] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[28]                                                           ;
-; Rasterizer:Rasterizer0|vertices[2][29] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[29]                                                           ;
-; Rasterizer:Rasterizer0|vertices[2][30] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[30]                                                           ;
-; Rasterizer:Rasterizer0|vertices[2][31] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[31]                                                           ;
-; Rasterizer:Rasterizer0|vertices[2][44] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[44]                                                           ;
-; Rasterizer:Rasterizer0|vertices[2][45] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[45]                                                           ;
-; Rasterizer:Rasterizer0|vertices[2][46] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[46]                                                           ;
-; Rasterizer:Rasterizer0|vertices[2][47] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[47]                                                           ;
-; Memory:Memory0|O_VALUOut[3]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[3]                                                       ;
-; Memory:Memory0|O_VALUOut[4]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[4]                                                       ;
-; Memory:Memory0|O_VALUOut[5]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[5]                                                       ;
-; Fetch:Fetch0|O_IR[5]                   ; Stuck at GND              ; Decode:Decode0|O_Imm[5]                                                             ;
-;                                        ; due to stuck port data_in ;                                                                                     ;
-; Fetch:Fetch0|O_IR[4]                   ; Stuck at GND              ; Decode:Decode0|O_Imm[4]                                                             ;
-;                                        ; due to stuck port data_in ;                                                                                     ;
-; Fetch:Fetch0|O_IR[3]                   ; Stuck at GND              ; Decode:Decode0|O_Imm[3]                                                             ;
-;                                        ; due to stuck port data_in ;                                                                                     ;
-; Fetch:Fetch0|O_IR[2]                   ; Stuck at GND              ; Decode:Decode0|O_Imm[2]                                                             ;
-;                                        ; due to stuck port data_in ;                                                                                     ;
-; Vertex:Vertex0|matrixCurrent[3][11]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[3][11]                                                    ;
-; Vertex:Vertex0|matrixCurrent[3][12]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[3][12]                                                    ;
-; Vertex:Vertex0|matrixCurrent[3][13]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[3][13]                                                    ;
-; Vertex:Vertex0|matrixCurrent[3][14]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[3][14]                                                    ;
-; Vertex:Vertex0|matrixCurrent[3][15]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[3][15]                                                    ;
-; Vertex:Vertex0|matrixCurrent[7][12]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[7][12]                                                    ;
-; Vertex:Vertex0|matrixCurrent[7][13]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[7][13]                                                    ;
-; Vertex:Vertex0|matrixCurrent[7][14]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[7][14]                                                    ;
-; Vertex:Vertex0|matrixCurrent[7][15]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[7][15]                                                    ;
-+----------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                ;
++----------------------------------------+---------------------------+---------------------------------------------------------------------------------------+
+; Register name                          ; Reason for Removal        ; Registers Removed due to This Register                                                ;
++----------------------------------------+---------------------------+---------------------------------------------------------------------------------------+
+; Fetch:Fetch0|O_IR[21]                  ; Stuck at GND              ; Decode:Decode0|O_DestRegIdx[5], Execute:Execute0|O_DestRegIdx[5],                     ;
+;                                        ; due to stuck port data_in ; Memory:Memory0|O_DestRegIdx[5], Decode:Decode0|VRF[59][8], Decode:Decode0|VRF[59][9], ;
+;                                        ;                           ; Decode:Decode0|VRF[59][10], Decode:Decode0|VRF[59][11], Decode:Decode0|VRF[59][24],   ;
+;                                        ;                           ; Decode:Decode0|VRF[59][25], Decode:Decode0|VRF[59][26], Decode:Decode0|VRF[59][27],   ;
+;                                        ;                           ; Decode:Decode0|VRF[59][40], Decode:Decode0|VRF[59][41], Decode:Decode0|VRF[59][42],   ;
+;                                        ;                           ; Decode:Decode0|VRF[59][43], Decode:Decode0|VRF[59][31], Decode:Decode0|VRF[59][30],   ;
+;                                        ;                           ; Decode:Decode0|VRF[59][29], Decode:Decode0|VRF[59][28], Decode:Decode0|VRF[59][23],   ;
+;                                        ;                           ; Decode:Decode0|VRF[59][22], Decode:Decode0|VRF[59][21], Decode:Decode0|VRF[59][20],   ;
+;                                        ;                           ; Decode:Decode0|VRF[59][19], Decode:Decode0|VRF[59][18], Decode:Decode0|VRF[59][17],   ;
+;                                        ;                           ; Decode:Decode0|VRF[59][16], Decode:Decode0|VRF[59][47], Decode:Decode0|VRF[59][46],   ;
+;                                        ;                           ; Decode:Decode0|VRF[59][45], Decode:Decode0|VRF[59][44], Decode:Decode0|VRF[59][39],   ;
+;                                        ;                           ; Decode:Decode0|VRF[59][38], Decode:Decode0|VRF[59][37], Decode:Decode0|VRF[59][36],   ;
+;                                        ;                           ; Decode:Decode0|VRF[59][35], Decode:Decode0|VRF[59][34], Decode:Decode0|VRF[59][33],   ;
+;                                        ;                           ; Decode:Decode0|VRF[59][32], Decode:Decode0|VRF[59][2], Decode:Decode0|VRF[59][1],     ;
+;                                        ;                           ; Decode:Decode0|VRF[59][0], Decode:Decode0|VRF_VALID[32],                              ;
+;                                        ;                           ; Decode:Decode0|VRF_VALID[33], Decode:Decode0|VRF_VALID[34],                           ;
+;                                        ;                           ; Decode:Decode0|VRF_VALID[35], Decode:Decode0|VRF_VALID[36],                           ;
+;                                        ;                           ; Decode:Decode0|VRF_VALID[37], Decode:Decode0|VRF_VALID[38],                           ;
+;                                        ;                           ; Decode:Decode0|VRF_VALID[39], Decode:Decode0|VRF_VALID[40],                           ;
+;                                        ;                           ; Decode:Decode0|VRF_VALID[41], Decode:Decode0|VRF_VALID[42],                           ;
+;                                        ;                           ; Decode:Decode0|VRF_VALID[43], Decode:Decode0|VRF_VALID[44],                           ;
+;                                        ;                           ; Decode:Decode0|VRF_VALID[45], Decode:Decode0|VRF_VALID[46],                           ;
+;                                        ;                           ; Decode:Decode0|VRF_VALID[47], Decode:Decode0|VRF_VALID[48],                           ;
+;                                        ;                           ; Decode:Decode0|VRF_VALID[49], Decode:Decode0|VRF_VALID[50],                           ;
+;                                        ;                           ; Decode:Decode0|VRF_VALID[51], Decode:Decode0|VRF_VALID[52],                           ;
+;                                        ;                           ; Decode:Decode0|VRF_VALID[53], Decode:Decode0|VRF_VALID[54],                           ;
+;                                        ;                           ; Decode:Decode0|VRF_VALID[55], Decode:Decode0|VRF_VALID[60],                           ;
+;                                        ;                           ; Decode:Decode0|VRF_VALID[61], Decode:Decode0|VRF_VALID[62],                           ;
+;                                        ;                           ; Decode:Decode0|VRF_VALID[63]                                                          ;
+; Rasterizer:Rasterizer0|fragmentY[2][0] ; Stuck at GND              ; Rasterizer:Rasterizer0|edge3[1][0], Rasterizer:Rasterizer0|edge3[0][0],               ;
+;                                        ; due to stuck port data_in ; Rasterizer:Rasterizer0|edge2[1][0], Rasterizer:Rasterizer0|edge2[0][0],               ;
+;                                        ;                           ; Rasterizer:Rasterizer0|edge1[1][0], Rasterizer:Rasterizer0|edge1[0][0],               ;
+;                                        ;                           ; Rasterizer:Rasterizer0|temptempEdge3[1][0],                                           ;
+;                                        ;                           ; Rasterizer:Rasterizer0|temptempEdge3[0][0],                                           ;
+;                                        ;                           ; Rasterizer:Rasterizer0|temptempEdge2[1][0],                                           ;
+;                                        ;                           ; Rasterizer:Rasterizer0|temptempEdge2[0][0],                                           ;
+;                                        ;                           ; Rasterizer:Rasterizer0|temptempEdge1[1][0],                                           ;
+;                                        ;                           ; Rasterizer:Rasterizer0|temptempEdge1[0][0], Rasterizer:Rasterizer0|tempEdge3[1][1],   ;
+;                                        ;                           ; Rasterizer:Rasterizer0|tempEdge3[0][1], Rasterizer:Rasterizer0|tempEdge2[1][1],       ;
+;                                        ;                           ; Rasterizer:Rasterizer0|tempEdge2[0][1], Rasterizer:Rasterizer0|tempEdge1[1][1],       ;
+;                                        ;                           ; Rasterizer:Rasterizer0|tempEdge1[0][1], Rasterizer:Rasterizer0|edge3[2][1],           ;
+;                                        ;                           ; Rasterizer:Rasterizer0|edge2[2][1], Rasterizer:Rasterizer0|edge1[2][1],               ;
+;                                        ;                           ; Rasterizer:Rasterizer0|min_y[0], Rasterizer:Rasterizer0|min_x[0],                     ;
+;                                        ;                           ; Rasterizer:Rasterizer0|fragmentStartY[0], Rasterizer:Rasterizer0|fragmentStartX[0]    ;
+; Memory:Memory0|O_VALUOut[5]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[5]                                                         ;
+; Memory:Memory0|O_VALUOut[6]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[6]                                                         ;
+; Memory:Memory0|O_VALUOut[7]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[7]                                                         ;
+; Memory:Memory0|O_VALUOut[12]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[12]                                                        ;
+; Memory:Memory0|O_VALUOut[13]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[13]                                                        ;
+; Memory:Memory0|O_VALUOut[14]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[14]                                                        ;
+; Memory:Memory0|O_VALUOut[15]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[15]                                                        ;
+; Memory:Memory0|O_VALUOut[48]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[48]                                                        ;
+; Memory:Memory0|O_VALUOut[49]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[49]                                                        ;
+; Memory:Memory0|O_VALUOut[50]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[50]                                                        ;
+; Memory:Memory0|O_VALUOut[51]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[51]                                                        ;
+; Memory:Memory0|O_VALUOut[52]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[52]                                                        ;
+; Memory:Memory0|O_VALUOut[53]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[53]                                                        ;
+; Memory:Memory0|O_VALUOut[54]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[54]                                                        ;
+; Memory:Memory0|O_VALUOut[55]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[55]                                                        ;
+; Memory:Memory0|O_VALUOut[56]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[56]                                                        ;
+; Memory:Memory0|O_VALUOut[57]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[57]                                                        ;
+; Memory:Memory0|O_VALUOut[58]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[58]                                                        ;
+; Memory:Memory0|O_VALUOut[59]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[59]                                                        ;
+; Memory:Memory0|O_VALUOut[60]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[60]                                                        ;
+; Memory:Memory0|O_VALUOut[61]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[61]                                                        ;
+; Memory:Memory0|O_VALUOut[62]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[62]                                                        ;
+; Memory:Memory0|O_VALUOut[63]           ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[63]                                                        ;
+; Rasterizer:Rasterizer0|vertices[2][27] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[27]                                                             ;
+; Rasterizer:Rasterizer0|vertices[2][28] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[28]                                                             ;
+; Rasterizer:Rasterizer0|vertices[2][29] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[29]                                                             ;
+; Rasterizer:Rasterizer0|vertices[2][30] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[30]                                                             ;
+; Rasterizer:Rasterizer0|vertices[2][31] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[31]                                                             ;
+; Rasterizer:Rasterizer0|vertices[2][44] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[44]                                                             ;
+; Rasterizer:Rasterizer0|vertices[2][45] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[45]                                                             ;
+; Rasterizer:Rasterizer0|vertices[2][46] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[46]                                                             ;
+; Rasterizer:Rasterizer0|vertices[2][47] ; Lost Fanouts              ; Vertex:Vertex0|O_VOut[47]                                                             ;
+; Memory:Memory0|O_VALUOut[3]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[3]                                                         ;
+; Memory:Memory0|O_VALUOut[4]            ; Lost Fanouts              ; Execute:Execute0|O_VALUOut[4]                                                         ;
+; Vertex:Vertex0|matrixCurrent[3][11]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[3][11]                                                      ;
+; Vertex:Vertex0|matrixCurrent[3][12]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[3][12]                                                      ;
+; Vertex:Vertex0|matrixCurrent[3][13]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[3][13]                                                      ;
+; Vertex:Vertex0|matrixCurrent[3][14]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[3][14]                                                      ;
+; Vertex:Vertex0|matrixCurrent[3][15]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[3][15]                                                      ;
+; Vertex:Vertex0|matrixCurrent[7][12]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[7][12]                                                      ;
+; Vertex:Vertex0|matrixCurrent[7][13]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[7][13]                                                      ;
+; Vertex:Vertex0|matrixCurrent[7][14]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[7][14]                                                      ;
+; Vertex:Vertex0|matrixCurrent[7][15]    ; Lost Fanouts              ; Vertex:Vertex0|matrixPast[7][15]                                                      ;
++----------------------------------------+---------------------------+---------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -4772,12 +4287,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 6211  ;
-; Number of registers using Synchronous Clear  ; 58    ;
+; Total registers                              ; 6524  ;
+; Number of registers using Synchronous Clear  ; 59    ;
 ; Number of registers using Synchronous Load   ; 105   ;
 ; Number of registers using Asynchronous Clear ; 115   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 5997  ;
+; Number of registers using Clock Enable       ; 6330  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -4788,42 +4303,52 @@ Encoding Type:  One-Hot
 ; Inverted Register                       ; Fan out ;
 +-----------------------------------------+---------+
 ; Gpu:Gpu0|O_GPU_DATA[0]                  ; 1       ;
-; Fetch:Fetch0|O_IR[24]                   ; 11      ;
-; Fetch:Fetch0|O_IR[27]                   ; 11      ;
-; Fetch:Fetch0|O_IR[26]                   ; 13      ;
-; Fetch:Fetch0|O_IR[25]                   ; 16      ;
-; Fetch:Fetch0|O_IR[28]                   ; 18      ;
-; Fetch:Fetch0|O_IR[31]                   ; 8       ;
-; Fetch:Fetch0|O_IR[30]                   ; 6       ;
-; Fetch:Fetch0|O_IR[29]                   ; 20      ;
-; Decode:Decode0|VRF_VALID[8]             ; 3       ;
-; Decode:Decode0|VRF_VALID[1]             ; 3       ;
-; Decode:Decode0|VRF_VALID[0]             ; 4       ;
-; Decode:Decode0|VRF_VALID[9]             ; 3       ;
-; Decode:Decode0|RF_VALID[1]              ; 3       ;
-; Decode:Decode0|RF_VALID[6]              ; 2       ;
-; Decode:Decode0|RF_VALID[0]              ; 4       ;
-; Decode:Decode0|RF_VALID[7]              ; 2       ;
-; Decode:Decode0|RF_VALID[14]             ; 2       ;
-; Decode:Decode0|RF_VALID[9]              ; 3       ;
-; Decode:Decode0|RF_VALID[8]              ; 4       ;
-; Decode:Decode0|RF_VALID[15]             ; 2       ;
+; Fetch:Fetch0|O_IR[24]                   ; 9       ;
+; Fetch:Fetch0|O_IR[27]                   ; 13      ;
+; Fetch:Fetch0|O_IR[26]                   ; 9       ;
+; Fetch:Fetch0|O_IR[25]                   ; 13      ;
+; Fetch:Fetch0|O_IR[28]                   ; 15      ;
+; Fetch:Fetch0|O_IR[31]                   ; 7       ;
+; Fetch:Fetch0|O_IR[30]                   ; 5       ;
+; Fetch:Fetch0|O_IR[29]                   ; 15      ;
 ; Decode:Decode0|RF_VALID[10]             ; 2       ;
 ; Decode:Decode0|RF_VALID[3]              ; 2       ;
 ; Decode:Decode0|RF_VALID[2]              ; 2       ;
 ; Decode:Decode0|RF_VALID[11]             ; 2       ;
-; Decode:Decode0|VRF_VALID[10]            ; 2       ;
-; Decode:Decode0|VRF_VALID[3]             ; 3       ;
-; Decode:Decode0|VRF_VALID[2]             ; 2       ;
-; Decode:Decode0|VRF_VALID[11]            ; 2       ;
-; Decode:Decode0|RF_VALID[12]             ; 2       ;
+; Decode:Decode0|RF_VALID[1]              ; 4       ;
+; Decode:Decode0|RF_VALID[8]              ; 4       ;
+; Decode:Decode0|RF_VALID[0]              ; 4       ;
+; Decode:Decode0|RF_VALID[9]              ; 4       ;
+; Decode:Decode0|RF_VALID[14]             ; 2       ;
+; Decode:Decode0|RF_VALID[15]             ; 2       ;
+; Decode:Decode0|RF_VALID[6]              ; 2       ;
+; Decode:Decode0|RF_VALID[7]              ; 2       ;
+; Decode:Decode0|RF_VALID[5]              ; 2       ;
+; Decode:Decode0|RF_VALID[13]             ; 2       ;
 ; Decode:Decode0|RF_VALID[4]              ; 2       ;
+; Decode:Decode0|RF_VALID[12]             ; 2       ;
+; Decode:Decode0|VRF_VALID[24]            ; 3       ;
+; Decode:Decode0|VRF_VALID[3]             ; 3       ;
+; Decode:Decode0|VRF_VALID[0]             ; 4       ;
+; Decode:Decode0|VRF_VALID[27]            ; 3       ;
+; Decode:Decode0|VRF_VALID[8]             ; 3       ;
+; Decode:Decode0|VRF_VALID[1]             ; 3       ;
+; Decode:Decode0|VRF_VALID[9]             ; 3       ;
+; Decode:Decode0|VRF_VALID[10]            ; 2       ;
+; Decode:Decode0|VRF_VALID[26]            ; 2       ;
+; Decode:Decode0|VRF_VALID[17]            ; 2       ;
+; Decode:Decode0|VRF_VALID[19]            ; 2       ;
+; Decode:Decode0|VRF_VALID[2]             ; 2       ;
+; Decode:Decode0|VRF_VALID[16]            ; 2       ;
+; Decode:Decode0|VRF_VALID[18]            ; 2       ;
+; Decode:Decode0|VRF_VALID[25]            ; 2       ;
+; Decode:Decode0|VRF_VALID[11]            ; 2       ;
 ; Fetch:Fetch0|O_PC[2]                    ; 3       ;
 ; Vertex:Vertex0|matrixCurrent[0][7]      ; 2       ;
 ; Vertex:Vertex0|matrixCurrent[5][7]      ; 2       ;
 ; Vertex:Vertex0|matrixPast[0][7]         ; 2       ;
 ; Vertex:Vertex0|matrixPast[5][7]         ; 2       ;
-; Total number of inverted registers = 36 ;         ;
+; Total number of inverted registers = 46 ;         ;
 +-----------------------------------------+---------+
 
 
@@ -4832,101 +4357,90 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
-; 3:1                ; 18 bits   ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|O_ADDROut[8]       ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |lg_highlevel|Vertex:Vertex0|matrixCurrent[3][8]        ;
-; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |lg_highlevel|Fetch:Fetch0|O_PC[11]                     ;
-; 3:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |lg_highlevel|Fetch:Fetch0|O_IR[10]                     ;
-; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |lg_highlevel|PixelGen:PixelGen0|O_RED[1]               ;
-; 4:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|currentState[8]    ;
-; 8:1                ; 39 bits   ; 195 LEs       ; 195 LEs              ; 0 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|O_VDestValue[19]           ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|RF[7][4]                   ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[8][0]                 ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[4][1]                 ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[12][2]                ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[2][2]                 ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[10][0]                ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[6][2]                 ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[14][0]                ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[1][2]                 ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[9][1]                 ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[5][0]                 ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[13][2]                ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[3][1]                 ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[11][2]                ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[7][0]                 ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[15][2]                ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|VRFC[0][1]                 ;
-; 4:1                ; 18 bits   ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |lg_highlevel|PixelGen:PixelGen0|O_NEXT_ADDR[10]        ;
+; 3:1                ; 18 bits   ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|O_ADDROut[3]       ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |lg_highlevel|Vertex:Vertex0|matrixCurrent[3][11]       ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |lg_highlevel|Fetch:Fetch0|O_PC[6]                      ;
+; 3:1                ; 22 bits   ; 44 LEs        ; 0 LEs                ; 44 LEs                 ; Yes        ; |lg_highlevel|Fetch:Fetch0|O_IR[14]                     ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |lg_highlevel|PixelGen:PixelGen0|O_GREEN[3]             ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|currentState[4]    ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|RF[7][8]                   ;
+; 4:1                ; 18 bits   ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |lg_highlevel|PixelGen:PixelGen0|O_NEXT_ADDR[9]         ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |lg_highlevel|Fetch:Fetch0|O_PC[0]                      ;
-; 9:1                ; 16 bits   ; 96 LEs        ; 96 LEs               ; 0 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|O_Src1Value[12]            ;
-; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[8][11]                 ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[8][31]                 ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[8][41]                 ;
-; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[2][2]                  ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[2][28]                 ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[2][36]                 ;
-; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[10][1]                 ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[10][31]                ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[10][42]                ;
-; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[1][11]                 ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[1][17]                 ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[1][33]                 ;
-; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[9][2]                  ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[9][31]                 ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[9][33]                 ;
-; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[3][9]                  ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[3][18]                 ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[3][36]                 ;
-; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[11][0]                 ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[11][17]                ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[11][38]                ;
+; 16:1               ; 39 bits   ; 390 LEs       ; 390 LEs              ; 0 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|O_VDestValue[34]           ;
+; 9:1                ; 16 bits   ; 96 LEs        ; 96 LEs               ; 0 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|O_Src1Value[2]             ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|currentVertex[0]   ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[16][1]                 ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[16][24]                ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[16][37]                ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[8][0]                  ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[8][20]                 ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[8][39]                 ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[24][8]                 ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[24][26]                ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[24][33]                ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[2][9]                  ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[2][30]                 ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[2][42]                 ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[18][1]                 ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[18][31]                ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[18][38]                ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[10][8]                 ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[10][25]                ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[10][34]                ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[26][9]                 ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[26][20]                ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[26][37]                ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[1][1]                  ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[1][25]                 ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[1][35]                 ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[17][11]                ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[17][29]                ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[17][33]                ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[9][8]                  ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[9][28]                 ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[9][38]                 ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[25][11]                ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[25][27]                ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[25][39]                ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[3][8]                  ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[3][25]                 ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[3][35]                 ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[19][9]                 ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[19][29]                ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[19][36]                ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[11][11]                ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[11][29]                ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[11][32]                ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[27][2]                 ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[27][28]                ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[27][45]                ;
 ; 5:1                ; 7 bits    ; 21 LEs        ; 7 LEs                ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[0][8]                  ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[0][20]                 ;
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[0][34]                 ;
-; 5:1                ; 12 bits   ; 36 LEs        ; 12 LEs               ; 24 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|O_ColorOut[40]     ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|O_DestRegIdx[0]            ;
-; 7:1                ; 14 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|O_DestValue[7]             ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|O_DestValue[1]             ;
-; 7:1                ; 14 bits   ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|min_y[3]           ;
-; 7:1                ; 14 bits   ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|min_x[2]           ;
-; 7:1                ; 15 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|max_y[2]           ;
-; 7:1                ; 15 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|max_x[14]          ;
-; 8:1                ; 4 bits    ; 20 LEs        ; 4 LEs                ; 16 LEs                 ; Yes        ; |lg_highlevel|Vertex:Vertex0|O_ColorOut[11]             ;
-; 256:1              ; 9 bits    ; 1530 LEs      ; 9 LEs                ; 1521 LEs               ; Yes        ; |lg_highlevel|Execute:Execute0|O_VALUOut[2]             ;
-; 256:1              ; 4 bits    ; 680 LEs       ; 16 LEs               ; 664 LEs                ; Yes        ; |lg_highlevel|Execute:Execute0|O_ALUOut[5]              ;
-; 126:1              ; 30 bits   ; 2520 LEs      ; 60 LEs               ; 2460 LEs               ; Yes        ; |lg_highlevel|Execute:Execute0|O_VALUOut[27]            ;
-; 124:1              ; 12 bits   ; 984 LEs       ; 60 LEs               ; 924 LEs                ; Yes        ; |lg_highlevel|Execute:Execute0|O_ALUOut[15]             ;
-; 3:1                ; 36 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|fragmentX[2][12]   ;
-; 3:1                ; 21 bits   ; 42 LEs        ; 21 LEs               ; 21 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|fragmentY[1][1]    ;
-; 3:1                ; 33 bits   ; 66 LEs        ; 33 LEs               ; 33 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|fragmentY[1][9]    ;
-; 3:1                ; 64 bits   ; 128 LEs       ; 128 LEs              ; 0 LEs                  ; Yes        ; |lg_highlevel|Vertex:Vertex0|matrixCurrent[4][2]        ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |lg_highlevel|Fetch:Fetch0|O_IR[28]                     ;
-; 4:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|j[7]               ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[0][18]                 ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|VRF[0][35]                 ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 3 LEs                ; 9 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|O_DestRegIdx[3]            ;
+; 5:1                ; 12 bits   ; 36 LEs        ; 12 LEs               ; 24 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|O_ColorOut[10]     ;
+; 11:1               ; 14 bits   ; 98 LEs        ; 84 LEs               ; 14 LEs                 ; Yes        ; |lg_highlevel|Decode:Decode0|O_DestValue[4]             ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 12 LEs               ; 2 LEs                  ; Yes        ; |lg_highlevel|Decode:Decode0|O_DestValue[0]             ;
+; 7:1                ; 14 bits   ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|min_y[5]           ;
+; 7:1                ; 14 bits   ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|min_x[11]          ;
+; 7:1                ; 15 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|max_y[10]          ;
+; 7:1                ; 15 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|max_x[15]          ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 4 LEs                ; 16 LEs                 ; Yes        ; |lg_highlevel|Vertex:Vertex0|O_ColorOut[9]              ;
+; 126:1              ; 39 bits   ; 3276 LEs      ; 78 LEs               ; 3198 LEs               ; Yes        ; |lg_highlevel|Execute:Execute0|O_VALUOut[16]            ;
+; 124:1              ; 16 bits   ; 1312 LEs      ; 80 LEs               ; 1232 LEs               ; Yes        ; |lg_highlevel|Execute:Execute0|O_ALUOut[7]              ;
+; 3:1                ; 36 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|fragmentX[0][13]   ;
+; 3:1                ; 21 bits   ; 42 LEs        ; 21 LEs               ; 21 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|fragmentY[1][2]    ;
+; 3:1                ; 33 bits   ; 66 LEs        ; 33 LEs               ; 33 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|fragmentY[1][4]    ;
+; 3:1                ; 64 bits   ; 128 LEs       ; 128 LEs              ; 0 LEs                  ; Yes        ; |lg_highlevel|Vertex:Vertex0|matrixCurrent[4][13]       ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |lg_highlevel|Fetch:Fetch0|O_IR[24]                     ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|j[10]              ;
 ; 12:1               ; 11 bits   ; 88 LEs        ; 33 LEs               ; 55 LEs                 ; Yes        ; |lg_highlevel|Rasterizer:Rasterizer0|i[3]               ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|ConditionalCode            ;
-; 8:1                ; 7 bits    ; 35 LEs        ; 35 LEs               ; 0 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|Mux182                     ;
-; 16:1               ; 3 bits    ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|Mux254                     ;
-; 16:1               ; 17 bits   ; 170 LEs       ; 170 LEs              ; 0 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|Mux179                     ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|VRFC                       ;
-; 6:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; No         ; |lg_highlevel|Writeback:Writeback0|O_VWriteBackData[36] ;
-; 8:1                ; 7 bits    ; 35 LEs        ; 14 LEs               ; 21 LEs                 ; No         ; |lg_highlevel|Writeback:Writeback0|O_VWriteBackData[8]  ;
-; 8:1                ; 32 bits   ; 160 LEs       ; 32 LEs               ; 128 LEs                ; No         ; |lg_highlevel|Writeback:Writeback0|O_Vertex[37]         ;
-; 68:1               ; 16 bits   ; 720 LEs       ; 32 LEs               ; 688 LEs                ; No         ; |lg_highlevel|Writeback:Writeback0|O_WriteBackData[14]  ;
+; 16:1               ; 17 bits   ; 170 LEs       ; 170 LEs              ; 0 LEs                  ; No         ; |lg_highlevel|Decode:Decode0|Mux166                     ;
+; 6:1                ; 32 bits   ; 128 LEs       ; 32 LEs               ; 96 LEs                 ; No         ; |lg_highlevel|Writeback:Writeback0|O_VWriteBackData[30] ;
+; 8:1                ; 7 bits    ; 35 LEs        ; 14 LEs               ; 21 LEs                 ; No         ; |lg_highlevel|Writeback:Writeback0|O_VWriteBackData[10] ;
+; 8:1                ; 32 bits   ; 160 LEs       ; 32 LEs               ; 128 LEs                ; No         ; |lg_highlevel|Writeback:Writeback0|O_Vertex[30]         ;
+; 68:1               ; 16 bits   ; 720 LEs       ; 32 LEs               ; 688 LEs                ; No         ; |lg_highlevel|Writeback:Writeback0|O_WriteBackData[11]  ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
 
 
@@ -6500,7 +6014,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:49     ;
+; Top            ; 00:00:44     ;
 +----------------+--------------+
 
 
@@ -6510,7 +6024,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Analysis & Synthesis
     Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
-    Info: Processing started: Fri Apr 19 21:10:22 2013
+    Info: Processing started: Sat Apr 20 19:44:22 2013
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lg_highlevel -c lg_highlevel
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file gpu.v
@@ -6605,7 +6119,7 @@ Info (12133): Instantiated megafunction "pll:pll0|altpll:altpll_component" with 
     Info (12134): Parameter "port_extclk3" = "PORT_UNUSED"
     Info (12134): Parameter "valid_lock_multiplier" = "1"
 Info (12128): Elaborating entity "Fetch" for hierarchy "Fetch:Fetch0"
-Warning (10850): Verilog HDL warning at fetch.v(61): number of words (28) in memory file does not match the number of elements in the address range [0:255]
+Warning (10850): Verilog HDL warning at fetch.v(61): number of words (32) in memory file does not match the number of elements in the address range [0:255]
 Warning (10230): Verilog HDL assignment warning at fetch.v(160): truncated value with size 32 to match size of target (16)
 Warning (10230): Verilog HDL assignment warning at fetch.v(164): truncated value with size 32 to match size of target (16)
 Warning (10030): Net "InstMem.data_a" at fetch.v(50) has no driver or initial value, using a default initial value '0'
@@ -6617,7 +6131,6 @@ Warning (10230): Verilog HDL assignment warning at decode.v(118): truncated valu
 Warning (10230): Verilog HDL assignment warning at decode.v(248): truncated value with size 32 to match size of target (3)
 Warning (10230): Verilog HDL assignment warning at decode.v(479): truncated value with size 32 to match size of target (3)
 Warning (10230): Verilog HDL assignment warning at decode.v(487): truncated value with size 32 to match size of target (3)
-Warning (10230): Verilog HDL assignment warning at decode.v(504): truncated value with size 32 to match size of target (3)
 Info (12128): Elaborating entity "SignExtension" for hierarchy "Decode:Decode0|SignExtension:SE0"
 Info (12128): Elaborating entity "Execute" for hierarchy "Execute:Execute0"
 Info (12128): Elaborating entity "Memory" for hierarchy "Memory:Memory0"
@@ -6691,7 +6204,7 @@ Warning (10230): Verilog HDL assignment warning at rasterizer.v(253): truncated 
 Warning (10230): Verilog HDL assignment warning at rasterizer.v(287): truncated value with size 32 to match size of target (18)
 Warning (10230): Verilog HDL assignment warning at rasterizer.v(351): truncated value with size 32 to match size of target (11)
 Warning (10230): Verilog HDL assignment warning at rasterizer.v(354): truncated value with size 32 to match size of target (11)
-Warning (10230): Verilog HDL assignment warning at rasterizer.v(401): truncated value with size 11 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at rasterizer.v(403): truncated value with size 11 to match size of target (8)
 Warning (10034): Output port "O_LOCK" at rasterizer.v(26) has no driver
 Info (12128): Elaborating entity "SevenSeg" for hierarchy "Rasterizer:Rasterizer0|SevenSeg:sseg0"
 Info (12128): Elaborating entity "VgaController" for hierarchy "VgaController:VgaController0"
@@ -6855,7 +6368,7 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "SRAM_LB_N" is stuck at GND
     Warning (13410): Pin "SRAM_CE_N" is stuck at GND
     Warning (13410): Pin "SRAM_OE_N" is stuck at GND
-Info (17049): 4249 registers lost all their fanouts during netlist optimizations.
+Info (17049): 3775 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file F:/Dropbox/College/Spring 2013/Demo/gpu-cs3220/Homework6_restored/output_files/lg_highlevel.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
@@ -6875,18 +6388,18 @@ Warning (21074): Design contains 15 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]"
     Warning (15610): No output dependent on input pin "SW[8]"
     Warning (15610): No output dependent on input pin "SW[9]"
-Info (21057): Implemented 11504 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 11878 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 17 input pins
     Info (21059): Implemented 83 output pins
     Info (21060): Implemented 16 bidirectional pins
-    Info (21061): Implemented 11339 logic cells
+    Info (21061): Implemented 11713 logic cells
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 48 DSP elements
-Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 147 warnings
-    Info: Peak virtual memory: 410 megabytes
-    Info: Processing ended: Fri Apr 19 21:11:23 2013
-    Info: Elapsed time: 00:01:01
-    Info: Total CPU time (on all processors): 00:01:01
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 146 warnings
+    Info: Peak virtual memory: 416 megabytes
+    Info: Processing ended: Sat Apr 20 19:45:19 2013
+    Info: Elapsed time: 00:00:57
+    Info: Total CPU time (on all processors): 00:00:57
 
 
 +------------------------------------------+

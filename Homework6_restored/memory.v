@@ -85,13 +85,14 @@ end
 always @(negedge I_CLOCK)
 begin
   O_LOCK <= I_LOCK;
-  O_FetchStall <= I_FetchStall;
-  O_DepStall <= I_DepStall;
+
 
   
   
   if (I_LOCK == 1'b1  && I_FRAMESTALL == 0)
   begin
+    O_FetchStall <= I_FetchStall;
+    O_DepStall <= I_DepStall;
     O_DestRegIdx <= I_DestRegIdx;
   O_ALUOut <= I_ALUOut;
   O_VALUOut <= I_VALUOut;

@@ -127,7 +127,7 @@ begin
 			O_ADDROut <= k;
 			O_ColorOut <= 0;
 			k <= k+1;
-			if(k == 256000)
+			if(k == 256000)//256000
 			begin
 				is_flush <= 0;
 				O_FRAMESTALL <= 0;
@@ -358,6 +358,8 @@ begin
 		  begin
 		  O_FRAMESTALL <= 0;
 		  currentState <= 0;
+		  currentTriangle <= 0;
+		  currentVertex <= 0;
 		  end
 		  
 		  if(j==640)
