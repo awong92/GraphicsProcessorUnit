@@ -81,7 +81,7 @@ reg [23:0]edge_result[0:2];
 reg [10:0] i;
 reg [10:0] j;
 reg [19:0] k;
-
+reg is_flush;
 initial
 begin
 	 negOne = -1;
@@ -90,6 +90,7 @@ begin
     is_endprimitive = 0;
     is_draw = 0;
 	 k = 0;
+	 is_flush = 0;
     currentState = 0;
 	 O_FRAMESTALL = 0;
 	 currentVertex = 0;
