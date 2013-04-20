@@ -3,4 +3,4 @@ Warning (10268): Verilog HDL information at decode.v(196): always construct cont
 Warning (10268): Verilog HDL information at decode.v(424): always construct contains both blocking and non-blocking assignments
 Warning (10268): Verilog HDL information at fetch.v(80): always construct contains both blocking and non-blocking assignments
 Warning (10268): Verilog HDL information at vertex.v(148): always construct contains both blocking and non-blocking assignments
-Warning (10268): Verilog HDL information at rasterizer.v(108): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at rasterizer.v(109): always construct contains both blocking and non-blocking assignments

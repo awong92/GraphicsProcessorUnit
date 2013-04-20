@@ -187,7 +187,7 @@ begin
                 O_ColorOut <= I_VRegIn;
                 ColorCurrent <= I_VRegIn;
             end
-
+/**
             if (I_Opcode==`OP_ROTATE) begin
                 for(j = 0; j < 4; j=j+1) begin
                     for(k = 0; k < 4; k=k+1) begin
@@ -230,7 +230,7 @@ begin
                         matrixCurrent[4*i+j] = result;
                     end
                 end
-            end
+            end **/
 
 
             if (I_Opcode==`OP_TRANSLATE) begin
