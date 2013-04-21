@@ -121,7 +121,7 @@ begin
  matrixTemp[14] = 0;
  matrixTemp[15] = 1<<7;
  
- matrixPast[0] = 1<<7;
+ matrixBackup[0] = 1<<7;
  matrixBackup[1] = 0;
  matrixBackup[2] = 0;
  matrixBackup[3] = 0;
@@ -241,11 +241,11 @@ begin
 					 matrixTemp[0] = 1<<7;
 					 matrixTemp[1] = 0;
 					 matrixTemp[2] = 0;
-					 matrixTemp[3] = 0;
+					 matrixTemp[3] = I_VRegIn[31:16];
 					 matrixTemp[4] = 0;
 					 matrixTemp[5] = 1<<7;
 					 matrixTemp[6] = 0;
-					 matrixTemp[7] = 0;
+					 matrixTemp[7] = I_VRegIn[47:32];
 					 matrixTemp[8] = 0;
 					 matrixTemp[9] = 0;
 					 matrixTemp[10] = 1<<7;
@@ -255,8 +255,8 @@ begin
 					 matrixTemp[14] = 0;
 					 matrixTemp[15] = 1<<7;
 
-                matrixTemp[7] = I_VRegIn[31:16];
-                matrixTemp[8] = I_VRegIn[47:32];
+                
+                
 
                 //Matrix Multiply
                 for(i = 0; i < 4; i=i+1)begin
@@ -276,12 +276,12 @@ begin
 						matrixBackup[i] = matrixCurrent[i];
 					 end
 
-                matrixTemp[0] = 1<<7;
+                     matrixTemp[0] = I_VRegIn[31:16];
 					 matrixTemp[1] = 0;
 					 matrixTemp[2] = 0;
 					 matrixTemp[3] = 0;
 					 matrixTemp[4] = 0;
-					 matrixTemp[5] = 1<<7;
+					 matrixTemp[5] = I_VRegIn[47:32];
 					 matrixTemp[6] = 0;
 					 matrixTemp[7] = 0;
 					 matrixTemp[8] = 0;
@@ -293,8 +293,8 @@ begin
 					 matrixTemp[14] = 0;
 					 matrixTemp[15] = 1<<7;
 
-                matrixTemp[0] = I_VRegIn[31:16];
-                matrixTemp[5] = I_VRegIn[47:32];
+                
+                
 
                 //Matrix Multiply
                 for(i = 0; i < 4; i=i+1)begin

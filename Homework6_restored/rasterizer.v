@@ -82,6 +82,7 @@ reg [10:0] i;
 reg [10:0] j;
 reg [19:0] k;
 reg is_flush;
+reg [4:0] count;
 initial
 begin
 	 negOne = -1;
@@ -90,6 +91,7 @@ begin
     is_endprimitive = 0;
     is_draw = 0;
 	 k = 0;
+	 count = 0;
 	 is_flush = 0;
     currentState = 0;
 	 O_FRAMESTALL = 0;
@@ -117,9 +119,9 @@ begin
 			currentVertex = currentVertex + 1;
 		end
 		
-	 if(currentState == 0 && I_Opcode == `OP_FLUSH || is_flush == 1)	  
+	 if(currentState == 0 && I_Opcode == `OP_FLUSH || is_flush == 1 || is_draw == 1)	  
 	  begin
-		 if(currentState == 0 && is_flush == 0)
+		 if(currentState == 0 && is_flush == 0 && is_draw == 0)
 		 begin
 		  O_FRAMESTALL <= 1;
 		  is_flush <= 1; 
@@ -129,8 +131,16 @@ begin
 			k <= k+1;
 			if(k == 256000)//256000
 			begin
-				is_flush <= 0;
-				O_FRAMESTALL <= 0;
+				if(is_flush == 1)
+				begin
+					is_flush <= 0;
+					O_FRAMESTALL <= 0;
+				end
+				if(is_draw == 1)
+				begin
+					is_draw <= 0;
+					currentState = currentState + 1;
+				end
 				k<=0;	
 			end	  
 	  end
@@ -140,14 +150,19 @@ begin
       if(currentState == 0 && I_Opcode == `OP_DRAW)
       begin
 			 O_FRAMESTALL <= 1;	
-          for(i = 0; i < 3; i=i+1)
-          begin
-              fragmentX[i] <= (((vertices[i][31:16])+640))<<5;
-              fragmentY[i] <= (((vertices[i][47:32])+640))<<4;
-          end
-          currentState=currentState+1;
+			 is_draw <= 1;
+
       end
 		else if(currentState == 1)
+		begin
+			for(i = 0; i < 3; i=i+1)
+          begin
+              fragmentX[i] <= (((vertices[i+count][31:16])+640))<<5;
+              fragmentY[i] <= (((vertices[i+count][47:32])+640))<<4;
+          end
+          currentState=currentState+1;
+		end
+		else if(currentState == 2)
 		begin
 			 for(i = 0; i < 3; i=i+1)
           begin
@@ -156,7 +171,7 @@ begin
           end 
           currentState=currentState+1;
 		end
-      else if(currentState == 2)
+      else if(currentState == 3)
       begin
        //edgefunction edge_0 = edgefunctionsetup(fragment_x[2], fragment_y[2], fragment_x[1], fragment_y[1]);
           edge1[0] <= fragmentY[2] - fragmentY[1];
@@ -175,7 +190,7 @@ begin
        
           currentState=currentState+1;
       end
-		else if(currentState == 3)
+		else if(currentState == 4)
 		begin
 			temptempEdge1[0] <= ((negOne * edge1[0]));
 			temptempEdge1[1] <= ((negOne * edge1[1]));
@@ -185,7 +200,7 @@ begin
 			temptempEdge3[1] <= ((negOne * edge3[1]));
 			currentState=currentState+1;
 		end
-		else if(currentState == 4)
+		else if(currentState == 5)
 		 begin 
 			tempEdge1[0] <= ((temptempEdge1[0]* fragmentX[1]));
 			tempEdge1[1] <= ((temptempEdge1[1]* fragmentY[1]));
@@ -195,7 +210,7 @@ begin
 			tempEdge3[1] <= ((temptempEdge3[1]* fragmentY[0]));
 			currentState=currentState+1;
 		end
-      else if(currentState == 5)
+      else if(currentState == 6)
       begin
 			edge1[2] <= tempEdge1[0] + tempEdge1[1];
 			edge2[2] <= tempEdge2[0] + tempEdge2[1];
@@ -211,7 +226,7 @@ begin
         currentState=currentState+1;
       end
       
-       else if(currentState >= 6 && currentState <= 8)
+       else if(currentState >= 7 && currentState <= 9)
        begin
            for(i=1; i<3; i=i+1)
             begin
@@ -236,7 +251,7 @@ begin
         end
 
     
-		 else if(currentState == 9)
+		 else if(currentState == 10)
 		 begin
 			 if(min_x < 0) begin
 				  min_x <= 0;
@@ -253,7 +268,7 @@ begin
 			  currentState=currentState+1;
 		 end
     
-		 else if(currentState == 10)
+		 else if(currentState == 11)
 		 begin
 				fragmentStartX <= min_x;
 				fragmentEndX   <= max_x;
@@ -263,33 +278,16 @@ begin
 		 end    
         
         //Traverse
-	  else if(currentState == 11)
+	  else if(currentState == 12)
 	  begin
-		 i = 0; //fragmentStartY;
-		 j = 0; //fragmentStartX;
+		 i = fragmentStartY;
+		 j = fragmentStartX;
 		 currentState = currentState + 1'b1;
 	  end
 	  
-	/**  if(currentState == 12)	  
+	  else if(currentState == 13)
 	  begin
-			O_ADDROut <= k;
-			O_ColorOut <= 0;
-			k <= k+1;
-			if(k == 256000)
-			begin
-				currentState = currentState + 1'b1;
-				k<=0;	
-			end	  
-	  end **/
-		  
-	  else if(currentState == 12)
-	  begin
-			O_ADDROut <= i*640+j;
-			/**if(inside(edge_0, (j + 0.5), (i + 0.5))
-				&& inside(edge_1, (j + 0.5), (i + 0.5))
-				&& inside(edge_2, (j + 0.5), (i + 0.5))) **/
-			if(i>= fragmentStartY && i <= fragmentEndY && j>= fragmentStartX && j<=fragmentEndX)
-			begin
+
 			edge_result[0] = (((edge1[0] * j) + (edge1[1] * i)) + edge1[2]);
 
 			if (edge_result[0][23] == 0)
@@ -337,32 +335,34 @@ begin
 				
 				if(flag[0] == 1 && flag[1] == 1 && flag[2] == 1)	
 					begin
-					 O_ColorOut <= color[currentTriangle];
+					 O_ADDROut <= i*640+j;
+					 O_ColorOut <= color[count];
 					end
-				else
-				begin
-					O_ColorOut <= 0;
-				end
-			end
-			else
-				begin
-					O_ColorOut <= 0;
-				end
 		  j = j+1;
-		  if(j==640)
+		  if(j==fragmentEndX)
 		  begin
 		  i = i+1;
 		  end
 		  
-		  if(j==640 && i==400)
+		  if(j==fragmentEndX && i==fragmentEndY)
 		  begin
-		  O_FRAMESTALL <= 0;
-		  currentState <= 0;
-		  currentTriangle <= 0;
-		  currentVertex <= 0;
+			  if(count == currentVertex-3)
+			  begin
+				 O_FRAMESTALL <= 0;
+				 currentState <= 0;
+				 currentTriangle <= 0;
+				 currentVertex <= 0;
+				 count <= 0;
+			  end
+			  else
+			  begin
+				 count <= count + 3;
+				 currentTriangle <= currentTriangle + 1;
+				 currentState <= 1;
+			  end
 		  end
 		  
-		  if(j==640)
+		  if(j==fragmentEndX)
 		  begin  
 		  j = 0;
 		  end		  
@@ -401,7 +401,7 @@ begin
 
 	  HexOut <= I_Opcode;
 	  LedGOut <= i;
-	  LedROut <= currentState;
+	  LedROut <= currentVertex;
   end // if (I_LOCK == 0) begin
 end // always @(negedge I_CLOCK)
 

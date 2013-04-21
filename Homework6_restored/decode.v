@@ -517,17 +517,19 @@ begin
             RF_VALID[I_WriteBackRegIdx]<=1;
         end
             
-   if (I_VWriteBackEnable==1) begin                  //Write back data if necessary
-      if((I_IR[31:24] == `OP_VCOMPMOVI && I_WriteBackRegIdx == I_IR[21:16]) || (I_IR[31:24] == `OP_VCOMPMOV && I_WriteBackRegIdx == I_IR[21:16]))
-         begin
-            VRF_VALID[I_WriteBackRegIdx]<=0;
-		  end
-		  else  begin
+   if (I_VWriteBackEnable==1) begin 		  //Write back data if necessary
+		if(VRFC[I_WriteBackRegIdx] > 1)
+		begin
+			VRFC[I_WriteBackRegIdx] = VRFC[I_WriteBackRegIdx] - 1;
+		end
+		else
+		begin
+			VRFC[I_WriteBackRegIdx] = 0;
 			VRF_VALID[I_WriteBackRegIdx]<=1;
-          end
-   end
+		end
+  end
 
-    
+ 
 end // always @(negedge I_CLOCK)
 
 /////////////////////////////////////////
