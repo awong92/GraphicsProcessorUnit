@@ -121,7 +121,7 @@ begin
  matrixTemp[14] = 0;
  matrixTemp[15] = 1<<7;
  
-  matrixPast[0] = 1<<7;
+ matrixPast[0] = 1<<7;
  matrixBackup[1] = 0;
  matrixBackup[2] = 0;
  matrixBackup[3] = 0;
@@ -234,23 +234,29 @@ begin
 
 
             if (I_Opcode==`OP_TRANSLATE) begin
-                for(j = 0; j < 4; j=j+1) begin
-                    for(k = 0; k < 4; k=k+1) begin
-                        matrixBackup[4*j + k] = matrixCurrent[4*j+k];
-                    end
-                end
+                for (i=0; i< `REG_WIDTH; i = i + 1)begin
+						matrixBackup[i] = matrixCurrent[i];
+					 end
 
-                for(j = 0; j < 4; j=j+1) begin
-                    for(k = 0; k < 4; k=k+1) begin
-                        matrixTemp[4*j+k] = 0;
-                        if(j == k)begin
-                            matrixTemp[4*j+k] = 1<<7;
-                        end
-                    end
-                end
+					 matrixTemp[0] = 1<<7;
+					 matrixTemp[1] = 0;
+					 matrixTemp[2] = 0;
+					 matrixTemp[3] = 0;
+					 matrixTemp[4] = 0;
+					 matrixTemp[5] = 1<<7;
+					 matrixTemp[6] = 0;
+					 matrixTemp[7] = 0;
+					 matrixTemp[8] = 0;
+					 matrixTemp[9] = 0;
+					 matrixTemp[10] = 1<<7;
+					 matrixTemp[11] = 0;
+					 matrixTemp[12] = 0;
+					 matrixTemp[13] = 0;
+					 matrixTemp[14] = 0;
+					 matrixTemp[15] = 1<<7;
 
-                matrixTemp[4*0 + 3] = I_VRegIn[31:16];
-                matrixTemp[4*1 + 3] = I_VRegIn[47:32];
+                matrixTemp[7] = I_VRegIn[31:16];
+                matrixTemp[8] = I_VRegIn[47:32];
 
                 //Matrix Multiply
                 for(i = 0; i < 4; i=i+1)begin
@@ -265,21 +271,27 @@ begin
             end
 
            
-            if (I_Opcode==`OP_SCALE) begin
-                for(j = 0; j < 4; j=j+1) begin
-                    for(k = 0; k < 4; k=k+1) begin
-                        matrixBackup[4*j + k] = matrixCurrent[4*j+k];
-                    end
-                end	
+            if (I_Opcode==`OP_SCALE) begin	
+					 for (i=0; i< `REG_WIDTH; i = i + 1)begin
+						matrixBackup[i] = matrixCurrent[i];
+					 end
 
-                for(j = 0; j < 4; j=j+1) begin
-                    for(k = 0; k < 4; k=k+1) begin
-                        matrixTemp[4*j+k] = 0;
-                        if(j == k)begin
-                            matrixTemp[4*j+k] = 1<<7;
-                        end
-                    end
-                end
+                matrixTemp[0] = 1<<7;
+					 matrixTemp[1] = 0;
+					 matrixTemp[2] = 0;
+					 matrixTemp[3] = 0;
+					 matrixTemp[4] = 0;
+					 matrixTemp[5] = 1<<7;
+					 matrixTemp[6] = 0;
+					 matrixTemp[7] = 0;
+					 matrixTemp[8] = 0;
+					 matrixTemp[9] = 0;
+					 matrixTemp[10] = 1<<7;
+					 matrixTemp[11] = 0;
+					 matrixTemp[12] = 0;
+					 matrixTemp[13] = 0;
+					 matrixTemp[14] = 0;
+					 matrixTemp[15] = 1<<7;
 
                 matrixTemp[0] = I_VRegIn[31:16];
                 matrixTemp[5] = I_VRegIn[47:32];
