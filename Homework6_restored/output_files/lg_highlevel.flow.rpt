@@ -1,5 +1,5 @@
 Flow report for lg_highlevel
-Sun Apr 21 02:42:44 2013
+Sun Apr 21 13:26:09 2013
 Quartus II 32-bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
@@ -38,15 +38,15 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +------------------------------------+------------------------------------------+
-; Flow Status                        ; Successful - Sun Apr 21 02:42:44 2013    ;
+; Flow Status                        ; Successful - Sun Apr 21 13:26:09 2013    ;
 ; Quartus II 32-bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
 ; Revision Name                      ; lg_highlevel                             ;
 ; Top-level Entity Name              ; lg_highlevel                             ;
 ; Family                             ; Cyclone II                               ;
 ; Device                             ; EP2C20F484C7                             ;
 ; Timing Models                      ; Final                                    ;
-; Total logic elements               ; 8,883 / 18,752 ( 47 % )                  ;
-;     Total combinational functions  ; 6,607 / 18,752 ( 35 % )                  ;
+; Total logic elements               ; 8,886 / 18,752 ( 47 % )                  ;
+;     Total combinational functions  ; 6,605 / 18,752 ( 35 % )                  ;
 ;     Dedicated logic registers      ; 6,270 / 18,752 ( 33 % )                  ;
 ; Total registers                    ; 6270                                     ;
 ; Total pins                         ; 116 / 315 ( 37 % )                       ;
@@ -62,7 +62,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/21/2013 02:39:39 ;
+; Start date & time ; 04/21/2013 13:20:39 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; lg_highlevel        ;
 +-------------------+---------------------+
@@ -73,7 +73,7 @@ applicable agreement for further details.
 +----------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                        ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +----------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                  ; 1097101363181.136652637612716         ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                  ; 94624286658462.136656483304332        ; --            ; --          ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME               ; NA                                    ; --            ; --          ; my_testbench   ;
 ; EDA_NATIVELINK_SIMULATION_SETUP_SCRIPT ; simulation/modelsim/my_custom_view.do ; --            ; --          ; eda_simulation ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH   ; my_testbench                          ; --            ; --          ; eda_simulation ;
@@ -106,12 +106,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:01:02     ; 1.0                     ; 406 MB              ; 00:01:02                           ;
-; Fitter                    ; 00:01:26     ; 1.0                     ; 526 MB              ; 00:01:26                           ;
-; Assembler                 ; 00:00:05     ; 1.0                     ; 359 MB              ; 00:00:05                           ;
-; TimeQuest Timing Analyzer ; 00:00:08     ; 1.0                     ; 405 MB              ; 00:00:08                           ;
-; EDA Netlist Writer        ; 00:00:14     ; 1.0                     ; 387 MB              ; 00:00:12                           ;
-; Total                     ; 00:02:55     ; --                      ; --                  ; 00:02:53                           ;
+; Analysis & Synthesis      ; 00:02:05     ; 1.0                     ; 416 MB              ; 00:02:04                           ;
+; Fitter                    ; 00:02:13     ; 2.5                     ; 578 MB              ; 00:03:06                           ;
+; Assembler                 ; 00:00:09     ; 1.0                     ; 371 MB              ; 00:00:09                           ;
+; TimeQuest Timing Analyzer ; 00:00:17     ; 2.3                     ; 448 MB              ; 00:00:17                           ;
+; EDA Netlist Writer        ; 00:00:26     ; 1.0                     ; 398 MB              ; 00:00:25                           ;
+; Total                     ; 00:05:10     ; --                      ; --                  ; 00:06:01                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -120,11 +120,11 @@ applicable agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; EdgdroLaptop-PC  ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; EdgdroLaptop-PC  ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; EdgdroLaptop-PC  ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; EdgdroLaptop-PC  ; Windows 7 ; 6.1        ; x86_64         ;
-; EDA Netlist Writer        ; EdgdroLaptop-PC  ; Windows 7 ; 6.1        ; x86_64         ;
+; Analysis & Synthesis      ; Deep-WinLaptop   ; Windows 7 ; 6.1        ; x86_64         ;
+; Fitter                    ; Deep-WinLaptop   ; Windows 7 ; 6.1        ; x86_64         ;
+; Assembler                 ; Deep-WinLaptop   ; Windows 7 ; 6.1        ; x86_64         ;
+; TimeQuest Timing Analyzer ; Deep-WinLaptop   ; Windows 7 ; 6.1        ; x86_64         ;
+; EDA Netlist Writer        ; Deep-WinLaptop   ; Windows 7 ; 6.1        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 

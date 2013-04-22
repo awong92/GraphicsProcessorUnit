@@ -317,22 +317,22 @@ begin
             end
 
             if (I_Opcode==`OP_LOADIDENTITY) begin
-                matrixCurrent[0] = 1;
+                matrixCurrent[0] = 1<<7;
 					 matrixCurrent[1] = 0;
 					 matrixCurrent[2] = 0;
 					 matrixCurrent[3] = 0;
 					 matrixCurrent[4] = 0;
-					 matrixCurrent[5] = 1;
+					 matrixCurrent[5] = 1<<7;
 					 matrixCurrent[6] = 0;
 					 matrixCurrent[7] = 0;
 					 matrixCurrent[8] = 0;
 					 matrixCurrent[9] = 0;
-					 matrixCurrent[10] = 1;
+					 matrixCurrent[10] = 1<<7;
 					 matrixCurrent[11] = 0;
 					 matrixCurrent[12] = 0;
 					 matrixCurrent[13] = 0;
 					 matrixCurrent[14] = 0;
-					 matrixCurrent[15] = 1;
+					 matrixCurrent[15] = 1<<7;
                 ColorCurrent <= 0;
             end
 
