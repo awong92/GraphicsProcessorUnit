@@ -157,8 +157,24 @@ begin
 		begin
 			for(i = 0; i < 3; i=i+1)
           begin
-              fragmentX[i] <= (((vertices[i+count][31:16])+640))<<5;
-              fragmentY[i] <= (((vertices[i+count][47:32])+640))<<4;
+              
+				  if(vertices[i+count][31:30] == 2'b10)
+				  begin
+					fragmentX[i] = (640-vertices[i+count][30:16])<<5;
+				  end
+				  else
+				  begin
+					fragmentX[i] = ((vertices[i+count][31:16])+640)<<5;
+				  end
+
+				  if(vertices[i+count][47:46] == 2'b10)
+				  begin
+					fragmentY[i] = (640-vertices[i+count][46:32])<<4;
+				  end
+				  else
+				  begin
+					fragmentY[i] = ((vertices[i+count][47:32])+640)<<4;
+				  end
           end
           currentState=currentState+1;
 		end
@@ -166,8 +182,8 @@ begin
 		begin
 			 for(i = 0; i < 3; i=i+1)
           begin
-              fragmentX[i] <= (fragmentX[i]>>7)<<1;
-              fragmentY[i] <= (fragmentY[i]>>7)<<1;
+              fragmentX[i] = (fragmentX[i]>>7)<<1;
+              fragmentY[i] = (fragmentY[i]>>7)<<1;
           end 
           currentState=currentState+1;
 		end

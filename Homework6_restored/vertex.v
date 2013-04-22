@@ -55,11 +55,12 @@ reg [`DATA_WIDTH-1:0]angle;
 reg [`DATA_WIDTH-1:0] x;
 reg [`DATA_WIDTH-1:0] y;
 reg [`DATA_WIDTH+6:0] xres;
+reg [`DATA_WIDTH+6:0] tempVal[0:2];
 reg [`DATA_WIDTH+6:0] yres;
 reg [`DATA_WIDTH+6:0] result;
 
-reg[15:0] cosTable[0:359];
-reg[15:0] sinTable[0:359];
+//reg[15:0] cosTable[0:359];
+//reg[15:0] sinTable[0:359];
 
 
 assign O_LOCK = I_LOCK;
@@ -69,6 +70,9 @@ begin
   is_startprimitive = 0; 
   xres = 0;
   yres = 0;
+  tempVal[0] = 0;
+  tempVal[1] = 0;
+  tempVal[2] = 0;
   result = 0;
  matrixCurrent[0] = 1<<7;
  matrixCurrent[1] = 0;
@@ -141,8 +145,8 @@ begin
  angle = 0;
  
  ColorPast <= 0;
-  $readmemh("cosine.hex", cosTable);
-  $readmemh("sine.hex", sinTable);
+ // $readmemh("cosine.hex", cosTable);
+ // $readmemh("sine.hex", sinTable);
 end 
 
 always @(negedge I_CLOCK)
@@ -166,14 +170,127 @@ begin
 
              xres = 0;
              yres = 0;
-             
-             xres = xres + ((matrixCurrent[0] * I_VRegIn[31:16])>>7);
-             xres = xres + ((matrixCurrent[1] * I_VRegIn[31:16])>>7);
+             tempVal[0] = ((matrixCurrent[0] * I_VRegIn[31:16])>>7);
+				 if(matrixCurrent[0][15:7] == 9'b100000000 || matrixCurrent[0][15:7] == 9'b000000000)
+				 begin
+				   if(x == 0)
+					begin
+					 tempVal[0] = 0;
+					end
+					else if(matrixCurrent[0][6:0] > 0)
+					begin
+						tempVal[0] = matrixCurrent[0];
+						if(I_VRegIn[31] == 1'b1)
+						begin						
+							tempVal[0][15] = !tempVal[0][15];
+						end
+					end
+				 end
+
+				 tempVal[1] = ((matrixCurrent[1] * I_VRegIn[47:32])>>7);
+				 if(matrixCurrent[1][15:7] == 9'b100000000 || matrixCurrent[1][15:7] == 9'b000000000)
+				 begin
+				   if(y == 0)
+					begin
+					 tempVal[1] = 0;
+					end
+					else if(matrixCurrent[1][6:0] > 0)
+					begin
+						tempVal[1] = matrixCurrent[1];
+						if(I_VRegIn[47] == 1'b1)
+						begin						
+							tempVal[1][15] = !tempVal[1][15];
+						end
+					end
+				 end
+				 
+
+				 
+				 if(tempVal[0][15:7] == 9'b100000000 && tempVal[1][15:7]  ==  9'b100000000)
+				 begin
+					tempVal[2] = tempVal[1] + tempVal[0];
+					tempVal[2][15] = 1'b1;
+				 end
+				 else if((tempVal[0][15:7] == 1'b0 && tempVal[1][15:7] ==  9'b100000000) || (tempVal[0][15:7] ==  9'b100000000 && tempVal[1][15:7] == 1'b0))
+				 begin
+				   if(tempVal[0][14:0] >= tempVal[1][14:0])
+					begin
+					  tempVal[2] = tempVal[0] - tempVal[1];
+					  tempVal[2][15] = tempVal[0][15];
+					end
+					else
+					begin
+					  tempVal[2] = tempVal[1] - tempVal[0];
+					  tempVal[2][15] = tempVal[1][15];	
+					end
+				 end
+				 else
+				 begin
+					tempVal[2] = tempVal[1] + tempVal[0];
+				 end
+             xres = xres + tempVal[2];
              xres = xres + matrixCurrent[3];
              O_VOut[31:16] = xres;
 
-             yres = yres + ((matrixCurrent[4] * I_VRegIn[47:32])>>7);
-             yres = yres + ((matrixCurrent[5] * I_VRegIn[47:32])>>7);
+				 tempVal[0] = ((matrixCurrent[4] * I_VRegIn[31:16])>>7);
+				 if(matrixCurrent[4][15:7] == 9'b100000000 || matrixCurrent[4][15:7] == 9'b000000000)
+				 begin
+				   if(x == 0)
+					begin
+					 tempVal[0] = 0;
+					end
+					else if(matrixCurrent[4][6:0] > 0)
+					begin
+						tempVal[0] = matrixCurrent[4];
+						if(I_VRegIn[31] == 1'b1)
+						begin						
+							tempVal[0][15] = !tempVal[0][15];
+						end
+					end
+				 end
+
+				 tempVal[1] = ((matrixCurrent[5] * I_VRegIn[47:32])>>7);
+				 if(matrixCurrent[5][15:7] == 9'b100000000 || matrixCurrent[5][15:7] == 9'b000000000)
+				 begin
+				  if(y == 0)
+					begin
+					 tempVal[1] = 0;
+					end
+					else if(matrixCurrent[5][6:0] > 0)
+					begin
+						tempVal[1] = matrixCurrent[5];
+						if(I_VRegIn[47] == 1'b1)
+						begin						
+							tempVal[1][15] = !tempVal[1][15];
+						end
+					end
+				 end
+				 
+				 
+				 if(tempVal[0][15:7] == 9'b100000000 && tempVal[1][15:7]  ==  9'b100000000)
+				 begin
+					tempVal[2] = tempVal[1] + tempVal[0];
+					tempVal[2][15] = 1'b1;
+				 end
+				 else if((tempVal[0][15:7] == 1'b0 && tempVal[1][15:7] ==  9'b100000000) || (tempVal[0][15:7] ==  9'b100000000 && tempVal[1][15:7] == 1'b0))
+				 begin
+				   if(tempVal[0][14:0] >= tempVal[1][14:0])
+					begin
+					  tempVal[2] = tempVal[0] - tempVal[1];
+					  tempVal[2][15] = tempVal[0][15];
+					end
+					else
+					begin
+					  tempVal[2] = tempVal[1] - tempVal[0];
+					  tempVal[2][15] = tempVal[1][15];	
+					end
+				 end
+				 else
+				 begin
+					tempVal[2] = tempVal[1] + tempVal[0];
+				 end
+
+             yres = yres + tempVal[2];
              yres = yres + matrixCurrent[7];
              O_VOut[47:32] = yres;
 
@@ -187,22 +304,28 @@ begin
                 O_ColorOut <= I_VRegIn;
                 ColorCurrent <= I_VRegIn;
             end
-/**
-            if (I_Opcode==`OP_ROTATE) begin
-                for(j = 0; j < 4; j=j+1) begin
-                    for(k = 0; k < 4; k=k+1) begin
-                        matrixBackup[4*j + k] = matrixCurrent[4*j+k];
-                    end
-                end
 
-                for(j = 0; j < 4; j=j+1) begin
-                    for(k = 0; k < 4; k=k+1) begin
-                        matrixTemp[4*j+k] = 0;
-                        if(j == k)begin
-                            matrixTemp[4*j+k] = 1<<7;
-                        end
-                    end
-                end
+            if (I_Opcode==`OP_ROTATE) begin
+                for (i=0; i< `REG_WIDTH; i = i + 1)begin
+						matrixBackup[i] = matrixCurrent[i];
+					 end
+
+					
+		
+					 matrixTemp[2] = 0;
+					 matrixTemp[3] = 0;
+					 
+					 
+					 matrixTemp[6] = 0;
+					 matrixTemp[7] = 0;
+					 matrixTemp[8] = 0;
+					 matrixTemp[9] = 0;
+					 matrixTemp[10] = 1<<7;
+					 matrixTemp[11] = 0;
+					 matrixTemp[12] = 0;
+					 matrixTemp[13] = 0;
+					 matrixTemp[14] = 0;
+					 matrixTemp[15] = 1<<7;
                 
                 angle = I_VRegIn[15:0]>>7;
                 if(I_VRegIn[63] == 1)
@@ -213,24 +336,110 @@ begin
                         angle = (-1) * angle;
                         angle = 360-angle;
                  end
+					  /**
                  angle = angle * 2;
-                 angle = angle % 360; 
-                     
-                 matrixTemp[0] = cosTable[angle];
-                 matrixTemp[1] = sinTable[angle];
-                 matrixTemp[5] = cosTable[angle]; 
-                 matrixTemp[4] = -1 * sinTable[angle];
-					
-                //Matrix Multiply
+                 angle = angle % 360; **/
+                 if(angle >= 0 && angle <= 29)
+					  begin
+						  matrixTemp[0] = 16'h0080;
+						  matrixTemp[1] = 16'h0000;
+						  matrixTemp[5] = 16'h0080; 
+						  matrixTemp[4] = 16'h0000;
+					  end
+                 if(angle >= 30 && angle <= 59)
+					  begin
+						  matrixTemp[0] = 16'h0070;
+						  matrixTemp[1] = 16'h0040;
+						  matrixTemp[5] = 16'h0070; 
+						  matrixTemp[4] = 16'h8040;
+					  end
+                 if(angle >= 60 && angle <= 89)
+					  begin
+						  matrixTemp[0] = 16'h0040;
+						  matrixTemp[1] = 16'h0070;
+						  matrixTemp[5] = 16'h0040; 
+						  matrixTemp[4] = 16'h8070;
+					  end
+                 if(angle >= 90 && angle <= 119)
+					  begin
+						  matrixTemp[0] = 16'h0000;
+						  matrixTemp[1] = 16'h0080;
+						  matrixTemp[5] = 16'h0000; 
+						  matrixTemp[4] = 16'hFF80;
+					  end
+                 if(angle >= 120 && angle <= 149)
+					  begin
+						  matrixTemp[0] = 16'h8040;
+						  matrixTemp[1] = 16'h0070;
+						  matrixTemp[5] = 16'h8040; 
+						  matrixTemp[4] = 16'h8070;
+					  end
+                 if(angle >= 150 && angle <= 179)
+					  begin
+						  matrixTemp[0] = 16'h8070;
+						  matrixTemp[1] = 16'h0040;
+						  matrixTemp[5] = 16'h8070; 
+						  matrixTemp[4] = 16'h8040;
+					  end
+                 if(angle >= 180 && angle <= 209)
+					  begin
+						  matrixTemp[0] = 16'hFF80;
+						  matrixTemp[1] = 16'h0000;
+						  matrixTemp[5] = 16'hFF80; 
+						  matrixTemp[4] = 16'h0000;
+					  end
+                 if(angle >= 210 && angle <= 239)
+					  begin
+						  matrixTemp[0] = 16'h8070;
+						  matrixTemp[1] = 16'h8040;
+						  matrixTemp[5] = 16'h8070; 
+						  matrixTemp[4] = 16'h0040;
+					  end
+                 if(angle >= 240 && angle <= 269)
+					  begin
+						  matrixTemp[0] = 16'h8040;
+						  matrixTemp[1] = 16'h8070;
+						  matrixTemp[5] = 16'h8040; 
+						  matrixTemp[4] = 16'h0070;
+					  end
+                 if(angle >= 270 && angle <= 299)
+					  begin
+						  matrixTemp[0] = 16'h0000;
+						  matrixTemp[1] = 16'h0080;
+						  matrixTemp[5] = 16'h0000; 
+						  matrixTemp[4] = 16'hFF80;
+					  end
+                 if(angle >= 300 && angle <= 329)
+					  begin
+						  matrixTemp[0] = 16'h0040;
+						  matrixTemp[1] = 16'h8070;
+						  matrixTemp[5] = 16'h0040; 
+						  matrixTemp[4] = 16'h0070;
+					  end
+                 if(angle >= 330 && angle <= 359)
+					  begin
+						  matrixTemp[0] = 16'h0070;
+						  matrixTemp[1] = 16'h8040;
+						  matrixTemp[5] = 16'h0070; 
+						  matrixTemp[4] = 16'h0040;
+					  end	  
+					  
+             /**   //Matrix Multiply
                 for( i = 0; i < 4; i=i+1)begin
 							for( j = 0; j < 4; j=j+1)begin
+								result = 0;         //WTF
                         for( k = 0; k < 4; k=k+1) begin
                             result = result + ((matrixBackup[4*i+k] * matrixTemp[4*k+j])>>7);
                         end
                         matrixCurrent[4*i+j] = result;
                     end
-                end
-            end **/
+                end **/
+					 
+					 for (i=0; i< `REG_WIDTH; i = i + 1)begin
+						matrixCurrent[i] = matrixTemp[i];
+					 end
+
+            end
 
 
             if (I_Opcode==`OP_TRANSLATE) begin
@@ -277,21 +486,21 @@ begin
 					 end
 
                      matrixTemp[0] = I_VRegIn[31:16];
-					 matrixTemp[1] = 0;
-					 matrixTemp[2] = 0;
-					 matrixTemp[3] = 0;
-					 matrixTemp[4] = 0;
-					 matrixTemp[5] = I_VRegIn[47:32];
-					 matrixTemp[6] = 0;
-					 matrixTemp[7] = 0;
-					 matrixTemp[8] = 0;
-					 matrixTemp[9] = 0;
-					 matrixTemp[10] = 1<<7;
-					 matrixTemp[11] = 0;
-					 matrixTemp[12] = 0;
-					 matrixTemp[13] = 0;
-					 matrixTemp[14] = 0;
-					 matrixTemp[15] = 1<<7;
+							 matrixTemp[1] = 0;
+							 matrixTemp[2] = 0;
+							 matrixTemp[3] = 0;
+							 matrixTemp[4] = 0;
+							 matrixTemp[5] = I_VRegIn[47:32];
+							 matrixTemp[6] = 0;
+							 matrixTemp[7] = 0;
+							 matrixTemp[8] = 0;
+							 matrixTemp[9] = 0;
+							 matrixTemp[10] = 1<<7;
+							 matrixTemp[11] = 0;
+							 matrixTemp[12] = 0;
+							 matrixTemp[13] = 0;
+							 matrixTemp[14] = 0;
+							 matrixTemp[15] = 1<<7;
 
                 
                 
